@@ -6,7 +6,12 @@
   <title>Weby na WordPressu i s pomocí AI | Webový balíček</title>
   <meta name="description" content="Weby pro živnostníky, malé a střední firmy. WordPress pro plnou kontrolu, AI weby pro rychlé a levnější projekty, nebo kombinace obojího. Konzultace zdarma.">
   <link rel="canonical" href="https://webovybalicek.cz/">
-  <link rel="stylesheet" href="assets/css/base.css">
+  <meta name="theme-color" content="#0E1A33">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
 </head>
 <body>
 
@@ -14,404 +19,389 @@
 
 <!-- ============ HLAVIČKA ============ -->
 <header class="site-header">
-  <a href="/" class="logo">Webový balíček</a>
-  <nav aria-label="Hlavní navigace">
-    <ul>
-      <li><a href="#sluzby">Služby</a></li>
-      <li><a href="#srovnani">Jaký web zvolit</a></li>
-      <li><a href="#reference">Reference</a></li>
-      <li><a href="#cenik">Ceník</a></li>
-      <li><a href="#dotazy">Dotazy</a></li>
-    </ul>
-  </nav>
-  <a href="#kontakt" class="btn">Konzultace zdarma</a>
+  <div class="wrap header-inner">
+    <a href="/" class="logo" aria-label="Webový balíček – domů">
+      <span class="logo-mark" aria-hidden="true">wb</span>
+      <span>webový balíček</span>
+    </a>
+
+    <nav class="nav" aria-label="Hlavní navigace">
+      <ul>
+        <li><a href="#cesty">Služby</a></li>
+        <li><a href="#reference">Reference</a></li>
+        <li><a href="#cenik">Ceník</a></li>
+        <li><a href="#dotazy">Dotazy</a></li>
+      </ul>
+    </nav>
+
+    <a href="#kontakt" class="btn btn--accent btn--sm">Konzultace zdarma</a>
+
+    <details class="mobile-nav">
+      <summary aria-label="Menu"><span></span><span></span></summary>
+      <ul>
+        <li><a href="#cesty">Služby</a></li>
+        <li><a href="#reference">Reference</a></li>
+        <li><a href="#cenik">Ceník</a></li>
+        <li><a href="#dotazy">Dotazy</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </details>
+  </div>
 </header>
 
 <main id="obsah">
 
   <!-- ============ HERO ============ -->
-  <section id="hero">
-    <p class="eyebrow">Weby pro živnostníky, malé a střední firmy</p>
-    <h1>Web, který dává smysl pro vaše podnikání. Ne pro náš ceník.</h1>
-    <p class="lead">Stavíme na WordPressu, pomocí AI, nebo kombinací obojího. Podle toho, co váš projekt opravdu potřebuje a kolik do něj chcete dát.</p>
-    <p>
-      <a href="#kontakt" class="btn">Konzultace zdarma</a>
-      <a href="#srovnani" class="btn btn--ghost">Jaký web potřebuji?</a>
-    </p>
-    <ul class="hero-proof">
-      <li><strong>90+</strong> spuštěných webů</li>
-      <li><strong>5.0</strong> hodnocení na Google</li>
-      <li>Odpovídáme do 24 h</li>
-    </ul>
-  </section>
-
-  <!-- ============ SLUŽBY – 3 CESTY ============ -->
-  <section id="sluzby">
-    <h2>Tři cesty k novému webu</h2>
-    <p>Neprodáváme jedno řešení všem. Na konzultaci společně vybereme to, které sedí vašemu projektu.</p>
-
-    <div class="cards">
-      <article class="card">
-        <p class="eyebrow">Rychle a výhodně</p>
-        <h3>AI web</h3>
-        <p>Moderní prezentační web postavený s pomocí AI. Ideální pro živnostníky, nové projekty, landing page nebo jednodušší firemní prezentace.</p>
-        <ul>
-          <li>Hotovo během dnů, ne týdnů</li>
-          <li>Nižší cena díky rychlejší tvorbě</li>
-          <li>Rychlý web bez zbytečných pluginů</li>
-          <li>Úpravy textů a obsahu za vás řešíme my</li>
-        </ul>
-        <p class="price">od <strong><mark>[doplnit]</mark> Kč</strong></p>
-      </article>
-
-      <article class="card">
-        <p class="eyebrow">Plná kontrola</p>
-        <h3>Web na WordPressu</h3>
-        <p>Osvědčený systém s administrací, ve které si obsah spravujete sami. Pro weby, které rostou, mají blog, e-shop nebo funkce na míru.</p>
-        <ul>
-          <li>Snadná administrace, i pro úplné začátečníky</li>
-          <li>E-shop na WooCommerce s platební bránou a dopravou</li>
-          <li>Rezervace, filtry, formuláře, členské sekce</li>
-          <li>Zaškolení a správa po spuštění</li>
-        </ul>
-        <p class="price">web od <strong>25 000 Kč</strong> · e-shop od <strong>35 000 Kč</strong></p>
-      </article>
-
-      <article class="card">
-        <p class="eyebrow">To nejlepší z obou</p>
-        <h3>Hybridní web</h3>
-        <p>WordPress jako pevný základ, AI jako zrychlení. Texty, design i funkce na míru vznikají rychleji, a přitom máte vlastní administraci.</p>
-        <ul>
-          <li>Administrace WordPressu pro běžné úpravy</li>
-          <li>Části webu stavěné na míru pomocí AI</li>
-          <li>AI funkce: chatbot, automatizace, generování obsahu</li>
-          <li>Kratší dodání než u klasického WordPressu</li>
-        </ul>
-        <p class="price">cena podle rozsahu</p>
-      </article>
+  <section class="hero">
+    <div class="wrap">
+      <h1 class="hero-title">Web, který dává smysl pro vaše podnikání. Ne pro náš ceník.</h1>
+      <div class="hero-bottom">
+        <div>
+          <p class="hero-lead">Pro živnostníky, malé a střední firmy. Stavíme na WordPressu, pomocí AI, nebo kombinací obojího. Podle toho, co váš projekt opravdu potřebuje.</p>
+          <p class="hero-actions">
+            <a href="#kontakt" class="btn btn--accent">Konzultace zdarma</a>
+            <a href="#cesty" class="btn btn--ghost-light">Jaký web potřebuji?</a>
+          </p>
+        </div>
+        <dl class="hero-proof">
+          <div><dt>Spuštěných webů</dt><dd>90+</dd></div>
+          <div><dt>Hodnocení na Google</dt><dd>5.0</dd></div>
+          <div><dt>Odpověď na poptávku</dt><dd>do 24 h</dd></div>
+        </dl>
+      </div>
     </div>
   </section>
 
-  <!-- ============ SROVNÁNÍ ============ -->
-  <section id="srovnani">
-    <h2>Jaký web je pro vás?</h2>
-    <p>Rychlé srovnání. Pokud si nejste jistí, na konzultaci to vyřešíme za 15 minut.</p>
+  <!-- ============ TŘI CESTY (přepínač) ============ -->
+  <section class="sheet" id="cesty">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Vyberte si cestu k novému webu</h2>
+        <p>Neprodáváme jedno řešení všem. Pokud si nejste jistí, na konzultaci to vyřešíme za 15 minut.</p>
+      </div>
 
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">AI web</th>
-            <th scope="col">WordPress</th>
-            <th scope="col">Hybrid</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">Vhodné pro</th><td>Živnostníky, jednodušší prezentace, landing page</td><td>Firmy, e-shopy, weby s blogem a funkcemi</td><td>Firmy, které chtějí víc za kratší čas</td></tr>
-          <tr><th scope="row">Doba dodání</th><td>Dny</td><td>Týdny</td><td>Kratší než WordPress</td></tr>
-          <tr><th scope="row">Vlastní administrace</th><td>Ne, úpravy řešíme my</td><td>Ano</td><td>Ano</td></tr>
-          <tr><th scope="row">E-shop</th><td>Ne</td><td>Ano</td><td>Ano</td></tr>
-          <tr><th scope="row">Rychlost načítání</th><td>Výborná</td><td>Dobrá</td><td>Velmi dobrá</td></tr>
-          <tr><th scope="row">Cena</th><td>Nejnižší</td><td>Střední až vyšší</td><td>Podle rozsahu</td></tr>
-        </tbody>
-      </table>
+      <div class="paths" data-tabs>
+        <div class="paths-tabs" role="tablist" aria-label="Typ webu">
+          <button role="tab" id="tab-ai" aria-controls="panel-ai" aria-selected="true">AI web</button>
+          <button role="tab" id="tab-wp" aria-controls="panel-wp" aria-selected="false" tabindex="-1">WordPress</button>
+          <button role="tab" id="tab-hy" aria-controls="panel-hy" aria-selected="false" tabindex="-1">Hybrid</button>
+          <span class="paths-indicator" aria-hidden="true"></span>
+        </div>
+
+        <article class="path" role="tabpanel" id="panel-ai" aria-labelledby="tab-ai">
+          <div class="path-main">
+            <h3>AI web</h3>
+            <p class="path-for">Pro živnostníky, nové projekty, landing page a jednodušší firemní prezentace.</p>
+            <p>Moderní prezentační web postavený s pomocí AI. Hotový rychle a za nižší cenu, bez zbytečných pluginů.</p>
+            <ul class="ticks">
+              <li>Hotovo během dnů, ne týdnů</li>
+              <li>Nižší cena díky rychlejší tvorbě</li>
+              <li>Výborná rychlost načítání</li>
+              <li>Úpravy textů a obsahu za vás řešíme my</li>
+            </ul>
+          </div>
+          <dl class="path-spec">
+            <div><dt>Dodání</dt><dd>dny</dd></div>
+            <div><dt>Vlastní administrace</dt><dd>ne, úpravy řešíme my</dd></div>
+            <div><dt>E-shop</dt><dd>ne</dd></div>
+            <div class="path-price"><dt>Cena</dt><dd>od <span class="todo">[doplnit]</span> Kč</dd></div>
+          </dl>
+        </article>
+
+        <article class="path" role="tabpanel" id="panel-wp" aria-labelledby="tab-wp">
+          <div class="path-main">
+            <h3>Web na WordPressu</h3>
+            <p class="path-for">Pro firmy, e-shopy a weby s blogem nebo funkcemi na míru.</p>
+            <p>Osvědčený systém s administrací, ve které si obsah spravujete sami. Pro weby, které porostou.</p>
+            <ul class="ticks">
+              <li>Snadná administrace, i pro úplné začátečníky</li>
+              <li>E-shop na WooCommerce s platbou a dopravou</li>
+              <li>Rezervace, filtry, formuláře, členské sekce</li>
+              <li>Zaškolení a správa po spuštění</li>
+            </ul>
+          </div>
+          <dl class="path-spec">
+            <div><dt>Dodání</dt><dd>týdny</dd></div>
+            <div><dt>Vlastní administrace</dt><dd>ano</dd></div>
+            <div><dt>E-shop</dt><dd>ano</dd></div>
+            <div class="path-price"><dt>Cena</dt><dd>od 25 000 Kč</dd></div>
+          </dl>
+        </article>
+
+        <article class="path" role="tabpanel" id="panel-hy" aria-labelledby="tab-hy">
+          <div class="path-main">
+            <h3>Hybridní web</h3>
+            <p class="path-for">Pro firmy, které chtějí víc za kratší čas.</p>
+            <p>WordPress jako pevný základ, AI jako zrychlení. Texty, design i funkce na míru vznikají rychleji a vy máte vlastní administraci.</p>
+            <ul class="ticks">
+              <li>Administrace WordPressu pro běžné úpravy</li>
+              <li>Části webu stavěné na míru pomocí AI</li>
+              <li>AI funkce: chatbot, automatizace, obsah</li>
+              <li>Kratší dodání než klasický WordPress</li>
+            </ul>
+          </div>
+          <dl class="path-spec">
+            <div><dt>Dodání</dt><dd>kratší než WordPress</dd></div>
+            <div><dt>Vlastní administrace</dt><dd>ano</dd></div>
+            <div><dt>E-shop</dt><dd>ano</dd></div>
+            <div class="path-price"><dt>Cena</dt><dd>podle rozsahu</dd></div>
+          </dl>
+        </article>
+      </div>
+
+      <p class="paths-note">AI web můžete později kdykoliv rozšířit nebo převést na WordPress. Design i obsah zůstanou.</p>
     </div>
-    <p>AI web můžete později kdykoliv rozšířit nebo převést na WordPress.</p>
   </section>
 
-  <!-- ============ AI – JAK TO POUŽÍVÁME ============ -->
-  <section id="ai">
-    <p class="eyebrow">AI s rozumem</p>
-    <h2>AI je náš nástroj, ne náhrada řemesla</h2>
-    <p>Umělou inteligenci používáme tam, kde šetří čas a peníze. Rozhodnutí, kontrola a kvalita zůstávají na nás.</p>
-    <ul class="usp-list">
-      <li><strong>Rychlejší dodání.</strong> Co dřív trvalo týden, máme za pár dní.</li>
-      <li><strong>Nižší cena.</strong> Ušetřený čas se propisuje do ceny.</li>
-      <li><strong>Lepší texty.</strong> AI pomáhá s návrhy, my je ladíme na váš obor a zákazníky.</li>
-      <li><strong>Funkce na míru.</strong> Kalkulačky, konfigurátory a napojení, která dřív stála desítky hodin.</li>
-      <li><strong>Každý řádek kontroluje člověk.</strong> Nic nejde ven bez naší kontroly.</li>
-    </ul>
+  <!-- ============ AI S ROZUMEM ============ -->
+  <section class="band" id="ai">
+    <div class="wrap split">
+      <h2>AI je náš nástroj, ne náhrada řemesla</h2>
+      <div>
+        <p class="band-lead">Umělou inteligenci používáme tam, kde šetří čas a peníze. Rozhodnutí, kontrola a kvalita zůstávají na nás.</p>
+        <ul class="facts">
+          <li><strong>Rychlejší dodání.</strong> Co dřív trvalo týden, máme za pár dní.</li>
+          <li><strong>Nižší cena.</strong> Ušetřený čas se propisuje do ceny.</li>
+          <li><strong>Lepší texty.</strong> AI pomáhá s návrhy, my je ladíme na váš obor a zákazníky.</li>
+          <li><strong>Funkce na míru.</strong> Kalkulačky, konfigurátory a napojení, které dřív stály desítky hodin.</li>
+          <li><strong>Každý řádek kontroluje člověk.</strong> Nic nejde ven bez naší kontroly.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CO UMÍME (akordeon) ============ -->
+  <section class="sheet sheet--flat" id="sluzby">
+    <div class="wrap split">
+      <div class="section-head section-head--sticky">
+        <h2>Co pro vás zařídíme</h2>
+        <p>Od návrhu po hosting. O nic se nemusíte starat sami.</p>
+        <p><a href="#kontakt" class="btn btn--dark">Probrat můj projekt</a></p>
+      </div>
+
+      <div class="accordion">
+        <details name="sluzby" open>
+          <summary>Web a design</summary>
+          <ul class="chips">
+            <li>Design na míru, žádné šablony</li><li>Texty a storytelling</li><li>Responzivita</li>
+            <li>Optimalizace rychlosti a obrázků</li><li>Základní SEO</li><li>Jazykové mutace</li><li>Motion efekty</li>
+          </ul>
+        </details>
+        <details name="sluzby">
+          <summary>Funkce</summary>
+          <ul class="chips">
+            <li>Formuláře s ochranou proti spamu</li><li>Rezervace a poptávky</li><li>Blog a dynamický obsah</li>
+            <li>Uživatelské účty a práva</li><li>Kalkulačky a konfigurátory</li><li>Obsah podle chování návštěvníka</li>
+          </ul>
+        </details>
+        <details name="sluzby">
+          <summary>E-shop</summary>
+          <ul class="chips">
+            <li>Platební brány</li><li>Zásilkovna a další dopravci</li><li>Fakturoid, iDoklad</li>
+            <li>Varianty produktů a filtry</li><li>Akční pop-upy a top bar</li><li>Google Analytics a Tag Manager</li>
+          </ul>
+        </details>
+        <details name="sluzby">
+          <summary>AI funkce</summary>
+          <ul class="chips">
+            <li>AI chatbot nad obsahem webu</li><li>Automatizace poptávek a e-mailů</li>
+            <li>Generování a překlady obsahu</li><li>Napojení na AI nástroje přes API</li>
+          </ul>
+        </details>
+        <details name="sluzby">
+          <summary>Technické zázemí</summary>
+          <ul class="chips">
+            <li>Hosting a doména</li><li>SSL zabezpečení</li><li>Převody webů a e-mailů</li>
+            <li>Zálohy a aktualizace</li><li>Rychlá podpora při problému</li>
+          </ul>
+        </details>
+      </div>
+    </div>
   </section>
 
   <!-- ============ PROCES ============ -->
-  <section id="proces">
-    <h2>Jak spolupráce probíhá</h2>
-    <ol class="steps">
-      <li>
-        <h3>Konzultace zdarma</h3>
-        <p>Probereme vaše podnikání, cíle a rozpočet. Doporučíme vhodnou cestu: AI, WordPress, nebo hybrid.</p>
-      </li>
-      <li>
-        <h3>Nabídka a struktura</h3>
-        <p>Pošleme cenu bez skrytých položek a návrh struktury webu. Zahajujeme po 50% záloze.</p>
-      </li>
-      <li>
-        <h3>Texty a design</h3>
-        <p>Připravíme texty a design na míru. Vy připomínkujete, my upravujeme.</p>
-      </li>
-      <li>
-        <h3>Stavba a spuštění</h3>
-        <p>Web postavíme, otestujeme na mobilu i počítači a spustíme. Zajistíme hosting, doménu i e-maily.</p>
-      </li>
-      <li>
-        <h3>Zaškolení a správa</h3>
-        <p>Ukážeme vám, jak web ovládat. Pokud chcete, staráme se o něj i dál.</p>
-      </li>
-    </ol>
+  <section class="sheet sheet--flat sheet--tint" id="proces">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Jak spolupráce probíhá</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Konzultace zdarma</h3><p>Probereme vaše podnikání, cíle a rozpočet a doporučíme vhodnou cestu.</p></li>
+        <li><h3>Nabídka a struktura</h3><p>Pošleme cenu bez skrytých položek a návrh struktury webu. Začínáme po 50% záloze.</p></li>
+        <li><h3>Texty a design</h3><p>Připravíme texty a design na míru. Vy připomínkujete, my upravujeme.</p></li>
+        <li><h3>Stavba a spuštění</h3><p>Web postavíme, otestujeme a spustíme. Zajistíme hosting, doménu i e-maily.</p></li>
+        <li><h3>Zaškolení a správa</h3><p>Ukážeme vám, jak web ovládat. Pokud chcete, staráme se o něj i dál.</p></li>
+      </ol>
+    </div>
   </section>
 
   <!-- ============ REFERENCE ============ -->
-  <section id="reference">
-    <p class="eyebrow"><strong>90+</strong> spuštěných projektů</p>
-    <h2>Reference</h2>
-    <p>Pracujeme pro malé a středně velké firmy a živnostníky. Většina klientů s námi zůstává roky.</p>
-    <p><a href="https://g.page/webovybalicek-cz/" rel="noopener">5.0 hodnocení klientů na Google</a></p>
+  <section class="sheet sheet--flat" id="reference">
+    <div class="wrap">
+      <div class="section-head section-head--row">
+        <div>
+          <h2>Weby, které už vydělávají</h2>
+          <p>Malé a středně velké firmy a živnostníci. Většina klientů s námi zůstává roky.</p>
+        </div>
+        <a href="https://g.page/webovybalicek-cz/" class="rating" rel="noopener">
+          <strong>5.0</strong><span>hodnocení klientů na Google</span>
+        </a>
+      </div>
 
-    <ul class="ref-list">
-      <li>
-        <h3><a href="https://realityumore.com/" rel="noopener">Realityumore.com</a></h3>
-        <p>Prodej nemovitostí v zahraničí.</p>
-      </li>
-      <li>
-        <h3><a href="https://dorsen.cz/" rel="noopener">Dorsen.cz</a></h3>
-        <p>Luxusní matrace šité v Jizerských horách.</p>
-      </li>
-      <li>
-        <h3><a href="https://eezy.cz/" rel="noopener">Eezy.cz</a></h3>
-        <p>Pořadatel konferencí a eventů na míru, vydavatel knih a časopisů.</p>
-      </li>
-      <li>
-        <h3><a href="https://sheio.cz/" rel="noopener">Sheio.cz</a></h3>
-        <p>Spodní prádlo šité na míru.</p>
-      </li>
-      <li>
-        <h3><a href="https://www.deedivine.com/" rel="noopener">Deedivine.com</a></h3>
-        <p>Pásové sukně na míru v 6 střizích a desítkách barev.</p>
-      </li>
-      <li>
-        <h3><a href="https://dorint.cz/" rel="noopener">Dorint.cz</a></h3>
-        <p>Koupelny, kuchyně, interiéry a wellness. Showroomy po celé ČR.</p>
-      </li>
-      <li>
-        <h3><a href="https://www.frosch-eko.cz/" rel="noopener">Frosch-eko.cz</a></h3>
-        <p>Ekologická drogerie pro každou domácnost.</p>
-      </li>
-      <li>
-        <h3><a href="https://mmntshop.cz/" rel="noopener">MMNTshop.cz / pl</a></h3>
-        <p>Svíčky a doplňky značky Ewy Farné.</p>
-      </li>
-    </ul>
-    <p><a href="/reference/">Všechny reference</a></p>
+      <ul class="refs">
+        <li><a href="https://realityumore.com/" rel="noopener"><span class="ref-name">realityumore.com</span><span class="ref-desc">Prodej nemovitostí v zahraničí</span></a></li>
+        <li><a href="https://dorsen.cz/" rel="noopener"><span class="ref-name">dorsen.cz</span><span class="ref-desc">Luxusní matrace šité v Jizerských horách</span></a></li>
+        <li><a href="https://eezy.cz/" rel="noopener"><span class="ref-name">eezy.cz</span><span class="ref-desc">Konference, eventy a vydavatelství</span></a></li>
+        <li><a href="https://sheio.cz/" rel="noopener"><span class="ref-name">sheio.cz</span><span class="ref-desc">Spodní prádlo šité na míru</span></a></li>
+        <li><a href="https://www.deedivine.com/" rel="noopener"><span class="ref-name">deedivine.com</span><span class="ref-desc">Pásové sukně na míru</span></a></li>
+        <li><a href="https://dorint.cz/" rel="noopener"><span class="ref-name">dorint.cz</span><span class="ref-desc">Koupelny, kuchyně a wellness, showroomy po ČR</span></a></li>
+        <li><a href="https://www.frosch-eko.cz/" rel="noopener"><span class="ref-name">frosch-eko.cz</span><span class="ref-desc">Ekologická drogerie</span></a></li>
+        <li><a href="https://mmntshop.cz/" rel="noopener"><span class="ref-name">mmntshop.cz</span><span class="ref-desc">Svíčky a doplňky značky Ewy Farné</span></a></li>
+      </ul>
+      <p><a href="/reference/" class="link">Všechny reference</a></p>
+    </div>
   </section>
 
   <!-- ============ CENÍK ============ -->
-  <section id="cenik">
-    <p class="eyebrow">Transparentně od začátku</p>
-    <h2>Ceník</h2>
-    <p>Žádné skryté položky. Platíte jen za funkce, které opravdu potřebujete. Přesnou cenu upřesníme po konzultaci.</p>
-
-    <div class="cards">
-      <article class="card">
-        <h3>AI web</h3>
-        <p class="price">od <strong><mark>[doplnit]</mark> Kč</strong></p>
-        <p>Prezentační web nebo landing page. Dodání během dnů.</p>
-      </article>
-      <article class="card">
-        <h3>Web na WordPressu</h3>
-        <p class="price">od <strong>25 000 Kč</strong></p>
-        <p>Prezentační web s vlastní administrací.</p>
-      </article>
-      <article class="card">
-        <h3>E-shop</h3>
-        <p class="price">od <strong>35 000 Kč</strong></p>
-        <p>WooCommerce s platební bránou, dopravou a fakturací.</p>
-      </article>
-      <article class="card">
-        <h3>Správa webu</h3>
-        <p class="price">od <strong><mark>[doplnit]</mark> Kč / měsíc</strong></p>
-        <p>Aktualizace, zálohy, drobné úpravy a podpora.</p>
-      </article>
-    </div>
-    <p><small>Zahájení prací po 50% záloze.</small></p>
-    <p><a href="#kontakt" class="btn">Zjistit přesnou cenu</a></p>
-  </section>
-
-  <!-- ============ CO UMÍME ============ -->
-  <section id="funkce">
-    <h2>Co pro vás zařídíme</h2>
-
-    <div class="feature-group">
-      <h3>Web a design</h3>
-      <ul>
-        <li>Design na míru, žádné šablony</li>
-        <li>Texty a storytelling</li>
-        <li>Responzivita pro mobil i počítač</li>
-        <li>Optimalizace rychlosti a obrázků</li>
-        <li>Základní SEO a správná struktura URL</li>
-        <li>Jazykové mutace</li>
-        <li>Motion efekty</li>
-      </ul>
-    </div>
-
-    <div class="feature-group">
-      <h3>Funkce</h3>
-      <ul>
-        <li>Formuláře s ochranou proti spamu</li>
-        <li>Rezervace a poptávkové systémy</li>
-        <li>Blog a dynamický obsah</li>
-        <li>Uživatelské účty a práva</li>
-        <li>Kalkulačky a konfigurátory</li>
-        <li>Zobrazování obsahu podle chování návštěvníka</li>
-      </ul>
-    </div>
-
-    <div class="feature-group">
-      <h3>E-shop</h3>
-      <ul>
-        <li>Platební brány</li>
-        <li>Zásilkovna a další dopravci</li>
-        <li>Fakturoid, iDoklad a další fakturace</li>
-        <li>Varianty produktů a filtry</li>
-        <li>Akční pop-upy a top bar</li>
-        <li>Google Analytics a Tag Manager</li>
-      </ul>
-    </div>
-
-    <div class="feature-group">
-      <h3>AI funkce</h3>
-      <ul>
-        <li>AI chatbot nad obsahem vašeho webu</li>
-        <li>Automatizace poptávek a e-mailů</li>
-        <li>Generování a překlady obsahu</li>
-        <li>Napojení na AI nástroje přes API</li>
-      </ul>
-    </div>
-
-    <div class="feature-group">
-      <h3>Technické zázemí</h3>
-      <ul>
-        <li>Hosting a doména</li>
-        <li>SSL zabezpečení</li>
-        <li>Převody webů a e-mailů</li>
-        <li>Zálohy a aktualizace</li>
-        <li>Rychlá podpora při problému</li>
-      </ul>
+  <section class="band" id="cenik">
+    <div class="wrap split">
+      <div>
+        <h2>Ceník bez překvapení</h2>
+        <p class="band-lead">Platíte jen za funkce, které opravdu potřebujete. Přesnou cenu upřesníme po konzultaci. Začínáme po 50% záloze.</p>
+        <p><a href="#kontakt" class="btn btn--accent">Zjistit přesnou cenu</a></p>
+      </div>
+      <dl class="prices">
+        <div><dt>AI web<small>Prezentační web nebo landing page</small></dt><dd>od <span class="todo">[doplnit]</span> Kč</dd></div>
+        <div><dt>Web na WordPressu<small>S vlastní administrací</small></dt><dd>od 25 000 Kč</dd></div>
+        <div><dt>E-shop<small>WooCommerce, platby, doprava, fakturace</small></dt><dd>od 35 000 Kč</dd></div>
+        <div><dt>Správa webu<small>Aktualizace, zálohy, drobné úpravy</small></dt><dd>od <span class="todo">[doplnit]</span> Kč/měs.</dd></div>
+      </dl>
     </div>
   </section>
 
   <!-- ============ PROČ MY ============ -->
-  <section id="proc-my">
-    <h2>Proč s námi</h2>
-    <ul class="usp-list">
-      <li><strong>Poradíme upřímně.</strong> Když vám stačí levnější řešení, řekneme to.</li>
-      <li><strong>Odpovídáme do 24 hodin.</strong> Žádné týdny čekání na e-mail.</li>
-      <li><strong>Rozumíme e-commerce.</strong> Web je jen nástroj. Poradíme, jak dostat produkt k zákazníkovi.</li>
-      <li><strong>Nejsme agentura.</strong> Jsme skupina freelancerů, bez zbytečné režie a manažerů.</li>
-      <li><strong>Neodflákneme to.</strong> Neodevzdáme web, se kterým sami nejsme spokojení.</li>
-      <li><strong>Nekecáme, nevymlouváme se.</strong> Co slíbíme, to platí.</li>
-    </ul>
+  <section class="sheet sheet--flat" id="proc-my">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Proč s námi</h2>
+      </div>
+      <ul class="reasons">
+        <li><h3>Poradíme upřímně</h3><p>Když vám stačí levnější řešení, řekneme to.</p></li>
+        <li><h3>Odpovídáme do 24 hodin</h3><p>Žádné týdny čekání na e-mail.</p></li>
+        <li><h3>Rozumíme e-commerce</h3><p>Web je jen nástroj. Poradíme, jak dostat produkt k zákazníkovi.</p></li>
+        <li><h3>Nejsme agentura</h3><p>Jsme skupina freelancerů, bez zbytečné režie a manažerů.</p></li>
+        <li><h3>Neodflákneme to</h3><p>Neodevzdáme web, se kterým sami nejsme spokojení.</p></li>
+        <li><h3>Nevymlouváme se</h3><p>Co slíbíme, to platí.</p></li>
+      </ul>
+    </div>
   </section>
 
   <!-- ============ FAQ ============ -->
-  <section id="dotazy">
-    <h2>Časté dotazy</h2>
-
-    <details>
-      <summary>Není AI web horší než web dělaný ručně?</summary>
-      <p>Ne. AI nám zrychluje práci, ale návrh, texty, kontrolu a výsledek řešíme my. Výsledkem je rychlý a moderní web. Rozdíl je hlavně v tom, že AI web nemá administraci jako WordPress.</p>
-    </details>
-
-    <details>
-      <summary>Můžu si AI web upravovat sám?</summary>
-      <p><mark>[doplnit podle zvoleného řešení]</mark> Drobné úpravy textů a obrázků za vás rychle zařídíme v rámci správy.</p>
-    </details>
-
-    <details>
-      <summary>Můžu později přejít z AI webu na WordPress?</summary>
-      <p>Ano. Když váš projekt vyroste a budete potřebovat e-shop nebo vlastní administraci, web převedeme. Design i obsah zůstanou.</p>
-    </details>
-
-    <details>
-      <summary>Komu web patří?</summary>
-      <p>Vám. Doména, hosting i obsah jsou vaše a k webu máte plný přístup.</p>
-    </details>
-
-    <details>
-      <summary>Jak dlouho tvorba trvá?</summary>
-      <p>AI web obvykle během několika dnů. Web na WordPressu nebo e-shop v řádu týdnů, podle rozsahu a toho, jak rychle dodáte podklady.</p>
-    </details>
-
-    <details>
-      <summary>Zajistíte i hosting, doménu a e-maily?</summary>
-      <p>Ano. Vše vám zařídíme a nastavíme, včetně převodu stávajícího webu a e-mailů.</p>
-    </details>
+  <section class="sheet sheet--flat sheet--tint" id="dotazy">
+    <div class="wrap split">
+      <div class="section-head section-head--sticky">
+        <h2>Časté dotazy</h2>
+        <p>Nenašli jste odpověď? <a href="#kontakt" class="link">Napište nám.</a></p>
+      </div>
+      <div class="accordion">
+        <details name="faq">
+          <summary>Není AI web horší než web dělaný ručně?</summary>
+          <p>Ne. AI nám zrychluje práci, ale návrh, texty, kontrolu a výsledek řešíme my. Rozdíl je hlavně v tom, že AI web nemá administraci jako WordPress.</p>
+        </details>
+        <details name="faq">
+          <summary>Můžu si AI web upravovat sám?</summary>
+          <p><span class="todo">[doplnit podle zvoleného řešení]</span> Drobné úpravy textů a obrázků za vás rychle zařídíme v rámci správy.</p>
+        </details>
+        <details name="faq">
+          <summary>Můžu později přejít z AI webu na WordPress?</summary>
+          <p>Ano. Když projekt vyroste a budete potřebovat e-shop nebo vlastní administraci, web převedeme. Design i obsah zůstanou.</p>
+        </details>
+        <details name="faq">
+          <summary>Komu web patří?</summary>
+          <p>Vám. Doména, hosting i obsah jsou vaše a k webu máte plný přístup.</p>
+        </details>
+        <details name="faq">
+          <summary>Jak dlouho tvorba trvá?</summary>
+          <p>AI web obvykle několik dnů. Web na WordPressu nebo e-shop v řádu týdnů, podle rozsahu a toho, jak rychle dodáte podklady.</p>
+        </details>
+        <details name="faq">
+          <summary>Zajistíte i hosting, doménu a e-maily?</summary>
+          <p>Ano. Vše zařídíme a nastavíme, včetně převodu stávajícího webu a e-mailů.</p>
+        </details>
+      </div>
+    </div>
   </section>
 
   <!-- ============ KONTAKT ============ -->
-  <section id="kontakt">
-    <p class="eyebrow">Nezávazně a zdarma</p>
-    <h2>Pojďme probrat váš web</h2>
-    <p>Napište nám pár vět o svém projektu. Ozveme se do 24 hodin a doporučíme nejvhodnější řešení.</p>
+  <section class="contact" id="kontakt">
+    <div class="wrap split">
+      <div>
+        <h2>Pojďme probrat váš web</h2>
+        <p class="band-lead">Napište pár vět o svém projektu. Ozveme se do 24 hodin a doporučíme nejvhodnější řešení. Nezávazně a zdarma.</p>
+        <ul class="contact-direct">
+          <li><a href="tel:+420723933774">+420 723 933 774</a></li>
+          <li><a href="mailto:webovybalicek@gmail.com">webovybalicek@gmail.com</a></li>
+        </ul>
+      </div>
 
-    <form class="contact-form" action="#" method="post">
-      <label>Jméno <input type="text" name="name" autocomplete="name"></label>
-      <label>E-mail <input type="email" name="email" autocomplete="email" required></label>
-      <label>Telefon <input type="tel" name="phone" autocomplete="tel"></label>
-      <label>Co potřebujete?
-        <select name="type">
-          <option value="">Nevím, poraďte mi</option>
-          <option value="ai">AI web</option>
-          <option value="wordpress">Web na WordPressu</option>
-          <option value="eshop">E-shop</option>
-          <option value="hybrid">Hybridní web</option>
-          <option value="sprava">Správa stávajícího webu</option>
-        </select>
-      </label>
-      <label>Zpráva <textarea name="message" rows="4"></textarea></label>
-      <label class="check"><input type="checkbox" name="urgent"> Potřebuji web rychle</label>
-      <button type="submit" class="btn">Odeslat poptávku</button>
-    </form>
+      <form class="form" action="#" method="post">
+        <div class="form-row">
+          <label>Jméno <input type="text" name="name" autocomplete="name"></label>
+          <label>Telefon <input type="tel" name="phone" autocomplete="tel"></label>
+        </div>
+        <label>E-mail <input type="email" name="email" autocomplete="email" required></label>
+        <label>Co potřebujete?
+          <select name="type">
+            <option value="">Nevím, poraďte mi</option>
+            <option value="ai">AI web</option>
+            <option value="wordpress">Web na WordPressu</option>
+            <option value="eshop">E-shop</option>
+            <option value="hybrid">Hybridní web</option>
+            <option value="sprava">Správa stávajícího webu</option>
+          </select>
+        </label>
+        <label>Zpráva <textarea name="message" rows="4" placeholder="Čím se zabýváte a co by měl web umět?"></textarea></label>
+        <label class="check"><input type="checkbox" name="urgent"> Potřebuji web rychle</label>
+        <button type="submit" class="btn btn--accent">Odeslat poptávku</button>
+      </form>
+    </div>
   </section>
 
 </main>
 
 <!-- ============ PATIČKA ============ -->
 <footer class="site-footer">
-  <div>
-    <h3>Kontakt</h3>
-    <p>Vladimír Fischer<br>
-      <a href="mailto:webovybalicek@gmail.com">webovybalicek@gmail.com</a><br>
-      <a href="tel:+420723933774">+420 723 933 774</a></p>
+  <div class="wrap footer-grid">
+    <div>
+      <a href="/" class="logo"><span class="logo-mark" aria-hidden="true">wb</span><span>webový balíček</span></a>
+      <p>Vladimír Fischer<br>Říčany u Prahy<br>IČ: 03051820</p>
+    </div>
+    <div>
+      <h3>Služby</h3>
+      <ul>
+        <li><a href="#cesty">AI weby</a></li>
+        <li><a href="#cesty">Weby na WordPressu</a></li>
+        <li><a href="#cesty">E-shopy</a></li>
+        <li><a href="/sprava-webu/">Správa webu</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Užitečné</h3>
+      <ul>
+        <li><a href="/jak-probiha-tvorba-webu-a-nase-spoluprace/">Jak probíhá spolupráce</a></li>
+        <li><a href="/nejcastejsi-pojmy-ohledne-tvorby-webu/">Slovníček pojmů</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Obchodní informace</h3>
+      <ul>
+        <li><a href="/obchodni-podminky/">Obchodní podmínky</a></li>
+        <li><a href="/ochrana-informaci-gdpr/">Ochrana osobních údajů</a></li>
+        <li><a href="https://g.page/webovybalicek-cz/" rel="noopener">Recenze na Google</a></li>
+      </ul>
+    </div>
   </div>
-
-  <div>
-    <h3>Ostatní</h3>
-    <p>Říčany u Prahy<br>IČ: 03051820</p>
-    <p><a href="https://g.page/webovybalicek-cz/" rel="noopener">Co o nás napsali klienti?</a></p>
-    <p><a href="/sprava-webu/">Správa webu</a></p>
-  </div>
-
-  <div>
-    <h3>Užitečné</h3>
-    <ul>
-      <li><a href="/jak-probiha-tvorba-webu-a-nase-spoluprace/">Jak probíhá spolupráce</a></li>
-      <li><a href="/nejcastejsi-pojmy-ohledne-tvorby-webu/">Slovníček pojmů</a></li>
-      <li><a href="/nejcastejsi-dotazy/">Nejčastější dotazy</a></li>
-      <li><a href="/blog/">Blog</a></li>
-    </ul>
-  </div>
-
-  <div>
-    <h3>Obchodní informace</h3>
-    <ul>
-      <li><a href="/obchodni-podminky/">Obchodní podmínky</a></li>
-      <li><a href="/ochrana-informaci-gdpr/">Ochrana osobních údajů</a></li>
-      <li><a href="/kontakt/">Kontakt</a></li>
-    </ul>
-  </div>
-
-  <p class="copyright">© Webový balíček</p>
 </footer>
 
 </body>
