@@ -51,3 +51,15 @@ document.querySelectorAll('.ref-filter').forEach((bar) => {
     items.forEach((li) => { li.hidden = y !== '' && li.dataset.year !== y; });
   });
 });
+
+// Pluginy – filtr podle kategorie
+document.querySelectorAll('.cat-filter').forEach((bar) => {
+  const groups = [...document.querySelectorAll('[data-group]')];
+  bar.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-cat]');
+    if (!btn) return;
+    bar.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b === btn));
+    const c = btn.dataset.cat;
+    groups.forEach((g) => { g.hidden = c !== '' && g.dataset.group !== c; });
+  });
+});

@@ -30,7 +30,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "7"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "8"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 FRONT = re.compile(r"^\s*<!--(.*?)-->\s*", re.S)
@@ -81,10 +81,17 @@ def build():
     cta = (SRC / "cta.html").read_text(encoding="utf-8")
     refs = json.loads((SRC / "data" / "reference.json").read_text(encoding="utf-8"))
 
+    import sys
+    sys.path.insert(0, str(SRC))
+    import plugins
+
+    sources = [parse(page) + (page.stem,) for page in sorted((SRC / "pages").glob("*.html"))]
+    sources += [(m, b, "") for m, b in plugins.pages(SRC)]
+
     urls = []
-    for page in sorted((SRC / "pages").glob("*.html")):
-        meta, body = parse(page)
-        path = meta.get("path") or ("/" if page.stem == "index" else f"/{page.stem}/")
+    for meta, body, stem in sources:
+        meta.setdefault("nav", "")
+        path = meta.get("path") or ("/" if stem == "index" else f"/{stem}/")
         body = body.replace("{{references}}", render_references(refs))
         body = body.replace("{{ref_count}}", str(len(refs)))
 
