@@ -90,7 +90,7 @@ def overview(data):
           <ul class="ticks ticks--dark">{feats}</ul>
         </div>
         <div class="bundle-buy">
-          <p class="bundle-price"><strong>{b['p']:,}</strong> Kč/rok</p>
+          <p class="bundle-price"><strong>{f"{b['p']:,}".replace(",", " ")}</strong> Kč/rok</p>
           <a href="{bundle_url}" class="btn btn--primary btn--block" {EXT_ATTR}>Koupit balíček</a>
           <p class="bundle-note">Vyplatí se už od 6 pluginů. Napište si o slevový kód a ušetříte ještě víc.</p>
         </div>
