@@ -1,0 +1,45 @@
+<!--
+title: Kontakt | Webový balíček
+description: Napište nebo zavolejte, odpovídáme do 24 hodin. Vladimír Fischer, Říčany u Prahy, +420 723 933 774, webovybalicek@gmail.com.
+cta: no
+-->
+  <section class="section section--dark contact" style="padding-top: clamp(64px, 9vw, 112px)">
+    <div class="hero-halo hero-halo--dark" aria-hidden="true"></div>
+    <div class="wrap split">
+      <div class="section-head section-head--dark">
+        <ol class="crumbs"><li><a href="/" style="color:var(--stone)">Domů</a></li><li>Kontakt</li></ol>
+        <h1 style="font-size:clamp(36px,5vw,56px)">Napište nám, odpovídáme do 24 hodin</h1>
+        <p>Pusťme se společně do nového webu nebo redesignu toho stávajícího. Konzultace je zdarma a nezávazná.</p>
+        <ul class="contact-direct">
+          <li><span class="mono">telefon</span><a href="tel:+420723933774">+420 723 933 774</a></li>
+          <li><span class="mono">e-mail</span><a href="mailto:webovybalicek@gmail.com">webovybalicek@gmail.com</a></li>
+          <li><span class="mono">fakturační údaje</span><span style="color:var(--stone)">Vladimír Fischer, Říčany u Prahy, IČ: 03051820</span></li>
+        </ul>
+      </div>
+
+      <form class="form" action="#" method="post">
+        <div class="form-head">
+          <h2 style="font-size:20px; letter-spacing:-0.015em; margin-bottom:2px">Poptávka webu</h2>
+          <p>Stačí pár vět, zbytek probereme na konzultaci.</p>
+        </div>
+        <div class="form-row">
+          <label>Jméno <input type="text" name="name" autocomplete="name"></label>
+          <label>Telefon <input type="tel" name="phone" autocomplete="tel"></label>
+        </div>
+        <label>E-mail <input type="email" name="email" autocomplete="email" required placeholder="vas@email.cz"></label>
+        <label>Co potřebujete?
+          <select name="type">
+            <option value="">Nevím, poraďte mi</option>
+            <option value="ai">AI web</option>
+            <option value="wordpress">Web na WordPressu</option>
+            <option value="eshop">E-shop</option>
+            <option value="hybrid">Hybridní web</option>
+            <option value="sprava">Správa stávajícího webu</option>
+          </select>
+        </label>
+        <label>Zpráva <textarea name="message" rows="5" placeholder="Čím se zabýváte a co by měl web umět?"></textarea></label>
+        <label class="check"><input type="checkbox" name="urgent"> Potřebuji web rychle</label>
+        <button type="submit" class="btn btn--primary btn--block">Odeslat poptávku</button>
+      </form>
+    </div>
+  </section>

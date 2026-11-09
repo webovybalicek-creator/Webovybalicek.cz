@@ -1,18 +1,28 @@
 # 💻 new.webovybalicek.cz
 
-Nová verze webu webovybalicek.cz – statický web mimo WordPress.
-Nasazení: push na `main` → GitHub Actions → FTP (new.webovybalicek.cz).
-
-## Stav
-- **Fáze 1:** textová kostra z původního webu → archiv v `docs/puvodni-homepage.html`
-- **Fáze 2:** nové pozicování – AI web / WordPress / hybrid, nové texty homepage
-- **Fáze 3 (aktuální):** vizuální styl podle Clerk style reference (clerk.com) – fog white + obsidian karty, Electric Violet jen na CTA, Geist
-- Místa k doplnění jsou v textu označená `[doplnit]` (čárkovaný rámeček).
+Nová verze webu webovybalicek.cz – statický web mimo WordPress, vzhled podle Clerk style reference.
+Nasazení: push na `main` → GitHub Actions → `python3 build.py` → FTP (new.webovybalicek.cz).
 
 ## Struktura
 ```
-index.html                  homepage
-assets/css/style.css        styly a design tokeny
-assets/js/main.js           explorer typů webu, mobilní menu
-docs/puvodni-homepage.html  původní obsah webovybalicek.cz (nenasazuje se)
+build.py                 build: src/ → dist/ (sdílená hlavička/patička, sitemap, robots)
+src/layout.html          společná kostra stránek
+src/cta.html             závěrečná výzva na konci podstránek
+src/pages/*.html         obsah stránek (hlavička v HTML komentáři: title, description, nav, cta)
+src/data/reference.json  reference (převzato z WP API starého webu)
+assets/                  CSS, JS
+docs/                    archiv původního obsahu (nenasazuje se)
 ```
+
+## Lokální build
+```
+python3 build.py            # staging: noindex + robots Disallow
+STAGING=0 python3 build.py  # ostrá doména
+```
+Po změně CSS/JS zvyšte `VERSION` v build.py (cache busting).
+
+## Zbývá doplnit
+- Místa označená `[doplnit]` (čárkovaný rámeček): cena AI webu, editace AI webu, rok založení, bio Honzy
+- Formuláře zatím nikam neodesílají – napojit
+- Obchodní podmínky, GDPR, cookies – zatím odkaz na stávající web, převést 1:1
+- Při přepnutí na ostrou doménu: `STAGING=0` ve workflow

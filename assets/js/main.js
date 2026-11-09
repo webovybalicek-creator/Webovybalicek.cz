@@ -38,3 +38,16 @@ document.querySelectorAll('[data-tabs]').forEach((root) => {
 document.querySelectorAll('.mobile-nav a').forEach((a) =>
   a.addEventListener('click', () => a.closest('details').removeAttribute('open'))
 );
+
+// Reference – filtr podle roku
+document.querySelectorAll('.ref-filter').forEach((bar) => {
+  const list = bar.nextElementSibling;
+  const items = [...list.querySelectorAll('li[data-year]')];
+  bar.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-year]');
+    if (!btn) return;
+    bar.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b === btn));
+    const y = btn.dataset.year;
+    items.forEach((li) => { li.hidden = y !== '' && li.dataset.year !== y; });
+  });
+});
