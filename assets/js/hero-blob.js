@@ -11,6 +11,7 @@
   const hintRow = stage.querySelector('.hero-hint');
   const hintEl = stage.querySelector('[data-hero-hint]');
   const resetBtn = stage.querySelector('[data-hero-reset]');
+  const tip = stage.querySelector('[data-hero-tip]');
   const PARTS = [...stage.querySelectorAll('[data-hero-points] li')].slice(0, 6).map((li) => ({
     tag: li.dataset.tag,
     accent: li.hasAttribute('data-accent'),
@@ -87,9 +88,9 @@ void main(){
   gl.clearColor(0, 0, 0, 0);
 
   let alive = true;
-  canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); alive = false; stage.classList.remove('has-gl'); hintRow.hidden = true; });
+  canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); alive = false; stage.classList.remove('has-gl'); hintRow.hidden = true; tip.hidden = true; });
   stage.classList.add('has-gl');
-  hintRow.hidden = false;
+  tip.hidden = false;
 
   // ---- stav ----
   const F = 2.2, CAM = 5, N = 8, CORE = 6, AUX = 7;
@@ -100,7 +101,7 @@ void main(){
   const lab = PARTS.map((p) => { const l = document.createElement('span'); l.textContent = p.tag; labels.appendChild(l); return l; });
   const det = [0, 0, 0, 0, 0, 0];
   const free = det.map(() => [0, 0]);
-  let sel = -1, drag = null, slice = null, torn = false, picked = false;
+  let sel = -1, drag = null, slice = null, torn = false, picked = false, tease = 0;
   let W = 1, H = 1, aspect = 1, scale = 1, quality = 0.8, snapL = 3, A = [0, 0];
   const ptr = { x: 0, y: 0 };
   const tcan = document.createElement('canvas'), tctx = tcan.getContext('2d');
@@ -108,9 +109,9 @@ void main(){
   const render = () => {
     const n = det.reduce((a, b) => a + b, 0);
     if (n > 0) torn = true;
-    hintEl.textContent = n === 0 ? 'Zkuste z hmoty kus odtrhnout. Nebo ji rozřízněte tahem.'
-      : n < 6 ? `Odtrženo ${n} z 6. Klikněte na kapku, nebo trhejte dál.` : 'Odtrženo všech 6. Klikněte na kapku.';
-    resetBtn.hidden = n === 0;
+    hintEl.textContent = n < 6 ? `Odtrženo ${n} z 6. Klikněte na hmotu pro další.` : 'Odtrženo všech 6. Klikněte na kapku.';
+    hintRow.hidden = n === 0; resetBtn.hidden = n === 0;
+    if (torn) tip.hidden = true;
     if (sel >= 0) {
       const p = PARTS[sel];
       msg.querySelector('.hero-msg-tag').textContent = p.tag;
@@ -125,6 +126,14 @@ void main(){
   const toWorld = (px, py) => [((px - W / 2) / H * 2) * CAM / F, ((H / 2 - py) / H * 2) * CAM / F];
   const toScreen = (b) => { const k = F / (CAM - b.z); return [(b.x * k / 2) * H + W / 2, H / 2 - (b.y * k / 2) * H, Math.max(b.r, 0) * k / 2 * H]; };
   const clampP = (p, r) => { const hw = aspect * CAM / F - r, hh = CAM / F - r; return [Math.max(-hw, Math.min(hw, p[0])), Math.max(-hh, Math.min(hh, p[1]))]; };
+
+  // kam kapka sama odpluje po kliknutí (v násobcích poloviny šířky a výšky panelu); Design míří na konec nadpisu
+  const SPOTS = [[0.04, 0.5], [0.28, -0.1], [0.06, -0.58], [-0.42, 0.26], [0.5, -0.62], [0.78, -0.72]];
+  const SPOTS_NARROW = [[-0.72, 0.82], [-0.3, 0.62], [0.74, -0.02], [0.3, 0.3], [0.7, -0.62], [0.72, -0.32]];
+  const release = (i) => {
+    const s = (narrowMq.matches ? SPOTS_NARROW : SPOTS)[i];
+    det[i] = 1; free[i] = clampP([s[0] * aspect * CAM / F, s[1] * CAM / F], 0.45 * scale); sel = i; render();
+  };
 
   const drawText = () => {
     if (!alive || !W) return;
@@ -144,22 +153,24 @@ void main(){
   };
 
   const targets = (time) => {
-    const hw = aspect * CAM / F, hh = CAM / F, nar = narrowMq.matches;
+    const hw = aspect * CAM / F, hh = CAM / F;
     scale = Math.min(1, Math.max(0.5, hw / 2.6)); snapL = 3.3 * scale;
-    // desktop: pravý horní roh, mobil: pravý dolní roh pod textem
-    A = nar ? [hw - 0.15 * scale, -hh + 0.15 * scale] : [hw - 0.15 * scale, hh - 0.15 * scale];
+    A = [hw - 0.15 * scale, hh - 0.15 * scale]; // pravý horní roh; na mobilu má panel nahoře volné místo
     const core = B[CORE]; core.tx = A[0]; core.ty = A[1]; core.tz = 0; core.tr = 1.3 * scale;
     const pull = drag && drag.moved && !det[drag.i] ? drag.i : -1;
     const P = toWorld(ptr.x, ptr.y), L = Math.hypot(P[0] - A[0], P[1] - A[1]);
     const shrink = Math.max(0.4, Math.min(1, 1.15 - L / snapL));
     const others = []; for (let j = 0; j < 6; j++) if (!det[j] && j !== pull) others.push(j);
+    // dokud nikdo nic neodtrhl, limetkový kus se co chvíli sám vysune z hmoty a vrátí
+    const ph = (time - 1.2) % 3.6;
+    tease = !torn && !drag && ph >= 0 && ph < 1.1 ? Math.sin(ph / 1.1 * Math.PI) ** 2 : 0;
     for (let i = 0; i < 6; i++) {
       const b = B[i], wob = reduced ? 0 : Math.sin(time * 0.7 + i * 1.9) * 0.05;
       if (drag && drag.moved && drag.i === i) { b.tx = P[0]; b.ty = P[1]; b.tz = 0.3; b.tr = 0.46 * scale; }
       else if (det[i]) { b.tx = free[i][0]; b.ty = free[i][1] + wob; b.tz = sel === i ? 0.5 : 0; b.tr = (sel === i ? 0.56 : 0.42) * scale; }
       else if (pull >= 0) { const t = (others.indexOf(i) + 1) / (others.length + 1) * 0.9; b.tx = A[0] + (P[0] - A[0]) * t; b.ty = A[1] + (P[1] - A[1]) * t; b.tz = 0.1; b.tr = 0.46 * scale * shrink; }
       else {
-        const an = (nar ? 98 + i * 15 : 188 + i * 15) * Math.PI / 180, d = (1.45 + (i % 2) * 0.5 + wob) * scale;
+        const an = (188 + i * 15) * Math.PI / 180, d = (1.45 + (i % 2) * 0.5 + wob + (PARTS[i].accent ? tease * 1.3 : 0)) * scale;
         b.tx = A[0] + Math.cos(an) * d; b.ty = A[1] + Math.sin(an) * d; b.tz = reduced ? 0 : Math.sin(time * 0.6 + i) * 0.15; b.tr = 0.54 * scale;
       }
     }
@@ -228,7 +239,7 @@ void main(){
     if (!drag) { if (sel >= 0) { sel = -1; render(); } return; }
     const d = drag, p = local(e), w = toWorld(p[0], p[1]);
     drag = null; canvas.classList.remove('is-drag');
-    if (!d.moved) { if (det[d.i]) { sel = d.i; picked = true; delete canvas.dataset.cursor; render(); } return; }
+    if (!d.moved) { delete canvas.dataset.cursor; if (det[d.i]) { sel = d.i; picked = true; render(); } else release(d.i); return; }
     if (det[d.i]) {
       // kapka puštěná tam, kde se s hmotou slije, se přilepí zpět – zmizí i její popisek a text
       if (Math.hypot(w[0] - A[0], w[1] - A[1]) < 2.4 * scale) { det[d.i] = 0; if (sel === d.i) sel = -1; }
@@ -270,13 +281,18 @@ void main(){
     for (let i = 0; i < N; i++) {
       const b = B[i]; bArr[i * 4] = b.x; bArr[i * 4 + 1] = b.y; bArr[i * 4 + 2] = b.z; bArr[i * 4 + 3] = b.r;
       // limetkově svítí jen kapka označená data-accent (Design), a to od chvíle, kdy ji někdo vytahuje z hmoty
-      const lit = i < 6 && PARTS[i].accent && (det[i] || (drag && drag.moved && drag.i === i));
+      const lit = i < 6 && PARTS[i].accent && (det[i] || tease > 0.15 || (drag && drag.moved && drag.i === i));
       const c = lit ? LIME : WHITE, kc = reduced ? 1 : 1 - Math.exp(-dt * 7);
       for (let q = 0; q < 3; q++) cArr[i * 3 + q] += (c[q] - cArr[i * 3 + q]) * kc;
     }
     gl.uniform2f(U.res, canvas.width, canvas.height); gl.uniform1f(U.time, time);
     gl.uniform4fv(U.b, bArr); gl.uniform3fv(U.c, cArr);
     gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES, 0, 3);
+    if (!tip.hidden) {
+      const ta = 226 * Math.PI / 180, td = 3.05 * scale;
+      const ts = toScreen({ x: A[0] + Math.cos(ta) * td, y: A[1] + Math.sin(ta) * td, z: 0, r: 0 });
+      tip.style.transform = `translate(${Math.round(ts[0])}px,${Math.round(ts[1])}px) translate(-50%,-50%)`;
+    }
     for (let j = 0; j < 6; j++) if (det[j]) { const s = toScreen(B[j]); lab[j].style.transform = `translate(${Math.round(s[0])}px,${Math.round(s[1] + s[2] + 8)}px) translateX(-50%)`; }
   };
   requestAnimationFrame(loop);

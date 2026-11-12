@@ -261,21 +261,26 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hero-copy .hero-title { z-index: 0; margin: 0 0 20px; font-size: clamp(38px, 5.2vw, 64px); line-height: 1.06; letter-spacing: -0.025em; }
 .hero-title span { display: block; }
 .hero-stage .hero-lead { color: var(--graphite); }
+.hero-tip { position: absolute; left: 0; top: 0; z-index: 3; margin: 0; pointer-events: none; }
+.hero-tip span { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 9px; border-radius: var(--r-pill); background: var(--ink); color: var(--on-ink); font: 550 13px/1 var(--f-sans); white-space: nowrap; box-shadow: 0 8px 24px rgba(10, 18, 23, 0.18); animation: hero-tip 1.8s ease-in-out infinite alternate; }
+.hero-tip svg { display: block; width: 18px; height: 18px; }
+@keyframes hero-tip { from { transform: translateY(3px); } to { transform: translateY(-3px); } }
 .hero-msg { animation: hero-msg 200ms var(--ease-out); }
 @keyframes hero-msg { from { opacity: 0; transform: translateY(6px); } }
 .hero-msg-tag { display: inline-flex; margin: 0; padding: 3px 11px; border-radius: var(--r-pill); background: var(--lime); font: 550 13px/1.4 var(--f-sans); letter-spacing: .08em; text-transform: uppercase; }
 .hero-msg-title { margin: 10px 0 6px; font-size: 22px; line-height: 1.3; font-weight: 550; letter-spacing: -0.015em; }
 .hero-msg-text { margin: 0; max-width: 520px; font-size: 19px; line-height: 1.6; color: var(--graphite); }
 .hero-hint { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; min-height: 32px; margin: 20px 0 0; font-size: 14px; line-height: 1.5; color: var(--stone); }
+.hero-hint[hidden] { display: none; }
 .hero-reset { height: 32px; padding: 0 14px; border: 0; border-radius: var(--r-pill); background: var(--ink); color: var(--on-ink); font: 550 13px/1 var(--f-sans); cursor: pointer; transition: transform 160ms var(--ease-out); }
 .hero-reset:active { transform: scale(0.97); }
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 @media (max-width: 960px) {
-  /* hmota se stěhuje do pravého dolního rohu pod text */
-  .hero-stage { justify-content: flex-start; min-height: 0; padding-bottom: 300px; }
-  .hero-stage::after { top: auto; bottom: -22%; right: -18%; width: min(78%, 420px); }
+  /* nahoře volné místo pro hmotu, text pod ní – hmota je vidět hned na první obrazovce */
+  .hero-stage { justify-content: flex-start; min-height: 0; padding-top: 200px; }
+  .hero-stage::after { top: -90px; right: -70px; width: 300px; }
 }
-@media (prefers-reduced-motion: reduce) { .hero-msg { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .hero-msg, .hero-tip span { animation: none; } }
 
 /* dokumentová karta (ukázka produktu) */
 .doc-card { width: 100%; max-width: 420px; padding: 16px; background: var(--paper); color: var(--ink); border: 1px solid var(--hairline); border-radius: var(--r-card); }
