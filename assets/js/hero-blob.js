@@ -100,13 +100,14 @@ void main(){
   const lab = PARTS.map((p) => { const l = document.createElement('span'); l.textContent = p.tag; labels.appendChild(l); return l; });
   const det = [0, 0, 0, 0, 0, 0];
   const free = det.map(() => [0, 0]);
-  let sel = -1, drag = null, slice = null;
+  let sel = -1, drag = null, slice = null, torn = false, picked = false;
   let W = 1, H = 1, aspect = 1, scale = 1, quality = 0.8, snapL = 3, A = [0, 0];
   const ptr = { x: 0, y: 0 };
   const tcan = document.createElement('canvas'), tctx = tcan.getContext('2d');
 
   const render = () => {
     const n = det.reduce((a, b) => a + b, 0);
+    if (n > 0) torn = true;
     hintEl.textContent = n === 0 ? 'Zkuste z hmoty kus odtrhnout. Nebo ji rozřízněte tahem.'
       : n < 6 ? `Odtrženo ${n} z 6. Klikněte na kapku, nebo trhejte dál.` : 'Odtrženo všech 6. Klikněte na kapku.';
     resetBtn.hidden = n === 0;
@@ -218,14 +219,16 @@ void main(){
     const over = pick(p[0], p[1]);
     canvas.classList.toggle('is-hit', over >= 0);
     // popisek pro vlastní kurzor (main.js)
-    if (over < 0) delete canvas.dataset.cursor; else canvas.dataset.cursor = det[over] ? 'Vybrat' : 'Trhej';
+    // nápověda u kurzoru jen do prvního odtržení a prvního výběru, pak už návštěvník ví, co dělat
+    const tip = over < 0 ? '' : det[over] ? (picked ? '' : 'Vybrat') : (torn ? '' : 'Trhej');
+    if (tip) canvas.dataset.cursor = tip; else delete canvas.dataset.cursor;
   });
   canvas.addEventListener('pointerup', (e) => {
     slice = null;
     if (!drag) { if (sel >= 0) { sel = -1; render(); } return; }
     const d = drag, p = local(e), w = toWorld(p[0], p[1]);
     drag = null; canvas.classList.remove('is-drag');
-    if (!d.moved) { if (det[d.i]) { sel = d.i; render(); } return; }
+    if (!d.moved) { if (det[d.i]) { sel = d.i; picked = true; delete canvas.dataset.cursor; render(); } return; }
     if (det[d.i]) {
       // kapka puštěná tam, kde se s hmotou slije, se přilepí zpět – zmizí i její popisek a text
       if (Math.hypot(w[0] - A[0], w[1] - A[1]) < 2.4 * scale) { det[d.i] = 0; if (sel === d.i) sel = -1; }
