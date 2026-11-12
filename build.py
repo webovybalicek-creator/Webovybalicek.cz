@@ -30,7 +30,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "14"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "15"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 FRONT = re.compile(r"^\s*<!--(.*?)-->\s*", re.S)
@@ -94,6 +94,7 @@ def build():
         path = meta.get("path") or ("/" if stem == "index" else f"/{stem}/")
         body = body.replace("{{references}}", render_references(refs))
         body = body.replace("{{ref_count}}", str(len(refs)))
+        body = body.replace("{{v}}", VERSION)
 
         out = layout
         nav = meta.get("nav", "")

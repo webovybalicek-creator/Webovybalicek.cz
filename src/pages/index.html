@@ -6,40 +6,39 @@ cta: no
 -->
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="wrap hero-split">
-      <div class="hero-panel">
-        <h1>Web, který dává smysl pro vaše podnikání. <span class="hl">Ne pro náš ceník.</span></h1>
-        <div class="hero-bottom">
-          <p class="hero-lead">Pro živnostníky, malé a střední firmy. Stavíme na WordPressu, pomocí AI, nebo kombinací obojího. Podle toho, co váš projekt opravdu potřebuje.</p>
+    <div class="wrap">
+      <div class="hero-stage" data-hero>
+        <canvas class="hero-canvas" aria-hidden="true"></canvas>
+        <div class="hero-labels" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="pill">Odtrhněte se od konkurence</p>
+          <h1 class="hero-title"><span>Tvorba webů</span> <span>a e-shopů</span></h1>
+          <div class="hero-slot">
+            <p class="hero-lead" data-hero-lead>Pro živnostníky, malé a střední firmy. Stavíme na WordPressu, pomocí AI, nebo kombinací obojího. Podle toho, co váš projekt opravdu potřebuje.</p>
+            <div class="hero-msg" data-hero-msg hidden>
+              <p class="hero-msg-tag"></p>
+              <p class="hero-msg-title"></p>
+              <p class="hero-msg-text"></p>
+            </div>
+          </div>
           <p class="hero-actions">
             <a href="#kontakt" class="btn btn--primary">Konzultace zdarma</a>
             <a href="#cesty" class="btn btn--outline">Jaký web potřebuji?</a>
           </p>
+          <p class="hero-hint" hidden><span data-hero-hint></span><button type="button" class="hero-reset" data-hero-reset hidden>Spojit zpět</button></p>
         </div>
-      </div>
-
-      <div class="hero-visual" aria-label="Ukázka průběhu projektu">
-        <div class="doc-card doc-card--float">
-          <div class="doc-head">
-            <span class="mono">ukázka projektu</span>
-            <span class="mono">vase-firma.cz</span>
-          </div>
-          <p class="doc-title">Nový web pro kadeřnictví</p>
-          <ul class="doc-rows">
-            <li><span>Struktura a texty</span><span class="badge badge--done">Hotovo</span></li>
-            <li><span>Design na míru</span><span class="badge badge--review">Ke schválení</span></li>
-            <li><span>Fotky a logo</span><span class="badge badge--input">Čeká na podklady</span></li>
-            <li><span>Spuštění na doméně</span><span class="badge badge--draft">V přípravě</span></li>
-          </ul>
-          <div class="doc-progress" aria-hidden="true"><span style="--w:64%"></span></div>
-          <div class="doc-foot">
-            <span class="mono">AI web</span>
-            <span class="mono">dodání 6 dní</span>
-          </div>
-        </div>
+        <ul class="sr-only" data-hero-points>
+          <li data-tag="Strategie"><strong>Nejdřív vymyslíme, co má web prodat.</strong> <span>Než vznikne první návrh, ujasníme si cíl, zákazníka a cestu k objednávce.</span></li>
+          <li data-tag="Know-how"><strong>Předáme dlouholeté know-how.</strong> <span>Zkušenosti z webů a e-shopů pro více než 100 firem. Víme, co funguje a čemu se vyhnout.</span></li>
+          <li data-tag="Texty"><strong>Napíšeme texty, kterým lidé rozumí.</strong> <span>AI připraví varianty, člověk vybere a doladí tu, která zní jako vy.</span></li>
+          <li data-tag="Design"><strong>Navrhneme design, který si lidé zapamatují.</strong> <span>Vzhled na míru vašemu oboru, žádná šablona, kterou má dalších sto firem.</span></li>
+          <li data-tag="Technika"><strong>Postaráme se o techniku.</strong> <span>Hosting, rychlost, platební brány, e-maily i správa po spuštění.</span></li>
+          <li data-tag="AI"><strong>AI zrychluje práci, rozhoduje člověk.</strong> <span>Díky AI dodáme web dřív a za rozumnou cenu. Každý výstup projde lidskou kontrolou.</span></li>
+        </ul>
       </div>
     </div>
   </section>
+  <script src="/assets/js/hero-blob.js?v={{v}}" defer></script>
 
   <!-- ============ DŮVĚRA ============ -->
   <section class="trust">
