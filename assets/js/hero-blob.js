@@ -197,7 +197,7 @@ void main(){
     const p = local(e); ptr.x = p[0]; ptr.y = p[1];
     if (drag) {
       if (!drag.moved && Math.hypot(p[0] - drag.sx, p[1] - drag.sy) > 6) { drag.moved = true; canvas.classList.add('is-drag'); delete canvas.dataset.cursor; }
-      if (drag.moved && !det[drag.i]) { const w = toWorld(p[0], p[1]); if (Math.hypot(w[0] - A[0], w[1] - A[1]) > snapL) { det[drag.i] = 1; free[drag.i] = w; render(); } }
+      if (drag.moved && !det[drag.i]) { const w = toWorld(p[0], p[1]); if (Math.hypot(w[0] - A[0], w[1] - A[1]) > snapL) { det[drag.i] = 1; free[drag.i] = w; sel = drag.i; render(); } }
       return;
     }
     if (slice) {
@@ -228,7 +228,7 @@ void main(){
     if (det[d.i]) {
       // kapka puštěná tam, kde se s hmotou slije, se přilepí zpět – zmizí i její popisek a text
       if (Math.hypot(w[0] - A[0], w[1] - A[1]) < 2.4 * scale) { det[d.i] = 0; if (sel === d.i) sel = -1; }
-      else free[d.i] = clampP(w, 0.45 * scale);
+      else { free[d.i] = clampP(w, 0.45 * scale); sel = d.i; }
       render();
     }
   });
@@ -265,7 +265,7 @@ void main(){
     targets(time); step(dt / 2); step(dt / 2);
     for (let i = 0; i < N; i++) {
       const b = B[i]; bArr[i * 4] = b.x; bArr[i * 4 + 1] = b.y; bArr[i * 4 + 2] = b.z; bArr[i * 4 + 3] = b.r;
-      const c = i === sel ? LIME : WHITE; cArr[i * 3] = c[0]; cArr[i * 3 + 1] = c[1]; cArr[i * 3 + 2] = c[2];
+      const c = i === sel || (drag && drag.moved && drag.i === i) ? LIME : WHITE; cArr[i * 3] = c[0]; cArr[i * 3 + 1] = c[1]; cArr[i * 3 + 2] = c[2];
     }
     gl.uniform2f(U.res, canvas.width, canvas.height); gl.uniform1f(U.time, time);
     gl.uniform4fv(U.b, bArr); gl.uniform3fv(U.c, cArr);
