@@ -183,12 +183,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .utility-links a:hover { color: var(--ink); }
 
 .header-inner { display: flex; align-items: center; gap: 24px; height: 76px; }
-.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
-.logo-mark {
-  display: grid; place-items: center; width: 30px; height: 30px; border-radius: var(--r-link);
-  background: var(--ink); color: var(--lime); font: 650 13px/1 var(--f-sans); letter-spacing: -0.04em;
-}
-.logo-word { font: 650 15px/1 var(--f-sans); letter-spacing: .14em; text-transform: uppercase; }
+.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.logo-mark { display: block; width: auto; height: 26px; flex: none; }
+.logo-word { font: 620 22px/1 var(--f-sans); letter-spacing: -0.022em; white-space: nowrap; }
 .nav { margin-left: auto; margin-right: 8px; }
 .nav ul { display: flex; gap: 4px; }
 .nav a { display: block; padding: 8px 12px; border-radius: var(--r-link); text-decoration: none; font-size: 16px; font-weight: 400; color: var(--ink); transition: color 150ms ease, background-color 150ms ease; }
@@ -217,7 +214,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .mobile-nav { display: block; }
   .utility-bar { display: none; }
 }
-@media (max-width: 420px) { .header-actions { display: none; } .mobile-nav { margin-left: auto; } .logo-word { letter-spacing: .08em; } }
+@media (max-width: 420px) { .header-actions { display: none; } .mobile-nav { margin-left: auto; } .logo { gap: 8px; } .logo-mark { height: 22px; } .logo-word { font-size: 19px; } }
 
 /* ==========================================================
    hero (homepage)
@@ -500,7 +497,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .footer-grid { display: grid; gap: 32px; grid-template-columns: 1.4fr repeat(3, 1fr); padding-top: 48px; border-top: 1px solid var(--on-ink-line); }
 .site-footer > .footer-grid:first-child { margin-top: 0; padding-top: 64px; border-top: 0; }
 .site-footer .logo { color: var(--on-ink); margin-bottom: 20px; }
-.site-footer .logo-mark { background: var(--lime); color: var(--ink); }
 .site-footer h3 { font-size: 12px; font-weight: 550; letter-spacing: .08em; text-transform: uppercase; color: var(--stone); margin-bottom: 14px; }
 .site-footer ul { display: grid; gap: 8px; }
 .site-footer a { text-decoration: none; transition: color 150ms ease; }
