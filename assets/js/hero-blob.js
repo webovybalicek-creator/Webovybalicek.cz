@@ -135,7 +135,7 @@ void main(){
     const m = tctx.measureText('H'), asc = m.fontBoundingBoxAscent || fs * 0.8, desc = m.fontBoundingBoxDescent || fs * 0.2;
     title.querySelectorAll('span').forEach((sp) => {
       const r = sp.getBoundingClientRect(), lh = r.height * k;
-      tctx.fillText(sp.textContent.toUpperCase(), (r.left - sr.left) * k, (r.top - sr.top) * k + (lh - (asc + desc)) / 2 + asc);
+      tctx.fillText(cs.textTransform === 'uppercase' ? sp.textContent.toUpperCase() : sp.textContent, (r.left - sr.left) * k, (r.top - sr.top) * k + (lh - (asc + desc)) / 2 + asc);
     });
     gl.bindTexture(gl.TEXTURE_2D, tex);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, tcan);
