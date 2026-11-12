@@ -30,7 +30,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "12"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "13"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 FRONT = re.compile(r"^\s*<!--(.*?)-->\s*", re.S)

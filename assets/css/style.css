@@ -53,7 +53,8 @@
   /* layout */
   --wrap: 1280px;
   --gutter: clamp(16px, 3vw, 24px);
-  --section: clamp(64px, 8vw, 104px);
+  --section: clamp(80px, 10vw, 140px);
+  --grid-gap: clamp(16px, 2vw, 24px);
 
   /* pohyb */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -221,8 +222,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ==========================================================
    hero (homepage)
    ========================================================== */
-.hero { padding: 12px 0 0; }
-.hero-split { display: grid; gap: 12px; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+.hero { padding: 16px 0 0; }
+.hero-split { display: grid; gap: 18px; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
 .hero-panel {
   display: flex; flex-direction: column; justify-content: center; gap: 28px;
   min-height: clamp(460px, 62vh, 640px); padding: clamp(28px, 5vw, 72px);
@@ -264,14 +265,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ==========================================================
    důvěra
    ========================================================== */
-.trust { padding: 12px 0 0; }
-.trust-inner { display: grid; gap: 12px; grid-template-columns: minmax(220px, 1fr) minmax(0, 3fr); align-items: stretch; }
-.trust-text { margin: 0; padding: 20px 4px; font-size: 21px; line-height: 1.45; letter-spacing: -0.02em; font-weight: 400; }
-.trust-tiles { display: grid; gap: 12px; grid-template-columns: repeat(6, minmax(0, 1fr)); }
-.trust-tiles li { display: grid; place-items: center; min-height: 88px; padding: 12px; background: var(--gray); border-radius: var(--r-tile); font-size: 19px; font-weight: 650; letter-spacing: -0.04em; color: var(--graphite); }
+.trust { padding: clamp(56px, 7vw, 100px) 0 0; }
+.trust-inner { display: grid; gap: 32px; grid-template-columns: minmax(260px, 1fr) minmax(0, 2fr); align-items: center; }
+.trust-text { margin: 0; padding: 0; max-width: 420px; font-size: 21px; line-height: 1.45; letter-spacing: -0.02em; font-weight: 400; }
+.trust-tiles { display: grid; gap: 32px; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.trust-tiles li { display: grid; place-items: center; min-height: 112px; padding: 16px; background: var(--gray); border-radius: var(--r-card); font-size: 19px; font-weight: 650; letter-spacing: -0.04em; color: var(--graphite); }
 .trust-rating a { display: grid; place-items: center; text-decoration: none; font-size: 14px; font-weight: 450; letter-spacing: 0; color: var(--graphite); }
 .trust-rating strong { font-size: 24px; letter-spacing: -0.03em; color: var(--ink); }
-@media (max-width: 960px) { .trust-inner { grid-template-columns: 1fr; } .trust-tiles { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 960px) { .trust-inner { grid-template-columns: 1fr; gap: 24px; } .trust-tiles { grid-template-columns: repeat(3, 1fr); gap: 16px; } .trust-tiles li { min-height: 88px; } }
 
 /* ==========================================================
    sekce
@@ -281,7 +282,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .section--dark { background: var(--ink); color: var(--on-ink); }
 .section--dark h2 { font-size: clamp(38px, 5.2vw, 60px); line-height: 1.08; letter-spacing: -0.025em; }
 
-.section-head { max-width: 720px; margin-bottom: 40px; }
+.section-head { max-width: 760px; margin-bottom: clamp(40px, 5vw, 64px); }
 .section-head > p:not(.pill) { font-size: 19px; line-height: 1.6; color: var(--graphite); max-width: 600px; }
 .section-head--dark > p:not(.pill) { color: var(--on-ink-muted); }
 .section-head--row { max-width: none; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: end; }
@@ -298,8 +299,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ==========================================================
    tři cesty – šedé karty s widgetem
    ========================================================== */
-.feature-cards { display: grid; gap: 12px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.feature-card { display: flex; flex-direction: column; padding: clamp(24px, 3vw, 36px); background: var(--gray); border-radius: var(--r-tile); }
+.feature-cards { display: grid; gap: var(--grid-gap); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.feature-card { display: flex; flex-direction: column; min-height: 520px; padding: clamp(28px, 3vw, 40px); background: var(--gray); border-radius: var(--r-tile); }
 .feature-card h3 { font-size: 26px; letter-spacing: -0.01em; margin-bottom: 8px; }
 .feature-card > p { color: var(--graphite); }
 .feature-price { font: 400 14px/1.5 var(--f-mono) !important; color: var(--ink) !important; }
@@ -322,8 +323,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ==========================================================
    tmavý pás – moduly
    ========================================================== */
-.modules { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: dense; }
-.module { display: flex; flex-direction: column; gap: 4px; padding: clamp(24px, 3vw, 36px); border-radius: var(--r-feature); color: var(--ink); }
+.modules { display: grid; gap: var(--grid-gap); grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: dense; }
+.module { display: flex; flex-direction: column; gap: 4px; padding: clamp(28px, 3.4vw, 44px); border-radius: var(--r-feature); color: var(--ink); }
 .module h3 { font-size: 26px; letter-spacing: -0.01em; margin-bottom: 4px; }
 .module p { color: var(--graphite); margin-bottom: 16px; }
 .module .doc-card { margin-top: auto; max-width: none; }
@@ -411,8 +412,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ==========================================================
    proces
    ========================================================== */
-.steps { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); counter-reset: step; }
-.steps li { counter-increment: step; padding: 24px; background: var(--gray); border-radius: var(--r-tile); }
+.steps { display: grid; gap: var(--grid-gap); grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); counter-reset: step; }
+.steps li { counter-increment: step; padding: 28px; background: var(--gray); border-radius: var(--r-tile); }
 .steps li::before { content: counter(step, decimal-leading-zero); display: block; margin-bottom: 40px; font: 400 13px/1.5 var(--f-mono); color: var(--stone); }
 .steps p { color: var(--graphite); font-size: 16px; margin: 0; }
 
@@ -423,8 +424,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .rating strong { font-size: 32px; font-weight: 650; letter-spacing: -0.03em; line-height: 1; }
 .rating span { max-width: 120px; font-size: 14px; line-height: 1.35; color: var(--graphite); }
 
-.refs { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
-.ref { display: grid; gap: 6px; padding: 20px; text-decoration: none; height: 100%; transition: border-color 150ms ease, background-color 150ms ease; }
+.refs { display: grid; gap: var(--grid-gap); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.ref { display: grid; gap: 6px; padding: 24px; text-decoration: none; height: 100%; transition: border-color 150ms ease, background-color 150ms ease; }
 .ref-url { font-weight: 550; letter-spacing: -0.015em; }
 .ref-desc { font-size: 15px; color: var(--graphite); }
 @media (hover: hover) and (pointer: fine) { .ref:hover { border-color: var(--ink); } }
@@ -432,8 +433,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ==========================================================
    ceník
    ========================================================== */
-.pricing { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.price-card { position: relative; display: flex; flex-direction: column; padding: 28px; background: var(--gray); border-radius: var(--r-tile); }
+.pricing { display: grid; gap: var(--grid-gap); grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.price-card { position: relative; display: flex; flex-direction: column; padding: 32px; background: var(--gray); border-radius: var(--r-tile); }
 .price-card h3 { margin-bottom: 4px; }
 .price-card > p:last-child { color: var(--graphite); font-size: 16px; margin: 0; }
 .price { margin: 4px 0 16px; color: var(--graphite); font-size: 16px; }
@@ -453,14 +454,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ==========================================================
    proč my
    ========================================================== */
-.reasons { display: grid; gap: 32px 40px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.reasons { display: grid; gap: 48px 40px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 .reasons li { padding-top: 16px; border-top: 1px solid var(--ink); }
 .reasons p { color: var(--graphite); font-size: 16px; margin: 0; }
 
 /* ==========================================================
    kontakt
    ========================================================== */
-.contact-section { padding-top: 12px; }
+.contact-section { padding-top: var(--section); }
 .contact-panel { padding: clamp(28px, 5vw, 64px); background: var(--ink); color: var(--on-ink); border-radius: var(--r-panel); align-items: center; }
 .contact-panel h1 { font-size: clamp(36px, 5vw, 56px); line-height: 1.08; }
 .contact-direct { display: grid; gap: 16px; margin-top: 32px; }
@@ -510,7 +511,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ==========================================================
    podstránky
    ========================================================== */
-.page-hero { padding: 12px var(--gutter) 0; }
+.page-hero { padding: 16px var(--gutter) 0; }
 .page-hero > .wrap {
   max-width: calc(var(--wrap) - 2 * var(--gutter)); padding: clamp(32px, 5vw, 64px);
   background: var(--ink); color: var(--on-ink); border-radius: var(--r-panel);
@@ -550,8 +551,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 960px) { .with-aside { grid-template-columns: 1fr; } .aside-card { position: static; } }
 
 /* mřížka obsahových karet */
-.grid-cards { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
-.grid-cards > .card { padding: 28px; background: var(--gray); border: 0; border-radius: var(--r-tile); }
+.grid-cards { display: grid; gap: var(--grid-gap); grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
+.grid-cards > .card { padding: 32px; background: var(--gray); border: 0; border-radius: var(--r-tile); }
 .grid-cards > .card p { color: var(--graphite); font-size: 16px; margin: 0; }
 .grid-cards > .card ul { display: grid; gap: 0; margin-top: 12px; font-size: 16px; }
 .grid-cards > .card li { padding: 8px 0; border-top: 1px solid var(--hairline); }
@@ -579,7 +580,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .refs--all li[hidden] { display: none; }
 
 /* blog */
-.posts { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.posts { display: grid; gap: var(--grid-gap); grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 .post-card { display: flex; flex-direction: column; gap: 8px; padding: 36px; background: var(--gray); border: 0; border-radius: var(--r-feature); text-decoration: none; transition: background-color 150ms ease; }
 .post-card h2 { font-size: 28px; line-height: 1.2; margin: 0; }
 .post-card p { color: var(--graphite); margin: 0; font-size: 16px; }
@@ -616,8 +617,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .plugin-group-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin-bottom: 20px; }
 .plugin-group-head h2 { margin: 0; font-size: clamp(28px, 3.2vw, 38px); line-height: 1.15; }
 .plugin-group-head p { margin: 0; color: var(--graphite); font-size: 16px; }
-.plugins { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
-.plugin { display: flex; flex-direction: column; padding: 20px; }
+.plugins { display: grid; gap: var(--grid-gap); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.plugin { display: flex; flex-direction: column; padding: 24px; }
 .plugin-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
 .plugin-head h3 { margin: 0 0 6px; }
 .plugin-link { text-decoration: none; }
@@ -641,7 +642,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .plugin-detail h2:first-child { margin-top: 0; }
 .plugin-detail > p { color: var(--graphite); font-size: 18px; line-height: 1.65; }
 .plugin-intro { font-size: 20px !important; line-height: 1.6; color: var(--ink) !important; }
-.feature-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.feature-grid { display: grid; gap: var(--grid-gap); grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
 .feature-grid li { position: relative; padding: 16px 16px 16px 46px; background: var(--gray); border-radius: var(--r-tile); font-size: 16px; }
 .feature-grid li::before { content: ""; position: absolute; left: 16px; top: 18px; width: 18px; height: 18px; border-radius: var(--r-pill);
   background: var(--st-done) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.75 8.25l2 2 4.5-4.5' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat; }
