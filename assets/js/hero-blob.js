@@ -140,7 +140,7 @@ void main(){
     tcan.width = canvas.width; tcan.height = canvas.height;
     tctx.clearRect(0, 0, tcan.width, tcan.height);
     const sr = stage.getBoundingClientRect(), k = canvas.width / W, cs = getComputedStyle(title), fs = parseFloat(cs.fontSize) * k;
-    tctx.font = `${cs.fontWeight} ${fs}px Aspekta, Inter, sans-serif`;
+    tctx.font = `${cs.fontWeight} ${fs}px ${cs.fontFamily}`;
     try { tctx.letterSpacing = `${parseFloat(cs.letterSpacing) * k}px`; } catch (e) { /* starší prohlížeče */ }
     tctx.fillStyle = '#fff'; tctx.textBaseline = 'alphabetic';
     const m = tctx.measureText('H'), asc = m.fontBoundingBoxAscent || fs * 0.8, desc = m.fontBoundingBoxDescent || fs * 0.2;
@@ -288,7 +288,7 @@ void main(){
     gl.uniform2f(U.res, canvas.width, canvas.height); gl.uniform1f(U.time, time);
     gl.uniform4fv(U.b, bArr); gl.uniform3fv(U.c, cArr);
     gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES, 0, 3);
-    if (!tip.hidden) {
+    if (tip.hidden) { /* nic */ } else if (!narrowMq.matches) { if (tip.style.transform) tip.style.transform = ''; } else {
       const ta = 226 * Math.PI / 180, td = 3.05 * scale;
       const ts = toScreen({ x: A[0] + Math.cos(ta) * td, y: A[1] + Math.sin(ta) * td, z: 0, r: 0 });
       tip.style.transform = `translate(${Math.round(ts[0])}px,${Math.round(ts[1])}px) translate(-50%,-50%)`;
