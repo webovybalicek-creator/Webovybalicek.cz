@@ -6,7 +6,6 @@
   const canvas = stage.querySelector('.hero-canvas');
   const labels = stage.querySelector('.hero-labels');
   const title = stage.querySelector('.hero-title');
-  const lead = stage.querySelector('[data-hero-lead]');
   const msg = stage.querySelector('[data-hero-msg]');
   const hintRow = stage.querySelector('.hero-hint');
   const hintEl = stage.querySelector('[data-hero-hint]');
@@ -117,8 +116,8 @@ void main(){
       msg.querySelector('.hero-msg-tag').textContent = p.tag;
       msg.querySelector('.hero-msg-title').textContent = p.head;
       msg.querySelector('.hero-msg-text').textContent = p.text;
-      lead.hidden = true; msg.hidden = true; void msg.offsetWidth; msg.hidden = false;
-    } else { msg.hidden = true; lead.hidden = false; }
+      msg.hidden = true; void msg.offsetWidth; msg.hidden = false;
+    } else msg.hidden = true;
     lab.forEach((l, i) => l.classList.toggle('is-on', !!det[i]));
   };
   resetBtn.addEventListener('click', () => { det.fill(0); sel = -1; render(); });
@@ -128,7 +127,7 @@ void main(){
   const clampP = (p, r) => { const hw = aspect * CAM / F - r, hh = CAM / F - r; return [Math.max(-hw, Math.min(hw, p[0])), Math.max(-hh, Math.min(hh, p[1]))]; };
 
   // kam kapka sama odpluje po kliknutí (v násobcích poloviny šířky a výšky panelu); Design míří na konec nadpisu
-  const SPOTS = [[0.04, 0.5], [0.28, -0.1], [0.06, -0.58], [-0.42, 0.26], [0.5, -0.62], [0.78, -0.72]];
+  const SPOTS = [[0.04, 0.5], [0.26, 0.04], [0.08, -0.58], [-0.42, 0.26], [0.34, -0.62], [0.56, 0.0]]; // pravý dolní roh je volný pro text kapky
   const SPOTS_NARROW = [[-0.72, 0.82], [-0.3, 0.62], [0.74, -0.02], [0.3, 0.3], [0.7, -0.62], [0.72, -0.32]];
   const release = (i) => {
     const s = (narrowMq.matches ? SPOTS_NARROW : SPOTS)[i];
