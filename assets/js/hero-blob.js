@@ -13,6 +13,7 @@
   const resetBtn = stage.querySelector('[data-hero-reset]');
   const PARTS = [...stage.querySelectorAll('[data-hero-points] li')].slice(0, 6).map((li) => ({
     tag: li.dataset.tag,
+    accent: li.hasAttribute('data-accent'),
     head: li.querySelector('strong').textContent,
     text: li.querySelector('span').textContent,
   }));
@@ -95,7 +96,7 @@ void main(){
   const WHITE = [0.8, 0.8, 0.8], LIME = [0.66, 1.08, 0.0];
   const B = Array.from({ length: N }, () => ({ x: 0, y: 0, z: 0, vx: 0, vy: 0, vz: 0, r: 0.1, tx: 0, ty: 0, tz: 0, tr: 0.1 }));
   B[AUX].r = B[AUX].tr = -0.8;
-  const bArr = new Float32Array(N * 4), cArr = new Float32Array(N * 3);
+  const bArr = new Float32Array(N * 4), cArr = new Float32Array(N * 3).fill(0.8);
   const lab = PARTS.map((p) => { const l = document.createElement('span'); l.textContent = p.tag; labels.appendChild(l); return l; });
   const det = [0, 0, 0, 0, 0, 0];
   const free = det.map(() => [0, 0]);
@@ -265,7 +266,10 @@ void main(){
     targets(time); step(dt / 2); step(dt / 2);
     for (let i = 0; i < N; i++) {
       const b = B[i]; bArr[i * 4] = b.x; bArr[i * 4 + 1] = b.y; bArr[i * 4 + 2] = b.z; bArr[i * 4 + 3] = b.r;
-      const c = i === sel || (drag && drag.moved && drag.i === i) ? LIME : WHITE; cArr[i * 3] = c[0]; cArr[i * 3 + 1] = c[1]; cArr[i * 3 + 2] = c[2];
+      // limetkově svítí jen kapka označená data-accent (Design), a to od chvíle, kdy ji někdo vytahuje z hmoty
+      const lit = i < 6 && PARTS[i].accent && (det[i] || (drag && drag.moved && drag.i === i));
+      const c = lit ? LIME : WHITE, kc = reduced ? 1 : 1 - Math.exp(-dt * 7);
+      for (let q = 0; q < 3; q++) cArr[i * 3 + q] += (c[q] - cArr[i * 3 + q]) * kc;
     }
     gl.uniform2f(U.res, canvas.width, canvas.height); gl.uniform1f(U.time, time);
     gl.uniform4fv(U.b, bArr); gl.uniform3fv(U.c, cArr);
