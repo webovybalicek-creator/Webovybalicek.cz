@@ -3,7 +3,6 @@ title: Jak probíhá tvorba webu a naše spolupráce | Webový balíček
 description: Co připravit před tvorbou webu: přístupy k doméně a hostingu, logo, texty, fotky, struktura a klíčová slova. Checklist pro ty, kdo web mají i nemají.
 -->
   <section class="page-hero">
-    <div class="hero-halo" aria-hidden="true"></div>
     <div class="wrap">
       <ol class="crumbs"><li><a href="/">Domů</a></li><li>Jak probíhá spolupráce</li></ol>
       <h1>Jak probíhá tvorba webu</h1>
@@ -43,7 +42,9 @@ description: Co připravit před tvorbou webu: přístupy k doméně a hostingu,
       </div>
 
       <div class="explorer" data-tabs>
-        <div class="explorer-list" role="tablist" aria-label="Máte už web?" aria-orientation="vertical">
+
+        <div class="explorer-stage">
+        <div class="explorer-list" role="tablist" aria-label="Máte už web?">
           <button role="tab" id="tab-mam" aria-controls="panel-mam" aria-selected="true">
             <span class="explorer-title">Web už mám</span>
             <span class="explorer-desc">Předěláváme nebo stěhujeme stávající web.</span>
@@ -53,8 +54,6 @@ description: Co připravit před tvorbou webu: přístupy k doméně a hostingu,
             <span class="explorer-desc">Začínáme od nuly, včetně domény a e-mailů.</span>
           </button>
         </div>
-
-        <div class="explorer-stage">
           <article class="spec-card" role="tabpanel" id="panel-mam" aria-labelledby="tab-mam">
             <header><span class="tag-mono">&lt;MamWeb /&gt;</span><h3>Web už mám</h3></header>
             <ul class="ticks">

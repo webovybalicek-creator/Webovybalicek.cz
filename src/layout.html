@@ -10,10 +10,8 @@
   <meta property="og:description" content="{{description}}">
   <meta property="og:locale" content="cs_CZ">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#f7f7f8">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#cdfe00">
+  <link rel="preload" href="/assets/fonts/AspektaVF.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/style.css?v={{v}}">
   <script src="/assets/js/main.js?v={{v}}" defer></script>
 </head>
@@ -22,14 +20,24 @@
 <a class="skip-link" href="#obsah">Přejít k obsahu</a>
 
 <div class="announce">
-  <p>Nově stavíme i AI weby: hotové během dnů a za nižší cenu. <a href="/#cesty">Zjistit víc</a></p>
+  <p><span class="announce-chip">Nově</span> AI weby hotové během dnů a za nižší cenu. <a href="/#cesty">Zjistit víc</a></p>
 </div>
 
 <header class="site-header">
+  <div class="utility-bar">
+    <div class="wrap utility-inner">
+      <span>Říčany u Prahy, odpovídáme do 24 hodin</span>
+      <span class="utility-links">
+        <a href="tel:+420723933774">+420 723 933 774</a>
+        <a href="mailto:webovybalicek@gmail.com">webovybalicek@gmail.com</a>
+        <a href="/kontakt/">Kontakt</a>
+      </span>
+    </div>
+  </div>
   <div class="wrap header-inner">
     <a href="/" class="logo" aria-label="Webový balíček – domů">
       <span class="logo-mark" aria-hidden="true">wb</span>
-      <span>webový balíček</span>
+      <span class="logo-word">Webový balíček</span>
     </a>
 
     <nav class="nav" aria-label="Hlavní navigace">
@@ -43,7 +51,6 @@
     </nav>
 
     <div class="header-actions">
-      <a href="tel:+420723933774" class="btn btn--outline btn--sm header-call">Zavolat</a>
       <a href="/kontakt/" class="btn btn--primary btn--sm">Konzultace zdarma</a>
     </div>
 
@@ -56,6 +63,7 @@
         <li><a href="/o-nas/">O nás</a></li>
         <li><a href="/blog/">Blog</a></li>
         <li><a href="/kontakt/">Kontakt</a></li>
+        <li><a href="tel:+420723933774">+420 723 933 774</a></li>
       </ul>
     </details>
   </div>
@@ -63,13 +71,13 @@
 
 <main id="obsah">
 {{content}}
-{{cta}}
 </main>
 
 <footer class="site-footer">
+{{cta}}
   <div class="wrap footer-grid">
     <div>
-      <a href="/" class="logo"><span class="logo-mark" aria-hidden="true">wb</span><span>webový balíček</span></a>
+      <a href="/" class="logo"><span class="logo-mark" aria-hidden="true">wb</span><span class="logo-word">Webový balíček</span></a>
       <p>Vladimír Fischer<br>Říčany u Prahy<br>IČ: 03051820</p>
       <p><a href="tel:+420723933774">+420 723 933 774</a><br><a href="mailto:webovybalicek@gmail.com">webovybalicek@gmail.com</a></p>
     </div>
@@ -105,6 +113,10 @@
         <li><a href="https://webovybalicek.cz/ochrana-informaci-gdpr/">Ochrana osobních údajů</a></li>
       </ul>
     </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© Webový balíček</span>
+    <span>Písmo Aspekta, licence OFL</span>
   </div>
 </footer>
 

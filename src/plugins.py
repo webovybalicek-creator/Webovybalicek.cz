@@ -39,7 +39,6 @@ def e(s):
 def hero(crumbs, title, lead, actions=""):
     cr = "".join(f'<li><a href="{u}">{e(t)}</a></li>' if u else f"<li>{e(t)}</li>" for t, u in crumbs)
     return f'''  <section class="page-hero">
-    <div class="hero-halo" aria-hidden="true"></div>
     <div class="wrap">
       <ol class="crumbs">{cr}</ol>
       <h1>{e(title)}</h1>
