@@ -189,7 +189,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   background: var(--ink); color: var(--lime); font: 650 13px/1 var(--f-sans); letter-spacing: -0.04em;
 }
 .logo-word { font: 650 15px/1 var(--f-sans); letter-spacing: .14em; text-transform: uppercase; }
-.nav { margin-left: 24px; margin-right: auto; }
+.nav { margin-left: auto; margin-right: 8px; }
 .nav ul { display: flex; gap: 4px; }
 .nav a { display: block; padding: 8px 12px; border-radius: var(--r-link); text-decoration: none; font-size: 16px; font-weight: 400; color: var(--ink); transition: color 150ms ease, background-color 150ms ease; }
 .nav a[aria-current="page"] { font-weight: 600; }
