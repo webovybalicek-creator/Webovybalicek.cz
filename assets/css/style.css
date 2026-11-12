@@ -686,3 +686,26 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; }
 }
+
+/* ==========================================================
+   vlastní kurzor (jen myš) – assets/js/main.js
+   ========================================================== */
+.cursor { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  html.has-cursor, html.has-cursor *:not(input):not(textarea):not(select) {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='8' cy='8' r='2.6' fill='white' stroke='%230a1217' stroke-width='1.2'/%3E%3C/svg%3E") 8 8, auto !important;
+  }
+  html.has-cursor .cursor { display: block; position: fixed; left: 0; top: 0; z-index: 1000; pointer-events: none; mix-blend-mode: difference; will-change: transform; }
+  .cursor span {
+    position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 88px; height: 88px; border-radius: 50%; background: #fff;
+    opacity: 0; transform: translate(-50%, -50%) scale(0.27);
+    transition: transform 300ms var(--ease-out), opacity 200ms ease;
+  }
+  .cursor b { font: 550 12px/1 var(--f-sans); letter-spacing: .08em; text-transform: uppercase; color: #000; opacity: 0; transition: opacity 150ms ease; }
+  .cursor.is-link span { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+  .cursor.is-label span { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  .cursor.is-label b { opacity: 1; }
+  .cursor.is-down.is-link span { transform: translate(-50%, -50%) scale(0.44); }
+  .cursor.is-down.is-label span { transform: translate(-50%, -50%) scale(0.9); }
+}
+@media (prefers-reduced-motion: reduce) { .cursor span, .cursor b { transition: none; } }

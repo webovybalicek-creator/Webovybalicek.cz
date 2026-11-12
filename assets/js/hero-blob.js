@@ -196,7 +196,7 @@ void main(){
   canvas.addEventListener('pointermove', (e) => {
     const p = local(e); ptr.x = p[0]; ptr.y = p[1];
     if (drag) {
-      if (!drag.moved && Math.hypot(p[0] - drag.sx, p[1] - drag.sy) > 6) { drag.moved = true; canvas.classList.add('is-drag'); }
+      if (!drag.moved && Math.hypot(p[0] - drag.sx, p[1] - drag.sy) > 6) { drag.moved = true; canvas.classList.add('is-drag'); delete canvas.dataset.cursor; }
       if (drag.moved && !det[drag.i]) { const w = toWorld(p[0], p[1]); if (Math.hypot(w[0] - A[0], w[1] - A[1]) > snapL) { det[drag.i] = 1; free[drag.i] = w; render(); } }
       return;
     }
@@ -214,7 +214,10 @@ void main(){
       if (hit) render();
       return;
     }
-    canvas.classList.toggle('is-hit', pick(p[0], p[1]) >= 0);
+    const over = pick(p[0], p[1]);
+    canvas.classList.toggle('is-hit', over >= 0);
+    // popisek pro vlastní kurzor (main.js)
+    if (over < 0) delete canvas.dataset.cursor; else canvas.dataset.cursor = det[over] ? 'Vybrat' : 'Trhej';
   });
   canvas.addEventListener('pointerup', (e) => {
     slice = null;
