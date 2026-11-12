@@ -183,7 +183,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .utility-links a:hover { color: var(--ink); }
 
 .header-inner { display: flex; align-items: center; gap: 24px; height: 76px; }
-.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.logo { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; color: var(--ink); }
 .logo-mark { display: block; width: auto; height: 26px; flex: none; }
 .logo-word { font: 620 22px/1 var(--f-sans); letter-spacing: -0.022em; white-space: nowrap; }
 .nav { margin-left: auto; margin-right: 8px; }
@@ -214,7 +214,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .mobile-nav { display: block; }
   .utility-bar { display: none; }
 }
-@media (max-width: 420px) { .header-actions { display: none; } .mobile-nav { margin-left: auto; } .logo { gap: 8px; } .logo-mark { height: 22px; } .logo-word { font-size: 19px; } }
+@media (max-width: 420px) { .header-actions { display: none; } .mobile-nav { margin-left: auto; } .logo { gap: 6px; } .logo-mark { height: 22px; } .logo-word { font-size: 19px; } }
 
 /* ==========================================================
    hero (homepage)
