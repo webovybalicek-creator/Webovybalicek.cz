@@ -10,6 +10,8 @@ src/layout.html          společná kostra stránek
 src/cta.html             závěrečná výzva na konci podstránek
 src/pages/*.html         obsah stránek (hlavička v HTML komentáři: title, description, nav, cta)
 src/data/reference.json  reference (převzato z WP API starého webu)
+src/data/klienti.json    loga klientů v pásu na úvodu (SVG v assets/img/klienti/)
+tools/blacken-loga.py    převod nových log do černé: python3 tools/blacken-loga.py <originály> assets/img/klienti
 assets/                  CSS, JS
 docs/                    archiv původního obsahu (nenasazuje se)
 ```

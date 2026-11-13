@@ -13,6 +13,7 @@ src/pages/*.html       obsah stránek s hlavičkou v HTML komentáři:
                        cta: no
                        -->
 src/data/reference.json  data referencí → značka {{references}}
+src/data/klienti.json    loga klientů → značka {{clients}} (soubory v assets/img/klienti/)
 assets/                kopíruje se beze změny
 
 Výstup: dist/  (deploy na FTP)
@@ -30,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "23"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "24"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 FRONT = re.compile(r"^\s*<!--(.*?)-->\s*", re.S)
@@ -71,6 +72,27 @@ def render_references(data):
     )
 
 
+def render_clients(data):
+    """Pás log klientů: dvě stejné řady za sebou, aby se posun plynule opakoval."""
+    items = []
+    for c in data:
+        ratio = c["w"] / c["h"]
+        # opticky vyrovnaná velikost: široká loga nižší, vysoká vyšší (stejná plocha)
+        height = round(28 * (4 / ratio) ** 0.5)
+        items.append(
+            f'<li><img src="/assets/img/klienti/{c["f"]}.svg" alt="{html.escape(c["n"])}" '
+            f'width="{round(height * ratio)}" height="{height}" style="--h:{height / 16:g}em" '
+            f'loading="lazy" decoding="async"></li>'
+        )
+    row = "".join(items)
+    return (
+        '<div class="logos" role="group" aria-label="Naši klienti">'
+        f'<ul class="logos-track">{row}</ul>'
+        f'<ul class="logos-track" aria-hidden="true">{re.sub(r'alt="[^"]*"', 'alt=""', row)}</ul>'
+        "</div>"
+    )
+
+
 def build():
     if DIST.exists():
         shutil.rmtree(DIST)
@@ -80,6 +102,7 @@ def build():
     layout = (SRC / "layout.html").read_text(encoding="utf-8")
     cta = (SRC / "cta.html").read_text(encoding="utf-8")
     refs = json.loads((SRC / "data" / "reference.json").read_text(encoding="utf-8"))
+    clients = json.loads((SRC / "data" / "klienti.json").read_text(encoding="utf-8"))
 
     import sys
     sys.path.insert(0, str(SRC))
@@ -94,6 +117,7 @@ def build():
         path = meta.get("path") or ("/" if stem == "index" else f"/{stem}/")
         body = body.replace("{{references}}", render_references(refs))
         body = body.replace("{{ref_count}}", str(len(refs)))
+        body = body.replace("{{clients}}", render_clients(clients))
         body = body.replace("{{v}}", VERSION)
 
         out = layout
