@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "36"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "37"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -180,13 +180,15 @@ def build():
         out = out.replace("{{cta}}", "" if meta.get("cta") == "no" else cta)
         out = out.replace("{{content}}", body)
         out = out.replace("{{umime}}", umime)
-        if STAGING:
+        hidden = meta.get("hidden") == "yes"  # pracovní stránky: vždy noindex, mimo sitemapu
+        if STAGING or hidden:
             out = out.replace("<head>\n", '<head>\n  <meta name="robots" content="noindex, nofollow">\n', 1)
 
         target = DIST / path.strip("/") / "index.html" if path != "/" else DIST / "index.html"
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(out, encoding="utf-8")
-        urls.append(path)
+        if not hidden:
+            urls.append(path)
         print(f"  {path}")
 
     today = date.today().isoformat()
