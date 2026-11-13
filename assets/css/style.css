@@ -375,12 +375,18 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ==========================================================
    tři cesty – šedé karty s widgetem
    ========================================================== */
-.feature-cards { display: grid; gap: var(--grid-gap); grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.feature-card { display: flex; flex-direction: column; min-height: 520px; padding: clamp(28px, 3vw, 40px); background: var(--gray); border-radius: var(--r-tile); }
-.feature-card h3 { font-size: 26px; letter-spacing: -0.01em; margin-bottom: 8px; }
-.feature-card > p { color: var(--graphite); }
-.feature-price { font: 400 14px/1.5 var(--f-mono) !important; color: var(--ink) !important; }
-.feature-card .link-utility { margin-top: 24px; }
+.feature-cards { display: grid; gap: var(--grid-gap); grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; }
+.feature-card { display: flex; flex-direction: column; padding: clamp(28px, 3vw, 40px); background: var(--gray); border-radius: var(--r-tile); }
+.feature-card h3 { font-size: 26px; letter-spacing: -0.01em; margin-bottom: 12px; }
+.feature-card > p:not(.price) { color: var(--graphite); margin-bottom: 28px; }
+.feature-card .price { margin: auto 0 0; }
+.price-note { display: block; margin-top: 4px; font-size: 14px; color: var(--stone); }
+.feature-card .link-utility { margin-top: 28px; align-self: flex-start; }
+/* zvýrazněná karta – stejná řeč jako zvýrazněná položka v ceníku */
+.feature-card--featured { background: var(--ink); color: var(--on-ink); }
+.feature-card--featured > p:not(.price), .feature-card--featured .price { color: var(--on-ink-muted); }
+.feature-card--featured .price strong, .feature-card--featured .link-utility { color: var(--on-ink); }
+.feature-tag { align-self: flex-start; margin-bottom: 18px; padding: 3px 10px; border-radius: var(--r-pill); background: var(--lime); color: var(--ink); font: 550 11px/1.4 var(--f-sans); letter-spacing: .06em; text-transform: uppercase; }
 @media (max-width: 960px) { .feature-cards { grid-template-columns: 1fr; } }
 
 .widget { display: grid; gap: 12px; margin-top: auto; padding: 16px; background: var(--paper); border-radius: var(--r-card); justify-items: start; }
