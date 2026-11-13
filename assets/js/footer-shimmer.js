@@ -93,7 +93,8 @@ void main(){
     if (now - last > 40) { last = now; draw(now); }
     raf = requestAnimationFrame(loop);
   };
-  document.fonts.ready.then(() => {
+  const cs0 = getComputedStyle(el);
+  document.fonts.load(`${cs0.fontWeight} 100px ${cs0.fontFamily}`, el.textContent).catch(() => {}).then(() => document.fonts.ready).then(() => {
     el.parentElement.append(canvas);
     el.classList.add('has-gl');
     layout();
