@@ -534,6 +534,24 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .rating strong { font-size: 32px; font-weight: 650; letter-spacing: -0.03em; line-height: 1; }
 .rating span { max-width: 120px; font-size: 14px; line-height: 1.35; color: var(--graphite); }
 
+/* pás recenzí z Googlu – přes celou šířku okna, po najetí se zastaví */
+.reviews { display: grid; gap: 16px; margin-bottom: clamp(48px, 6vw, 72px);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.reviews-row { display: flex; overflow: hidden; }
+.reviews-track { display: flex; flex: none; align-items: stretch; gap: 16px; margin: 0; padding: 0 16px 0 0; list-style: none; animation: logos-slide 90s linear infinite; }
+.reviews-row--rev .reviews-track { animation-direction: reverse; }
+.reviews:hover .reviews-track { animation-play-state: paused; }
+.reviews-track li { display: flex; flex: none; width: min(380px, 80vw); }
+.review { display: flex; flex-direction: column; justify-content: space-between; gap: 20px; width: 100%; margin: 0; padding: 24px 26px; background: var(--gray); border-radius: var(--r-card); }
+.review blockquote { margin: 0; font-size: 16px; line-height: 1.6; color: var(--ink);
+  display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+.review figcaption { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.review-face { display: grid; place-items: center; flex: none; width: 24px; height: 24px; border-radius: 50%; overflow: hidden; background: var(--hairline); font-size: 10px; font-weight: 650; color: var(--graphite); }
+.review-face img { width: 100%; height: 100%; object-fit: cover; }
+.review-name { font-weight: 550; }
+.review-stars { margin-left: auto; font-size: 12px; letter-spacing: 1px; color: #f5b301; }
+@media (prefers-reduced-motion: reduce) { .reviews-row { overflow-x: auto; } .reviews-track { animation: none; } .reviews-track[aria-hidden] { display: none; } }
 .refs { display: grid; gap: var(--grid-gap); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
 .ref { display: grid; gap: 6px; padding: 24px; text-decoration: none; height: 100%; transition: border-color 150ms ease, background-color 150ms ease; }
 .ref-url { font-weight: 550; letter-spacing: -0.015em; }
@@ -771,26 +789,3 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; }
 }
-
-/* ==========================================================
-   vlastní kurzor (jen myš) – assets/js/main.js
-   ========================================================== */
-.cursor { display: none; }
-@media (hover: hover) and (pointer: fine) {
-  html.has-cursor, html.has-cursor *:not(input):not(textarea):not(select) {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='8' cy='8' r='2.6' fill='white' stroke='%230a1217' stroke-width='1.2'/%3E%3C/svg%3E") 8 8, auto !important;
-  }
-  html.has-cursor .cursor { display: block; position: fixed; left: 0; top: 0; z-index: 1000; pointer-events: none; mix-blend-mode: difference; will-change: transform; }
-  .cursor span {
-    position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 88px; height: 88px; border-radius: 50%; background: #fff;
-    opacity: 0; transform: translate(-50%, -50%) scale(0.27);
-    transition: transform 300ms var(--ease-out), opacity 200ms ease;
-  }
-  .cursor b { font: 550 12px/1 var(--f-sans); letter-spacing: .08em; text-transform: uppercase; color: #000; opacity: 0; transition: opacity 150ms ease; }
-  .cursor.is-link span { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
-  .cursor.is-label span { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  .cursor.is-label b { opacity: 1; }
-  .cursor.is-down.is-link span { transform: translate(-50%, -50%) scale(0.44); }
-  .cursor.is-down.is-label span { transform: translate(-50%, -50%) scale(0.9); }
-}
-@media (prefers-reduced-motion: reduce) { .cursor span, .cursor b { transition: none; } }

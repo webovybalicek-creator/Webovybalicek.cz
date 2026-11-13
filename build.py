@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "29"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "31"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -105,6 +105,36 @@ def render_clients(data):
     )
 
 
+def render_reviews(data):
+    """Pás recenzí z Googlu: miniatura (f = soubor v assets/img/recenze/, jinak iniciály), jméno, hvězdy, text.
+    Od 8 recenzí dvě řady proti sobě, jinak jedna."""
+    def card(r):
+        initials = "".join(w[0] for w in r["n"].split()[:2])
+        face = (f'<img src="/assets/img/recenze/{r["f"]}" alt="" width="24" height="24" loading="lazy" decoding="async">'
+                if r.get("f") else f'<span aria-hidden="true">{html.escape(initials)}</span>')
+        stars = "★" * r.get("s", 5)
+        return (f'<li><figure class="review"><blockquote>{html.escape(r["t"])}</blockquote>'
+                f'<figcaption><span class="review-face">{face}</span><span class="review-name">{html.escape(r["n"])}</span>'
+                f'<span class="review-stars" aria-label="{r.get("s", 5)} z 5">{stars}</span></figcaption></figure></li>')
+
+    def row(items, reverse=False):
+        cards = "".join(card(r) for r in items)
+        dup = re.sub(r'aria-label="[^"]*"', "", cards)
+        cls = "reviews-row reviews-row--rev" if reverse else "reviews-row"
+        return (f'<div class="{cls}"><ul class="reviews-track">{cards}</ul>'
+                f'<ul class="reviews-track" aria-hidden="true">{dup}</ul></div>')
+
+    data = [r for r in data if r.get("f")]  # jen recenze s fotkou
+    if not data:
+        return ""
+    if len(data) >= 8:
+        half = (len(data) + 1) // 2
+        rows = row(data[:half]) + row(data[half:], reverse=True)
+    else:
+        rows = row(data)
+    return f'<div class="reviews" role="group" aria-label="Recenze klientů na Googlu">{rows}</div>'
+
+
 def build():
     if DIST.exists():
         shutil.rmtree(DIST)
@@ -115,6 +145,7 @@ def build():
     cta = (SRC / "cta.html").read_text(encoding="utf-8")
     refs = json.loads((SRC / "data" / "reference.json").read_text(encoding="utf-8"))
     clients = json.loads((SRC / "data" / "klienti.json").read_text(encoding="utf-8"))
+    reviews = json.loads((SRC / "data" / "recenze.json").read_text(encoding="utf-8"))
 
     import sys
     sys.path.insert(0, str(SRC))
@@ -130,6 +161,7 @@ def build():
         body = body.replace("{{references}}", render_references(refs))
         body = body.replace("{{ref_count}}", str(len(refs)))
         body = body.replace("{{clients}}", render_clients(clients))
+        body = body.replace("{{reviews}}", render_reviews(reviews))
         years = date.today().year - GOOGLE["since"]
         body = body.replace("{{g_rating}}", GOOGLE["rating"])
         body = body.replace("{{g_count}}", recenze(GOOGLE["count"]))
