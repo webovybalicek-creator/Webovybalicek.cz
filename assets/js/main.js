@@ -229,3 +229,10 @@ document.querySelectorAll('form.form').forEach((form) => {
   document.fonts?.ready.then(relayout);
   update();
 })();
+
+// Nástroje: najetí na řádek legendy zvýrazní bublinu na oběžné dráze a naopak
+document.querySelectorAll('.tools').forEach((box) => {
+  const set = (name, on) => box.querySelectorAll(`[data-t="${CSS.escape(name)}"]`).forEach((el) => el.classList.toggle('is-hi', on));
+  box.addEventListener('pointerover', (e) => { const el = e.target.closest('[data-t]'); if (el) set(el.dataset.t, true); });
+  box.addEventListener('pointerout', (e) => { const el = e.target.closest('[data-t]'); if (el) set(el.dataset.t, false); });
+});
