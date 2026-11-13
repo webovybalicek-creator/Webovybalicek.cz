@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "25"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "26"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 FRONT = re.compile(r"^\s*<!--(.*?)-->\s*", re.S)
@@ -79,11 +79,11 @@ def render_clients(data):
         ratio = c["w"] / c["h"]
         # opticky vyrovnaná velikost: široká loga nižší, vysoká vyšší (stejná plocha)
         # "s" v klienti.json dorovnává váhu kresby: tučná loga < 1, tenká > 1
-        height = round(22 * (4 / ratio) ** 0.5 * c.get("s", 1))
+        height = round(25 * (4 / ratio) ** 0.5 * c.get("s", 1))
         items.append(
-            f'<li><img src="/assets/img/klienti/{c["f"]}.svg" alt="{html.escape(c["n"])}" '
+            f'<li><span class="logo-tile"><img src="/assets/img/klienti/{c["f"]}.svg" alt="{html.escape(c["n"])}" '
             f'width="{round(height * ratio)}" height="{height}" style="--h:{height / 16:g}em" '
-            f'loading="lazy" decoding="async"></li>'
+            f'loading="lazy" decoding="async"></span></li>'
         )
     row = "".join(items)
     return (
