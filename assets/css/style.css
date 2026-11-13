@@ -272,6 +272,20 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hero-copy { display: flex; flex-direction: column; align-items: flex-start; max-width: 560px; pointer-events: none; }
 .hero-copy > * { position: relative; z-index: 3; }
 .hero-copy a, .hero-copy button { pointer-events: auto; }
+/* trust bar nad claimem – hodnocení z Googlu a délka působení */
+.hero-copy .hero-trust { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 22px; padding: 7px 14px 7px 12px;
+  border: 1px solid var(--hairline); border-radius: 999px; background: rgba(255,255,255,.72);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  font-size: 14px; line-height: 1.2; color: var(--graphite); text-decoration: none; white-space: nowrap;
+  transition: border-color .2s ease, transform .2s cubic-bezier(.23,1,.32,1); }
+.hero-trust-g { font-weight: 650; letter-spacing: -0.02em; color: var(--ink); }
+.hero-trust strong { font-weight: 650; color: var(--ink); }
+.hero-trust .stars { position: relative; font-size: 13px; letter-spacing: 1px; color: var(--hairline); }
+.hero-trust .stars::before { content: "★★★★★"; position: absolute; inset: 0; width: var(--fill); overflow: hidden; color: #f5b301; }
+.hero-trust-sep { width: 3px; height: 3px; border-radius: 50%; background: var(--stone); }
+@media (hover: hover) { .hero-copy .hero-trust:hover { border-color: var(--stone); } }
+.hero-copy .hero-trust:active { transform: scale(.97); }
+@media (max-width: 420px) { .hero-copy .hero-trust { font-size: 13px; gap: 6px; padding: 6px 12px 6px 10px; } }
 .hero-copy .hero-title { z-index: 0; margin: 0 0 20px; font-size: clamp(38px, 5.2vw, 64px); line-height: 1.06; letter-spacing: -0.025em; }
 .hero-title span { display: block; }
 .hero-stage .hero-lead { color: var(--graphite); }

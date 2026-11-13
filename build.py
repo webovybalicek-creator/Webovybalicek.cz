@@ -31,8 +31,19 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "26"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "27"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
+
+# Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
+GOOGLE = {"rating": "4,8", "count": 24, "since": 2019}
+
+
+def roky(n):
+    return f"{n} rok" if n == 1 else f"{n} roky" if 2 <= n <= 4 else f"{n} let"
+
+
+def recenze(n):
+    return f"{n} recenze" if 2 <= n <= 4 else f"{n} recenzí"
 
 FRONT = re.compile(r"^\s*<!--(.*?)-->\s*", re.S)
 
@@ -119,6 +130,11 @@ def build():
         body = body.replace("{{references}}", render_references(refs))
         body = body.replace("{{ref_count}}", str(len(refs)))
         body = body.replace("{{clients}}", render_clients(clients))
+        years = date.today().year - GOOGLE["since"]
+        body = body.replace("{{g_rating}}", GOOGLE["rating"])
+        body = body.replace("{{g_count}}", recenze(GOOGLE["count"]))
+        body = body.replace("{{g_since}}", str(GOOGLE["since"]))
+        body = body.replace("{{g_years}}", roky(years))
         body = body.replace("{{v}}", VERSION)
 
         out = layout

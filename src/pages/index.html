@@ -12,6 +12,13 @@ cta: no
         <div class="hero-labels" aria-hidden="true"></div>
         <p class="hero-tip" data-hero-tip aria-hidden="true" hidden><span><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.2" fill="none" stroke="currentColor" stroke-opacity=".45" stroke-width="1.4"/><circle cx="9" cy="9" r="3.4" fill="#cdfe00"/></svg>Klikněte nebo táhněte</span></p>
         <div class="hero-copy">
+          <a class="hero-trust" href="https://g.page/webovybalicek-cz/" rel="noopener" target="_blank" aria-label="Hodnocení {{g_rating}} z 5 na Googlu, {{g_count}} za {{g_years}}">
+            <span class="hero-trust-g">Google</span>
+            <span class="stars" style="--fill:96%" aria-hidden="true">★★★★★</span>
+            <strong>{{g_rating}}</strong>
+            <span class="hero-trust-sep" aria-hidden="true"></span>
+            <span>{{g_count}} za {{g_years}}</span>
+          </a>
           <p class="pill">Odtrhněte se od konkurence</p>
           <h1 class="hero-title"><span>Tvorba webů</span> <span>a e-shopů</span></h1>
           <div class="hero-msg" data-hero-msg hidden>
@@ -317,7 +324,7 @@ cta: no
           <p>Malé a středně velké firmy a živnostníci. Většina klientů s námi zůstává roky.</p>
         </div>
         <a href="https://g.page/webovybalicek-cz/" class="rating" rel="noopener">
-          <strong>5.0</strong><span>hodnocení klientů na Google</span>
+          <strong>{{g_rating}}</strong><span>{{g_count}} na Googlu od roku {{g_since}}</span>
         </a>
       </div>
 
