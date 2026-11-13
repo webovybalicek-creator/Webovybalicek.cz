@@ -36,7 +36,7 @@ $to = 'webovybalicek@gmail.com';
 $subject = '=?UTF-8?B?' . base64_encode('Poptávka webu – ' . ($name !== '' ? $name : $email)) . '?=';
 $from = 'noreply@webovybalicek.cz';
 $headers = implode("\r\n", [
-  'From: =?UTF-8?B?' . base64_encode('Web Webový balíček') . "?= <$from>",
+  'From: =?UTF-8?B?' . base64_encode('Web webovybalicek') . "?= <$from>",
   "Reply-To: $email",
   'MIME-Version: 1.0',
   'Content-Type: text/plain; charset=UTF-8',

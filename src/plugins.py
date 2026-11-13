@@ -116,7 +116,7 @@ def overview(data):
   </section>
 '''
     meta = {
-        "title": "Doporučené pluginy pro WooCommerce: doprava, platby, fakturace | Webový balíček",
+        "title": "Doporučené pluginy pro WooCommerce: doprava, platby, fakturace | webovybalicek",
         "description": f"{len(data['plugins'])} prověřených pluginů Toret pro české e-shopy: Zásilkovna, PPL, DPD, platební brány, iDoklad, Fakturoid, XML feedy a další. Sleva až 50 %.",
         "path": BASE,
     }
@@ -189,7 +189,7 @@ def detail(p, data):
   </section>
 '''
     meta = {
-        "title": f"{p['n']} pro WooCommerce: co umí a pro koho je | Webový balíček",
+        "title": f"{p['n']} pro WooCommerce: co umí a pro koho je | webovybalicek",
         "description": f"{p['t']} {p['i'][:110].rsplit(' ', 1)[0]}…",
         "path": f"{BASE}{p['u']}/",
     }
