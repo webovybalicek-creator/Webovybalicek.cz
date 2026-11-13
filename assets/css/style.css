@@ -693,17 +693,11 @@ html.is-locked { overflow: hidden; }
 @media (hover: hover) and (pointer: fine) { .contact-direct a:hover { background-size: 100% 3px; } }
 
 .form { display: grid; gap: 14px; padding: clamp(20px, 3vw, 28px); background: var(--paper); color: var(--ink); border-radius: var(--r-feature); }
-/* formulář v perleťové hmotě (assets/js/form-blob.js); bez WebGL zůstává bílá karta */
-.contact-panel:has(.form-blob) { position: relative; overflow: hidden; }
-.form-blob { position: relative; }
-.form-blob-canvas { position: absolute; left: -140px; top: -120px; width: calc(100% + 260px); height: calc(100% + 240px); pointer-events: none; }
-.form-blob .form { position: relative; z-index: 1; }
-.form-blob.has-gl .form { background: transparent; }
-.form-blob.has-gl .form input, .form-blob.has-gl .form select, .form-blob.has-gl .form textarea {
-  background: rgba(255,255,255,.62); border-color: rgba(10,18,23,.12); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
-.form-blob.has-gl .form input:focus, .form-blob.has-gl .form select:focus, .form-blob.has-gl .form textarea:focus { background: rgba(255,255,255,.9); }
-.form-blob.has-gl .form-head p { color: var(--ink); opacity: .7; }
-@media (max-width: 960px) { .form-blob-canvas { left: -80px; top: -80px; width: calc(100% + 160px); height: calc(100% + 160px); } }
+/* panel kontaktu jako perleťová hmota (assets/js/panel-blob.js); bez WebGL zůstává šedý panel */
+.contact-panel[data-panel-blob] { position: relative; isolation: isolate; }
+.contact-panel.has-gl { background: transparent; }
+.panel-blob-canvas { position: absolute; z-index: -1; left: -60px; top: -60px; width: calc(100% + 120px); height: calc(100% + 120px); pointer-events: none; }
+.contact-panel .form { box-shadow: 0 1px 2px rgba(10,18,23,.04), 0 18px 40px rgba(10,18,23,.08); }
 .form-head h3, .form-head h2 { font-size: 22px; margin-bottom: 2px; }
 .form-head p { margin: 0; font-size: 15px; color: var(--graphite); }
 .form-row { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
