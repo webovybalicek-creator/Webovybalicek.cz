@@ -16,8 +16,8 @@
 }
 /* Aspekta zůstává pro nápis v logu; návrat celého webu = vrátit "Aspekta" na začátek --f-sans */
 @font-face {
-  font-family: "Permanent Marker";
-  src: url("/assets/fonts/PermanentMarker-latin.woff2") format("woff2");
+  font-family: "Protest Guerrilla";
+  src: url("/assets/fonts/ProtestGuerrilla-latin.woff2") format("woff2");
   font-weight: 400; font-style: normal; font-display: swap;
 }
 @font-face {
@@ -747,7 +747,7 @@ html.is-locked { overflow: hidden; }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--hairline); font-size: 12px; color: var(--stone); }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 /* obří adresa, která „zapadá“ pod spodní okraj stránky */
-.footer-giant { position: relative; display: block; width: max-content; margin: 0 auto -0.2em; font-family: "Permanent Marker", var(--f-sans); font-weight: 400; font-size: 13.4cqw; line-height: .95; letter-spacing: 0; white-space: nowrap; user-select: none; pointer-events: none;
+.footer-giant { position: relative; display: block; width: max-content; margin: clamp(16px, 2vw, 32px) auto -0.22em; font-family: "Protest Guerrilla", var(--f-sans); font-weight: 400; font-size: 15cqw; line-height: 1; letter-spacing: 0; white-space: nowrap; user-select: none; pointer-events: none;
   /* záloha bez WebGL: pomalu se přelévající perleťový přechod */
   background: linear-gradient(100deg, #c9ccd6 0%, #ffd6ea 20%, #d4ecff 40%, #e8ffd0 60%, #efd9ff 80%, #c9ccd6 100%) 0 0 / 300% 100%;
   -webkit-background-clip: text; background-clip: text; color: transparent; animation: giant-flow 24s ease-in-out infinite alternate; }
