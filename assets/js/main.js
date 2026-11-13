@@ -63,3 +63,61 @@ document.querySelectorAll('.cat-filter').forEach((bar) => {
     groups.forEach((g) => { g.hidden = c !== '' && g.dataset.group !== c; });
   });
 });
+
+// Popupy přes nativní <dialog>: [data-open="id"] otevře, [data-focus] posune na položku a zvýrazní ji,
+// zavírá křížek, Esc, klik mimo okno i odkaz s [data-close] (ten pak normálně pokračuje na svůj cíl).
+(() => {
+  const close = (d) => {
+    if (!d.open || d.classList.contains('is-closing')) return;
+    d.classList.add('is-closing');
+    const done = () => { d.classList.remove('is-closing'); d.close(); };
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) done();
+    else {
+      const end = (e) => { if (e.target !== d) return; d.removeEventListener('animationend', end); done(); };
+      d.addEventListener('animationend', end);
+      setTimeout(() => { if (d.classList.contains('is-closing')) { d.removeEventListener('animationend', end); done(); } }, 400); // pojistka
+    }
+  };
+  document.querySelectorAll('dialog.sheet').forEach((d) => {
+    d.addEventListener('cancel', (e) => { e.preventDefault(); close(d); });
+    d.addEventListener('click', (e) => {
+      if (e.target === d) { close(d); return; }
+      const c = e.target.closest('[data-close]');
+      if (c) close(d);
+    });
+    d.addEventListener('close', () => document.documentElement.classList.remove('is-locked'));
+  });
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-open]');
+    if (!b) return;
+    const d = document.getElementById(b.dataset.open);
+    if (!d || d.open) return;
+    e.preventDefault();
+    document.documentElement.classList.add('is-locked');
+    document.querySelectorAll('details.mobile-nav[open]').forEach((m) => m.removeAttribute('open'));
+    d.showModal();
+    d.scrollTop = 0;
+    const t = b.dataset.focus && document.getElementById(b.dataset.focus);
+    if (t) {
+      requestAnimationFrame(() => {
+        t.scrollIntoView({ block: 'center' });
+        t.classList.remove('is-flash'); void t.offsetWidth; t.classList.add('is-flash');
+      });
+    }
+  });
+})();
+
+// Mega menu „Co děláme“: na myši se otevře najetím (s malou prodlevou), jinak kliknutím; Esc a klik mimo zavírá.
+document.querySelectorAll('.has-mega').forEach((li) => {
+  const btn = li.querySelector('.nav-trigger');
+  let t = 0;
+  const set = (open) => { clearTimeout(t); li.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); };
+  const fine = matchMedia('(hover: hover) and (pointer: fine)');
+  li.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse' && fine.matches) { clearTimeout(t); t = setTimeout(() => set(true), 80); } });
+  li.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse' && fine.matches) { clearTimeout(t); t = setTimeout(() => set(false), 180); } });
+  btn.addEventListener('click', () => set(!li.classList.contains('is-open')));
+  li.addEventListener('click', (e) => { if (e.target.closest('.mega a, .mega button')) set(false); });
+  document.addEventListener('click', (e) => { if (!li.contains(e.target)) set(false); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && li.classList.contains('is-open')) { set(false); btn.focus(); } });
+  li.addEventListener('focusout', (e) => { if (!li.contains(e.relatedTarget)) set(false); });
+});

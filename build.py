@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "31"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "33"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -143,6 +143,7 @@ def build():
 
     layout = (SRC / "layout.html").read_text(encoding="utf-8")
     cta = (SRC / "cta.html").read_text(encoding="utf-8")
+    umime = (SRC / "umime.html").read_text(encoding="utf-8")
     refs = json.loads((SRC / "data" / "reference.json").read_text(encoding="utf-8"))
     clients = json.loads((SRC / "data" / "klienti.json").read_text(encoding="utf-8"))
     reviews = json.loads((SRC / "data" / "recenze.json").read_text(encoding="utf-8"))
@@ -178,6 +179,7 @@ def build():
         out = out.replace("{{v}}", VERSION)
         out = out.replace("{{cta}}", "" if meta.get("cta") == "no" else cta)
         out = out.replace("{{content}}", body)
+        out = out.replace("{{umime}}", umime)
         if STAGING:
             out = out.replace("<head>\n", '<head>\n  <meta name="robots" content="noindex, nofollow">\n', 1)
 
