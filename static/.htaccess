@@ -1,1 +1,5 @@
 ErrorDocument 404 /404.html
+
+# stránka Reference byla zrušena – vybrané projekty jsou na úvodní stránce
+RewriteEngine On
+RewriteRule ^reference/?$ /#reference [R=301,L,NE]
