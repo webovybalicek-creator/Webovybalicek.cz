@@ -97,7 +97,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: var(--r-link); }
 .section--dark :focus-visible, .hero-panel :focus-visible, .page-hero :focus-visible,
-.explorer-stage :focus-visible, .contact-panel :focus-visible, .site-footer :focus-visible, .bundle :focus-visible { outline-color: var(--lime); }
+.explorer-stage :focus-visible, .contact-panel :focus-visible, .bundle :focus-visible { outline-color: var(--lime); }
 
 .skip-link { position: absolute; left: -9999px; }
 .skip-link:focus { left: 16px; top: 16px; z-index: 100; background: var(--lime); color: var(--ink); padding: 8px 14px; border-radius: var(--r-pill); }
@@ -141,7 +141,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .btn--ghost { background: transparent; color: var(--graphite); }
 /* na tmavém */
 .section--dark .btn--outline, .hero-panel .btn--outline, .page-hero .btn--outline,
-.contact-panel .btn--outline, .site-footer .btn--outline, .bundle .btn--outline {
+.contact-panel .btn--outline, .bundle .btn--outline {
   background: transparent; color: var(--on-ink); box-shadow: inset 0 0 0 1px rgba(255,255,255,.28);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -149,7 +149,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .btn--outline:hover { background: var(--gray); }
   .btn--ghost:hover { background: var(--gray); color: var(--ink); }
   .section--dark .btn--outline:hover, .hero-panel .btn--outline:hover, .page-hero .btn--outline:hover,
-  .contact-panel .btn--outline:hover, .site-footer .btn--outline:hover, .bundle .btn--outline:hover { background: rgba(255,255,255,.08); }
+  .contact-panel .btn--outline:hover, .bundle .btn--outline:hover { background: rgba(255,255,255,.08); }
 }
 
 .btn { --circle: var(--paper); --water: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ffffff'/%3E%3Cstop offset='.3' stop-color='%23ffdcee'/%3E%3Cstop offset='.55' stop-color='%23d6eeff'/%3E%3Cstop offset='.8' stop-color='%23e9ffd2'/%3E%3Cstop offset='1' stop-color='%23e6e6ea'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 12 Q15 2 30 12 T60 12 T90 12 T120 12 V120 H0Z' fill='url(%23g)'/%3E%3Cpath d='M0 12 Q15 2 30 12 T60 12 T90 12 T120 12' fill='none' stroke='%23ffffff' stroke-width='3'/%3E%3C/svg%3E"); --arrow: var(--ink); --arrow-on: var(--ink); }
@@ -160,7 +160,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .btn--outline { --circle: var(--gray); --arrow-on: var(--ink); }
 .section--dark .btn--outline, .hero-panel .btn--outline, .page-hero .btn--outline,
-.contact-panel .btn--outline, .site-footer .btn--outline, .bundle .btn--outline {
+.contact-panel .btn--outline, .bundle .btn--outline {
   --circle: rgba(255,255,255,.12); --water: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ffffff'/%3E%3Cstop offset='.3' stop-color='%23ffdcee'/%3E%3Cstop offset='.55' stop-color='%23d6eeff'/%3E%3Cstop offset='.8' stop-color='%23e9ffd2'/%3E%3Cstop offset='1' stop-color='%23e6e6ea'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 12 Q15 2 30 12 T60 12 T90 12 T120 12 V120 H0Z' fill='url(%23g)'/%3E%3Cpath d='M0 12 Q15 2 30 12 T60 12 T90 12 T120 12' fill='none' stroke='%23ffffff' stroke-width='3'/%3E%3C/svg%3E"); --arrow: var(--on-ink); --arrow-on: var(--ink);
 }
 .btn--sm:not([href^="tel:"]):not([href^="mailto:"]) { padding-right: 7px; }
@@ -719,21 +719,23 @@ html.is-locked { overflow: hidden; }
 /* ==========================================================
    patička – černé konverzní pole
    ========================================================== */
-.site-footer { background: var(--black); color: var(--on-ink-muted); font-size: 15px; padding-bottom: 32px; }
+.site-footer { position: relative; overflow: hidden; container-type: inline-size; background: var(--gray); color: var(--graphite); font-size: 15px; }
 .footer-cta { display: grid; gap: 24px 64px; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: end; padding-top: clamp(64px, 9vw, 120px); padding-bottom: clamp(48px, 6vw, 72px); }
-.footer-cta h2 { margin: 0; color: var(--on-ink); font-size: clamp(42px, 6.6vw, 84px); line-height: 1.04; letter-spacing: -0.03em; }
-.footer-cta p { color: var(--on-ink-muted); font-size: 18px; }
+.footer-cta h2 { margin: 0; color: var(--ink); font-size: clamp(42px, 6.6vw, 84px); line-height: 1.04; letter-spacing: -0.03em; }
+.footer-cta p { color: var(--graphite); font-size: 18px; }
 .cta-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; }
 @media (max-width: 860px) { .footer-cta { grid-template-columns: 1fr; } }
-.footer-grid { display: grid; gap: 32px; grid-template-columns: 1.4fr repeat(3, 1fr); padding-top: 48px; border-top: 1px solid var(--on-ink-line); }
+.footer-grid { display: grid; gap: 32px; grid-template-columns: 1.4fr repeat(3, 1fr); padding-top: 48px; border-top: 1px solid var(--hairline); }
 .site-footer > .footer-grid:first-child { margin-top: 0; padding-top: 64px; border-top: 0; }
-.site-footer .logo { color: var(--on-ink); margin-bottom: 20px; }
+.site-footer .logo { color: var(--ink); margin-bottom: 20px; }
 .site-footer h3 { font-size: 12px; font-weight: 550; letter-spacing: .08em; text-transform: uppercase; color: var(--stone); margin-bottom: 14px; }
 .site-footer ul { display: grid; gap: 8px; }
 .site-footer a { text-decoration: none; transition: color 150ms ease; }
-.site-footer ul a:hover, .site-footer p a:hover { color: var(--on-ink); }
-.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--on-ink-line); font-size: 12px; color: var(--stone); }
+.site-footer ul a:hover, .site-footer p a:hover { color: var(--ink); }
+.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--hairline); font-size: 12px; color: var(--stone); }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+/* obří adresa, která „zapadá“ pod spodní okraj stránky */
+.footer-giant { display: block; margin: clamp(24px, 3vw, 40px) 0 -0.28em; padding: 0 var(--gutter); font-weight: 700; font-size: 12.1cqw; line-height: .9; letter-spacing: -0.06em; white-space: nowrap; color: var(--ink); text-align: center; user-select: none; pointer-events: none; }
 
 /* ==========================================================
    podstránky
