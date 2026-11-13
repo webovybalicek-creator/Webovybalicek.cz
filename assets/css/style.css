@@ -334,7 +334,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hero-trust-g { font-weight: 650; letter-spacing: -0.02em; color: var(--ink); }
 .hero-trust strong { font-weight: 650; color: var(--ink); }
 .hero-trust .stars { position: relative; font-size: 13px; letter-spacing: 1px; color: var(--hairline); }
-.hero-trust .stars::before { content: "★★★★★"; position: absolute; inset: 0; width: var(--fill); overflow: hidden; color: #f5b301; }
+.hero-trust .stars { font-size: 15px; }
+/* hvězdičky v perleti – pomalu se přelévají jako hmota v úvodu */
+.hero-trust .stars::before { content: "★★★★★"; position: absolute; inset: 0; width: var(--fill); overflow: hidden; white-space: nowrap;
+  background: linear-gradient(100deg, #b98ad6 0%, #e79cc6 18%, #8fc3ec 36%, #a6d97f 54%, #f0c08f 72%, #b98ad6 90%, #e79cc6 100%) 0 0 / 300% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 .4px rgba(10,18,23,.35)); animation: stars-pearl 10s ease-in-out infinite alternate; }
+@keyframes stars-pearl { to { background-position: 100% 0; } }
+@media (prefers-reduced-motion: reduce) { .hero-trust .stars::before { animation: none; } }
 .hero-trust-sep { width: 3px; height: 3px; border-radius: 50%; background: var(--stone); }
 @media (hover: hover) { .hero-copy .hero-trust:hover { border-color: var(--stone); } }
 .hero-copy .hero-trust:active { transform: scale(.97); }
