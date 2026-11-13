@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "37"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "38"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -110,7 +110,10 @@ def render_reviews(data):
     Od 8 recenzí dvě řady proti sobě, jinak jedna."""
     def card(r):
         initials = "".join(w[0] for w in r["n"].split()[:2])
-        face = (f'<img src="/assets/img/recenze/{r["f"]}" alt="" width="24" height="24" loading="lazy" decoding="async">'
+        src = r["f"] if r.get("f", "").startswith("http") else f'/assets/img/recenze/{r.get("f", "")}'
+        # při nedostupné fotce z Googlu se ukážou iniciály
+        face = (f'<img src="{html.escape(src)}" alt="" width="24" height="24" loading="lazy" decoding="async" referrerpolicy="no-referrer" '
+                f'onerror="this.replaceWith(Object.assign(document.createElement(\'span\'),{{textContent:\'{html.escape(initials)}\'}}))">'
                 if r.get("f") else f'<span aria-hidden="true">{html.escape(initials)}</span>')
         stars = "★" * r.get("s", 5)
         return (f'<li><figure class="review"><blockquote>{html.escape(r["t"])}</blockquote>'
