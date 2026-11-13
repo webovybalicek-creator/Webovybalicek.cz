@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "38"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "39"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -92,9 +92,9 @@ def render_clients(data):
         # "s" v klienti.json dorovnává váhu kresby: tučná loga < 1, tenká > 1
         height = round(25 * (4 / ratio) ** 0.5 * c.get("s", 1))
         items.append(
-            f'<li><span class="logo-tile"><img src="/assets/img/klienti/{c["f"]}.svg" alt="{html.escape(c["n"])}" '
+            f'<li><span class="logo-tile"><span class="logo-mark" style="--src:url(/assets/img/klienti/{c["f"]}.svg)"><img src="/assets/img/klienti/{c["f"]}.svg" alt="{html.escape(c["n"])}" '
             f'width="{round(height * ratio)}" height="{height}" style="--h:{height / 16:g}em" '
-            f'loading="lazy" decoding="async"></span></li>'
+            f'loading="lazy" decoding="async"></span></span></li>'
         )
     row = "".join(items)
     return (
@@ -143,6 +143,9 @@ def build():
         shutil.rmtree(DIST)
     DIST.mkdir()
     shutil.copytree(ROOT / "assets", DIST / "assets")
+    # soubory do kořene webu (PHP pro formulář, .htaccess)
+    for f in (ROOT / "static").iterdir():
+        shutil.copy2(f, DIST / f.name)
 
     layout = (SRC / "layout.html").read_text(encoding="utf-8")
     cta = (SRC / "cta.html").read_text(encoding="utf-8")
@@ -193,6 +196,10 @@ def build():
         if not hidden:
             urls.append(path)
         print(f"  {path}")
+
+    # stránka 404 i jako /404.html (ErrorDocument v .htaccess)
+    if (DIST / "404" / "index.html").exists():
+        shutil.copy2(DIST / "404" / "index.html", DIST / "404.html")
 
     today = date.today().isoformat()
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',

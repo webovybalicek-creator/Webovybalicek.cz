@@ -1,0 +1,35 @@
+<!--
+title: Stránka nenalezena | Webový balíček
+description: Tahle stránka se nám rozpustila.
+cta: no
+hidden: yes
+-->
+  <section class="err">
+    <div class="wrap">
+      <div class="err-stage">
+        <div class="melt" aria-hidden="true"><div class="pearl m1" data-melt></div><div class="pearl m2"></div><div class="pearl m3"></div></div>
+        <strong>404</strong>
+        <p>Tahle stránka se nám rozpustila. Možná se přesunula, nebo nikdy neexistovala.</p>
+        <div class="err-actions">
+          <a href="/" class="btn btn--primary">Zpět na úvod</a>
+          <a href="/kontakt/" class="btn btn--outline">Napsat nám</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+  // kapku jde chytit a povytáhnout, po puštění se vrátí
+  (() => {
+    const m = document.querySelector('[data-melt]');
+    if (!m || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let sx = 0, sy = 0, on = false;
+    m.addEventListener('pointerdown', (e) => { on = true; sx = e.clientX; sy = e.clientY; m.setPointerCapture(e.pointerId); m.style.transition = 'none'; m.style.cursor = 'grabbing'; });
+    m.addEventListener('pointermove', (e) => {
+      if (!on) return;
+      const dx = (e.clientX - sx) * 0.35, dy = (e.clientY - sy) * 0.35, d = Math.min(1, Math.hypot(dx, dy) / 120);
+      m.style.transform = `translate(${dx}px, ${dy}px) scale(${1 + d * 0.12}, ${1 - d * 0.1})`;
+    });
+    const up = () => { if (!on) return; on = false; m.style.transition = 'transform 700ms cubic-bezier(.2, 1.6, .4, 1)'; m.style.transform = ''; m.style.cursor = ''; };
+    m.addEventListener('pointerup', up); m.addEventListener('pointercancel', up);
+  })();
+  </script>

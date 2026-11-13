@@ -121,3 +121,81 @@ document.querySelectorAll('.has-mega').forEach((li) => {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && li.classList.contains('is-open')) { set(false); btn.focus(); } });
   li.addEventListener('focusout', (e) => { if (!li.contains(e.relatedTarget)) set(false); });
 });
+
+// Odlesk pod myší na kartách referencí, ceníku a cest: souřadnice pro CSS (--mx/--my)
+if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  document.addEventListener('pointermove', (e) => {
+    const el = e.target.closest && e.target.closest('.ref, .price-card, .feature-card');
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+    el.style.setProperty('--my', `${e.clientY - r.top}px`);
+  }, { passive: true });
+}
+
+// Poptávkový formulář: odeslání přes poptavka.php, při odesílání perleťové kapky v tlačítku,
+// po úspěchu se formulář rozostří a vyroste kapka s poděkováním. Při chybě zůstane formulář a ukáže se e-mail.
+document.querySelectorAll('form.form').forEach((form) => {
+  const started = Date.now();
+  form.insertAdjacentHTML('afterbegin', '<label class="hp" aria-hidden="true">Web <input type="text" name="web" tabindex="-1" autocomplete="off"></label>');
+  form.insertAdjacentHTML('beforeend', '<div class="form-done" aria-live="polite"><div class="pearl"><p>Díky, ozveme se do 24 hodin<small>Mezitím se můžete podívat na naše reference.</small></p></div></div>');
+  const btn = form.querySelector('button[type="submit"]');
+  const label = btn ? btn.innerHTML : '';
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    form.querySelector('.form-error')?.remove();
+    const data = new FormData(form);
+    data.set('t', String(Date.now() - started));
+    data.set('page', location.pathname);
+    if (btn) { btn.classList.add('is-busy'); btn.disabled = true; btn.innerHTML = '<span class="pearl-dots" aria-label="Odesílám"><span class="pearl"></span><span class="pearl"></span><span class="pearl"></span></span>'; }
+    let ok = false;
+    try {
+      const res = await fetch('/poptavka.php', { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      ok = res.ok && (await res.json()).ok === true;
+    } catch (err) { ok = false; }
+    if (btn) { btn.classList.remove('is-busy'); btn.disabled = false; btn.innerHTML = label; }
+    if (ok) {
+      form.classList.add('is-sent');
+      form.reset();
+    } else {
+      btn?.insertAdjacentHTML('beforebegin', '<p class="form-error" role="alert">Zprávu se nepodařilo odeslat. Napište nám prosím na <a href="mailto:webovybalicek@gmail.com">webovybalicek@gmail.com</a> nebo zavolejte na <a href="tel:+420723933774">723 933 774</a>.</p>');
+    }
+  });
+});
+
+// Kapka, která na úvodní stránce „stéká“ podél pravého okraje podle scrollu a vsákne se do kontaktního panelu
+(() => {
+  const hero = document.querySelector('.hero-stage');
+  const panel = document.querySelector('#kontakt [data-panel-blob]');
+  if (!hero || !panel) return;
+  if (!matchMedia('(min-width: 1024px) and (hover: hover) and (pointer: fine)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const drop = document.createElement('div');
+  drop.className = 'scroll-drop pearl';
+  drop.setAttribute('aria-hidden', 'true');
+  document.body.append(drop);
+  let lastY = scrollY, vel = 0, x = 0, y = 0, raf = 0;
+  const frame = () => {
+    raf = 0;
+    const vh = innerHeight, vw = document.documentElement.clientWidth;
+    const heroEnd = hero.getBoundingClientRect().bottom + scrollY;
+    const pr = panel.getBoundingClientRect();
+    const endY = pr.top + scrollY - vh * 0.35;
+    const p = Math.min(1, Math.max(0, (scrollY - heroEnd * 0.5) / Math.max(1, endY - heroEnd * 0.5)));
+    // na trase: pravý okraj, jemně se vlní; na konci míří do pravého horního rohu panelu
+    let tx = vw - 30 + Math.sin(p * 18) * 6, ty = 120 + p * (vh - 260);
+    const merge = Math.min(1, Math.max(0, (vh * 0.75 - pr.top) / (vh * 0.4)));
+    tx += ((pr.right - 110) - tx) * merge; ty += ((pr.top + 70) - ty) * merge;
+    x += (tx - x) * 0.18; y += (ty - y) * 0.18;
+    vel += ((scrollY - lastY) - vel) * 0.2; lastY = scrollY;
+    const st = Math.min(0.5, Math.abs(vel) * 0.02);
+    const s = 1 - merge * 0.9;
+    drop.style.transform = `translate(${x - 9}px, ${y - 9}px) scale(${(1 - st * 0.5) * s}, ${(1 + st) * s})`;
+    drop.classList.toggle('is-on', scrollY > heroEnd * 0.4 && merge < 0.98);
+    if (Math.abs(tx - x) > 0.5 || Math.abs(ty - y) > 0.5 || Math.abs(vel) > 0.5) raf = requestAnimationFrame(frame);
+  };
+  const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
+  addEventListener('scroll', kick, { passive: true });
+  addEventListener('resize', kick);
+  x = document.documentElement.clientWidth - 30; y = 120; kick();
+})();
