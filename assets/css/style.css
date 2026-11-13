@@ -97,7 +97,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: var(--r-link); }
 .section--dark :focus-visible, .hero-panel :focus-visible, .page-hero :focus-visible,
-.explorer-stage :focus-visible, .site-footer :focus-visible, .bundle :focus-visible { outline-color: var(--lime); }
+.explorer-stage :focus-visible, .contact-panel :focus-visible, .site-footer :focus-visible, .bundle :focus-visible { outline-color: var(--lime); }
 
 .skip-link { position: absolute; left: -9999px; }
 .skip-link:focus { left: 16px; top: 16px; z-index: 100; background: var(--lime); color: var(--ink); padding: 8px 14px; border-radius: var(--r-pill); }
@@ -141,7 +141,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .btn--ghost { background: transparent; color: var(--graphite); }
 /* na tmavém */
 .section--dark .btn--outline, .hero-panel .btn--outline, .page-hero .btn--outline,
-.site-footer .btn--outline, .bundle .btn--outline {
+.contact-panel .btn--outline, .site-footer .btn--outline, .bundle .btn--outline {
   background: transparent; color: var(--on-ink); box-shadow: inset 0 0 0 1px rgba(255,255,255,.28);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -149,7 +149,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .btn--outline:hover { background: var(--gray); }
   .btn--ghost:hover { background: var(--gray); color: var(--ink); }
   .section--dark .btn--outline:hover, .hero-panel .btn--outline:hover, .page-hero .btn--outline:hover,
-  .site-footer .btn--outline:hover, .bundle .btn--outline:hover { background: rgba(255,255,255,.08); }
+  .contact-panel .btn--outline:hover, .site-footer .btn--outline:hover, .bundle .btn--outline:hover { background: rgba(255,255,255,.08); }
 }
 
 .btn { --circle: var(--paper); --water: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ffffff'/%3E%3Cstop offset='.3' stop-color='%23ffdcee'/%3E%3Cstop offset='.55' stop-color='%23d6eeff'/%3E%3Cstop offset='.8' stop-color='%23e9ffd2'/%3E%3Cstop offset='1' stop-color='%23e6e6ea'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 12 Q15 2 30 12 T60 12 T90 12 T120 12 V120 H0Z' fill='url(%23g)'/%3E%3Cpath d='M0 12 Q15 2 30 12 T60 12 T90 12 T120 12' fill='none' stroke='%23ffffff' stroke-width='3'/%3E%3C/svg%3E"); --arrow: var(--ink); --arrow-on: var(--ink); }
@@ -160,7 +160,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .btn--outline { --circle: var(--gray); --arrow-on: var(--ink); }
 .section--dark .btn--outline, .hero-panel .btn--outline, .page-hero .btn--outline,
-.site-footer .btn--outline, .bundle .btn--outline {
+.contact-panel .btn--outline, .site-footer .btn--outline, .bundle .btn--outline {
   --circle: rgba(255,255,255,.12); --water: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ffffff'/%3E%3Cstop offset='.3' stop-color='%23ffdcee'/%3E%3Cstop offset='.55' stop-color='%23d6eeff'/%3E%3Cstop offset='.8' stop-color='%23e9ffd2'/%3E%3Cstop offset='1' stop-color='%23e6e6ea'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 12 Q15 2 30 12 T60 12 T90 12 T120 12 V120 H0Z' fill='url(%23g)'/%3E%3Cpath d='M0 12 Q15 2 30 12 T60 12 T90 12 T120 12' fill='none' stroke='%23ffffff' stroke-width='3'/%3E%3C/svg%3E"); --arrow: var(--on-ink); --arrow-on: var(--ink);
 }
 .btn--sm:not([href^="tel:"]):not([href^="mailto:"]) { padding-right: 7px; }
@@ -690,22 +690,15 @@ html.is-locked { overflow: hidden; }
    kontakt
    ========================================================== */
 .contact-section { padding-top: var(--section); }
-/* stejná řeč jako úvod: světle šedá plocha, tmavý text, perleťová hmota v pravém rohu */
-.contact-panel { padding: clamp(28px, 5vw, 72px); background: var(--gray); color: var(--ink); border-radius: var(--r-panel); align-items: center; }
-.contact-panel h1, .contact-panel h2 { font-size: clamp(36px, 4.4vw, 56px); line-height: 1.06; letter-spacing: -0.025em; }
-.contact-panel .section-head > p:not(.pill) { color: var(--graphite); }
-.contact-direct { display: grid; gap: 18px; margin-top: 36px; }
-.contact-direct li { display: grid; gap: 2px; font-size: 14px; color: var(--graphite); }
-.contact-direct a { font-size: 24px; font-weight: 550; letter-spacing: -0.02em; text-decoration: none; color: var(--ink);
-  background: linear-gradient(var(--lime), var(--lime)) 0 100% / 0 3px no-repeat; transition: background-size 300ms var(--ease-out); justify-self: start; }
-@media (hover: hover) and (pointer: fine) { .contact-direct a:hover { background-size: 100% 3px; } }
+.contact-panel { padding: clamp(28px, 5vw, 64px); background: var(--ink); color: var(--on-ink); border-radius: var(--r-panel); align-items: center; }
+.contact-panel h1 { font-size: clamp(36px, 5vw, 56px); line-height: 1.08; }
+.contact-direct { display: grid; gap: 16px; margin-top: 32px; }
+.contact-direct li { display: grid; gap: 2px; color: var(--on-ink-muted); }
+.contact-direct .mono { color: var(--on-ink-muted); }
+.contact-direct a { font-size: 24px; font-weight: 550; letter-spacing: -0.02em; text-decoration: none; color: var(--on-ink); transition: color 150ms ease; }
+@media (hover: hover) and (pointer: fine) { .contact-direct a:hover { color: var(--lime); } }
 
 .form { display: grid; gap: 14px; padding: clamp(20px, 3vw, 28px); background: var(--paper); color: var(--ink); border-radius: var(--r-feature); }
-/* panel kontaktu jako perleťová hmota (assets/js/panel-blob.js); bez WebGL zůstává šedý panel */
-.contact-panel[data-panel-blob] { position: relative; isolation: isolate; }
-.contact-panel.has-gl { background: transparent; }
-.panel-blob-canvas { position: absolute; z-index: -1; left: -60px; top: -60px; width: calc(100% + 120px); height: calc(100% + 120px); pointer-events: none; }
-.contact-panel .form { box-shadow: 0 1px 2px rgba(10,18,23,.04), 0 18px 40px rgba(10,18,23,.08); }
 .form-head h3, .form-head h2 { font-size: 22px; margin-bottom: 2px; }
 .form-head p { margin: 0; font-size: 15px; color: var(--graphite); }
 .form-row { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }

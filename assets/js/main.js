@@ -166,7 +166,7 @@ document.querySelectorAll('form.form').forEach((form) => {
 // Kapka, která na úvodní stránce „stéká“ podél pravého okraje podle scrollu a vsákne se do kontaktního panelu
 (() => {
   const hero = document.querySelector('.hero-stage');
-  const panel = document.querySelector('#kontakt [data-panel-blob]');
+  const panel = document.querySelector('#kontakt .contact-panel');
   if (!hero || !panel) return;
   if (!matchMedia('(min-width: 1024px) and (hover: hover) and (pointer: fine)').matches) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
