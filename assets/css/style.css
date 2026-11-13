@@ -742,20 +742,7 @@ html.is-locked { overflow: hidden; }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--hairline); font-size: 12px; color: var(--stone); }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 /* obří adresa, která „zapadá“ pod spodní okraj stránky */
-.footer-giant { position: relative; display: block; width: max-content; margin: clamp(24px, 3vw, 40px) auto -0.26em; font-weight: 700; font-size: 14.3cqw; line-height: .9; letter-spacing: -0.06em; white-space: nowrap; user-select: none; pointer-events: none;
-  /* stejná perleť jako zvýrazněné karty: duhový lem (obrys písmen), který se pomalu otáčí… */
-  background: conic-gradient(from var(--pearl-a), #ffb8dc, #b4e3ff, #d8ff9e, #d6b8ff, #ffd2a8, #ffb8dc);
-  -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-stroke: .035em transparent;
-  filter: drop-shadow(0 .05em .1em rgba(10,18,23,.18)); animation: pearl-spin 12s linear infinite; }
-/* …a perleťový povrch uvnitř písmen */
-.footer-giant::after { content: attr(data-text); position: absolute; inset: 0; -webkit-text-stroke: 0;
-  background:
-    radial-gradient(120% 80% at 25% 10%, rgba(255,255,255,.95), rgba(255,255,255,0) 50%),
-    radial-gradient(90% 70% at 85% 95%, rgba(170,173,186,.6), rgba(170,173,186,0) 60%),
-    conic-gradient(from 210deg at 70% 30%, rgba(255,190,222,.6), rgba(185,224,255,.6), rgba(215,250,190,.5), rgba(222,196,255,.6), rgba(255,190,222,.6)),
-    linear-gradient(165deg, #f6f6f8, #c9cbd4);
-  -webkit-background-clip: text; background-clip: text; color: transparent; }
-@media (prefers-reduced-motion: reduce) { .footer-giant { animation: none; } }
+.footer-giant { display: block; width: max-content; margin: clamp(24px, 3vw, 40px) auto -0.26em; font-weight: 700; font-size: 14.6cqw; line-height: .9; letter-spacing: -0.06em; white-space: nowrap; color: var(--ink); user-select: none; pointer-events: none; }
 
 /* ==========================================================
    podstránky
