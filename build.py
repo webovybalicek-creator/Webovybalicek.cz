@@ -112,7 +112,7 @@ def render_reviews(data):
         initials = "".join(w[0] for w in r["n"].split()[:2])
         src = r["f"] if r.get("f", "").startswith("http") else f'/assets/img/recenze/{r.get("f", "")}'
         # při nedostupné fotce z Googlu se ukážou iniciály
-        face = (f'<img src="{html.escape(src)}" alt="" width="24" height="24" loading="lazy" decoding="async" referrerpolicy="no-referrer" '
+        face = (f'<img src="{html.escape(src)}" alt="" width="24" height="24" decoding="async" referrerpolicy="no-referrer" '
                 f'onerror="this.replaceWith(Object.assign(document.createElement(\'span\'),{{textContent:\'{html.escape(initials)}\'}}))">'
                 if r.get("f") else f'<span aria-hidden="true">{html.escape(initials)}</span>')
         stars = "★" * r.get("s", 5)
