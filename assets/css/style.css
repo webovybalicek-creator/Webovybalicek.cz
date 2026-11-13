@@ -152,15 +152,43 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .contact-panel .btn--outline:hover, .site-footer .btn--outline:hover, .bundle .btn--outline:hover { background: rgba(255,255,255,.08); }
 }
 
-/* šipka v tlačítkách jako u Avoice */
+.btn { --circle: var(--paper); --water: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' preserveAspectRatio='none'%3E%3Cpath d='M0 12 Q15 2 30 12 T60 12 T90 12 T120 12 V120 H0Z' fill='%230a1217'/%3E%3C/svg%3E"); --arrow: var(--ink); --arrow-on: var(--lime); }
+/* šipka v kolečku – po najetí se kolečko „napustí“ barvou s vlnkou */
+.btn--primary:not([href^="tel:"]):not([href^="mailto:"]),
+.btn--outline:not([href^="tel:"]):not([href^="mailto:"]):not(.btn--noarrow) {
+  padding-right: 7px; gap: 12px;
+}
+.btn--outline { --circle: var(--gray); --arrow-on: var(--paper); }
+.section--dark .btn--outline, .hero-panel .btn--outline, .page-hero .btn--outline,
+.contact-panel .btn--outline, .site-footer .btn--outline, .bundle .btn--outline {
+  --circle: rgba(255,255,255,.12); --water: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' preserveAspectRatio='none'%3E%3Cpath d='M0 12 Q15 2 30 12 T60 12 T90 12 T120 12 V120 H0Z' fill='%23cdfe00'/%3E%3C/svg%3E"); --arrow: var(--on-ink); --arrow-on: var(--ink);
+}
+.btn--sm:not([href^="tel:"]):not([href^="mailto:"]) { padding-right: 7px; }
+/* kolečko (::before posunuté na konec) */
+.btn--primary:not([href^="tel:"]):not([href^="mailto:"])::before,
+.btn--outline:not([href^="tel:"]):not([href^="mailto:"]):not(.btn--noarrow)::before {
+  content: ""; order: 2; flex: none; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--water) var(--wpos, 0 32px) / 60px 40px no-repeat, var(--circle);
+  transition: background-position 750ms cubic-bezier(.45, 0, .2, 1);
+}
+/* šipka nad kolečkem */
 .btn--primary:not([href^="tel:"]):not([href^="mailto:"])::after,
 .btn--outline:not([href^="tel:"]):not([href^="mailto:"]):not(.btn--noarrow)::after {
-  content: ""; width: 16px; height: 16px; flex: none; margin-right: -4px; background: currentColor;
-  transition: transform 200ms var(--ease-out);
+  content: ""; order: 3; flex: none; width: 14px; height: 14px; margin: 0 8px 0 -34px; position: relative;
+  background: var(--arrow-now, var(--arrow)); transform: translateX(var(--arrow-x, 0));
+  transition: background-color 160ms ease 200ms, transform 300ms var(--ease-out);
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8h10M9 4l4 4-4 4' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
           mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8h10M9 4l4 4-4 4' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
 }
-@media (hover: hover) and (pointer: fine) { .btn:hover::after { transform: translateX(3px); } }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { --wpos: -30px -6px; --arrow-now: var(--arrow-on); --arrow-x: 2px; }
+}
+.btn:focus-visible { --wpos: -30px -6px; --arrow-now: var(--arrow-on); }
+@media (prefers-reduced-motion: reduce) {
+  .btn::before { transition: none; }
+  .btn::after { transition: background-color 150ms ease; }
+  .btn:hover { --arrow-x: 0; }
+}
 
 /* eyebrow nad nadpisem */
 .pill {
