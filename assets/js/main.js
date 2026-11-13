@@ -163,39 +163,69 @@ document.querySelectorAll('form.form').forEach((form) => {
   });
 });
 
-// Kapka, která na úvodní stránce „stéká“ podél pravého okraje podle scrollu a vsákne se do kontaktního panelu
+// Perleťová kulička jako „tečka“ za nadpisem sekce, kterou právě čtete. Při scrollu přeskočí obloukem
+// na konec dalšího nadpisu – pomáhá v orientaci. Jen na úvodní stránce.
 (() => {
-  const hero = document.querySelector('.hero-stage');
-  const panel = document.querySelector('#kontakt .contact-panel');
-  if (!hero || !panel) return;
-  if (!matchMedia('(min-width: 1024px) and (hover: hover) and (pointer: fine)').matches) return;
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!document.querySelector('.hero-stage')) return;
+  const heads = [...document.querySelectorAll('main .section-head h2, #kontakt h2')].filter((h) => !h.closest('dialog'));
+  if (heads.length < 2) return;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const drop = document.createElement('div');
   drop.className = 'scroll-drop pearl';
   drop.setAttribute('aria-hidden', 'true');
   document.body.append(drop);
-  let lastY = scrollY, vel = 0, x = 0, y = 0, raf = 0;
-  const frame = () => {
-    raf = 0;
-    const vh = innerHeight, vw = document.documentElement.clientWidth;
-    const heroEnd = hero.getBoundingClientRect().bottom + scrollY;
-    const pr = panel.getBoundingClientRect();
-    const endY = pr.top + scrollY - vh * 0.35;
-    const p = Math.min(1, Math.max(0, (scrollY - heroEnd * 0.5) / Math.max(1, endY - heroEnd * 0.5)));
-    // na trase: pravý okraj, jemně se vlní; na konci míří do pravého horního rohu panelu
-    let tx = vw - 30 + Math.sin(p * 18) * 6, ty = 120 + p * (vh - 260);
-    const merge = Math.min(1, Math.max(0, (vh * 0.75 - pr.top) / (vh * 0.4)));
-    tx += ((pr.right - 110) - tx) * merge; ty += ((pr.top + 70) - ty) * merge;
-    x += (tx - x) * 0.18; y += (ty - y) * 0.18;
-    vel += ((scrollY - lastY) - vel) * 0.2; lastY = scrollY;
-    const st = Math.min(0.5, Math.abs(vel) * 0.02);
-    const s = 1 - merge * 0.9;
-    drop.style.transform = `translate(${x - 9}px, ${y - 9}px) scale(${(1 - st * 0.5) * s}, ${(1 + st) * s})`;
-    drop.classList.toggle('is-on', scrollY > heroEnd * 0.4 && merge < 0.98);
-    if (Math.abs(tx - x) > 0.5 || Math.abs(ty - y) > 0.5 || Math.abs(vel) > 0.5) raf = requestAnimationFrame(frame);
+  let active = -1, pos = null, anim = null;
+
+  // konec posledního řádku nadpisu (kde by stála tečka)
+  const target = (h) => {
+    const r = document.createRange();
+    r.selectNodeContents(h);
+    const rects = [...r.getClientRects()].filter((x) => x.width > 0);
+    const last = rects[rects.length - 1] || h.getBoundingClientRect();
+    const fs = parseFloat(getComputedStyle(h).fontSize);
+    const size = Math.max(11, Math.round(fs * 0.27));
+    return { x: last.right + fs * 0.12 + scrollX, y: last.bottom - fs * 0.2 - size + scrollY, size };
   };
-  const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
-  addEventListener('scroll', kick, { passive: true });
-  addEventListener('resize', kick);
-  x = document.documentElement.clientWidth - 30; y = 120; kick();
+  const place = (p) => {
+    drop.style.width = drop.style.height = `${p.size}px`;
+    drop.style.transform = `translate(${p.x}px, ${p.y}px)`;
+  };
+  const hop = (from, to) => {
+    anim?.cancel();
+    drop.style.width = drop.style.height = `${to.size}px`;
+    if (reduced || !from) { place(to); return; }
+    const dist = Math.hypot(to.x - from.x, to.y - from.y);
+    const lift = Math.min(260, 60 + dist * 0.18);
+    const mx = (from.x + to.x) / 2, my = Math.min(from.y, to.y) - lift;
+    const t = (x, y, sx = 1, sy = 1) => ({ transform: `translate(${x}px, ${y}px) scale(${sx}, ${sy})` });
+    anim = drop.animate([
+      t(from.x, from.y, 1.15, 0.85),
+      { ...t(from.x, from.y - 4, 0.9, 1.12), offset: 0.12 },
+      { ...t(mx, my, 1, 1), offset: 0.5, easing: 'cubic-bezier(.5, 0, .9, .5)' },
+      { ...t(to.x, to.y, 0.92, 1.1), offset: 0.88 },
+      { ...t(to.x, to.y + 1, 1.25, 0.78), offset: 0.94 },
+      t(to.x, to.y, 1, 1),
+    ], { duration: Math.min(900, 480 + dist * 0.25), easing: 'cubic-bezier(.3, 0, .2, 1)' });
+    anim.onfinish = () => { place(to); anim = null; };
+  };
+  const update = () => {
+    const line = innerHeight * 0.45;
+    let i = -1;
+    heads.forEach((h, k) => { if (h.getBoundingClientRect().top < line) i = k; });
+    // na konci stránky se poslední nadpis nemusí dostat nad čáru – vezmeme ten poslední viditelný
+    if (scrollY + innerHeight >= document.documentElement.scrollHeight - 4) heads.forEach((h, k) => { if (h.getBoundingClientRect().top < innerHeight * 0.85) i = k; });
+    drop.classList.toggle('is-on', i >= 0);
+    if (i < 0) { active = -1; pos = null; return; }
+    if (i !== active) {
+      const to = target(heads[i]);
+      hop(active >= 0 ? pos : null, to);
+      active = i; pos = to;
+    }
+  };
+  let tick = 0;
+  addEventListener('scroll', () => { if (!tick) tick = requestAnimationFrame(() => { tick = 0; update(); }); }, { passive: true });
+  const relayout = () => { if (active >= 0) { pos = target(heads[active]); if (!anim) place(pos); } };
+  addEventListener('resize', relayout);
+  document.fonts?.ready.then(relayout);
+  update();
 })();
