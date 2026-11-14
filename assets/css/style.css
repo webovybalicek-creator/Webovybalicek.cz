@@ -227,7 +227,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .header-inner { display: flex; align-items: center; gap: 24px; height: 76px; }
 .logo { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; color: var(--ink); }
 .logo-mark { display: block; width: auto; height: 26px; flex: none; }
-.logo-word { font: 620 22px/1 "Aspekta", var(--f-sans); letter-spacing: -0.022em; white-space: nowrap; }
+.logo-word { font: 620 26px/1 "Aspekta", var(--f-sans); letter-spacing: -0.022em; white-space: nowrap; }
 .nav { margin-left: auto; margin-right: 8px; }
 .nav ul { display: flex; gap: 4px; }
 .nav a { display: block; padding: 8px 12px; border-radius: var(--r-link); text-decoration: none; font-size: 16px; font-weight: 400; color: var(--ink); transition: color 150ms ease, background-color 150ms ease; }
@@ -281,7 +281,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .mobile-nav { display: block; }
   .utility-bar { display: none; }
 }
-@media (max-width: 420px) { .header-actions { display: none; } .mobile-nav { margin-left: auto; } .logo { gap: 6px; } .logo-mark { height: 22px; } .logo-word { font-size: 19px; } }
+@media (max-width: 560px) { .header-actions { display: none; } .mobile-nav { margin-left: auto; } }
+@media (max-width: 420px) { .logo { gap: 6px; } .logo-mark { height: 22px; } .logo-word { font-size: 19px; } }
 
 /* ==========================================================
    hero (homepage)
@@ -708,7 +709,9 @@ html.is-locked { overflow: hidden; }
 .form { display: grid; gap: 14px; padding: clamp(20px, 3vw, 28px); background: var(--paper); color: var(--ink); border-radius: var(--r-feature); }
 .form-head h3, .form-head h2 { font-size: 22px; margin-bottom: 2px; }
 .form-head p { margin: 0; font-size: 15px; color: var(--graphite); }
-.form-row { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+.form-row { display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.contact-panel > *, .form > *, .form-row > * { min-width: 0; }
+#nastroje { overflow-x: clip; }
 @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
 .form label { display: grid; gap: 6px; font-size: 14px; font-weight: 500; }
 .form input, .form select, .form textarea {
