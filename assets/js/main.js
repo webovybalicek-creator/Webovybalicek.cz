@@ -196,6 +196,16 @@ document.querySelectorAll('.tools').forEach((box) => {
     if (raw.length < 5) raw = fallback();
     let blocks = raw.map(([t, x, y, w, h]) => ({ t, x: x * k, y: y * k, w: w * k, h: Math.min(h * k, H - y * k) })).filter((b) => b.y < H - 6 && b.w > 10 && b.h > 5);
     if (blocks.length > 26) blocks = blocks.slice(0, 26);
+    // stavět shora dolů: hlavička, pak bloky podle výšky (v jednom řádku zleva doprava, fotky dřív než text)
+    const row = (b) => Math.round(b.y / (H / 14));
+    blocks.sort((a, b) => (a.t === 'b' ? -1 : b.t === 'b' ? 1 : row(a) - row(b) || (a.t === 'm' ? -1 : 0) - (b.t === 'm' ? -1 : 0) || a.x - b.x));
+    // hotový web se odkrývá jako opona hned za rojem, aby nahoře nezůstávala prázdná místa
+    const imgH = s.img.offsetHeight;
+    const reveal = (y) => { s.img.style.clipPath = `inset(0 0 ${Math.max(0, imgH - y)}px 0)`; };
+    s.img.style.transition = 'none'; reveal(0); s.win.classList.add('is-curtain');
+    void s.img.offsetHeight; s.img.style.transition = '';
+    const queue = blocks.slice(), open = new Set();
+    const front = () => { let y = queue.length ? queue[0].y : H; for (const b of open) y = Math.min(y, b.y); reveal(Math.max(0, y - 2)); };
     const layer = mk('swarm', s.win);
     const src = s.img.currentSrc || s.img.src;
     const n = Math.max(2, Math.min(CREW.length, Math.ceil(blocks.length / 4)));
@@ -211,9 +221,10 @@ document.querySelectorAll('.tools').forEach((box) => {
     };
     await sleep(250 + (shots.indexOf(s) % 4) * 220); // okna nezačínají naráz
     const speed = s.fast ? 0.55 : 1;
-    const work = async (c, list) => {
-      for (const b of list) {
+    const work = async (c) => {
+      while (queue.length) {
         if (s.state !== 'building') return;
+        const b = queue.shift(); open.add(b);
         const d = Math.hypot(b.x - c.pos.x, b.y - c.pos.y);
         await move(c, b.x, b.y, (160 + Math.min(260, d * 0.9)) * speed);
         const box = mk('swarm-box swarm-box--' + b.t, layer);
@@ -224,15 +235,17 @@ document.querySelectorAll('.tools').forEach((box) => {
         const grow = box.animate([from, { width: b.w + 'px', height: b.h + 'px' }], { duration: ms, easing: typed ? 'steps(' + Math.max(4, Math.round(b.w / 14)) + ')' : 'cubic-bezier(.3,.7,.2,1)', fill: 'forwards' }).finished;
         await Promise.all([grow, move(c, b.x + b.w, b.y + b.h, ms, typed ? 'linear' : undefined)]);
         box.classList.add('is-in');
+        open.delete(b); front();
         await sleep(70 * speed);
       }
     };
-    await Promise.all(crew.map((c, i) => work(c, blocks.filter((_, j) => j % n === i))));
+    await Promise.all(crew.map((c) => work(c)));
+    reveal(imgH);
     if (s.state !== 'building') { layer.remove(); return; }
     s.win.classList.add('is-built');
     crew.forEach((c, i) => { c.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, delay: i * 60, fill: 'forwards' }); });
     await sleep(650);
-    layer.remove();
+    layer.remove(); s.img.style.clipPath = ''; s.win.classList.remove('is-curtain');
     s.state = 'built'; s.wait = 900;
   }
 
@@ -254,7 +267,7 @@ document.querySelectorAll('.tools').forEach((box) => {
   });
   // tlačítko na pracovní stránce: postavit všechna okna znovu
   document.querySelectorAll('[data-shots-replay]').forEach((btn) => btn.addEventListener('click', () => {
-    shots.forEach((s) => { s.state = 'idle'; s.y = 0; s.dir = 1; s.fast = false; s.img.style.transform = ''; s.win.classList.remove('is-built'); s.win.querySelectorAll('.swarm').forEach((n) => n.remove()); });
+    shots.forEach((s) => { s.state = 'idle'; s.y = 0; s.dir = 1; s.fast = false; s.img.style.transform = ''; s.win.classList.remove('is-built', 'is-curtain'); s.img.style.clipPath = ''; s.win.querySelectorAll('.swarm').forEach((n) => n.remove()); });
     requestAnimationFrame(() => shots.forEach(start));
   }));
 

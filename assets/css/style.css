@@ -1031,6 +1031,7 @@ html.is-locked { overflow: hidden; }
 .shot-win.is-swarm { background-color: var(--paper); background-image: radial-gradient(circle, #dfe0e2 1px, transparent 1.2px); background-size: 14px 14px; }
 .shot-win.is-swarm img { opacity: 0; transition: opacity 450ms ease; }
 .shot-win.is-swarm.is-built img { opacity: 1; }
+.shot-win.is-swarm.is-curtain img { opacity: 1; transition: clip-path 420ms var(--ease-out); }
 .shot-win.is-swarm::after { opacity: 0; transition: opacity 400ms ease; }
 .shot-win.is-swarm.is-built::after { opacity: 1; }
 .swarm { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }

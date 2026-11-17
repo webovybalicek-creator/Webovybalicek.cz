@@ -62,6 +62,18 @@ BLOKY = """(H) => {
   return res.slice(0, 60);
 }"""
 
+# cookie lišty a vyskakovací okna: cokoli přilepeného k oknu, co mluví o cookies nebo souhlasu, pryč
+LISTY = """() => {
+  let n = 0;
+  for (const e of document.querySelectorAll('body *')) {
+    const s = getComputedStyle(e);
+    if (s.position !== 'fixed' && s.position !== 'sticky') continue;
+    const t = (e.innerText || '').slice(0, 1500);
+    if (/cookie|soubory cookies|souhlas|súhlas|consent|gdpr/i.test(t) && !e.querySelector('nav, header') && !e.closest('header')) { e.remove(); n++; }
+  }
+  document.documentElement.style.overflow = ''; document.body.style.overflow = '';
+  return n;
+}"""
 # líně načítané obrázky načíst hned (nativní lazy i běžné JS knihovny)
 NACIST = """() => {
   document.querySelectorAll('img, source, iframe').forEach((e) => {
@@ -102,6 +114,7 @@ async def snimek(browser, url):
             await pg.reload(wait_until="load", timeout=60000)
             await pg.wait_for_timeout(2500)
         await pg.add_style_tag(content=HIDE)
+        await pg.evaluate(LISTY)
         meta = await pg.evaluate("""() => ({ title: document.title, desc: (document.querySelector('meta[name=description]')||{}).content || '',
             h1: (document.querySelector('h1')||{}).innerText || '' })""")
         # projet stránku kvůli lazy loadu a animacím při scrollu
@@ -116,6 +129,8 @@ async def snimek(browser, url):
             await pg.wait_for_load_state("networkidle", timeout=10000)
         except Exception:
             pass
+        listy = await pg.evaluate(LISTY)
+        if listy: print("  odstraněné lišty:", listy, flush=True)
         nenacteno = await pg.evaluate(DOCKAT)
         await pg.wait_for_timeout(800)
         if nenacteno: print("  nenačtené obrázky:", nenacteno, flush=True)
