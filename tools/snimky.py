@@ -93,6 +93,14 @@ async def snimek(browser, url):
     try:
         await pg.goto(url, wait_until="load", timeout=60000)
         await pg.wait_for_timeout(2500)
+        # hosting občas vrátí 429 (příliš mnoho požadavků): počkat a načíst znovu, úspěšné soubory už jsou v cache
+        for pokus in range(4):
+            if not any(c.startswith("429") for c in chyby): break
+            print(f"  429, čekám a načítám znovu ({pokus + 1})", flush=True)
+            await pg.wait_for_timeout(20000)
+            chyby.clear()
+            await pg.reload(wait_until="load", timeout=60000)
+            await pg.wait_for_timeout(2500)
         await pg.add_style_tag(content=HIDE)
         meta = await pg.evaluate("""() => ({ title: document.title, desc: (document.querySelector('meta[name=description]')||{}).content || '',
             h1: (document.querySelector('h1')||{}).innerText || '' })""")
