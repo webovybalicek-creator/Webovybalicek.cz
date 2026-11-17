@@ -796,7 +796,7 @@
  "staralabikova-cz": {
   "url": "https://staralabikova.cz/",
   "w": 880,
-  "h": 3353,
+  "h": 3351,
   "title": "STARLAB | staralabikova.cz",
   "desc": "Strategy | Communicatin | Content | Social | Art direction | PR | Napište na hello@staralabikova.cz.",
   "h1": "NAŠE ZKUŠENOSTI\nMLUVÍ ZA NÁS",
@@ -817,10 +817,10 @@
    },
    {
     "t": "media",
-    "x": 91,
-    "y": 479,
-    "w": 319,
-    "h": 319
+    "x": 100,
+    "y": 489,
+    "w": 300,
+    "h": 300
    },
    {
     "t": "text",
