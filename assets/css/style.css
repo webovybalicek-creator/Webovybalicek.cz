@@ -745,7 +745,7 @@ html.is-locked { overflow: hidden; }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--hairline); font-size: 12px; color: var(--stone); }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 /* obří adresa, která „zapadá“ pod spodní okraj stránky */
-.footer-giant { display: block; width: max-content; margin: clamp(24px, 3vw, 40px) auto -0.26em; font-weight: 700; font-size: 14.6cqw; line-height: .9; letter-spacing: -0.06em; white-space: nowrap; color: var(--ink); user-select: none; pointer-events: none; }
+.footer-giant { display: block; width: max-content; margin: clamp(24px, 3vw, 40px) auto -0.26em; font-weight: 700; font-size: 14.6cqw; line-height: .9; letter-spacing: -0.06em; white-space: nowrap; color: #e1e2e4; user-select: none; pointer-events: none; }
 
 /* ==========================================================
    podstránky
