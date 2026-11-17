@@ -32,7 +32,7 @@ precision highp float;
 uniform vec2 uRes;uniform float uTime;
 uniform sampler2D uText;
 uniform vec4 uB[8];uniform vec3 uC[8];
-const float F=2.2;const float CAM=5.0;const float K=0.55;
+const float F=11.0;const float CAM=25.0;const float K=0.55;
 float smin(float a,float b,float k){float h=max(k-abs(a-b),0.0)/k;return min(a,b)-h*h*k*0.25;}
 float map(vec3 p){float d=1e5;
   for(int i=0;i<8;i++){d=smin(d,length(p-uB[i].xyz)-uB[i].w,K);}
@@ -47,8 +47,8 @@ void main(){
   vec2 fc=gl_FragCoord.xy;vec2 suv=fc/uRes;
   vec2 uv=(fc-0.5*uRes)/uRes.y*2.0;
   vec3 ro=vec3(0.0,0.0,CAM);vec3 rd=normalize(vec3(uv,-F));
-  float t=2.4;float md=1e5;vec3 pm=ro;bool hit=false;vec3 p=ro;
-  for(int i=0;i<64;i++){p=ro+rd*t;float d=map(p);if(d<md){md=d;pm=p;}if(d<0.003){hit=true;break;}t+=d*0.85;if(t>8.5)break;}
+  float t=CAM-2.6;float md=1e5;vec3 pm=ro;bool hit=false;vec3 p=ro;
+  for(int i=0;i<64;i++){p=ro+rd*t;float d=map(p);if(d<md){md=d;pm=p;}if(d<0.003){hit=true;break;}t+=d*0.85;if(t>CAM+3.5)break;}
   float al=hit?1.0:clamp(1.0-md/0.016,0.0,1.0);if(!hit)p=pm;
   vec3 col=vec3(0.0);float a=0.0;
   if(al>0.0){
@@ -57,7 +57,7 @@ void main(){
     float ndv=max(dot(n,-rd),0.0);float fr=pow(1.0-ndv,3.0);
     vec3 tc=tint(p);vec3 r=reflect(rd,n);vec3 L=normalize(vec3(-0.45,0.65,0.6));
     float ndl=max(dot(n,L),0.0);float sp=pow(max(dot(r,L),0.0),70.0);
-    col=tc*(0.62+0.38*ndl)*(0.82+0.18*ndv);
+    col=tc*(0.54+0.46*ndl)*(0.76+0.24*ndv);
     col=mix(col,pal(fr*1.3+n.y*0.3+uTime*0.03)*0.75+0.2,fr*0.6)+vec3(sp*0.7);
     col=tm(col);
     // nadpis je přes hmotu vidět ohnutý, na hranách rozložený do barev
@@ -66,7 +66,9 @@ void main(){
     col=col*(1.0-k)+vec3(0.039,0.071,0.09)*k;
     col*=al;a=al;
   }
-  a+=exp(-max(md,0.0)*4.5)*(1.0-al)*0.2;
+  float hd=1e5;
+  for(int i=0;i<8;i++){vec3 oc=uB[i].xyz-ro;float tt=dot(oc,rd);hd=smin(hd,length(oc-rd*tt)-uB[i].w,K);}
+  a+=exp(-max(hd,0.0)*3.6)*(1.0-al)*0.17;
   gl_FragColor=vec4(col,min(a,1.0));}`;
 
   const sh = (type, src) => { const o = gl.createShader(type); gl.shaderSource(o, src); gl.compileShader(o); return gl.getShaderParameter(o, gl.COMPILE_STATUS) ? o : null; };
@@ -92,7 +94,7 @@ void main(){
   tip.hidden = false;
 
   // ---- stav ----
-  const F = 2.2, CAM = 5, N = 8, CORE = 6, AUX = 7;
+  const F = 11, CAM = 25, N = 8, CORE = 6, AUX = 7;
   const WHITE = [0.8, 0.8, 0.8], LIME = [0.66, 1.08, 0.0];
   const B = Array.from({ length: N }, () => ({ x: 0, y: 0, z: 0, vx: 0, vy: 0, vz: 0, r: 0.1, tx: 0, ty: 0, tz: 0, tr: 0.1 }));
   B[AUX].r = B[AUX].tr = -0.8;

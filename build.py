@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "72"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "73"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -103,8 +103,13 @@ def render_shots(vyber, snimky, limit=None, big=False):
             f'<span class="shot-meta"><strong>{html.escape(r["n"])}</strong><em>{html.escape(r["t"])}</em>'
             f'<span>{html.escape(r["d"])}</span></span></a></li>'
         )
-    cls = "shots shots--grid" if big else "shots shots--strip"
-    return f'<ul class="{cls}">{"".join(out)}</ul>'
+    if big:
+        return f'<ul class="shots shots--grid">{"".join(out)}</ul>'
+    # pruh: nekonečná smyčka od kraje do kraje – druhá kopie jen pro plynulé navázání
+    items = "".join(out)
+    kopie = items.replace("<a ", '<a tabindex="-1" ').replace(' fetchpriority="high"', ' loading="lazy"')
+    return (f'<div class="shots-loop"><ul class="shots shots--strip">{items}</ul>'
+            f'<ul class="shots shots--strip" aria-hidden="true">{kopie}</ul></div>')
 
 
 def render_clients(data):
