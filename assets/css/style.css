@@ -1109,9 +1109,12 @@ html.is-locked { overflow: hidden; }
 /* průhledná hlavička nad vzdušným úvodem: úvod (i perleťová hmota) zajíždí pod ni, po odscrollování hlavička zbělá */
 body:has(.hero--air) .site-header { background: transparent; border-bottom-color: transparent; transition: background-color 250ms ease, border-color 250ms ease, backdrop-filter 250ms ease; }
 body:has(.hero--air) .site-header .utility-bar { background: transparent; border-bottom-color: transparent; transition: background-color 250ms ease, border-color 250ms ease; }
-body:has(.hero--air) .site-header.is-scrolled { background: rgba(255,255,255,.86); -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4); border-bottom-color: var(--hairline); }
-body:has(.hero--air) .site-header.is-scrolled .utility-bar { border-bottom-color: var(--hairline); }
-body:has(.hero--air) .site-header:has(.nav-trigger[aria-expanded="true"]), body:has(.hero--air) .site-header:has(.mobile-nav[open]) { background: var(--paper); }
+/* skleněná hlavička po odscrollování (na všech stránkách); nad úvodem zůstává průhledná i s otevřeným menu */
+.site-header { transition: background-color 250ms ease, border-color 250ms ease; }
+.site-header.is-scrolled, body:has(.hero--air) .site-header:has(.mobile-nav[open]) {
+  background: rgba(255,255,255,.5); -webkit-backdrop-filter: blur(22px) saturate(1.7); backdrop-filter: blur(22px) saturate(1.7); border-bottom-color: rgba(10,18,23,.08); }
+.site-header.is-scrolled .utility-bar { border-bottom-color: rgba(10,18,23,.06); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .site-header.is-scrolled { background: rgba(255,255,255,.94); } }
 .hero--air { margin-top: calc(-1 * var(--header-h, 115px)); }
 .hero--air .hero-stage { padding-top: calc(var(--header-h, 115px) + clamp(32px, 5vw, 80px)); min-height: clamp(620px, 82vh, 820px); }
 @media (max-width: 960px) { .hero--air .hero-stage { min-height: 0; padding-top: calc(var(--header-h, 77px) + 190px); } }
