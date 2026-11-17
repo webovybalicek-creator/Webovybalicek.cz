@@ -179,6 +179,8 @@ document.querySelectorAll('.tools').forEach((box) => {
   const io = new IntersectionObserver((es) => es.forEach((e) => { const s = shots.find((x) => x.el === e.target); if (s) s.seen = e.isIntersecting; }), { rootMargin: '80px' });
   shots.forEach((s, i) => {
     io.observe(s.el);
+    const ready = () => s.win.classList.add('is-ready');
+    if (s.img.complete && s.img.naturalWidth) ready(); else s.img.addEventListener('load', ready, { once: true });
     s.wait = 600 + (i % 4) * 500; // okna nezačínají všechna naráz
     if (!fine) return;
     s.el.addEventListener('pointermove', (e) => { const r = s.win.getBoundingClientRect(); s.goal = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height)); });

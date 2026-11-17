@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "62"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "63"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -87,6 +87,8 @@ def render_shots(vyber, snimky, limit=None, big=False):
     """Okna s dlouhým snímkem webu, který se sám pomalu posouvá (main.js, [data-shot])."""
     out = []
     for r in vyber[:limit]:
+        # první okna v pruhu jsou vidět hned, načíst je bez čekání; ostatní až u obrazovky
+        lazy = 'loading="lazy" ' if big or len(out) >= 6 else 'fetchpriority="high" ' if len(out) < 4 else ""
         m = snimky.get(r["s"])
         if not m or m["h"] < 900:
             continue
@@ -95,7 +97,7 @@ def render_shots(vyber, snimky, limit=None, big=False):
             f'<li><a class="shot" href="{html.escape(r["u"])}" target="_blank" rel="noopener" data-shot>'
             f'<span class="shot-frame"><span class="shot-bar"><i></i><i></i><i></i><b>{html.escape(host)}</b></span>'
             f'<span class="shot-win"><img src="/assets/img/reference/{r["s"]}.webp?v={VERSION}" width="{m["w"]}" height="{m["h"]}" '
-            f'loading="lazy" decoding="async" alt="Náhled webu {html.escape(host)}"></span></span>'
+            f'{lazy}decoding="async" alt="Náhled webu {html.escape(host)}"></span></span>'
             f'<span class="shot-meta"><strong>{html.escape(r["n"])}</strong><em>{html.escape(r["t"])}</em>'
             f'<span>{html.escape(r["d"])}</span></span></a></li>'
         )

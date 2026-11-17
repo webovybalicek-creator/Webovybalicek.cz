@@ -1027,6 +1027,9 @@ html.is-locked { overflow: hidden; }
 .shot-bar b { margin-left: 8px; font: 400 12px/1 var(--f-mono); letter-spacing: -0.02em; color: var(--stone); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .shot-win { position: relative; display: block; overflow: hidden; aspect-ratio: 4 / 5; background: var(--gray); }
 .shot-win img { display: block; width: 100%; height: auto; will-change: transform; }
+/* než se snímek načte, okno jemně pulzuje, aby nevypadalo prázdné */
+.shot-win:not(.is-ready) { animation: shot-wait 1.4s ease-in-out infinite alternate; }
+@keyframes shot-wait { to { background-color: #e6e7e8; } }
 .shot-win::after { content: ""; position: absolute; inset: auto 0 0 0; height: 48px; pointer-events: none; background: linear-gradient(to top, rgba(10,18,23,.07), rgba(10,18,23,0)); }
 .shot-meta { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; align-items: baseline; padding: 16px 2px 0; }
 .shot-meta strong { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
