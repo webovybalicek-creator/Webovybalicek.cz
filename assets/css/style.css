@@ -454,9 +454,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .price-note { display: block; margin-top: 4px; font-size: 14px; color: var(--stone); }
 .feature-card .link-utility { margin-top: 28px; align-self: flex-start; }
 /* zvýrazněná karta – stejná řeč jako zvýrazněná položka v ceníku */
-.feature-card--featured { color: var(--ink); }
-.feature-card--featured > p:not(.price), .feature-card--featured .price { color: var(--graphite); }
-.feature-card--featured .price strong, .feature-card--featured .link-utility { color: var(--ink); }
+.feature-card--featured { position: relative; background: var(--ink); color: var(--on-ink); }
+.feature-card--featured > p:not(.price), .feature-card--featured .price { color: var(--on-ink-muted); }
+.feature-card--featured .price-note { color: #8d9498; }
+.feature-card--featured .price strong { color: var(--on-ink); }
+.feature-card--featured .link-utility { color: var(--lime); }
 .feature-tag { align-self: flex-start; margin-bottom: 18px; padding: 3px 10px; border-radius: var(--r-pill); background: var(--lime); color: var(--ink); font: 550 11px/1.4 var(--f-sans); letter-spacing: .06em; text-transform: uppercase; }
 @media (max-width: 960px) { .feature-cards { grid-template-columns: 1fr; } }
 
@@ -677,15 +679,15 @@ html.is-locked { overflow: hidden; }
 .price-card > p:last-child { color: var(--graphite); font-size: 16px; margin: 0; }
 .price { margin: 4px 0 16px; color: var(--graphite); font-size: 16px; }
 .price strong { font-size: 36px; font-weight: 650; letter-spacing: -0.035em; color: var(--ink); font-variant-numeric: tabular-nums; }
-.price-card--featured { color: var(--ink); }
-.price-card--featured .price, .price-card--featured > p:last-child { color: var(--graphite); }
-.price-card--featured .price strong { color: var(--ink); }
+.price-card--featured { background: var(--ink); color: var(--on-ink); }
+.price-card--featured .price, .price-card--featured > p:last-child { color: var(--on-ink-muted); }
+.price-card--featured .price strong { color: var(--on-ink); }
 .price-card--featured::before {
   content: "Nejčastější volba"; align-self: flex-start; margin-bottom: 14px; padding: 3px 10px; border-radius: var(--r-pill);
   background: var(--lime); color: var(--ink); font: 550 11px/1.4 var(--f-sans); letter-spacing: .06em; text-transform: uppercase;
 }
 .card-label { display: block; margin-bottom: 16px; font: 400 13px/1.5 var(--f-mono); color: var(--stone); }
-.price-card--featured .card-label { color: var(--stone); }
+.price-card--featured .card-label { color: #8d9498; }
 .pricing-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 24px; }
 .pricing-foot p { margin: 0; color: var(--graphite); font-size: 16px; }
 
@@ -920,7 +922,7 @@ html.is-locked { overflow: hidden; }
    ========================================================== */
 @property --pearl-a { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
 @property --sh { syntax: "<number>"; inherits: false; initial-value: 0; }
-.pearl, .feature-card--featured, .price-card--featured { position: relative; isolation: isolate;
+.pearl { position: relative; isolation: isolate;
   background:
     radial-gradient(120% 80% at 25% 10%, rgba(255,255,255,.95), rgba(255,255,255,0) 50%),
     radial-gradient(90% 70% at 85% 95%, rgba(196,198,206,.55), rgba(196,198,206,0) 60%),
@@ -928,12 +930,12 @@ html.is-locked { overflow: hidden; }
     linear-gradient(165deg, #fbfbfb, #d6d7dc);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.9), inset 0 -18px 40px rgba(10,18,23,.06), 0 24px 60px rgba(10,18,23,.12); }
 /* duhový lem jako na hranách hmoty, pomalu se otáčí */
-.pearl::after, .feature-card--featured::after, .price-card--featured::after { content: ""; position: absolute; inset: 0; z-index: 1; padding: 1.5px; border-radius: inherit; pointer-events: none;
+.pearl::after { content: ""; position: absolute; inset: 0; z-index: 1; padding: 1.5px; border-radius: inherit; pointer-events: none;
   background: var(--pearl-rim);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
   animation: pearl-spin 9s linear infinite; }
 @keyframes pearl-spin { to { --pearl-a: 360deg; } }
-@media (prefers-reduced-motion: reduce) { .pearl::after, .feature-card--featured::after, .price-card--featured::after { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .pearl::after { animation: none; } }
 
 /* odlesk pod myší na kartách (souřadnice nastavuje main.js) */
 .ref, .price-card, .feature-card { --mx: 50%; --my: 50%; transition: --sh 350ms ease, border-color 150ms ease, background-color 150ms ease; }
