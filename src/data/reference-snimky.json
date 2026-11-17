@@ -405,10 +405,24 @@
     "h": 240
    },
    {
+    "t": "media",
+    "x": 0,
+    "y": 1633,
+    "w": 278,
+    "h": 167
+   },
+   {
     "t": "text",
     "x": 58,
     "y": 1633,
     "w": 335,
+    "h": 165
+   },
+   {
+    "t": "media",
+    "x": 278,
+    "y": 1633,
+    "w": 305,
     "h": 167
    },
    {
@@ -423,13 +437,6 @@
     "x": 888,
     "y": 1633,
     "w": 305,
-    "h": 167
-   },
-   {
-    "t": "media",
-    "x": 1193,
-    "y": 1633,
-    "w": 248,
     "h": 167
    }
   ]
@@ -796,7 +803,7 @@
  "staralabikova-cz": {
   "url": "https://staralabikova.cz/",
   "w": 880,
-  "h": 3351,
+  "h": 3234,
   "title": "STARLAB | staralabikova.cz",
   "desc": "Strategy | Communicatin | Content | Social | Art direction | PR | Napište na hello@staralabikova.cz.",
   "h1": "NAŠE ZKUŠENOSTI\nMLUVÍ ZA NÁS",
@@ -824,9 +831,9 @@
    },
    {
     "t": "text",
-    "x": 603,
+    "x": 606,
     "y": 1170,
-    "w": 234,
+    "w": 228,
     "h": 32
    }
   ]
@@ -1374,13 +1381,6 @@
     "x": 120,
     "y": 205,
     "w": 1200,
-    "h": 290
-   },
-   {
-    "t": "media",
-    "x": 1340,
-    "y": 205,
-    "w": 100,
     "h": 290
    },
    {
