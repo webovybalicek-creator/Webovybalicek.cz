@@ -18,6 +18,8 @@ HIDE = """
 { display: none !important; visibility: hidden !important; }
 html { scroll-behavior: auto !important; }
 .elementor-invisible { visibility: visible !important; }
+*, *::before, *::after { animation-duration: 0s !important; animation-delay: 0s !important; transition-duration: 0s !important; transition-delay: 0s !important; }
+[data-aos], .wow, .animated, .reveal, .fade-in, .lazyload, .lazyloading { opacity: 1 !important; transform: none !important; visibility: visible !important; }
 """
 
 BLOKY = """(H) => {
@@ -60,6 +62,23 @@ BLOKY = """(H) => {
   return res.slice(0, 60);
 }"""
 
+# líně načítané obrázky načíst hned (nativní lazy i běžné JS knihovny)
+NACIST = """() => {
+  document.querySelectorAll('img, source, iframe').forEach((e) => {
+    if (e.loading === 'lazy') e.loading = 'eager';
+    for (const [d, a] of [['data-src', 'src'], ['data-lazy-src', 'src'], ['data-original', 'src'], ['data-srcset', 'srcset'], ['data-lazy-srcset', 'srcset']]) {
+      const v = e.getAttribute(d); if (v && e.getAttribute(a) !== v) e.setAttribute(a, v);
+    }
+  });
+  document.querySelectorAll('[data-bg], [data-background-image]').forEach((e) => { const v = e.getAttribute('data-bg') || e.getAttribute('data-background-image'); if (v) e.style.backgroundImage = `url("${v}")`; });
+}"""
+# počkat, až se obrázky dotáhnou; vrátí počet těch, které se nenačetly
+DOCKAT = """async () => {
+  const imgs = [...document.images].filter((i) => i.getBoundingClientRect().width > 1);
+  await Promise.race([Promise.all(imgs.map((i) => i.complete ? 0 : new Promise((r) => { i.onload = i.onerror = r; }))), new Promise((r) => setTimeout(r, 12000))]);
+  return imgs.filter((i) => !i.complete || !i.naturalWidth).length;
+}"""
+
 def slug(url):
     return re.sub(r"^www\.", "", re.sub(r"^https?://", "", url).strip("/")).replace(".", "-")
 
@@ -75,11 +94,20 @@ async def snimek(browser, url):
         meta = await pg.evaluate("""() => ({ title: document.title, desc: (document.querySelector('meta[name=description]')||{}).content || '',
             h1: (document.querySelector('h1')||{}).innerText || '' })""")
         # projet stránku kvůli lazy loadu a animacím při scrollu
+        await pg.evaluate(NACIST)
         total = await pg.evaluate("Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)")
         y = 0
         while y < min(total, MAXH):
-            await pg.evaluate(f"window.scrollTo(0, {y})"); await pg.wait_for_timeout(450); y += 450
-        await pg.evaluate("window.scrollTo(0, 0)"); await pg.wait_for_timeout(800)
+            await pg.evaluate(f"window.scrollTo(0, {y})"); await pg.wait_for_timeout(500); y += 400
+        await pg.evaluate(NACIST)
+        await pg.evaluate("window.scrollTo(0, 0)")
+        try:
+            await pg.wait_for_load_state("networkidle", timeout=10000)
+        except Exception:
+            pass
+        nenacteno = await pg.evaluate(DOCKAT)
+        await pg.wait_for_timeout(800)
+        if nenacteno: print("  nenačtené obrázky:", nenacteno, flush=True)
         total = await pg.evaluate("Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)")
         bloky = await pg.evaluate(BLOKY, 1800)
         png = await pg.screenshot(full_page=True, clip={"x": 0, "y": 0, "width": W, "height": min(total, MAXH)})
