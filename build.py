@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "61"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "62"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -81,6 +81,26 @@ def render_references(data):
         f'<div class="ref-filter" role="group" aria-label="Filtrovat podle roku">{filters}</div>'
         f'<ul class="refs refs--all" data-ref-list>{"".join(items)}</ul>'
     )
+
+
+def render_shots(vyber, snimky, limit=None, big=False):
+    """Okna s dlouhým snímkem webu, který se sám pomalu posouvá (main.js, [data-shot])."""
+    out = []
+    for r in vyber[:limit]:
+        m = snimky.get(r["s"])
+        if not m or m["h"] < 900:
+            continue
+        host = re.sub(r"^www\.", "", re.sub(r"^https?://", "", r["u"]).strip("/"))
+        out.append(
+            f'<li><a class="shot" href="{html.escape(r["u"])}" target="_blank" rel="noopener" data-shot>'
+            f'<span class="shot-frame"><span class="shot-bar"><i></i><i></i><i></i><b>{html.escape(host)}</b></span>'
+            f'<span class="shot-win"><img src="/assets/img/reference/{r["s"]}.webp?v={VERSION}" width="{m["w"]}" height="{m["h"]}" '
+            f'loading="lazy" decoding="async" alt="Náhled webu {html.escape(host)}"></span></span>'
+            f'<span class="shot-meta"><strong>{html.escape(r["n"])}</strong><em>{html.escape(r["t"])}</em>'
+            f'<span>{html.escape(r["d"])}</span></span></a></li>'
+        )
+    cls = "shots shots--grid" if big else "shots shots--strip"
+    return f'<ul class="{cls}">{"".join(out)}</ul>'
 
 
 def render_clients(data):
@@ -153,6 +173,9 @@ def build():
     refs = json.loads((SRC / "data" / "reference.json").read_text(encoding="utf-8"))
     clients = json.loads((SRC / "data" / "klienti.json").read_text(encoding="utf-8"))
     reviews = json.loads((SRC / "data" / "recenze.json").read_text(encoding="utf-8"))
+    vyber = json.loads((SRC / "data" / "reference-vyber.json").read_text(encoding="utf-8"))
+    snimky_p = SRC / "data" / "reference-snimky.json"
+    snimky = json.loads(snimky_p.read_text(encoding="utf-8")) if snimky_p.exists() else {}
 
     import sys
     sys.path.insert(0, str(SRC))
@@ -169,6 +192,8 @@ def build():
         body = body.replace("{{ref_count}}", str(len(refs)))
         body = body.replace("{{clients}}", render_clients(clients))
         body = body.replace("{{reviews}}", render_reviews(reviews))
+        body = body.replace("{{shots_strip}}", render_shots(vyber, snimky))
+        body = body.replace("{{shots_grid}}", render_shots(vyber, snimky, limit=8, big=True))
         years = date.today().year - GOOGLE["since"]
         body = body.replace("{{g_rating}}", GOOGLE["rating"])
         body = body.replace("{{g_count}}", recenze(GOOGLE["count"]))

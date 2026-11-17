@@ -1,0 +1,39 @@
+<!--
+title: Návrhy – reference | webovybalicek
+description: Pracovní stránka s návrhy prezentace referencí.
+cta: no
+hidden: yes
+-->
+<style>
+.rp { padding: 56px 0 120px; }
+.rp-head { max-width: 760px; margin-bottom: 24px; }
+.rp-head h1 { font-size: clamp(36px, 5vw, 60px); line-height: 1.05; letter-spacing: -0.03em; margin: 12px 0 16px; }
+.rp-head p { color: var(--graphite); font-size: 18px; }
+.rp-label { margin: 88px 0 8px; font: 500 13px/1 var(--f-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--stone); }
+.rp-why { max-width: 660px; color: var(--graphite); margin: 0 0 36px; }
+.rp h2 { font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.025em; margin: 0 0 12px; }
+</style>
+
+<section class="rp">
+  <div class="wrap">
+    <div class="rp-head">
+      <p class="pill">Pracovní návrhy</p>
+      <h1>Reference</h1>
+      <p>Weby se v oknech samy pomalu posouvají. Najeďte myší na okno a pohybem nahoru a dolů si web projedete sami. Kliknutí otevře živý web.</p>
+    </div>
+
+    <p class="rp-label">1 – Pruh hned pod úvodem</p>
+    <p class="rp-why">Místo statických obrázků živá okna. Pruh přetéká do stran, takže je hned vidět, že webů je víc. Posouvá se šipkami, trackpadem nebo prstem.</p>
+  </div>
+  <div class="shots-wrap">
+    {{shots_strip}}
+    <div class="shots-nav"><button type="button" aria-label="Předchozí weby">←</button><button type="button" aria-label="Další weby">→</button></div>
+  </div>
+
+  <div class="wrap">
+    <p class="rp-label">2 – Vybrané projekty</p>
+    <p class="rp-why">Větší sekce níž na stránce: osm nejlepších webů ve velkých oknech, se jménem, typem a jednou větou. Sem později doplníme čísla nebo krátký příběh ke každému projektu.</p>
+    <div class="section-head"><p class="pill">Reference</p><h2>Vybrané projekty</h2><p>Přes 100 spuštěných webů a e-shopů. Tady jsou ty, na které jsme nejvíc pyšní.</p></div>
+    {{shots_grid}}
+  </div>
+</section>

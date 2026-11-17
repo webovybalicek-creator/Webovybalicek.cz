@@ -168,3 +168,48 @@ document.querySelectorAll('.tools').forEach((box) => {
   box.addEventListener('pointerover', (e) => { const el = e.target.closest('[data-t]'); if (el) set(el.dataset.t, true); });
   box.addEventListener('pointerout', (e) => { const el = e.target.closest('[data-t]'); if (el) set(el.dataset.t, false); });
 });
+// Reference: snímek webu v okně se sám pomalu posouvá; myš nad oknem ho projíždí podle své výšky
+(() => {
+  const shots = [...document.querySelectorAll('[data-shot]')].map((el) => ({
+    el, win: el.querySelector('.shot-win'), img: el.querySelector('img'), y: 0, dir: 1, wait: 0, goal: null, seen: false,
+  }));
+  if (!shots.length) return;
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const io = new IntersectionObserver((es) => es.forEach((e) => { const s = shots.find((x) => x.el === e.target); if (s) s.seen = e.isIntersecting; }), { rootMargin: '80px' });
+  shots.forEach((s, i) => {
+    io.observe(s.el);
+    s.wait = 600 + (i % 4) * 500; // okna nezačínají všechna naráz
+    if (!fine) return;
+    s.el.addEventListener('pointermove', (e) => { const r = s.win.getBoundingClientRect(); s.goal = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height)); });
+    s.el.addEventListener('pointerleave', () => { s.goal = null; s.wait = 500; });
+  });
+  let last = performance.now();
+  const tick = (now) => {
+    const dt = Math.min(64, now - last); last = now;
+    for (const s of shots) {
+      if (!s.seen) continue;
+      const max = s.img.offsetHeight - s.win.clientHeight;
+      if (max <= 0) continue;
+      if (s.goal !== null) s.y += (s.goal * max - s.y) * Math.min(1, dt / 140);
+      else if (calm) continue;
+      else if (s.wait > 0) s.wait -= dt;
+      else {
+        s.y += s.dir * dt * 0.035;
+        if (s.y >= max) { s.y = max; s.dir = -1; s.wait = 1400; } else if (s.y <= 0) { s.y = 0; s.dir = 1; s.wait = 1400; }
+      }
+      s.img.style.transform = `translate3d(0,${-s.y.toFixed(1)}px,0)`;
+    }
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+  document.querySelectorAll('.shots-wrap').forEach((wrap) => {
+    const list = wrap.querySelector('.shots--strip'), [prev, next] = wrap.querySelectorAll('.shots-nav button');
+    if (!list || !next) return;
+    const step = () => (list.querySelector('li')?.offsetWidth || 300) * 2;
+    const sync = () => { prev.disabled = list.scrollLeft < 8; next.disabled = list.scrollLeft > list.scrollWidth - list.clientWidth - 8; };
+    prev.addEventListener('click', () => list.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => list.scrollBy({ left: step(), behavior: 'smooth' }));
+    list.addEventListener('scroll', sync, { passive: true }); sync();
+  });
+})();
