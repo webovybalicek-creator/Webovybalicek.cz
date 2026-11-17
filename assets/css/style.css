@@ -221,7 +221,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 .site-header { position: sticky; top: 0; z-index: 50; background: var(--paper); border-bottom: 1px solid var(--hairline); }
 .utility-bar { border-bottom: 1px solid var(--hairline); font-size: 14px; color: var(--graphite); }
-.utility-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; height: 36px; }
+.utility-inner { display: flex; justify-content: flex-end; align-items: center; gap: 16px; height: 36px; }
 .utility-links { display: flex; gap: 20px; }
 .utility-links a { text-decoration: none; transition: color 150ms ease; }
 .utility-links a:hover { color: var(--ink); }
