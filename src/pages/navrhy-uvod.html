@@ -12,22 +12,6 @@ hidden: yes
 .air-bg i { transition: opacity 500ms ease; }
 .hero--air:not([data-bg="mist"]) .air-bg i { opacity: 0; }
 
-/* B – tečkovaná síť se světlem, které putuje a jde za myší */
-.air-dots { position: absolute; inset: 0; --x: 70%; --y: 40%;
-  background-image: radial-gradient(circle, #b9bcbf 1.2px, transparent 1.5px); background-size: 22px 22px;
-  -webkit-mask-image: radial-gradient(520px circle at var(--x) var(--y), #000, rgba(0,0,0,.16) 70%), linear-gradient(#000, #000);
-  -webkit-mask-composite: source-in; mask-image: radial-gradient(520px circle at var(--x) var(--y), #000, rgba(0,0,0,.16) 70%); }
-[data-bg="dots"] .air-dots, [data-bg="swarm"] .air-dots { opacity: 1; }
-[data-bg="swarm"] .air-dots { -webkit-mask-image: none; mask-image: none; opacity: .5; }
-
-/* C – roj: kurzory v barvách značky kreslí do pozadí obrysy webu */
-.air-swarm { position: absolute; inset: 0; }
-[data-bg="swarm"] .air-swarm { opacity: 1; }
-.air-box { position: absolute; border: 1.5px solid currentColor; border-radius: 3px; opacity: .55; transition: opacity 1600ms ease; }
-.air-box.is-out { opacity: 0; }
-.air-box::after { content: ""; position: absolute; inset: 0; background: currentColor; opacity: .08; }
-.air-swarm .swarm-cur { transition: transform 900ms cubic-bezier(.3,.7,.2,1); }
-
 .air-switch { position: fixed; left: 50%; bottom: 20px; z-index: 60; translate: -50% 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px; padding: 8px 12px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 13px; box-shadow: 0 12px 32px rgba(10,18,23,.25); }
 .air-switch span { display: flex; align-items: center; gap: 4px; }
 .air-switch em { font-style: normal; color: #9aa0a3; margin-right: 4px; }
@@ -110,29 +94,5 @@ hidden: yes
   };
   requestAnimationFrame(drift);
 
-  // C: tři kurzory v barvách značky kreslí obrysy, které po chvíli zmizí
-  const layer = hero.querySelector('.air-swarm');
-  const crew = [['Návrh', '#0a1217', '#fff', '#fff'], ['Texty', '#cdfe00', '#0a1217', '#0a1217'], ['Kód', '#54595d', '#fff', '#fff']].map(([name, color, ink, stroke]) => {
-    const c = document.createElement('span'); c.className = 'swarm-cur'; c.style.color = color;
-    c.innerHTML = `<svg viewBox="0 0 16 16" width="16" height="16"><path d="M1.5 1.2l4.6 12.6 2-5.3 5.3-2z" fill="currentColor" stroke="${stroke}" stroke-width="1.1" stroke-linejoin="round"/></svg><b style="-webkit-text-fill-color:${ink}">${name}</b>`;
-    layer.append(c); return c;
-  });
-  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-  const loop = async (c, i) => {
-    await sleep(600 * i);
-    for (;;) {
-      if (hero.dataset.bg !== 'swarm' || calm || document.hidden) { await sleep(500); continue; }
-      const W = layer.clientWidth, H = layer.clientHeight;
-      const w = 90 + Math.random() * 240, h = 40 + Math.random() * 150;
-      const x = W * 0.42 + Math.random() * (W * 0.56 - w), y = 30 + Math.random() * (H - h - 90); // hlavně vpravo, mimo text
-      c.style.transform = `translate(${x}px,${y}px)`; await sleep(950);
-      const box = document.createElement('span'); box.className = 'air-box'; box.style.cssText = `left:${x}px;top:${y}px;width:0;height:0;color:${c.style.color};transition:width 700ms cubic-bezier(.3,.7,.2,1),height 700ms cubic-bezier(.3,.7,.2,1),opacity 1600ms ease`;
-      layer.prepend(box); void box.offsetWidth; box.style.width = w + 'px'; box.style.height = h + 'px';
-      c.style.transform = `translate(${x + w}px,${y + h}px)`; await sleep(1000);
-      setTimeout(() => { box.classList.add('is-out'); setTimeout(() => box.remove(), 1700); }, 3200);
-      await sleep(300 + Math.random() * 900);
-    }
-  };
-  crew.forEach(loop);
 })();
 </script>

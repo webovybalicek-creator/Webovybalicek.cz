@@ -301,3 +301,43 @@ document.querySelectorAll('.tools').forEach((box) => {
     list.addEventListener('scroll', sync, { passive: true }); sync();
   });
 })();
+
+// Hlavička: výška do CSS (úvod pod ni zajíždí) a stav po odscrollování
+(() => {
+  const header = document.querySelector('.site-header'); if (!header) return;
+  const size = () => document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+  size(); addEventListener('resize', size, { passive: true });
+  const onScroll = () => header.classList.toggle('is-scrolled', header.getBoundingClientRect().top <= 0 && scrollY > 8);
+  onScroll(); addEventListener('scroll', onScroll, { passive: true });
+})();
+// Úvod, varianta „roj“: kurzory v barvách značky kreslí do pozadí obrysy, které po chvíli zmizí
+(() => {
+  const hero = document.querySelector('[data-air]'); const layer = hero?.querySelector('.air-swarm'); if (!layer) return;
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let seen = true; new IntersectionObserver((es) => { seen = es[0].isIntersecting; }).observe(hero);
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const crew = [['Návrh', '#0a1217', '#fff', '#fff'], ['Texty', '#cdfe00', '#0a1217', '#0a1217'], ['Kód', '#54595d', '#fff', '#fff']].map(([name, color, ink, stroke]) => {
+    const c = document.createElement('span'); c.className = 'swarm-cur'; c.style.color = color; c.style.opacity = '0';
+    c.innerHTML = `<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M1.5 1.2l4.6 12.6 2-5.3 5.3-2z" fill="currentColor" stroke="${stroke}" stroke-width="1.1" stroke-linejoin="round"/></svg><b style="-webkit-text-fill-color:${ink}">${name}</b>`;
+    layer.append(c); return c;
+  });
+  const loop = async (c, i) => {
+    await sleep(500 + 700 * i);
+    for (;;) {
+      if (hero.dataset.bg !== 'swarm' || calm || document.hidden || !seen) { await sleep(600); continue; }
+      const W = layer.clientWidth, H = layer.clientHeight, wide = W > 900;
+      const w = (wide ? 90 : 50) + Math.random() * (wide ? 240 : 110), h = 40 + Math.random() * (wide ? 150 : 70);
+      // na šířku kreslit vpravo od textu, na mobilu nahoře kolem hmoty – mimo nadpis
+      const x = wide ? W * 0.42 + Math.random() * (W * 0.56 - w) : 12 + Math.random() * Math.max(10, W * 0.55 - w);
+      const y = wide ? H * 0.18 + Math.random() * (H * 0.72 - h) : 88 + Math.random() * Math.max(10, 150 - h);
+      c.style.opacity = '1'; c.style.transform = `translate(${x}px,${y}px)`; await sleep(950);
+      const box = document.createElement('span'); box.className = 'air-box';
+      box.style.cssText = `left:${x}px;top:${y}px;width:0;height:0;color:${c.style.color};transition:width 700ms cubic-bezier(.3,.7,.2,1),height 700ms cubic-bezier(.3,.7,.2,1),opacity 1600ms ease`;
+      layer.prepend(box); void box.offsetWidth; box.style.width = w + 'px'; box.style.height = h + 'px';
+      c.style.transform = `translate(${x + w}px,${y + h}px)`; await sleep(1000);
+      setTimeout(() => { box.classList.add('is-out'); setTimeout(() => box.remove(), 1700); }, 3200);
+      await sleep(300 + Math.random() * 900);
+    }
+  };
+  crew.forEach(loop);
+})();

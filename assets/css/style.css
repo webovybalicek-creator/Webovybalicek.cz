@@ -1085,6 +1085,21 @@ html.is-locked { overflow: hidden; }
 .hero--air .hero-lead { font-size: clamp(18px, 1.5vw, 21px); }
 .air-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
 .air-bg::after { content: ""; position: absolute; inset: auto 0 0 0; height: 120px; background: linear-gradient(to top, var(--paper), rgba(255,255,255,0)); }
+.air-bg > span { opacity: 0; transition: opacity 500ms ease; }
+.hero--air[data-bg]:not([data-bg="mist"]) .air-bg i { opacity: 0; }
+/* tečkovaná síť: u varianty „síť“ ji odkrývá putující světlo, u „roje“ je vidět celá, jen slabě */
+.air-dots { position: absolute; inset: 0; --x: 70%; --y: 40%;
+  background-image: radial-gradient(circle, #b9bcbf 1.2px, transparent 1.5px); background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(520px circle at var(--x) var(--y), #000, rgba(0,0,0,.16) 70%); mask-image: radial-gradient(520px circle at var(--x) var(--y), #000, rgba(0,0,0,.16) 70%); }
+[data-bg="dots"] .air-dots { opacity: 1; }
+[data-bg="swarm"] .air-dots { -webkit-mask-image: none; mask-image: none; opacity: .5; }
+/* roj: kurzory v barvách značky kreslí do pozadí obrysy webu (main.js) */
+.air-swarm { position: absolute; inset: 0; }
+[data-bg="swarm"] .air-swarm { opacity: 1; }
+.air-box { position: absolute; border: 1.5px solid currentColor; border-radius: 3px; opacity: .55; transition: opacity 1600ms ease; }
+.air-box.is-out { opacity: 0; }
+.air-box::after { content: ""; position: absolute; inset: 0; background: currentColor; opacity: .08; }
+.air-swarm .swarm-cur { transition: transform 900ms cubic-bezier(.3,.7,.2,1); }
 .air-bg i { position: absolute; width: 46vw; aspect-ratio: 1; border-radius: 50%; filter: blur(90px); opacity: .62; will-change: transform; }
 .air-bg i:nth-child(1) { left: -8%; top: -30%; background: #ffd3ea; animation: air-a 26s ease-in-out infinite alternate; }
 .air-bg i:nth-child(2) { left: 32%; top: 10%; background: #cfeaff; animation: air-b 31s ease-in-out infinite alternate; }
@@ -1096,3 +1111,13 @@ html.is-locked { overflow: hidden; }
 @media (max-width: 960px) { .hero--air .hero-stage { min-height: 0; padding-top: 224px; } }
 @media (max-width: 760px) { .air-bg i { width: 90vw; filter: blur(60px); } }
 @media (prefers-reduced-motion: reduce) { .air-bg i { animation: none; } }
+
+/* průhledná hlavička nad vzdušným úvodem: úvod (i perleťová hmota) zajíždí pod ni, po odscrollování hlavička zbělá */
+body:has(.hero--air) .site-header { background: transparent; border-bottom-color: transparent; transition: background-color 250ms ease, border-color 250ms ease, backdrop-filter 250ms ease; }
+body:has(.hero--air) .site-header .utility-bar { background: transparent; border-bottom-color: transparent; transition: background-color 250ms ease, border-color 250ms ease; }
+body:has(.hero--air) .site-header.is-scrolled { background: rgba(255,255,255,.86); -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4); border-bottom-color: var(--hairline); }
+body:has(.hero--air) .site-header.is-scrolled .utility-bar { border-bottom-color: var(--hairline); }
+body:has(.hero--air) .site-header:has(.nav-trigger[aria-expanded="true"]), body:has(.hero--air) .site-header:has(.mobile-nav[open]) { background: var(--paper); }
+.hero--air { margin-top: calc(-1 * var(--header-h, 115px)); }
+.hero--air .hero-stage { padding-top: calc(var(--header-h, 115px) + clamp(32px, 5vw, 80px)); min-height: clamp(620px, 82vh, 820px); }
+@media (max-width: 960px) { .hero--air .hero-stage { min-height: 0; padding-top: calc(var(--header-h, 77px) + 190px); } }
