@@ -168,34 +168,106 @@ document.querySelectorAll('.tools').forEach((box) => {
   box.addEventListener('pointerover', (e) => { const el = e.target.closest('[data-t]'); if (el) set(el.dataset.t, true); });
   box.addEventListener('pointerout', (e) => { const el = e.target.closest('[data-t]'); if (el) set(el.dataset.t, false); });
 });
-// Reference: snímek webu v okně se sám pomalu posouvá; myš nad oknem ho projíždí podle své výšky
+// Reference: web v okně nejdřív „postaví“ roj kurzorů (kreslí bloky, píše nadpisy), pak se snímek sám pomalu posouvá
+// a myš nad oknem ho projíždí podle své výšky. Vlastní implementace, inspirace: Swarm (Joel Califa) a Swarm Rebuild.
 (() => {
   const shots = [...document.querySelectorAll('[data-shot]')].map((el) => ({
-    el, win: el.querySelector('.shot-win'), img: el.querySelector('img'), y: 0, dir: 1, wait: 0, goal: null, seen: false,
+    el, win: el.querySelector('.shot-win'), img: el.querySelector('img'), y: 0, dir: 1, wait: 0, goal: null, seen: false, state: 'idle',
   }));
   if (!shots.length) return;
   const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
-  const io = new IntersectionObserver((es) => es.forEach((e) => { const s = shots.find((x) => x.el === e.target); if (s) s.seen = e.isIntersecting; }), { rootMargin: '80px' });
-  shots.forEach((s, i) => {
+  const CREW = [['Návrh', '#ff5fa8'], ['Texty', '#2f9bff'], ['Kód', '#7a5cff'], ['AI', '#6fb400']];
+  const ARROW = '<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M1.5 1.2l4.6 12.6 2-5.3 5.3-2z" fill="currentColor" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg>';
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const mk = (cls, parent) => { const n = document.createElement('span'); n.className = cls; parent.append(n); return n; };
+
+  // náhradní rozložení, když pro web nemáme změřené bloky
+  const fallback = () => {
+    const b = [['b', 0, 0, 1440, 90], ['t', 120, 260, 620, 150], ['t', 120, 440, 480, 70], ['k', 120, 560, 220, 60], ['m', 800, 200, 520, 520]];
+    for (let r = 0; r < 2; r++) for (let c = 0; c < 3; c++) b.push(['m', 120 + c * 410, 860 + r * 420, 380, 260], ['t', 120 + c * 410, 1140 + r * 420, 300, 40]);
+    return b;
+  };
+
+  async function build(s) {
+    s.state = 'building';
+    const k = s.win.clientWidth / 1440, H = s.win.clientHeight, W = s.win.clientWidth;
+    let raw = []; try { raw = JSON.parse(s.el.dataset.blocks || '[]'); } catch (e) { raw = []; }
+    if (raw.length < 5) raw = fallback();
+    let blocks = raw.map(([t, x, y, w, h]) => ({ t, x: x * k, y: y * k, w: w * k, h: Math.min(h * k, H - y * k) })).filter((b) => b.y < H - 6 && b.w > 10 && b.h > 5);
+    if (blocks.length > 26) blocks = blocks.slice(0, 26);
+    const layer = mk('swarm', s.win);
+    const src = s.img.currentSrc || s.img.src;
+    const n = Math.max(2, Math.min(CREW.length, Math.ceil(blocks.length / 4)));
+    const crew = CREW.slice(0, n).map(([name, color], i) => {
+      const c = mk('swarm-cur', layer); c.style.color = color; c.innerHTML = ARROW + '<b>' + name + '</b>';
+      const a = (i / n) * Math.PI * 2; c.pos = { x: W / 2 + Math.cos(a) * 26, y: H * 0.4 + Math.sin(a) * 26 };
+      c.style.transform = `translate(${c.pos.x}px,${c.pos.y}px)`;
+      return c;
+    });
+    const move = (c, x, y, ms, ease = 'cubic-bezier(.3,.7,.2,1)') => {
+      const from = c.pos; c.pos = { x, y };
+      return c.animate([{ transform: `translate(${from.x}px,${from.y}px)` }, { transform: `translate(${x}px,${y}px)` }], { duration: ms, easing: ease, fill: 'forwards' }).finished;
+    };
+    await sleep(250 + (shots.indexOf(s) % 4) * 220); // okna nezačínají naráz
+    const speed = s.fast ? 0.55 : 1;
+    const work = async (c, list) => {
+      for (const b of list) {
+        if (s.state !== 'building') return;
+        const d = Math.hypot(b.x - c.pos.x, b.y - c.pos.y);
+        await move(c, b.x, b.y, (160 + Math.min(260, d * 0.9)) * speed);
+        const box = mk('swarm-box swarm-box--' + b.t, layer);
+        box.style.cssText = `left:${b.x}px;top:${b.y}px;color:${c.style.color};background-image:url("${src}");background-size:${W}px auto;background-position:${-b.x}px ${-b.y}px`;
+        const typed = b.t === 't' || b.t === 'k';
+        const ms = (typed ? 200 + Math.min(420, b.w * 1.6) : 240 + Math.min(360, (b.w + b.h) * 0.7)) * speed;
+        const from = typed ? { width: '0px', height: b.h + 'px' } : { width: '0px', height: '0px' };
+        const grow = box.animate([from, { width: b.w + 'px', height: b.h + 'px' }], { duration: ms, easing: typed ? 'steps(' + Math.max(4, Math.round(b.w / 14)) + ')' : 'cubic-bezier(.3,.7,.2,1)', fill: 'forwards' }).finished;
+        await Promise.all([grow, move(c, b.x + b.w, b.y + b.h, ms, typed ? 'linear' : undefined)]);
+        box.classList.add('is-in');
+        await sleep(70 * speed);
+      }
+    };
+    await Promise.all(crew.map((c, i) => work(c, blocks.filter((_, j) => j % n === i))));
+    if (s.state !== 'building') { layer.remove(); return; }
+    s.win.classList.add('is-built');
+    crew.forEach((c, i) => { c.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, delay: i * 60, fill: 'forwards' }); });
+    await sleep(650);
+    layer.remove();
+    s.state = 'built'; s.wait = 900;
+  }
+
+  const start = (s) => {
+    if (s.state !== 'idle' || !s.seen || !(s.img.complete && s.img.naturalWidth)) return;
+    if (calm) { s.win.classList.add('is-built'); s.state = 'built'; return; }
+    build(s);
+  };
+  const io = new IntersectionObserver((es) => es.forEach((e) => { const s = shots.find((x) => x.el === e.target); if (s) { s.seen = e.isIntersecting; start(s); } }), { threshold: 0.25 });
+  shots.forEach((s) => {
+    if (!calm) s.win.classList.add('is-swarm');
     io.observe(s.el);
-    const ready = () => s.win.classList.add('is-ready');
+    const ready = () => { s.win.classList.add('is-ready'); start(s); };
     if (s.img.complete && s.img.naturalWidth) ready(); else s.img.addEventListener('load', ready, { once: true });
-    s.wait = 600 + (i % 4) * 500; // okna nezačínají všechna naráz
     if (!fine) return;
-    s.el.addEventListener('pointermove', (e) => { const r = s.win.getBoundingClientRect(); s.goal = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height)); });
+    s.el.addEventListener('pointerenter', () => { s.fast = true; });
+    s.el.addEventListener('pointermove', (e) => { if (s.state !== 'built') return; const r = s.win.getBoundingClientRect(); s.goal = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height)); });
     s.el.addEventListener('pointerleave', () => { s.goal = null; s.wait = 500; });
   });
+  // tlačítko na pracovní stránce: postavit všechna okna znovu
+  document.querySelectorAll('[data-shots-replay]').forEach((btn) => btn.addEventListener('click', () => {
+    shots.forEach((s) => { s.state = 'idle'; s.y = 0; s.dir = 1; s.fast = false; s.img.style.transform = ''; s.win.classList.remove('is-built'); s.win.querySelectorAll('.swarm').forEach((n) => n.remove()); });
+    requestAnimationFrame(() => shots.forEach(start));
+  }));
+
   let last = performance.now();
   const tick = (now) => {
     const dt = Math.min(64, now - last); last = now;
     for (const s of shots) {
-      if (!s.seen) continue;
+      if (!s.seen || s.state !== 'built') continue;
       const max = s.img.offsetHeight - s.win.clientHeight;
       if (max <= 0) continue;
       if (s.goal !== null) s.y += (s.goal * max - s.y) * Math.min(1, dt / 140);
       else if (calm) continue;
-      else if (s.wait > 0) s.wait -= dt;
+      else if (s.wait > 0) { s.wait -= dt; continue; }
       else {
         s.y += s.dir * dt * 0.035;
         if (s.y >= max) { s.y = max; s.dir = -1; s.wait = 1400; } else if (s.y <= 0) { s.y = 0; s.dir = 1; s.wait = 1400; }

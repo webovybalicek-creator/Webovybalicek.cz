@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "63"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "64"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -93,8 +93,10 @@ def render_shots(vyber, snimky, limit=None, big=False):
         if not m or m["h"] < 900:
             continue
         host = re.sub(r"^www\.", "", re.sub(r"^https?://", "", r["u"]).strip("/"))
+        typ = {"bar": "b", "media": "m", "text": "t", "btn": "k"}
+        bloky = html.escape(json.dumps([[typ[b["t"]], b["x"], b["y"], b["w"], b["h"]] for b in m.get("bloky", [])], separators=(",", ":")))
         out.append(
-            f'<li><a class="shot" href="{html.escape(r["u"])}" target="_blank" rel="noopener" data-shot>'
+            f'<li><a class="shot" href="{html.escape(r["u"])}" target="_blank" rel="noopener" data-shot data-blocks="{bloky}">'
             f'<span class="shot-frame"><span class="shot-bar"><i></i><i></i><i></i><b>{html.escape(host)}</b></span>'
             f'<span class="shot-win"><img src="/assets/img/reference/{r["s"]}.webp?v={VERSION}" width="{m["w"]}" height="{m["h"]}" '
             f'{lazy}decoding="async" alt="Náhled webu {html.escape(host)}"></span></span>'
