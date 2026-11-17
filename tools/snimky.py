@@ -69,7 +69,8 @@ LISTY = """() => {
     const s = getComputedStyle(e);
     if (s.position !== 'fixed' && s.position !== 'sticky') continue;
     const t = (e.innerText || '').slice(0, 1500);
-    if (/cookie|soubory cookies|souhlas|súhlas|consent|gdpr/i.test(t) && !e.querySelector('nav, header') && !e.closest('header')) { e.remove(); n++; }
+    const lista = /cookie|soubory cookies|souhlas|súhlas|consent|gdpr/i.test(t) || (/odmítám|odmítnout|povolit|přijmout|prijať|accept|uložit nastavení/i.test(t) && t.length < 600);
+    if (lista && e.getBoundingClientRect().height < innerHeight * 0.7 && !e.querySelector('nav, header') && !e.closest('header')) { e.remove(); n++; }
   }
   document.documentElement.style.overflow = ''; document.body.style.overflow = '';
   return n;

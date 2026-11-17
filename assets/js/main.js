@@ -177,8 +177,9 @@ document.querySelectorAll('.tools').forEach((box) => {
   if (!shots.length) return;
   const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
-  const CREW = [['Návrh', '#ff5fa8'], ['Texty', '#2f9bff'], ['Kód', '#7a5cff'], ['AI', '#6fb400']];
-  const ARROW = '<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M1.5 1.2l4.6 12.6 2-5.3 5.3-2z" fill="currentColor" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg>';
+  // barvy značky: [jmenovka, barva kurzoru a rámečku, barva textu jmenovky, obrys šipky]
+  const CREW = [['Návrh', '#0a1217', '#fff', '#fff'], ['Texty', '#cdfe00', '#0a1217', '#0a1217'], ['Kód', '#54595d', '#fff', '#fff'], ['AI', '#c3c6c8', '#0a1217', '#0a1217']];
+  const ARROW = (stroke) => `<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M1.5 1.2l4.6 12.6 2-5.3 5.3-2z" fill="currentColor" stroke="${stroke}" stroke-width="1.1" stroke-linejoin="round"/></svg>`;
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const mk = (cls, parent) => { const n = document.createElement('span'); n.className = cls; parent.append(n); return n; };
 
@@ -209,8 +210,8 @@ document.querySelectorAll('.tools').forEach((box) => {
     const layer = mk('swarm', s.win);
     const src = s.img.currentSrc || s.img.src;
     const n = Math.max(2, Math.min(CREW.length, Math.ceil(blocks.length / 4)));
-    const crew = CREW.slice(0, n).map(([name, color], i) => {
-      const c = mk('swarm-cur', layer); c.style.color = color; c.innerHTML = ARROW + '<b>' + name + '</b>';
+    const crew = CREW.slice(0, n).map(([name, color, ink, stroke], i) => {
+      const c = mk('swarm-cur', layer); c.style.color = color; c.innerHTML = ARROW(stroke) + `<b style="-webkit-text-fill-color:${ink}">` + name + '</b>';
       const a = (i / n) * Math.PI * 2; c.pos = { x: W / 2 + Math.cos(a) * 26, y: H * 0.4 + Math.sin(a) * 26 };
       c.style.transform = `translate(${c.pos.x}px,${c.pos.y}px)`;
       return c;
