@@ -9,14 +9,15 @@ from playwright.async_api import async_playwright
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "assets/img/reference"
 WEBY = json.loads((ROOT / "src/data/reference-weby.json").read_text())
-W, H, MAXH, OUTW = 1440, 900, 6300, 880
+W, H, MAXH, OUTW = 1440, 900, 5600, 880
 
 HIDE = """
-[id*="cookie" i],[class*="cookie" i],[id*="consent" i],[class*="consent" i],[id*="cmplz" i],[class*="cmplz" i],
-[id*="gdpr" i],[class*="gdpr" i],#CybotCookiebotDialog,.cky-consent-container,.cky-overlay,[class*="popup-modal" i],
-.elementor-popup-modal,.pum,.pum-overlay,[id*="chat-widget" i],[class*="chat-widget" i],iframe[src*="tawk"],#smartsupp-widget-container
+:is([id*="cookie" i],[class*="cookie" i],[id*="consent" i],[class*="consent" i],[id*="cmplz" i],[class*="cmplz" i],
+[id*="gdpr" i],[class*="gdpr" i],#CybotCookiebotDialog,.cky-consent-container,.cky-overlay,
+.elementor-popup-modal,.pum,.pum-overlay,[id*="chat-widget" i],[class*="chat-widget" i],iframe[src*="tawk"],#smartsupp-widget-container):not(html):not(body):not(main):not(#page):not(.site)
 { display: none !important; visibility: hidden !important; }
 html { scroll-behavior: auto !important; }
+.elementor-invisible { visibility: visible !important; }
 """
 
 def slug(url):
@@ -34,12 +35,12 @@ async def snimek(browser, url):
         meta = await pg.evaluate("""() => ({ title: document.title, desc: (document.querySelector('meta[name=description]')||{}).content || '',
             h1: (document.querySelector('h1')||{}).innerText || '' })""")
         # projet stránku kvůli lazy loadu a animacím při scrollu
-        total = await pg.evaluate("document.documentElement.scrollHeight")
+        total = await pg.evaluate("Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)")
         y = 0
         while y < min(total, MAXH):
-            await pg.evaluate(f"window.scrollTo(0, {y})"); await pg.wait_for_timeout(350); y += 600
+            await pg.evaluate(f"window.scrollTo(0, {y})"); await pg.wait_for_timeout(450); y += 450
         await pg.evaluate("window.scrollTo(0, 0)"); await pg.wait_for_timeout(800)
-        total = await pg.evaluate("document.documentElement.scrollHeight")
+        total = await pg.evaluate("Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)")
         png = await pg.screenshot(full_page=True, clip={"x": 0, "y": 0, "width": W, "height": min(total, MAXH)})
         im = Image.open(io.BytesIO(png)).convert("RGB")
         im = im.resize((OUTW, round(im.height * OUTW / im.width)), Image.LANCZOS)
