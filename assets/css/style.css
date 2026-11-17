@@ -1074,3 +1074,25 @@ html.is-locked { overflow: hidden; }
 @media (max-width: 760px) { .shots--grid { grid-template-columns: 1fr; } .shots--strip > li { width: 72vw; } }
 .refstrip { padding: clamp(8px, 2vw, 24px) 0 clamp(40px, 5vw, 72px); }
 #reference .shots--grid { margin-top: clamp(40px, 5vw, 64px); }
+
+/* ---------- vzdušný úvod: bez šedého panelu, přes celou šířku, v pozadí se přelévá perleťová mlha ---------- */
+.hero--air { position: relative; padding: 0; overflow: hidden; isolation: isolate; }
+.hero--air > .wrap { max-width: none; padding: 0; }
+.hero--air .hero-stage { background: none; border-radius: 0; min-height: clamp(540px, 72vh, 720px);
+  padding: clamp(40px, 6vw, 96px) max(var(--gutter), calc((100vw - var(--wrap)) / 2 + var(--gutter))); }
+.hero--air .hero-copy { max-width: 640px; }
+.hero--air .hero-copy .hero-title { font-size: clamp(42px, 6vw, 80px); }
+.hero--air .hero-lead { font-size: clamp(18px, 1.5vw, 21px); }
+.air-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.air-bg::after { content: ""; position: absolute; inset: auto 0 0 0; height: 120px; background: linear-gradient(to top, var(--paper), rgba(255,255,255,0)); }
+.air-bg i { position: absolute; width: 46vw; aspect-ratio: 1; border-radius: 50%; filter: blur(90px); opacity: .62; will-change: transform; }
+.air-bg i:nth-child(1) { left: -8%; top: -30%; background: #ffd3ea; animation: air-a 26s ease-in-out infinite alternate; }
+.air-bg i:nth-child(2) { left: 32%; top: 10%; background: #cfeaff; animation: air-b 31s ease-in-out infinite alternate; }
+.air-bg i:nth-child(3) { right: -10%; top: -20%; background: #e9ffc2; animation: air-c 23s ease-in-out infinite alternate; }
+.air-bg i:nth-child(4) { left: 12%; bottom: -55%; background: #e4d6ff; animation: air-b 28s ease-in-out infinite alternate-reverse; }
+@keyframes air-a { to { transform: translate(22vw, 16vh) scale(1.15); } }
+@keyframes air-b { to { transform: translate(-18vw, -10vh) scale(.85); } }
+@keyframes air-c { to { transform: translate(-24vw, 22vh) scale(1.2); } }
+@media (max-width: 960px) { .hero--air .hero-stage { min-height: 0; padding-top: 224px; } }
+@media (max-width: 760px) { .air-bg i { width: 90vw; filter: blur(60px); } }
+@media (prefers-reduced-motion: reduce) { .air-bg i { animation: none; } }
