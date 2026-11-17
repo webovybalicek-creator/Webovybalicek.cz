@@ -47,6 +47,13 @@ cta: no
   <script src="/assets/js/hero-blob.js?v={{v}}" defer></script>
 
   <!-- ============ DŮVĚRA ============ -->
+  <section class="refstrip" aria-label="Vybrané weby">
+    <div class="shots-wrap">
+      {{shots_strip}}
+      <div class="shots-nav"><button type="button" aria-label="Předchozí weby">←</button><button type="button" aria-label="Další weby">→</button></div>
+    </div>
+  </section>
+
   <section class="trust">
     <div class="wrap trust-inner">
       <p class="trust-text">Důvěřuje nám přes 100 firem a živnostníků. <a href="#reference" class="link">Vybrané projekty</a></p>
@@ -331,16 +338,7 @@ cta: no
     </div>
     {{reviews}}
     <div class="wrap">
-      <ul class="refs">
-        <li><a class="card ref" href="https://realityumore.com/" rel="noopener"><span class="ref-url">realityumore.com</span><span class="ref-desc">Prodej nemovitostí v zahraničí</span></a></li>
-        <li><a class="card ref" href="https://dorsen.cz/" rel="noopener"><span class="ref-url">dorsen.cz</span><span class="ref-desc">Luxusní matrace šité v Jizerských horách</span></a></li>
-        <li><a class="card ref" href="https://eezy.cz/" rel="noopener"><span class="ref-url">eezy.cz</span><span class="ref-desc">Konference, eventy a vydavatelství</span></a></li>
-        <li><a class="card ref" href="https://sheio.cz/" rel="noopener"><span class="ref-url">sheio.cz</span><span class="ref-desc">Spodní prádlo šité na míru</span></a></li>
-        <li><a class="card ref" href="https://www.deedivine.com/" rel="noopener"><span class="ref-url">deedivine.com</span><span class="ref-desc">Pásové sukně na míru</span></a></li>
-        <li><a class="card ref" href="https://dorint.cz/" rel="noopener"><span class="ref-url">dorint.cz</span><span class="ref-desc">Koupelny, kuchyně a wellness</span></a></li>
-        <li><a class="card ref" href="https://www.frosch-eko.cz/" rel="noopener"><span class="ref-url">frosch-eko.cz</span><span class="ref-desc">Ekologická drogerie</span></a></li>
-        <li><a class="card ref" href="https://mmntshop.cz/" rel="noopener"><span class="ref-url">mmntshop.cz</span><span class="ref-desc">Svíčky a doplňky značky Ewy Farné</span></a></li>
-      </ul>
+      {{shots_grid}}
     </div>
   </section>
 

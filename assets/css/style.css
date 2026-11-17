@@ -1072,3 +1072,5 @@ html.is-locked { overflow: hidden; }
 .shots--grid .shot-win { aspect-ratio: 16 / 11; }
 .shots--grid .shot-meta strong { font-size: 22px; }
 @media (max-width: 760px) { .shots--grid { grid-template-columns: 1fr; } .shots--strip > li { width: 72vw; } }
+.refstrip { padding: clamp(8px, 2vw, 24px) 0 clamp(40px, 5vw, 72px); }
+#reference .shots--grid { margin-top: clamp(40px, 5vw, 64px); }

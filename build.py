@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "66"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "67"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -197,7 +197,7 @@ def build():
         body = body.replace("{{clients}}", render_clients(clients))
         body = body.replace("{{reviews}}", render_reviews(reviews))
         body = body.replace("{{shots_strip}}", render_shots(vyber, snimky))
-        body = body.replace("{{shots_grid}}", render_shots(vyber, snimky, limit=8, big=True))
+        body = body.replace("{{shots_grid}}", render_shots(vyber, snimky, limit=6, big=True))
         years = date.today().year - GOOGLE["since"]
         body = body.replace("{{g_rating}}", GOOGLE["rating"])
         body = body.replace("{{g_count}}", recenze(GOOGLE["count"]))
