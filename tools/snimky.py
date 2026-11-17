@@ -87,6 +87,9 @@ async def snimek(browser, url):
     ctx = await browser.new_context(viewport={"width": W, "height": H}, locale="cs-CZ",
         user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36")
     pg = await ctx.new_page()
+    chyby = []
+    pg.on("requestfailed", lambda r: chyby.append(f"FAIL {r.resource_type} {r.url[:110]} {r.failure}"))
+    pg.on("response", lambda r: r.status >= 400 and chyby.append(f"{r.status} {r.request.resource_type} {r.url[:110]}"))
     try:
         await pg.goto(url, wait_until="load", timeout=60000)
         await pg.wait_for_timeout(2500)
@@ -108,6 +111,9 @@ async def snimek(browser, url):
         nenacteno = await pg.evaluate(DOCKAT)
         await pg.wait_for_timeout(800)
         if nenacteno: print("  nenačtené obrázky:", nenacteno, flush=True)
+        if nenacteno:
+            for c in chyby[:8]: print("   ", c, flush=True)
+            print("   ", await pg.evaluate("[...document.images].filter(i => !i.naturalWidth).slice(0, 4).map(i => (i.currentSrc || i.src || '(bez src)').slice(0, 120) + ' | ' + i.outerHTML.slice(0, 160))"), flush=True)
         total = await pg.evaluate("Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)")
         bloky = await pg.evaluate(BLOKY, 1800)
         png = await pg.screenshot(full_page=True, clip={"x": 0, "y": 0, "width": W, "height": min(total, MAXH)})
