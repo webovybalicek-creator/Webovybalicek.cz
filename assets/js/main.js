@@ -178,7 +178,7 @@ document.querySelectorAll('.tools').forEach((box) => {
   const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
   // barvy značky: [jmenovka, barva kurzoru a rámečku, barva textu jmenovky, obrys šipky]
-  const CREW = [['Návrh', '#0a1217', '#fff', '#fff'], ['Texty', '#cdfe00', '#0a1217', '#0a1217'], ['Kód', '#54595d', '#fff', '#fff'], ['AI', '#c3c6c8', '#0a1217', '#0a1217']];
+  const CREW = [['Návrh', '#0a1217', '#fff', '#fff'], ['Texty', '#cdfe00', '#0a1217', '#cdfe00'], ['Kód', '#54595d', '#fff', '#fff'], ['AI', '#c3c6c8', '#0a1217', '#0a1217']];
   const ARROW = (stroke) => `<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M1.5 1.2l4.6 12.6 2-5.3 5.3-2z" fill="currentColor" stroke="${stroke}" stroke-width="1.1" stroke-linejoin="round"/></svg>`;
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const mk = (cls, parent) => { const n = document.createElement('span'); n.className = cls; parent.append(n); return n; };
@@ -316,7 +316,7 @@ document.querySelectorAll('.tools').forEach((box) => {
   const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let seen = true; new IntersectionObserver((es) => { seen = es[0].isIntersecting; }).observe(hero);
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-  const crew = [['Návrh', '#0a1217', '#fff', '#fff'], ['Texty', '#cdfe00', '#0a1217', '#0a1217'], ['Kód', '#54595d', '#fff', '#fff']].map(([name, color, ink, stroke]) => {
+  const crew = [['Návrh', '#0a1217', '#fff', '#fff'], ['Texty', '#cdfe00', '#0a1217', '#cdfe00'], ['Kód', '#54595d', '#fff', '#fff']].map(([name, color, ink, stroke]) => {
     const c = document.createElement('span'); c.className = 'swarm-cur'; c.style.color = color; c.style.opacity = '0';
     c.innerHTML = `<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M1.5 1.2l4.6 12.6 2-5.3 5.3-2z" fill="currentColor" stroke="${stroke}" stroke-width="1.1" stroke-linejoin="round"/></svg><b style="-webkit-text-fill-color:${ink}">${name}</b>`;
     layer.append(c); return c;
