@@ -24,6 +24,8 @@
 }
 
 :root {
+  /* perleťový lem: stejná paleta, jakou má na hraně perleťová hmota v úvodu (hero-blob.js, pal()) */
+  --pearl-rim: conic-gradient(from var(--pearl-a), #d5b2b2, #d2a5c1, #cc9fcc, #c0a4d2, #b2b1d5, #a4c0d2, #9fcbcb, #a4d2c0, #b2d5b1, #c0d2a4, #cccc9f, #d2c1a5, #d5b2b2);
   /* barvy */
   --ink: #0a1217;          /* drawing ink – text, tmavé panely */
   --paper: #ffffff;
@@ -926,10 +928,10 @@ html.is-locked { overflow: hidden; }
     linear-gradient(165deg, #fbfbfb, #d6d7dc);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.9), inset 0 -18px 40px rgba(10,18,23,.06), 0 24px 60px rgba(10,18,23,.12); }
 /* duhový lem jako na hranách hmoty, pomalu se otáčí */
-.pearl::after, .feature-card--featured::after, .price-card--featured::after { content: ""; position: absolute; inset: 0; z-index: 1; padding: 2px; border-radius: inherit; pointer-events: none;
-  background: conic-gradient(from var(--pearl-a), #ff9fd0, #8fd6ff, #fff 22%, #c9ff7a, #c4a0ff, #fff 62%, #ffc48f, #ff9fd0);
+.pearl::after, .feature-card--featured::after, .price-card--featured::after { content: ""; position: absolute; inset: 0; z-index: 1; padding: 1.5px; border-radius: inherit; pointer-events: none;
+  background: var(--pearl-rim);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
-  animation: pearl-spin 5s linear infinite; }
+  animation: pearl-spin 9s linear infinite; }
 @keyframes pearl-spin { to { --pearl-a: 360deg; } }
 @media (prefers-reduced-motion: reduce) { .pearl::after, .feature-card--featured::after, .price-card--featured::after { animation: none; } }
 
@@ -1018,10 +1020,10 @@ html.is-locked { overflow: hidden; }
 .shot { display: block; color: inherit; text-decoration: none; }
 .shot-frame { position: relative; display: block; border-radius: var(--r-card); background: var(--paper); box-shadow: inset 0 0 0 1px var(--hairline); overflow: hidden;
   transition: translate 350ms var(--ease-out), box-shadow 350ms ease; }
-.shot-frame::after { content: ""; position: absolute; inset: 0; z-index: 2; padding: 2px; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 300ms ease;
-  background: conic-gradient(from var(--pearl-a), #ff9fd0, #8fd6ff, #fff 22%, #c9ff7a, #c4a0ff, #fff 62%, #ffc48f, #ff9fd0);
+.shot-frame::after { content: ""; position: absolute; inset: 0; z-index: 2; padding: 1.5px; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 300ms ease;
+  background: var(--pearl-rim);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
-  animation: pearl-spin 5s linear infinite; animation-play-state: paused; }
+  animation: pearl-spin 9s linear infinite; animation-play-state: paused; }
 .shot-bar { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px; border-bottom: 1px solid var(--hairline); }
 .shot-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--hairline); }
 .shot-bar b { margin-left: 8px; font: 400 12px/1 var(--f-mono); letter-spacing: -0.02em; color: var(--stone); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
