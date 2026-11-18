@@ -60,16 +60,63 @@ hidden: yes
 .pc cite .hd { width: 56px; height: 22px; stroke-width: 3; }
 .pc cite b { color: #fff; font-weight: 600; }
 @media (max-width: 700px) { .pc { grid-template-columns: 1fr; } .pc-photo { width: 200px; margin-top: 24px; order: 2; } .pc-text { padding-bottom: 0; } }
+
+/* varianty původního pruhu */
+.zv { margin-inline: calc(50% - 50vw); overflow: hidden; padding: 28px 0; }
+.zv .zap-band { pointer-events: none; }
+.z-sm li { font-size: clamp(15px, 1.5vw, 19px); font-weight: 600; letter-spacing: -0.01em; }
+.z-sm ul { gap: clamp(14px, 1.6vw, 22px); animation-duration: 34s; }
+.z-sm .bolt svg { width: 16px; height: 16px; }
+.z-sm.zap-band { padding: 11px 0; }
+.z-flat.zap-band { rotate: none; }
+.z-caps li { font: 550 13px/1 var(--f-sans); letter-spacing: .12em; text-transform: uppercase; }
+.z-caps ul { gap: 18px; animation-duration: 40s; }
+.z-caps .bolt svg { width: 14px; height: 14px; }
+.z-caps.zap-band { padding: 12px 0; rotate: none; }
+.z-ink.zap-band { background: var(--ink); color: var(--lime); }
+.z-ink .bolt svg { fill: var(--lime); animation: none; }
+.z-x { position: relative; height: 150px; }
+.z-x .zap-band { position: absolute; top: 50%; translate: 0 -50%; }
+.z-x .zap-band:first-child { rotate: 2.2deg; }
+.z-x .zap-band:first-child ul { animation-direction: reverse; }
+.z-x .zap-band:last-child { rotate: -1.6deg; }
+.z-line.zap-band { background: none; border-block: 1px solid var(--hairline); rotate: none; }
+.z-line .bolt svg { fill: var(--lime); stroke: var(--ink); stroke-width: 1.2; animation: none; }
 </style>
 
 <section class="pp">
   <div class="wrap">
     <div class="pp-head">
       <p class="pill">Pracovní návrhy</p>
-      <h1>Pruh o AI ve stylu fotek</h1>
-      <p>Tři podoby, které přebírají jazyk vašich profilových fotek: tmavý beton, limetková fixa, tahy kreslené rukou.</p>
+      <h1>Pruh o AI</h1>
+      <p>Šest variant původního běžícího pruhu, od velkého po úplně decentní. Pod nimi zůstaly dřívější návrhy ve stylu fotek.</p>
     </div>
 
+    <p class="pp-label">1 – Původní</p>
+    <p class="pp-why">Tak, jak je teď na homepage: velké písmo, lehký náklon.</p>
+    <div class="zv"><div class="zap-band "><ul><li>S AI jsme rychlejší než kdy dřív</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Neotřelé nápady</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Od nápadu k hotovému webu za pár dní</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Kreativita, kterou stihneme zpracovat</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li></ul><ul aria-hidden="true"><li>S AI jsme rychlejší než kdy dřív</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Neotřelé nápady</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Od nápadu k hotovému webu za pár dní</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Kreativita, kterou stihneme zpracovat</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li></ul></div></div>
+
+    <p class="pp-label">2 – Menší písmo</p>
+    <p class="pp-why">Stejný nakloněný pruh, jen tenčí a s textem velikosti běžného odstavce. Působí jako páska, ne jako nadpis.</p>
+    <div class="zv"><div class="zap-band z-sm"><ul><li>S AI jsme rychlejší než kdy dřív</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Neotřelé nápady</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Od nápadu k hotovému webu za pár dní</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Kreativita, kterou stihneme zpracovat</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li></ul><ul aria-hidden="true"><li>S AI jsme rychlejší než kdy dřív</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Neotřelé nápady</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Od nápadu k hotovému webu za pár dní</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Kreativita, kterou stihneme zpracovat</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li></ul></div></div>
+
+    <p class="pp-label">3 – Tenká rovná lišta</p>
+    <p class="pp-why">Bez náklonu, drobné verzálky s velkými mezerami. Nejdecentnější, podobná limetkové liště úplně nahoře.</p>
+    <div class="zv"><div class="zap-band z-caps"><ul><li>S AI jsme rychlejší než kdy dřív</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Neotřelé nápady</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Od nápadu k hotovému webu za pár dní</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Kreativita, kterou stihneme zpracovat</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li></ul><ul aria-hidden="true"><li>S AI jsme rychlejší než kdy dřív</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Neotřelé nápady</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Od nápadu k hotovému webu za pár dní</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Kreativita, kterou stihneme zpracovat</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li></ul></div></div>
+
+    <p class="pp-label">4 – Dvě pásky do kříže</p>
+    <p class="pp-why">Černá a limetková páska se kříží a jedou proti sobě, s menším písmem. Nejvýraznější předěl.</p>
+    <div class="zv z-x"><div class="zap-band z-sm z-ink"><ul><li>S AI jsme rychlejší než kdy dřív</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Neotřelé nápady</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Od nápadu k hotovému webu za pár dní</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Kreativita, kterou stihneme zpracovat</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li></ul><ul aria-hidden="true"><li>S AI jsme rychlejší než kdy dřív</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Neotřelé nápady</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Od nápadu k hotovému webu za pár dní</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Kreativita, kterou stihneme zpracovat</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li></ul></div><div class="zap-band z-sm"><ul><li>S AI jsme rychlejší než kdy dřív</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Neotřelé nápady</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Od nápadu k hotovému webu za pár dní</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Kreativita, kterou stihneme zpracovat</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li></ul><ul aria-hidden="true"><li>S AI jsme rychlejší než kdy dřív</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Neotřelé nápady</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Od nápadu k hotovému webu za pár dní</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Kreativita, kterou stihneme zpracovat</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li></ul></div></div>
+
+    <p class="pp-label">5 – Černý pruh</p>
+    <p class="pp-why">Obrácené barvy: černá páska, limetkový text. Menší písmo, lehký náklon.</p>
+    <div class="zv"><div class="zap-band z-sm z-ink"><ul><li>S AI jsme rychlejší než kdy dřív</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Neotřelé nápady</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Od nápadu k hotovému webu za pár dní</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Kreativita, kterou stihneme zpracovat</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li></ul><ul aria-hidden="true"><li>S AI jsme rychlejší než kdy dřív</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Neotřelé nápady</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Od nápadu k hotovému webu za pár dní</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Kreativita, kterou stihneme zpracovat</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li></ul></div></div>
+
+    <p class="pp-label">6 – Jen linky</p>
+    <p class="pp-why">Bez barevné plochy: text běží mezi dvěma tenkými linkami, limetkové jsou jen blesky. Nejklidnější.</p>
+    <div class="zv"><div class="zap-band z-sm z-line"><ul><li>S AI jsme rychlejší než kdy dřív</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Neotřelé nápady</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Od nápadu k hotovému webu za pár dní</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Kreativita, kterou stihneme zpracovat</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li></ul><ul aria-hidden="true"><li>S AI jsme rychlejší než kdy dřív</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Neotřelé nápady</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Od nápadu k hotovému webu za pár dní</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li><li>Kreativita, kterou stihneme zpracovat</li><li class="bolt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.8z"/></svg></li></ul></div></div>
+
+    <p class="pp-label" style="margin-top:140px">Dřívější návrhy ve stylu fotek</p>
     <p class="pp-label">A – Fixa na betonu</p>
     <p class="pp-why">Tmavý pruh s texturou betonu jako pozadí fotek. Blesk, kroužek kolem klíčového slova a podtržení se při příjezdu na obrazovku samy „nakreslí“ limetkovou fixou. Statický, bez běžícího textu.</p>
     <div class="pa concrete" data-draw>
