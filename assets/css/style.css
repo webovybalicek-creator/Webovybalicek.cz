@@ -1139,3 +1139,11 @@ body:has(.hero--air) .site-header .utility-bar { background: transparent; border
 @media (max-width: 960px) { .hero--air .hero-stage { min-height: 0; padding-top: calc(var(--header-h, 77px) + 190px); } }
 /* plátno s hmotou dole plynule mizí, aby se stín kapek neuřízl o hranu úvodu */
 .hero--air .hero-canvas { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 110px), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 110px), transparent); }
+
+/* logo v hlavičce se při načtení stránky „napíše“: značka se odkryje zleva, nápis vyjede za ní */
+@media (prefers-reduced-motion: no-preference) {
+  .site-header .logo-mark { animation: logo-mark 620ms cubic-bezier(.22, 1, .36, 1) 80ms both; }
+  .site-header .logo-word { animation: logo-word 720ms cubic-bezier(.22, 1, .36, 1) 260ms both; }
+}
+@keyframes logo-mark { from { clip-path: inset(0 100% 0 0); transform: translateY(5px); } to { clip-path: inset(0 0 0 0); transform: none; } }
+@keyframes logo-word { from { clip-path: inset(0 100% 0 0); transform: translateX(-10px); opacity: 0; } to { clip-path: inset(-10% -2% -10% 0); transform: none; opacity: 1; } }
