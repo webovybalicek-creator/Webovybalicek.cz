@@ -454,7 +454,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .feature-card--featured .price-note { color: #8d9498; }
 .feature-card--featured .price strong { color: var(--on-ink); }
 .feature-card--featured .link-utility { color: var(--lime); }
-.feature-tag { align-self: flex-start; margin-bottom: 18px; padding: 3px 10px; border-radius: var(--r-pill); background: var(--lime); color: var(--ink); font: 550 11px/1.4 var(--f-sans); letter-spacing: .06em; text-transform: uppercase; }
+/* štítek sedí na horní hraně karty vpravo, aby nadpisy všech karet zůstaly v jedné rovině */
+.feature-tag { position: absolute; top: 0; right: clamp(28px, 3vw, 40px); translate: 0 -50%; padding: 4px 11px; border-radius: var(--r-pill); background: var(--lime); color: var(--ink); font: 550 11px/1.4 var(--f-sans); letter-spacing: .06em; text-transform: uppercase; }
 @media (max-width: 960px) { .feature-cards { grid-template-columns: 1fr; } }
 
 /* typy webů pod kartami – otevírají popup „Co umíme“ */
@@ -678,7 +679,7 @@ html.is-locked { overflow: hidden; }
 .price-card--featured .price, .price-card--featured > p:last-child { color: var(--on-ink-muted); }
 .price-card--featured .price strong { color: var(--on-ink); }
 .price-card--featured::before {
-  content: "Nejčastější volba"; align-self: flex-start; margin-bottom: 14px; padding: 3px 10px; border-radius: var(--r-pill);
+  content: "Nejčastější volba"; position: absolute; top: 0; right: 32px; translate: 0 -50%; padding: 4px 11px; border-radius: var(--r-pill);
   background: var(--lime); color: var(--ink); font: 550 11px/1.4 var(--f-sans); letter-spacing: .06em; text-transform: uppercase;
 }
 .card-label { display: block; margin-bottom: 16px; font: 400 13px/1.5 var(--f-mono); color: var(--stone); }
