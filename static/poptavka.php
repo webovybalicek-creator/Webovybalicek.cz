@@ -20,7 +20,9 @@ $lock = sys_get_temp_dir() . '/wb_poptavka_' . md5($ip);
 if (is_file($lock) && time() - filemtime($lock) < 30) out(429, ['ok' => false, 'error' => 'rate']);
 @touch($lock);
 
-$types = ['' => 'Nevím, poraďte mi', 'ai' => 'AI web', 'wordpress' => 'Web na WordPressu', 'eshop' => 'E-shop', 'hybrid' => 'Hybridní web', 'sprava' => 'Správa stávajícího webu'];
+$types = ['' => 'Nevím, poraďte mi', 'ai' => 'AI web', 'wordpress' => 'Web na WordPressu', 'eshop' => 'E-shop', 'hybrid' => 'Hybridní web', 'sprava' => 'Správa stávajícího webu',
+  'a-nevim' => 'Agentura: zatím neví, probrat', 'a-kod' => 'Agentura: stavba webu podle jejich návrhu', 'a-web' => 'Agentura: celý web včetně návrhu', 'a-eshop' => 'Agentura: e-shop', 'a-vypomoc' => 'Agentura: dlouhodobá výpomoc s vývojem'];
+$agency = $f('segment', 20) === 'agentura';
 $name = preg_replace('/[\r\n]+/', ' ', $f('name', 120));
 $phone = preg_replace('/[\r\n]+/', ' ', $f('phone', 40));
 $type = $types[$f('type', 20)] ?? 'Neuvedeno';
@@ -28,12 +30,12 @@ $msg = $f('message', 5000);
 $urgent = $f('urgent') !== '' ? 'ANO' : 'ne';
 $page = $f('page', 200);
 
-$body = "Nová poptávka z webu\n\n"
+$body = ($agency ? "Nová poptávka SPOLUPRÁCE od agentury\n\n" : "Nová poptávka z webu\n\n")
   . "Jméno: $name\nE-mail: $email\nTelefon: $phone\nCo potřebuje: $type\nSpěchá: $urgent\n\n"
   . "Zpráva:\n$msg\n\n---\nOdesláno ze stránky: $page\n" . date('j. n. Y H:i');
 
 $to = 'webovybalicek@gmail.com';
-$subject = '=?UTF-8?B?' . base64_encode('Poptávka webu – ' . ($name !== '' ? $name : $email)) . '?=';
+$subject = '=?UTF-8?B?' . base64_encode(($agency ? 'Spolupráce s agenturou – ' : 'Poptávka webu – ') . ($name !== '' ? $name : $email)) . '?=';
 $from = 'noreply@webovybalicek.cz';
 $headers = implode("\r\n", [
   'From: =?UTF-8?B?' . base64_encode('Web webovybalicek') . "?= <$from>",

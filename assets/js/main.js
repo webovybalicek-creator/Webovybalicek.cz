@@ -140,9 +140,10 @@ document.querySelectorAll('form.form').forEach((form) => {
   form.insertAdjacentHTML('afterbegin', '<label class="hp" aria-hidden="true">Web <input type="text" name="web" tabindex="-1" autocomplete="off"></label>');
   form.insertAdjacentHTML('beforeend', '<div class="form-done" aria-live="polite"><div class="pearl"><p>Díky, ozveme se do 24 hodin<small>Mezitím se můžete podívat na naše reference.</small></p></div></div>');
   const btn = form.querySelector('button[type="submit"]');
-  const label = btn ? btn.innerHTML : '';
+  let label = btn ? btn.innerHTML : '';
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (btn) label = btn.innerHTML; // text tlačítka se mění podle záložky
     form.querySelector('.form-error')?.remove();
     const data = new FormData(form);
     data.set('t', String(Date.now() - started));
@@ -384,4 +385,26 @@ document.querySelectorAll('.tools').forEach((box) => {
     }
   };
   crew.forEach(loop);
+})();
+
+// Kontakt: záložky „Chci nový web“ / „Jsme agentura“ – mění text vlevo i formulář; /#spoluprace otevře rovnou agenturní
+(() => {
+  const tabs = [...document.querySelectorAll('[data-contact-tab]')]; if (!tabs.length) return;
+  const panel = document.querySelector('[data-contact]'), form = panel.querySelector('form');
+  const pick = (kind, focus) => {
+    panel.dataset.contact = kind;
+    tabs.forEach((t) => { const on = t.dataset.contactTab === kind; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; if (on && focus) t.focus(); });
+    panel.querySelectorAll('[role="tabpanel"]').forEach((p) => { p.hidden = p.id !== 'kontakt-' + kind; });
+    form.querySelectorAll('[data-only]').forEach((el) => { const on = el.dataset.only === kind; el.hidden = !on; el.querySelectorAll('select, input').forEach((f) => { f.disabled = !on; }); });
+    form.querySelectorAll('[data-klient]').forEach((el) => { const v = el.dataset[kind]; if (el.matches('textarea, input')) el.placeholder = v; else el.textContent = v; });
+    form.elements.segment.value = kind;
+    form.classList.remove('is-sent');
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => pick(t.dataset.contactTab));
+    t.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); pick(tabs[(i + 1) % tabs.length].dataset.contactTab, true); } });
+  });
+  form.addEventListener('reset', () => setTimeout(() => { form.elements.segment.value = panel.dataset.contact; })); // po odeslání se formulář čistí, záložka ale zůstává
+  const fromHash = () => { if (location.hash === '#spoluprace') { pick('agentura'); document.getElementById('kontakt')?.scrollIntoView(); } };
+  fromHash(); addEventListener('hashchange', fromHash);
 })();

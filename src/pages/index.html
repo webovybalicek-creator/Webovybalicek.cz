@@ -413,8 +413,12 @@ cta: no
   <!-- ============ KONTAKT ============ -->
   <section class="section contact-section" id="kontakt">
     <div class="wrap">
-      <div class="contact-panel split">
-        <div class="section-head section-head--dark">
+      <div class="contact-tabs" role="tablist" aria-label="Komu se ozýváte">
+        <button type="button" role="tab" id="tab-klient" aria-controls="kontakt-klient" aria-selected="true" data-contact-tab="klient">Chci nový web</button>
+        <button type="button" role="tab" id="tab-agentura" aria-controls="kontakt-agentura" aria-selected="false" tabindex="-1" data-contact-tab="agentura">Jsme agentura</button>
+      </div>
+      <div class="contact-panel split" data-contact="klient">
+        <div class="section-head section-head--dark" id="kontakt-klient" role="tabpanel" aria-labelledby="tab-klient">
           <p class="pill">Nezávazně a zdarma</p>
           <h2>Pojďme probrat váš web</h2>
           <p>Napište pár vět o svém projektu. Ozveme se do 24 hodin a doporučíme nejvhodnější řešení.</p>
@@ -423,18 +427,37 @@ cta: no
             <li><span class="mono">e-mail</span><a href="mailto:webovybalicek@gmail.com">webovybalicek@gmail.com</a></li>
           </ul>
         </div>
+        <div class="section-head section-head--dark contact-agency" id="kontakt-agentura" role="tabpanel" aria-labelledby="tab-agentura" hidden>
+          <p class="pill">Subdodávky pro agentury</p>
+          <h2>Váš tichý vývojářský tým</h2>
+          <p>Máte klienta, návrh a málo rukou na vývoj? Web postavíme my a vy dál vedete projekt pod svou značkou.</p>
+          <ol class="agency-points">
+            <li><b>Pod vaší značkou</b><span>S klientem mluvíte vy, my zůstáváme v pozadí.</span></li>
+            <li><b>Ve vašem procesu</b><span>Vaše Figma, váš úkolovník, vaše termíny.</span></li>
+            <li><b>S cenou předem</b><span>Za projekt, nebo hodinově. Víte, s čím počítat v nabídce.</span></li>
+          </ol>
+          <div class="agency-logos">
+            <span class="mono">spolupracujeme s následujícími agenturami</span>
+            <ul>
+              <li><img src="/assets/img/agentury/starlab.svg" alt="STARLAB" width="3293" height="678" loading="lazy"></li>
+              <li><img src="/assets/img/agentury/konektor.svg" alt="Konektor" width="458" height="142" loading="lazy"></li>
+              <li><img src="/assets/img/agentury/webofka.png" alt="Webofka" width="246" height="45" loading="lazy"></li>
+            </ul>
+          </div>
+        </div>
 
         <form class="form" action="#" method="post">
           <div class="form-head">
-            <h3>Poptávka webu</h3>
+            <h3 data-klient="Poptávka webu" data-agentura="Poptávka spolupráce">Poptávka webu</h3>
             <p>Odpovíme do 24 hodin.</p>
           </div>
           <div class="form-row">
-            <label>Jméno <input type="text" name="name" autocomplete="name"></label>
+            <label><span data-klient="Jméno" data-agentura="Jméno a agentura">Jméno</span> <input type="text" name="name" autocomplete="name"></label>
             <label>Telefon <input type="tel" name="phone" autocomplete="tel"></label>
           </div>
           <label>E-mail <input type="email" name="email" autocomplete="email" required placeholder="vas@email.cz"></label>
-          <label>Co potřebujete?
+          <input type="hidden" name="segment" value="klient">
+          <label data-only="klient">Co potřebujete?
             <select name="type">
               <option value="">Nevím, poraďte mi</option>
               <option value="ai">AI web</option>
@@ -444,9 +467,18 @@ cta: no
               <option value="sprava">Správa stávajícího webu</option>
             </select>
           </label>
-          <label>Zpráva <textarea name="message" rows="4" placeholder="Čím se zabýváte a co by měl web umět?"></textarea></label>
-          <label class="check"><input type="checkbox" name="urgent"> Potřebuji web rychle</label>
-          <button type="submit" class="btn btn--primary btn--block">Odeslat poptávku</button>
+          <label data-only="agentura" hidden>S čím potřebujete pomoct?
+            <select name="type" disabled>
+              <option value="a-nevim">Zatím nevíme, probereme to</option>
+              <option value="a-kod">Stavba webu podle našeho návrhu</option>
+              <option value="a-web">Celý web včetně návrhu</option>
+              <option value="a-eshop">E-shop</option>
+              <option value="a-vypomoc">Dlouhodobá výpomoc s vývojem</option>
+            </select>
+          </label>
+          <label>Zpráva <textarea name="message" rows="4" placeholder="Čím se zabýváte a co by měl web umět?" data-klient="Čím se zabýváte a co by měl web umět?" data-agentura="Jaké projekty děláte a s čím byste potřebovali pomoct?"></textarea></label>
+          <label class="check"><input type="checkbox" name="urgent"> <span data-klient="Potřebuji web rychle" data-agentura="Hoří nám termín">Potřebuji web rychle</span></label>
+          <button type="submit" class="btn btn--primary btn--block" data-klient="Odeslat poptávku" data-agentura="Domluvit spolupráci">Odeslat poptávku</button>
         </form>
       </div>
     </div>
