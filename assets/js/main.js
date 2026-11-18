@@ -171,6 +171,15 @@ document.querySelectorAll('.tools').forEach((box) => {
 // Reference: web v okně nejdřív „postaví“ roj kurzorů (kreslí bloky, píše nadpisy), pak se snímek sám pomalu posouvá
 // a myš nad oknem ho projíždí podle své výšky. Vlastní implementace, inspirace: Swarm (Joel Califa) a Swarm Rebuild.
 (() => {
+  // pruh: při každém načtení jiné pořadí webů (obě kopie smyčky stejně, aby na sebe navazovaly)
+  document.querySelectorAll('.shots-loop').forEach((loop) => {
+    const lists = [...loop.querySelectorAll('.shots--strip')].map((l) => [l, [...l.children]]);
+    const n = lists[0][1].length, order = [...Array(n).keys()];
+    for (let i = n - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; }
+    lists.forEach(([list, items]) => { if (items.length === n) order.forEach((k) => list.append(items[k])); });
+    // první okna jsou vidět hned: nenechat je čekat na líné načtení
+    lists[0][0].querySelectorAll('li:nth-child(-n+6) img').forEach((img) => { img.loading = 'eager'; });
+  });
   const shots = [...document.querySelectorAll('[data-shot]')].map((el) => ({
     el, win: el.querySelector('.shot-win'), img: el.querySelector('img'), y: 0, dir: 1, wait: 0, goal: null, seen: false, state: 'idle',
   }));
