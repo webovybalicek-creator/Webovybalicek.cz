@@ -638,10 +638,25 @@ html.is-locked { overflow: hidden; }
 /* ==========================================================
    proces
    ========================================================== */
-.steps { display: grid; gap: var(--grid-gap); grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); counter-reset: step; }
-.steps li { counter-increment: step; padding: 28px; background: var(--gray); border-radius: var(--r-tile); }
-.steps li::before { content: counter(step, decimal-leading-zero); display: block; margin-bottom: 40px; font: 400 13px/1.5 var(--f-mono); color: var(--stone); }
-.steps p { color: var(--graphite); font-size: 16px; margin: 0; }
+/* průběh spolupráce: kroky na jedné ose, kterou při scrollu plní černá linka; dosažené kroky se rozsvítí limetkou (main.js) */
+.steps { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(20px, 2.4vw, 36px); margin: 0; padding: 0; list-style: none; --p: 0; }
+.steps::before, .steps::after { content: ""; position: absolute; left: 23px; right: 23px; top: 22px; height: 2px; background: var(--hairline); }
+.steps::after { right: auto; width: calc((100% - 46px) * var(--p)); background: var(--ink); }
+.step-n { position: relative; z-index: 1; display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 28px; border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 1.5px var(--hairline);
+  font: 500 13px/1 var(--f-mono); color: var(--stone); transition: background-color 300ms ease, color 300ms ease, box-shadow 300ms ease, scale 400ms cubic-bezier(.3, 1.6, .5, 1); }
+.steps li.is-on .step-n { background: var(--lime); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); scale: 1.08; }
+.steps h3 { margin: 0 0 8px; font-size: 19px; letter-spacing: -0.01em; line-height: 1.25; }
+.steps p { margin: 0; color: var(--graphite); font-size: 15.5px; line-height: 1.6; }
+.steps .step-n + div { transition: opacity 400ms ease; }
+.steps.is-js li:not(.is-on) .step-n + div { opacity: .45; }
+@media (max-width: 900px) {
+  .steps { grid-template-columns: 1fr; gap: 28px; }
+  .steps li { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 18px; }
+  .step-n { margin: 0; }
+  .steps::before, .steps::after { left: 22px; right: auto; top: 23px; bottom: 23px; width: 2px; height: auto; }
+  .steps::after { bottom: auto; height: calc((100% - 46px) * var(--p)); }
+}
+@media (prefers-reduced-motion: reduce) { .step-n, .steps .step-n + div { transition: none; } }
 
 /* ==========================================================
    reference

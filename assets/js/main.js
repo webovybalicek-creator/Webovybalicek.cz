@@ -408,3 +408,17 @@ document.querySelectorAll('.tools').forEach((box) => {
   const fromHash = () => { if (location.hash === '#spoluprace') { pick('agentura'); document.getElementById('kontakt')?.scrollIntoView(); } };
   fromHash(); addEventListener('hashchange', fromHash);
 })();
+
+// Průběh spolupráce: linka se při scrollu plní a dosažené kroky se rozsvítí
+(() => {
+  const lists = [...document.querySelectorAll('.steps[data-steps]')]; if (!lists.length) return;
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const update = () => lists.forEach((list) => {
+    const r = list.getBoundingClientRect(), items = [...list.children];
+    const p = calm ? 1 : Math.max(0, Math.min(1, (innerHeight * 0.62 - r.top) / Math.max(1, r.height * 0.85)));
+    list.style.setProperty('--p', p.toFixed(4));
+    items.forEach((li, i) => li.classList.toggle('is-on', p >= i / (items.length - 1) - 0.01));
+  });
+  lists.forEach((l) => l.classList.add('is-js'));
+  addEventListener('scroll', update, { passive: true }); addEventListener('resize', update); update();
+})();
