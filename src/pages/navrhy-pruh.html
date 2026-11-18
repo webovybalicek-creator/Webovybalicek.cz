@@ -1,0 +1,102 @@
+<!--
+title: Návrhy – pruh o AI | webovybalicek
+description: Pracovní stránka s návrhy limetkového pruhu ve stylu profilových fotek.
+cta: no
+hidden: yes
+-->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter>
+  <filter id="torn" x="-2%" y="-20%" width="104%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".02 .09" numOctaves="3" seed="9"/><feDisplacementMap in="SourceGraphic" scale="9"/></filter>
+</defs></svg>
+<style>
+.pp { padding: 56px 0 120px; overflow-x: clip; }
+.pp-head { max-width: 760px; }
+.pp-head h1 { font-size: clamp(36px, 5vw, 60px); line-height: 1.05; letter-spacing: -0.03em; margin: 12px 0 16px; }
+.pp-head p { color: var(--graphite); font-size: 18px; }
+.pp-label { margin: 96px 0 8px; font: 500 13px/1 var(--f-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--stone); }
+.pp-why { max-width: 700px; color: var(--graphite); margin: 0 0 36px; }
+/* ručně kreslené tahy fixou */
+.hd { overflow: visible; fill: none; stroke: var(--lime); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; filter: url(#rough); }
+.hd .thin { stroke-width: 2.5; }
+.hd path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.is-drawn .hd path { animation: hd-draw 700ms cubic-bezier(.3,.7,.2,1) forwards; }
+.is-drawn .hd path:nth-child(2) { animation-delay: 350ms; } .is-drawn .hd path:nth-child(3) { animation-delay: 600ms; }
+@keyframes hd-draw { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .hd path { stroke-dashoffset: 0; animation: none !important; } }
+.concrete { background-color: #1b1e20; background-image:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E"),
+  radial-gradient(120% 140% at 20% 0%, #2a2e30, #121517 70%); color: #fff; }
+
+/* A – fixa na betonu */
+.pa { position: relative; margin-inline: calc(50% - 50vw); padding: clamp(56px, 8vw, 112px) max(var(--gutter), calc(50vw - var(--wrap) / 2 + var(--gutter))); display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 5vw, 72px); align-items: center; }
+.pa .hd-bolt { width: clamp(90px, 12vw, 170px); height: auto; stroke-width: 3.2; }
+.pa h2 { margin: 0; font-size: clamp(34px, 5.4vw, 76px); line-height: 1.04; letter-spacing: -0.035em; color: #fff; }
+.pa h2 em { position: relative; font-style: normal; white-space: nowrap; }
+.pa h2 em .hd { position: absolute; left: -6%; top: -12%; width: 112%; height: 124%; stroke-width: 3; }
+.pa p { margin: 22px 0 0; max-width: 46ch; font-size: clamp(17px, 1.5vw, 21px); color: rgba(255,255,255,.7); }
+.pa p u { text-decoration: none; position: relative; color: #fff; white-space: nowrap; }
+.pa p u .hd { position: absolute; left: 0; bottom: -9px; width: 100%; height: 10px; stroke-width: 3; }
+.pa .tag { position: absolute; right: 5%; bottom: 14%; width: clamp(120px, 16vw, 240px); opacity: .16; stroke-width: 10; }
+@media (max-width: 700px) { .pa { grid-template-columns: 1fr; } }
+
+/* B – limetková páska s roztřepeným okrajem a černou fixou */
+.pb { position: relative; margin-inline: calc(50% - 50vw); padding: 34px 0; rotate: -1.2deg; }
+.pb::before { content: ""; position: absolute; inset: 14px -3%; background: var(--lime); filter: url(#torn); }
+.pb-run { position: relative; display: flex; overflow: hidden; }
+.pb-run ul { display: flex; flex: none; align-items: center; gap: clamp(20px, 2.4vw, 36px); margin: 0; padding: 0 clamp(10px, 1.2vw, 18px); list-style: none; animation: logos-slide 26s linear infinite; }
+.pb-run li { flex: none; font: 650 clamp(24px, 3.2vw, 44px)/1.4 var(--f-sans); letter-spacing: -0.025em; white-space: nowrap; color: var(--ink); }
+.pb-run .hd { stroke: var(--ink); width: clamp(34px, 3.6vw, 52px); height: auto; display: block; }
+.pb-run .hd path { stroke-dashoffset: 0; }
+.pb-run li:not(.b) { background: linear-gradient(var(--ink), var(--ink)) 0 92% / 100% 3px no-repeat; filter: url(#rough); }
+
+/* C – pruh s fotkou a citátem */
+.pc { position: relative; margin-inline: calc(50% - 50vw); padding: 0 max(var(--gutter), calc(50vw - var(--wrap) / 2 + var(--gutter))); display: grid; grid-template-columns: clamp(180px, 22vw, 300px) minmax(0, 1fr); gap: clamp(24px, 5vw, 72px); align-items: end; }
+.pc-photo { position: relative; align-self: end; margin-top: -40px; }
+.pc-photo img { display: block; width: 100%; border-radius: 0; -webkit-mask-image: linear-gradient(#000 82%, transparent); mask-image: linear-gradient(#000 82%, transparent); }
+.pc-text { padding: clamp(48px, 6vw, 88px) 0; }
+.pc blockquote { margin: 0; font-size: clamp(28px, 3.8vw, 54px); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; color: #fff; }
+.pc blockquote em { font-style: normal; color: var(--lime); }
+.pc cite { display: flex; align-items: center; gap: 14px; margin-top: 26px; font-style: normal; font-size: 16px; color: rgba(255,255,255,.7); }
+.pc cite .hd { width: 56px; height: 22px; stroke-width: 3; }
+.pc cite b { color: #fff; font-weight: 600; }
+@media (max-width: 700px) { .pc { grid-template-columns: 1fr; } .pc-photo { width: 200px; margin-top: 24px; order: 2; } .pc-text { padding-bottom: 0; } }
+</style>
+
+<section class="pp">
+  <div class="wrap">
+    <div class="pp-head">
+      <p class="pill">Pracovní návrhy</p>
+      <h1>Pruh o AI ve stylu fotek</h1>
+      <p>Tři podoby, které přebírají jazyk vašich profilových fotek: tmavý beton, limetková fixa, tahy kreslené rukou.</p>
+    </div>
+
+    <p class="pp-label">A – Fixa na betonu</p>
+    <p class="pp-why">Tmavý pruh s texturou betonu jako pozadí fotek. Blesk, kroužek kolem klíčového slova a podtržení se při příjezdu na obrazovku samy „nakreslí“ limetkovou fixou. Statický, bez běžícího textu.</p>
+    <div class="pa concrete" data-draw>
+      <svg class="hd hd-bolt" viewBox="0 0 60 60" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path pathLength="1" d="M33 5 13 33h14l-4 22 23-30H31z"/><path pathLength="1" class="thin" d="M50 8l5-5M54 19l7-1M6 12l-5-4M4 44l-5 3M52 46l5 4"/></svg>
+      <div>
+        <h2>S AI jsme <em>rychlejší<svg class="hd" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M12 34C8 12 60 4 110 5c48 1 84 8 80 28-4 19-52 24-98 23-44-1-82-6-80-26 1-9 12-15 24-18"/></svg></em> než kdy dřív</h2>
+        <p>Přicházíme s neotřelými nápady a umíme je zpracovat <u>během pár dní<svg class="hd" viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 6c30-4 60 3 96-1s66-2 100 1"/></svg></u>, ne týdnů.</p>
+      </div>
+      <svg class="hd tag" viewBox="0 0 200 120" aria-hidden="true"><path pathLength="1" d="M10 90C30 20 60 10 70 50s-20 60-30 30 40-80 70-60-10 70 10 70 40-60 70-70"/></svg>
+    </div>
+
+    <p class="pp-label">B – Páska a černá fixa</p>
+    <p class="pp-why">Současný běžící pruh, jen „ručně“: limetková páska má roztřepené okraje, text je podtržený fixou a blesky jsou kreslené s čárkami kolem, stejně jako obrys na fotkách.</p>
+    <div class="pb"><div class="pb-run"><ul><li>S AI jsme rychlejší než kdy dřív</li><li class="b"><svg class="hd hd-bolt" viewBox="0 0 60 60" aria-hidden="true"><path pathLength="1" d="M33 5 13 33h14l-4 22 23-30H31z"/><path pathLength="1" class="thin" d="M50 8l5-5M54 19l7-1M6 12l-5-4M4 44l-5 3M52 46l5 4"/></svg></li><li>Neotřelé nápady</li><li class="b"><svg class="hd hd-bolt" viewBox="0 0 60 60" aria-hidden="true"><path pathLength="1" d="M33 5 13 33h14l-4 22 23-30H31z"/><path pathLength="1" class="thin" d="M50 8l5-5M54 19l7-1M6 12l-5-4M4 44l-5 3M52 46l5 4"/></svg></li><li>Od nápadu k hotovému webu za pár dní</li><li class="b"><svg class="hd hd-bolt" viewBox="0 0 60 60" aria-hidden="true"><path pathLength="1" d="M33 5 13 33h14l-4 22 23-30H31z"/><path pathLength="1" class="thin" d="M50 8l5-5M54 19l7-1M6 12l-5-4M4 44l-5 3M52 46l5 4"/></svg></li><li>Kreativita, kterou stihneme zpracovat</li><li class="b"><svg class="hd hd-bolt" viewBox="0 0 60 60" aria-hidden="true"><path pathLength="1" d="M33 5 13 33h14l-4 22 23-30H31z"/><path pathLength="1" class="thin" d="M50 8l5-5M54 19l7-1M6 12l-5-4M4 44l-5 3M52 46l5 4"/></svg></li></ul><ul aria-hidden="true"><li>S AI jsme rychlejší než kdy dřív</li><li class="b"><svg class="hd hd-bolt" viewBox="0 0 60 60" aria-hidden="true"><path pathLength="1" d="M33 5 13 33h14l-4 22 23-30H31z"/><path pathLength="1" class="thin" d="M50 8l5-5M54 19l7-1M6 12l-5-4M4 44l-5 3M52 46l5 4"/></svg></li><li>Neotřelé nápady</li><li class="b"><svg class="hd hd-bolt" viewBox="0 0 60 60" aria-hidden="true"><path pathLength="1" d="M33 5 13 33h14l-4 22 23-30H31z"/><path pathLength="1" class="thin" d="M50 8l5-5M54 19l7-1M6 12l-5-4M4 44l-5 3M52 46l5 4"/></svg></li><li>Od nápadu k hotovému webu za pár dní</li><li class="b"><svg class="hd hd-bolt" viewBox="0 0 60 60" aria-hidden="true"><path pathLength="1" d="M33 5 13 33h14l-4 22 23-30H31z"/><path pathLength="1" class="thin" d="M50 8l5-5M54 19l7-1M6 12l-5-4M4 44l-5 3M52 46l5 4"/></svg></li><li>Kreativita, kterou stihneme zpracovat</li><li class="b"><svg class="hd hd-bolt" viewBox="0 0 60 60" aria-hidden="true"><path pathLength="1" d="M33 5 13 33h14l-4 22 23-30H31z"/><path pathLength="1" class="thin" d="M50 8l5-5M54 19l7-1M6 12l-5-4M4 44l-5 3M52 46l5 4"/></svg></li></ul></div></div>
+
+    <p class="pp-label">C – Pruh s fotkou</p>
+    <p class="pp-why">Pruh přímo propojený s portrétem: fotka vyrůstá ze spodní hrany betonového pruhu a vedle ní je vaše věta jako citát. Dává AI sdělení lidskou tvář. Fotka je náhled z vaší zprávy v malém rozlišení.</p>
+    <div class="pc concrete" data-draw>
+      <div class="pc-photo"><img src="/assets/img/tym/vladimir-nahled.png" alt="Vladimír Fischer" width="362" height="475" loading="lazy"></div>
+      <div class="pc-text">
+        <blockquote>„S AI jsme <em>rychlejší než kdy dřív</em>. Nápad dnes, hotový web za pár dní.“</blockquote>
+        <cite><svg class="hd" viewBox="0 0 56 22" aria-hidden="true"><path pathLength="1" d="M2 12c14-8 30 8 50-2M44 3l9 7-9 8"/></svg><span><b>Vladimír Fischer</b>, zakladatel</span></cite>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+new IntersectionObserver((es, io) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-drawn'); io.unobserve(e.target); } }), { threshold: 0.4 }).observe(document.querySelector('.pa'));
+document.querySelectorAll('.pc').forEach((el) => new IntersectionObserver((es, io) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-drawn'); io.unobserve(e.target); } }), { threshold: 0.4 }).observe(el));
+</script>
