@@ -1,0 +1,121 @@
+<!--
+title: Návrhy – spolupráce s agenturami | webovybalicek
+description: Pracovní stránka s návrhy sekce o subdodávkách pro agentury.
+cta: no
+hidden: yes
+-->
+<style>
+.sp { padding: 56px 0 120px; }
+.sp-head { max-width: 760px; }
+.sp-head h1 { font-size: clamp(36px, 5vw, 60px); line-height: 1.05; letter-spacing: -0.03em; margin: 12px 0 16px; }
+.sp-head p { color: var(--graphite); font-size: 18px; }
+.sp-label { margin: 88px 0 8px; font: 500 13px/1 var(--f-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--stone); }
+.sp-why { max-width: 700px; color: var(--graphite); margin: 0 0 32px; }
+.sp h2 { font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.025em; margin: 0 0 16px; }
+.sp-lead { color: var(--graphite); font-size: 18px; max-width: 46ch; margin: 0 0 28px; }
+.sp-logo { display: block; width: auto; }
+.sp-points { margin: 0 0 32px; padding: 0; list-style: none; display: grid; gap: 14px; }
+.sp-points li { display: grid; grid-template-columns: 10px minmax(0, 1fr); gap: 14px; align-items: baseline; }
+.sp-points p { margin: 0; }
+.sp-points li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 1px var(--ink); translate: 0 -1px; }
+.sp-points b { font-weight: 600; }
+.sp-points span { color: var(--graphite); }
+
+/* A – text vlevo, loga agentur v dlaždicích vpravo */
+.sa { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+.sa-logos { display: grid; gap: var(--grid-gap); margin: 0; padding: 0; list-style: none; }
+.sa-logos li { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 32px; background: var(--gray); border-radius: var(--r-card); }
+.sa-logos .sp-logo { height: 30px; max-width: 46%; object-fit: contain; object-position: left; }
+.sa-logos span { font: 400 12px/1.5 var(--f-mono); letter-spacing: -0.02em; color: var(--stone); text-align: right; }
+@media (max-width: 900px) { .sa { grid-template-columns: 1fr; } }
+
+/* B – černý panel přes celou šířku */
+.sb { padding: clamp(32px, 5vw, 72px); border-radius: var(--r-feature); background: var(--ink); color: var(--on-ink); }
+.sb-top { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: end; margin-bottom: clamp(32px, 4vw, 56px); }
+.sb h2 { color: var(--on-ink); margin: 16px 0 0; }
+.sb .pill { color: var(--on-ink-muted); }
+.sb-top p { color: var(--on-ink-muted); font-size: 18px; margin: 0 0 24px; }
+.sb-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); padding: clamp(24px, 3vw, 40px) 0; border-top: 1px solid var(--on-ink-line); border-bottom: 1px solid var(--on-ink-line); }
+.sb-cols h3 { font-size: 19px; margin: 0 0 8px; color: var(--on-ink); }
+.sb-cols p { margin: 0; color: var(--on-ink-muted); font-size: 16px; }
+.sb-cols em { display: block; margin-bottom: 14px; font: 400 12px/1 var(--f-mono); font-style: normal; color: var(--lime); }
+.sb-logos { display: flex; flex-wrap: wrap; align-items: center; gap: 20px clamp(28px, 4vw, 56px); margin: clamp(24px, 3vw, 36px) 0 0; padding: 0; list-style: none; }
+.sb-logos li:first-child { font: 400 12px/1.5 var(--f-mono); color: var(--on-ink-muted); margin-right: auto; }
+.sb-logos .sp-logo { height: 24px; filter: invert(1) brightness(2); }
+@media (max-width: 900px) { .sb-top, .sb-cols { grid-template-columns: 1fr; } }
+
+/* C – úzký pruh mezi sekcemi */
+.sc { display: grid; grid-template-columns: minmax(0, 1.1fr) auto auto; gap: 20px clamp(24px, 4vw, 56px); align-items: center; padding: clamp(24px, 3vw, 36px) clamp(24px, 3vw, 40px); border-radius: var(--r-card); box-shadow: inset 0 0 0 1px var(--hairline); }
+.sc p { margin: 0; }
+.sc strong { display: block; font-size: 20px; letter-spacing: -0.01em; margin-bottom: 4px; }
+.sc p span { color: var(--graphite); }
+.sc-logos { display: flex; align-items: center; gap: clamp(20px, 3vw, 40px); margin: 0; padding: 0; list-style: none; }
+.sc-logos .sp-logo { height: 20px; opacity: .75; }
+@media (max-width: 1000px) { .sc { grid-template-columns: 1fr; } }
+</style>
+
+<section class="sp">
+  <div class="wrap">
+    <div class="sp-head">
+      <p class="pill">Pracovní návrhy</p>
+      <h1>Spolupráce s agenturami</h1>
+      <p>Tři podoby sekce o subdodávkách. Texty jsou můj návrh, konkrétní body (co přesně agenturám děláte, jak účtujete) si upravte podle skutečnosti.</p>
+    </div>
+
+    <!-- A -->
+    <p class="sp-label">A – Dvě poloviny</p>
+    <p class="sp-why">Plnohodnotná sekce: vlevo vysvětlení a tři body, vpravo loga agentur ve velkých dlaždicích. U každého loga je místo na krátký popis toho, co pro ně děláte.</p>
+    <div class="sa">
+      <div>
+        <p class="pill">Pro agentury</p>
+        <h2>Stavíme weby i pro jiné agentury</h2>
+        <p class="sp-lead">Máte klienta, návrh a málo rukou na vývoj? Převezmeme stavbu webu a vy dál vedete projekt pod svou značkou.</p>
+        <ul class="sp-points">
+          <li><p><b>Pod vaší značkou.</b> <span>S klientem komunikujete vy, o nás vědět nemusí.</span></p></li>
+          <li><p><b>Napojíme se na váš proces.</b> <span>Figma, váš úkolovník, vaše termíny.</span></p></li>
+          <li><p><b>Cena předem.</b> <span>Za projekt, nebo hodinově podle dohody.</span></p></li>
+        </ul>
+        <a class="btn btn--primary" href="/kontakt/">Domluvit spolupráci</a>
+      </div>
+      <ul class="sa-logos">
+        <li><img class="sp-logo" src="/assets/img/agentury/starlab.svg" alt="STARLAB"><span>[doplnit: co pro ně děláme]</span></li>
+        <li><img class="sp-logo" src="/assets/img/agentury/konektor.svg" alt="Konektor"><span>[doplnit: co pro ně děláme]</span></li>
+        <li><img class="sp-logo" src="/assets/img/agentury/webofka.svg" alt="Webofka"><span>[doplnit: co pro ně děláme]</span></li>
+      </ul>
+    </div>
+
+    <!-- B -->
+    <p class="sp-label">B – Černý panel</p>
+    <p class="sp-why">Výrazný blok, který sekci jasně oddělí od nabídky pro koncové klienty: mluví k jinému publiku. Tři sloupce s tím, jak spolupráce funguje, dole loga v bílé.</p>
+    <div class="sb">
+      <div class="sb-top">
+        <div><p class="pill">Pro agentury</p><h2>Váš tichý vývojářský tým</h2></div>
+        <div><p>Děláme subdodávky pro agentury, kterým chybí kapacita na vývoj. Vy máte klienta a návrh, my dodáme hotový web.</p><a class="btn btn--primary" href="/kontakt/">Domluvit spolupráci</a></div>
+      </div>
+      <div class="sb-cols">
+        <div><em>01</em><h3>Pod vaší značkou</h3><p>S klientem komunikujete vy. My zůstáváme v pozadí.</p></div>
+        <div><em>02</em><h3>Ve vašem procesu</h3><p>Stavíme podle vaší Figmy, ve vašem úkolovníku a termínech.</p></div>
+        <div><em>03</em><h3>S cenou předem</h3><p>Za projekt, nebo hodinově. Víte, s čím počítat v nabídce klientovi.</p></div>
+      </div>
+      <ul class="sb-logos">
+        <li>Spolupracujeme s</li>
+        <li><img class="sp-logo" src="/assets/img/agentury/starlab.svg" alt="STARLAB"></li>
+        <li><img class="sp-logo" src="/assets/img/agentury/konektor.svg" alt="Konektor"></li>
+        <li><img class="sp-logo" src="/assets/img/agentury/webofka.svg" alt="Webofka"></li>
+      </ul>
+    </div>
+
+    <!-- C -->
+    <p class="sp-label">C – Úzký pruh</p>
+    <p class="sp-why">Jeden řádek mezi sekcemi: věta, loga a odkaz. Nezabere místo a nepřebíjí nabídku pro koncové klienty. Podrobnosti by byly na samostatné stránce.</p>
+    <div class="sc">
+      <p><strong>Jste agentura? Děláme i subdodávky.</strong><span>Stavíme weby pod vaší značkou podle vašich návrhů.</span></p>
+      <ul class="sc-logos">
+        <li><img class="sp-logo" src="/assets/img/agentury/starlab.svg" alt="STARLAB"></li>
+        <li><img class="sp-logo" src="/assets/img/agentury/konektor.svg" alt="Konektor"></li>
+        <li><img class="sp-logo" src="/assets/img/agentury/webofka.svg" alt="Webofka"></li>
+      </ul>
+      <a class="link-utility" href="/kontakt/">Jak spolupracujeme</a>
+    </div>
+  </div>
+</section>
