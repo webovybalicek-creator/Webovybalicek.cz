@@ -1203,3 +1203,16 @@ body:has(.hero--air) .site-header .utility-bar { background: transparent; border
 @media (prefers-reduced-motion: reduce) { .zap-band ul, .zap-band .bolt svg { animation: none; } }
 .zap + .section { border-top: 0; padding-top: clamp(48px, 5vw, 80px); }
 .section:has(+ .zap) { padding-bottom: clamp(32px, 4vw, 56px); }
+/* dvě pásky do kříže: černá a limetková jedou proti sobě, menší písmo */
+.zap--x { padding: clamp(8px, 2vw, 24px) 0; }
+.zap-x { position: relative; display: block; height: clamp(120px, 12vw, 160px); }
+.zap-x .zap-band { position: absolute; left: 0; top: 50%; translate: 0 -50%; padding: 11px 0; }
+.zap-x .zap-band li { font-size: clamp(15px, 1.5vw, 19px); font-weight: 600; letter-spacing: -0.01em; }
+.zap-x .zap-band ul { gap: clamp(14px, 1.6vw, 22px); animation-duration: 34s; }
+.zap-x .zap-band .bolt svg { width: 16px; height: 16px; }
+.zap-x .zap-band--ink { background: var(--ink); color: var(--lime); rotate: 2.2deg; }
+.zap-x .zap-band--ink ul { animation-direction: reverse; }
+.zap-x .zap-band--ink .bolt svg { fill: var(--lime); animation: none; }
+.zap-x .zap-band:last-child { rotate: -1.6deg; }
+@media (hover: hover) and (pointer: fine) { .zap-x:hover ul { animation-play-state: paused; } }
+@media (max-width: 640px) { .zap-x .zap-band--ink { rotate: 4deg; } .zap-x .zap-band:last-child { rotate: -3deg; } }
