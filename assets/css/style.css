@@ -1024,7 +1024,19 @@ html.is-locked { overflow: hidden; }
 .shot-bar { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px; border-bottom: 1px solid var(--hairline); }
 .shot-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--hairline); }
 .shot-bar b { margin-left: 8px; font: 400 12px/1 var(--f-mono); letter-spacing: -0.02em; color: var(--stone); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.shot-bar .shot-lock, .shot-bar s, .shot-type { display: none; }
+.shot-type { display: none; }
+/* okno jako v Safari: adresa v šedém poli se zámkem, vpravo šipka ven; tečky se rozsvítí až u okna pod myší */
+.shot-bar { height: 40px; }
+.shot-bar i { width: 10px; height: 10px; transition: background-color 200ms ease; }
+.shot-bar b { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; gap: 6px; height: 24px; margin: 0 4px 0 10px; padding: 0 10px; border-radius: 7px; background: var(--gray); color: var(--graphite); }
+.shot-bar .shot-lock { display: block; flex: none; width: 11px; height: 11px; color: var(--stone); }
+.shot-bar s { display: block; text-decoration: none; color: var(--stone); font-size: 14px; transition: color 150ms ease, translate 200ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .shot:hover .shot-bar i:nth-child(1) { background: #ff5f57; }
+  .shot:hover .shot-bar i:nth-child(2) { background: #febc2e; }
+  .shot:hover .shot-bar i:nth-child(3) { background: #28c840; }
+  .shot:hover .shot-bar s { color: var(--ink); translate: 2px -2px; }
+}
 .shot-win { position: relative; display: block; overflow: hidden; aspect-ratio: 4 / 5; background: var(--gray); }
 .shot-win img { display: block; width: 100%; height: auto; will-change: transform; }
 /* roj kurzorů, který web v okně „postaví“ (main.js) */
