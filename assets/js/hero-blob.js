@@ -131,9 +131,22 @@ void main(){
   // kam kapka sama odpluje po kliknutí (v násobcích poloviny šířky a výšky panelu); Design míří na konec nadpisu
   const SPOTS = [[0.04, 0.5], [0.26, 0.04], [0.08, -0.58], [-0.42, 0.26], [0.34, -0.62], [0.56, 0.0]]; // pravý dolní roh je volný pro text kapky
   const SPOTS_NARROW = [[-0.72, 0.82], [-0.3, 0.62], [0.74, -0.02], [0.3, 0.3], [0.7, -0.62], [0.72, -0.32]];
+  const spread = (keep) => {
+    const minD = 1.05 * scale;
+    for (let it = 0; it < 6; it++) for (let i = 0; i < 6; i++) for (let j = i + 1; j < 6; j++) {
+      if (!det[i] || !det[j]) continue;
+      let dx = free[j][0] - free[i][0], dy = free[j][1] - free[i][1], d = Math.hypot(dx, dy);
+      if (d >= minD) continue;
+      if (d < 1e-3) { dx = Math.cos(j * 2.4); dy = Math.sin(j * 2.4); d = 1; }
+      const push = minD - d, ux = dx / d, uy = dy / d;
+      const wi = i === keep ? 0 : j === keep ? 1 : 0.5, wj = 1 - wi;
+      free[i] = clampP([free[i][0] - ux * push * wi, free[i][1] - uy * push * wi], 0.45 * scale);
+      free[j] = clampP([free[j][0] + ux * push * wj, free[j][1] + uy * push * wj], 0.45 * scale);
+    }
+  };
   const release = (i) => {
     const s = (narrowMq.matches ? SPOTS_NARROW : SPOTS)[i];
-    det[i] = 1; free[i] = clampP([s[0] * aspect * CAM / F, s[1] * CAM / F], 0.45 * scale); sel = i; render();
+    det[i] = 1; free[i] = clampP([s[0] * aspect * CAM / F, s[1] * CAM / F], 0.45 * scale); spread(i); sel = i; render();
   };
 
   const drawText = () => {
@@ -225,7 +238,7 @@ void main(){
         }
       }
       slice.x = p[0]; slice.y = p[1];
-      if (hit) render();
+      if (hit) { spread(-1); render(); }
       return;
     }
     const over = pick(p[0], p[1]);
@@ -244,7 +257,7 @@ void main(){
     if (det[d.i]) {
       // kapka puštěná tam, kde se s hmotou slije, se přilepí zpět – zmizí i její popisek a text
       if (Math.hypot(w[0] - A[0], w[1] - A[1]) < 2.4 * scale) { det[d.i] = 0; if (sel === d.i) sel = -1; }
-      else { free[d.i] = clampP(w, 0.45 * scale); sel = d.i; }
+      else { free[d.i] = clampP(w, 0.45 * scale); spread(d.i); sel = d.i; }
       render();
     }
   });
@@ -258,6 +271,7 @@ void main(){
     canvas.width = Math.max(2, Math.round(W * dpr)); canvas.height = Math.max(2, Math.round(H * dpr));
     gl.viewport(0, 0, canvas.width, canvas.height);
     for (let i = 0; i < 6; i++) if (det[i]) free[i] = clampP(free[i], 0.45 * scale);
+    spread(-1);
     drawText();
   };
   if (window.ResizeObserver) new ResizeObserver(resize).observe(stage); else window.addEventListener('resize', resize);
