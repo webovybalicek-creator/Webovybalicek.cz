@@ -263,7 +263,7 @@ document.querySelectorAll('.tools').forEach((box) => {
     if (s.img.complete && s.img.naturalWidth) ready(); else s.img.addEventListener('load', ready, { once: true });
     if (!fine) return;
     s.el.addEventListener('pointerenter', () => { s.fast = true; });
-    s.el.addEventListener('pointermove', (e) => { if (s.state !== 'built') return; const r = s.win.getBoundingClientRect(); s.goal = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height)); });
+    s.el.addEventListener('pointermove', (e) => { if (s.state !== 'built' || s.el.closest('.is-dragging')) return; const r = s.win.getBoundingClientRect(); s.goal = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height)); });
     s.el.addEventListener('pointerleave', () => { s.goal = null; s.wait = 500; });
   });
   // tlačítko na pracovní stránce: postavit všechna okna znovu
@@ -291,14 +291,49 @@ document.querySelectorAll('.tools').forEach((box) => {
     requestAnimationFrame(tick);
   };
   requestAnimationFrame(tick);
-  document.querySelectorAll('.shots-wrap').forEach((wrap) => {
-    const list = wrap.querySelector('.shots--strip'), [prev, next] = wrap.querySelectorAll('.shots-nav button');
-    if (!list || !next) return;
-    const step = () => (list.querySelector('li')?.offsetWidth || 300) * 2;
-    const sync = () => { prev.disabled = list.scrollLeft < 8; next.disabled = list.scrollLeft > list.scrollWidth - list.clientWidth - 8; };
-    prev.addEventListener('click', () => list.scrollBy({ left: -step(), behavior: 'smooth' }));
-    next.addEventListener('click', () => list.scrollBy({ left: step(), behavior: 'smooth' }));
-    list.addEventListener('scroll', sync, { passive: true }); sync();
+  // Pruh: nekonečná smyčka, která jede sama a dá se táhnout myší i prstem (se setrvačností)
+  document.querySelectorAll('.shots-loop').forEach((loop) => {
+    if (calm) return; // při omezeném pohybu zůstává obyčejný vodorovný posuv
+    const lists = [...loop.querySelectorAll('.shots--strip')]; if (lists.length < 2) return;
+    loop.classList.add('is-js');
+    const SPEED = 0.045; // px za ms
+    let x = 0, w = 0, vx = 0, drag = null, moved = 0, hover = false, seen = true, prev = performance.now();
+    const measure = () => { w = lists[0].offsetWidth; };
+    measure(); addEventListener('resize', measure, { passive: true });
+    new IntersectionObserver((es) => { seen = es[0].isIntersecting; }).observe(loop);
+    loop.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') hover = true; });
+    loop.addEventListener('pointerleave', () => { hover = false; });
+    loop.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      drag = { id: e.pointerId, sx: e.clientX, x0: x, lx: e.clientX, lt: performance.now() }; moved = 0; vx = 0;
+    });
+    loop.addEventListener('pointermove', (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const dx = e.clientX - drag.sx; moved = Math.max(moved, Math.abs(dx));
+      if (moved > 6 && !loop.classList.contains('is-dragging')) { loop.classList.add('is-dragging'); try { loop.setPointerCapture(e.pointerId); } catch (err) {} }
+      if (moved <= 6) return;
+      const now = performance.now(); vx = 0.7 * vx + 0.3 * ((e.clientX - drag.lx) / Math.max(1, now - drag.lt));
+      drag.lx = e.clientX; drag.lt = now; x = drag.x0 + dx;
+    });
+    const end = (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      if (performance.now() - drag.lt > 120) vx = 0; // puštěno po zastavení: bez setrvačnosti
+      drag = null; setTimeout(() => loop.classList.remove('is-dragging'), 0);
+    };
+    loop.addEventListener('pointerup', end); loop.addEventListener('pointercancel', end);
+    // po tažení neotevírat odkaz, na kterém tah skončil
+    loop.addEventListener('click', (e) => { if (moved > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
+    loop.addEventListener('dragstart', (e) => e.preventDefault());
+    const run = (now) => {
+      const dt = Math.min(64, now - prev); prev = now;
+      if (seen && w) {
+        if (!drag) { if (Math.abs(vx) > 0.01) { x += vx * dt; vx *= Math.pow(0.995, dt); } else { vx = 0; if (!hover) x -= SPEED * dt; } }
+        x = ((x % w) - w) % w; // drží se v (-w, 0], druhá kopie navazuje
+        const t = `translate3d(${x.toFixed(1)}px,0,0)`; lists.forEach((l) => { l.style.transform = t; });
+      }
+      requestAnimationFrame(run);
+    };
+    requestAnimationFrame(run);
   });
 })();
 

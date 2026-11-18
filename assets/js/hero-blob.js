@@ -10,7 +10,7 @@
   const hintRow = stage.querySelector('.hero-hint');
   const hintEl = stage.querySelector('[data-hero-hint]');
   const resetBtn = stage.querySelector('[data-hero-reset]');
-  const tip = stage.querySelector('[data-hero-tip]');
+  const tip = stage.querySelector('[data-hero-tip]') || document.createElement('p'); // nápověda u hmoty je zrušená, prázdný prvek drží zbytek kódu beze změny
   const PARTS = [...stage.querySelectorAll('[data-hero-points] li')].slice(0, 6).map((li) => ({
     tag: li.dataset.tag,
     accent: li.hasAttribute('data-accent'),
