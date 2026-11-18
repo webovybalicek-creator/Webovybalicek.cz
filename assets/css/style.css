@@ -1190,3 +1190,16 @@ body:has(.hero--air) .site-header .utility-bar { background: transparent; border
 .hero-perks { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 22px 0 0; padding: 0; list-style: none; font-size: 15px; line-height: 1.4; color: var(--graphite); pointer-events: auto; }
 .hero-perks li { display: flex; align-items: center; gap: 9px; }
 .hero-perks li::before { content: ""; flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5.2 9.3l2.5 2.5 5.1-5.4' fill='none' stroke='%230a1217' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 18px no-repeat; }
+
+/* ---------- limetkový pruh s bleskem: rychle běžící text, lehce nakloněný; vede na stránku AI weby ---------- */
+.zap { overflow: hidden; padding: clamp(20px, 3vw, 40px) 0; }
+.zap-band { display: flex; width: 104%; margin-left: -2%; padding: clamp(14px, 1.6vw, 22px) 0; background: var(--lime); color: var(--ink); text-decoration: none; rotate: -1.2deg; overflow: hidden; }
+.zap-band ul { display: flex; flex: none; align-items: center; gap: clamp(20px, 2.4vw, 36px); margin: 0; padding: 0 clamp(10px, 1.2vw, 18px); list-style: none; animation: logos-slide 26s linear infinite; }
+.zap-band li { flex: none; font: 650 clamp(24px, 3.2vw, 44px)/1.1 var(--f-sans); letter-spacing: -0.025em; white-space: nowrap; }
+.zap-band .bolt svg { display: block; width: clamp(22px, 2.6vw, 36px); height: clamp(22px, 2.6vw, 36px); fill: var(--ink); animation: zap-flash 2.6s steps(1) infinite; }
+.zap-band .bolt:nth-child(4n) svg { animation-delay: -1.3s; }
+@keyframes zap-flash { 0%, 100% { fill: var(--ink); scale: 1; } 46% { fill: #fff; scale: 1.18; } 50% { fill: var(--ink); scale: 1; } 54% { fill: #fff; scale: 1.1; } 58% { fill: var(--ink); scale: 1; } }
+@media (hover: hover) and (pointer: fine) { .zap-band:hover ul { animation-play-state: paused; } }
+@media (prefers-reduced-motion: reduce) { .zap-band ul, .zap-band .bolt svg { animation: none; } }
+.zap + .section { border-top: 0; padding-top: clamp(48px, 5vw, 80px); }
+.section:has(+ .zap) { padding-bottom: clamp(32px, 4vw, 56px); }
