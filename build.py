@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "83"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "84"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -83,12 +83,15 @@ def render_references(data):
     )
 
 
-def render_shots(vyber, snimky, limit=None, big=False):
+LOCK = '<svg class="shot-lock" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5M2.6 5h6.8v5H2.6z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>'
+
+
+def render_shots(vyber, snimky, limit=None, big=False, demo=False):
     """Okna s dlouhým snímkem webu, který se sám pomalu posouvá (main.js, [data-shot])."""
     out = []
     for r in vyber[:limit]:
         # první okna v pruhu jsou vidět hned, načíst je bez čekání; ostatní až u obrazovky
-        lazy = 'loading="lazy" ' if big or len(out) >= 6 else 'fetchpriority="high" ' if len(out) < 4 else ""
+        lazy = 'loading="lazy" ' if big or demo or len(out) >= 6 else 'fetchpriority="high" ' if len(out) < 4 else ""
         m = snimky.get(r["s"])
         if not m or m["h"] < 900:
             continue
@@ -97,12 +100,14 @@ def render_shots(vyber, snimky, limit=None, big=False):
         bloky = html.escape(json.dumps([[typ[b["t"]], b["x"], b["y"], b["w"], b["h"]] for b in m.get("bloky", [])], separators=(",", ":")))
         out.append(
             f'<li><a class="shot" href="{html.escape(r["u"])}" target="_blank" rel="noopener" data-shot data-blocks="{bloky}">'
-            f'<span class="shot-frame"><span class="shot-bar"><i></i><i></i><i></i><b>{html.escape(host)}</b></span>'
+            f'<span class="shot-frame"><span class="shot-bar"><i></i><i></i><i></i><b>{LOCK}{html.escape(host)}</b><s aria-hidden="true" data-t="{html.escape(r["t"])}">↗</s></span>'
             f'<span class="shot-win"><img src="/assets/img/reference/{r["s"]}.webp?v={VERSION}" width="{m["w"]}" height="{m["h"]}" '
-            f'{lazy}decoding="async" alt="Náhled webu {html.escape(host)}"></span></span>'
+            f'{lazy}decoding="async" alt="Náhled webu {html.escape(host)}"><u class="shot-type" aria-hidden="true">{html.escape(r["t"])}</u></span></span>'
             f'<span class="shot-meta"><strong>{html.escape(r["n"])}</strong><em>{html.escape(r["t"])}</em>'
             f'<span>{html.escape(r["d"])}</span></span></a></li>'
         )
+    if demo:
+        return f'<ul class="shots shots--demo">{"".join(out)}</ul>'
     if big:
         return f'<ul class="shots shots--grid">{"".join(out)}</ul>'
     # pruh: nekonečná smyčka od kraje do kraje – druhá kopie jen pro plynulé navázání
@@ -202,6 +207,7 @@ def build():
         body = body.replace("{{clients}}", render_clients(clients))
         body = body.replace("{{reviews}}", render_reviews(reviews))
         body = body.replace("{{shots_strip}}", render_shots(vyber, snimky))
+        body = body.replace("{{shots_demo}}", render_shots(vyber, snimky, limit=4, demo=True))
         body = body.replace("{{shots_grid}}", render_shots(vyber, snimky, limit=6, big=True))
         years = date.today().year - GOOGLE["since"]
         body = body.replace("{{g_rating}}", GOOGLE["rating"])

@@ -1024,6 +1024,7 @@ html.is-locked { overflow: hidden; }
 .shot-bar { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px; border-bottom: 1px solid var(--hairline); }
 .shot-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--hairline); }
 .shot-bar b { margin-left: 8px; font: 400 12px/1 var(--f-mono); letter-spacing: -0.02em; color: var(--stone); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.shot-bar .shot-lock, .shot-bar s, .shot-type { display: none; }
 .shot-win { position: relative; display: block; overflow: hidden; aspect-ratio: 4 / 5; background: var(--gray); }
 .shot-win img { display: block; width: 100%; height: auto; will-change: transform; }
 /* roj kurzorů, který web v okně „postaví“ (main.js) */
