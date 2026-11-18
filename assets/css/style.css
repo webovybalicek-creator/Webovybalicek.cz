@@ -69,7 +69,7 @@
   /* layout */
   --wrap: 1400px;
   --gutter: clamp(16px, 3vw, 40px);
-  --section: clamp(80px, 10vw, 140px);
+  --section: clamp(72px, 8.5vw, 120px);
   --grid-gap: clamp(16px, 2vw, 24px);
 
   /* pohyb */
@@ -705,7 +705,8 @@ html.is-locked { overflow: hidden; }
 /* ==========================================================
    kontakt
    ========================================================== */
-.contact-section { padding-top: var(--section); }
+/* kontakt navazuje na předchozí sekci bez dělicí linky, proto nahoře jen malý odstup (ta nad ním už má svůj spodní) */
+.contact-section { padding-top: clamp(8px, 2vw, 32px); }
 .contact-panel { padding: clamp(28px, 5vw, 64px); background: var(--ink); color: var(--on-ink); border-radius: var(--r-panel); align-items: center; }
 .contact-panel h1 { font-size: clamp(36px, 5vw, 56px); line-height: 1.08; }
 .contact-direct { display: grid; gap: 16px; margin-top: 32px; }
