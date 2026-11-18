@@ -1174,3 +1174,4 @@ body:has(.hero--air) .site-header .utility-bar { background: transparent; border
 @media (max-width: 520px) { .contact-tabs { padding-left: 16px; } .contact-tabs button { padding: 13px 14px 12px; font-size: 14px; } }
 @media (prefers-reduced-motion: reduce) { .contact-panel [role="tabpanel"] { animation: none; } }
 #kontakt { scroll-margin-top: calc(var(--header-h, 115px) - 40px); }
+.form label { min-width: 0; } .form select, .form input, .form textarea { min-width: 0; max-width: 100%; }
