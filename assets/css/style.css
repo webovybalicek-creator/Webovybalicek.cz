@@ -1232,10 +1232,10 @@ body:has(.hero--air) .site-header .utility-bar { background: transparent; border
 .zap-x .zap-band:last-child { rotate: -1.6deg; }
 @media (hover: hover) and (pointer: fine) { .zap-x:hover ul { animation-play-state: paused; } }
 @media (max-width: 640px) { .zap-x .zap-band--ink { rotate: 4deg; } .zap-x .zap-band:last-child { rotate: -3deg; } }
-.zap-x .cash svg { display: block; width: 54px; height: 36px; margin: -4px 0; animation: cash-fly 1.6s ease-in-out infinite alternate; }
-.zap-x .cash:nth-child(4n) svg { animation-delay: -.8s; }
+.zap-x .cash .cash-emoji { display: block; font: 30px/1 "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; animation: cash-fly 1.6s ease-in-out infinite alternate; }
+.zap-x .cash:nth-child(4n) .cash-emoji { animation-delay: -.8s; }
 @keyframes cash-fly { from { translate: 0 2px; rotate: -6deg; } to { translate: 0 -2px; rotate: 6deg; } }
-@media (prefers-reduced-motion: reduce) { .zap-x .cash svg { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .zap-x .cash .cash-emoji { animation: none; } }
 /* co doručujeme: tři hlavní pilíře, pod nimi menší důvody */
 .pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--grid-gap); margin: 0; padding: 0; list-style: none; counter-reset: pl; }
 .pillars li { counter-increment: pl; position: relative; display: flex; flex-direction: column; padding: clamp(24px, 2.6vw, 36px); background: var(--paper); border-radius: var(--r-card); box-shadow: inset 0 0 0 1px var(--hairline); }
