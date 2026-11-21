@@ -29,9 +29,23 @@ async def foto(browser, url):
             await pg.wait_for_load_state("networkidle", timeout=12000)
         except Exception:
             pass
+        # cookie lišty: nejdřív zkusit souhlas odkliknout, pak zbytek schovat
+        for txt in ["Accept all", "Accept", "Allow all", "Přijmout vše", "Souhlasím", "Rozumím", "Got it"]:
+            try:
+                btn = pg.get_by_role("button", name=re.compile(rf"^\s*{txt}\s*$", re.I))
+                if await btn.count():
+                    await btn.first.click(timeout=1500)
+                    break
+            except Exception:
+                pass
         await pg.add_style_tag(content=HIDE)
         await pg.evaluate(LISTY)
         await pg.wait_for_timeout(2500)  # dojetí úvodních animací
+        # appky renderované JS (např. Anything) – počkat, dokud stránka nemá viditelný obsah
+        for _ in range(10):
+            if await pg.evaluate("document.body.innerText.trim().length > 200 && [...document.images].every(i => i.complete)"):
+                break
+            await pg.wait_for_timeout(1000)
         png = await pg.screenshot(clip={"x": 0, "y": 0, "width": W, "height": H})
         im = Image.open(io.BytesIO(png)).convert("RGB")
         im = im.resize((OUTW, round(H * OUTW / W)), Image.LANCZOS)
