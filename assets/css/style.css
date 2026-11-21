@@ -1288,3 +1288,5 @@ body:has(.hero--air) .site-header:not(.is-scrolled) :is(a, button, summary, inpu
   .proj-body { width: auto; }
 }
 @media (prefers-reduced-motion: reduce) { .proj, .proj > img, .proj-body { transition: none; } }
+
+.hero-lead strong { color: var(--ink); font-weight: 650; }
