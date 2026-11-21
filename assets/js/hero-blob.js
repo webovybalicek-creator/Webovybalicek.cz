@@ -168,7 +168,7 @@ void main(){
 
   const targets = (time) => {
     const hw = aspect * CAM / F, hh = CAM / F;
-    scale = Math.min(1, Math.max(0.5, hw / 2.6)); snapL = 3.3 * scale;
+    scale = Math.min(1, Math.max(0.5, hw / 2.6)) * (aspect < 0.8 ? 0.67 : 1); snapL = 3.3 * scale;
     A = [hw - 0.15 * scale, hh - 0.15 * scale]; // pravý horní roh; na mobilu má panel nahoře volné místo
     const core = B[CORE]; core.tx = A[0]; core.ty = A[1]; core.tz = 0; core.tr = 1.3 * scale;
     const pull = drag && drag.moved && !det[drag.i] ? drag.i : -1;
