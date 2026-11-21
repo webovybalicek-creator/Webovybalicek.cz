@@ -1140,7 +1140,7 @@ html.is-locked { overflow: hidden; }
 .air-box::after { content: ""; position: absolute; inset: 0; background: currentColor; opacity: .08; }
 .air-swarm .swarm-cur { transition: transform 900ms cubic-bezier(.3,.7,.2,1); }
 .air-type { position: absolute; white-space: pre; pointer-events: none; }
-.air-type--text { color: var(--ink); font: 500 15px/1.2 var(--f-sans); letter-spacing: -0.01em; }
+.air-type--text { color: var(--ink); font: 400 13px/1.2 var(--f-mono); }
 .air-type--code { color: var(--graphite); font: 400 13px/1.2 var(--f-mono); }
 .air-bg i { position: absolute; width: 46vw; aspect-ratio: 1; border-radius: 50%; filter: blur(90px); opacity: .62; will-change: transform; }
 .air-bg i:nth-child(1) { left: -8%; top: -30%; background: #ffd3ea; animation: air-a 26s ease-in-out infinite alternate; }
