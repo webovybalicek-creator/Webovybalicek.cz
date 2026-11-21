@@ -1094,8 +1094,8 @@ html.is-locked { overflow: hidden; }
 }
 /* pruh: nekonečná smyčka od kraje do kraje, po najetí myší se zastaví */
 .shots-loop { display: flex; overflow: hidden; padding: 8px 0 4px;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+
+}
 .shots--strip { display: flex; flex: none; gap: var(--grid-gap); padding-right: var(--grid-gap); animation: logos-slide 110s linear infinite; }
 .shots--strip > li { flex: none; width: clamp(250px, 23vw, 330px); }
 .shots-loop:hover .shots--strip, .shots-loop:focus-within .shots--strip { animation-play-state: paused; }
