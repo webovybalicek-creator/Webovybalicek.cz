@@ -194,6 +194,17 @@ def render_reviews(data):
     return f'<div class="reviews" role="group" aria-label="Recenze klientů na Googlu">{rows}</div>'
 
 
+def design_data():
+    """Data pro /design/ – doplní cestu k náhledu, pokud existuje (assets/img/design/<slug>.webp)."""
+    data = json.loads((SRC / "data" / "design.json").read_text(encoding="utf-8"))
+    for items in data.values():
+        for i in items:
+            s = re.sub(r"[^a-z0-9]+", "-", re.sub(r"^https?://(www\.)?", "", i["url"].lower())).strip("-")
+            if not i.get("img") and (ROOT / "assets/img/design" / f"{s}.webp").exists():
+                i["img"] = f"/assets/img/design/{s}.webp"
+    return json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+
+
 def build():
     if DIST.exists():
         shutil.rmtree(DIST)
@@ -243,6 +254,7 @@ def build():
         if meta.get("layout") == "none":  # samostatná stránka bez hlavičky/patičky webu (např. /design/)
             target = DIST / path.strip("/") / "index.html"
             target.parent.mkdir(parents=True, exist_ok=True)
+            body = body.replace("{{design_data}}", design_data())
             target.write_text(body.replace("{{v}}", VERSION), encoding="utf-8")
             print(f"  {path} (samostatná, noindex)")
             continue

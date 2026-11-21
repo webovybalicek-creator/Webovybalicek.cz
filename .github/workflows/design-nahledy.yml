@@ -1,0 +1,29 @@
+name: Náhledy /design/
+
+on:
+  workflow_dispatch:
+    inputs:
+      jen:
+        description: "Jen tyto slugy (např. mobbin-com), nebo --vse pro přefocení všeho; prázdné = jen chybějící"
+        required: false
+  push:
+    branches: [main]
+    paths: [src/data/design.json]
+
+permissions:
+  contents: write
+
+jobs:
+  nahledy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install playwright pillow && python -m playwright install --with-deps chromium
+      - run: python tools/design-nahledy.py ${{ github.event.inputs.jen }}
+      - name: Uložit do repozitáře
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/img/design
+          git diff --cached --quiet || git commit -m "Náhledy /design/ (automaticky)"
+          git pull --rebase origin main && git push

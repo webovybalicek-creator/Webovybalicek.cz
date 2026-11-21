@@ -4,10 +4,15 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # po doběhnutí náhledů pro /design/ (commit od bota sám deploy nespustí)
+  workflow_run:
+    workflows: ["Náhledy /design/"]
+    types: [completed]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     steps:
       - uses: actions/checkout@v4
 

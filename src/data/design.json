@@ -1,0 +1,144 @@
+{
+ "Libraries": [
+  {
+   "name": "shadcn/ui",
+   "url": "https://ui.shadcn.com",
+   "desc": "Sada hotových komponent (tlačítka, dialogy, formuláře, tabulky), které se nekopírují jako balíček, ale rovnou jako kód do projektu – takže je můžeš libovolně upravit. Postavené na Radixu/Base UI a Tailwindu.",
+   "tags": [
+    "Komponenty"
+   ],
+   "pick": true
+  },
+  {
+   "name": "Base UI",
+   "url": "https://base-ui.com",
+   "desc": "Nestylované, přístupné stavební kameny UI (menu, select, dialog, slider…) od autorů Radixu a MUI. Řeší chování a přístupnost, vzhled je celý na tobě.",
+   "tags": [
+    "Primitivy"
+   ]
+  },
+  {
+   "name": "Radix",
+   "url": "https://www.radix-ui.com",
+   "desc": "Headless primitivy pro React – dialogy, popovery, taby, dropdowny s vyřešenou klávesnicí a čtečkami obrazovky. K tomu Radix Colors, promyšlené barevné škály.",
+   "tags": [
+    "Primitivy"
+   ]
+  },
+  {
+   "name": "Sonner",
+   "url": "https://sonner.emilkowal.ski",
+   "desc": "Toast notifikace od Emila Kowalského – drobné hlášky typu „Uloženo“ nebo „Odesláno“ s jemnou animací a skládáním. Prakticky výchozí volba.",
+   "tags": [
+    "Komponenty",
+    "Emil"
+   ],
+   "pick": true
+  },
+  {
+   "name": "Vaul",
+   "url": "https://vaul.emilkowal.ski",
+   "desc": "Drawer, tedy šuplík vyjíždějící zespodu, který se dá přirozeně stáhnout prstem. Ideální náhrada modalu na mobilu.",
+   "tags": [
+    "Komponenty",
+    "Emil"
+   ]
+  },
+  {
+   "name": "cmdk",
+   "url": "https://cmdk.paco.me",
+   "desc": "Komponenta pro command menu (⌘K) – vyhledávací paleta s příkazy a rychlou navigací, jak ji znáš z Linearu nebo Raycastu.",
+   "tags": [
+    "Komponenty"
+   ]
+  },
+  {
+   "name": "NumberFlow",
+   "url": "https://number-flow.barvian.me",
+   "desc": "Plynulé animované přechody mezi čísly – cifry se protočí místo skokové změny. Hodí se na ceny, počítadla, statistiky a přepínače měsíčně/ročně.",
+   "tags": [
+    "Animace"
+   ]
+  },
+  {
+   "name": "pick-ui-library skill",
+   "url": "https://github.com/emilkowalski/skills",
+   "desc": "Skill pro AI agenty od Emila Kowalského: podle zadání doporučí, kterou UI knihovnu použít. Repo obsahuje i jeho další design-engineering skilly.",
+   "tags": [
+    "Skill",
+    "Emil"
+   ]
+  },
+  {
+   "name": "Beautiful UI",
+   "url": "https://beautifului.dev",
+   "desc": "Kurátorovaná sbírka pěkně zpracovaných UI komponent a detailů – na inspiraci i ke zkopírování.",
+   "tags": [
+    "Galerie"
+   ]
+  },
+  {
+   "name": "RareUI",
+   "url": "https://rareui.in",
+   "desc": "Méně obvyklé, efektní komponenty a mikrointerakce, které na běžných webech nevidíš. Dobré na oživení jednoho prvku.",
+   "tags": [
+    "Galerie",
+    "Efekty"
+   ]
+  },
+  {
+   "name": "Magic UI",
+   "url": "https://magicui.design",
+   "desc": "Animované komponenty a efekty pro landing pages (React, Tailwind, Motion) – marquee, animované nadpisy, efektní pozadí, bento mřížky.",
+   "tags": [
+    "Efekty",
+    "Animace"
+   ]
+  },
+  {
+   "name": "Aceternity UI",
+   "url": "https://ui.aceternity.com",
+   "desc": "Efektní bloky a pozadí pro hero sekce – paralaxy, spotlighty, 3D karty. Používat střídmě, ve větší dávce snadno působí jako „AI slop“.",
+   "tags": [
+    "Efekty"
+   ]
+  },
+  {
+   "name": "21st.dev",
+   "url": "https://21st.dev",
+   "desc": "Komunitní registr React komponent od různých autorů; každou nainstaluješ jedním příkazem přes shadcn CLI. Dobré místo, kde hledat konkrétní komponentu.",
+   "tags": [
+    "Galerie",
+    "Komponenty"
+   ]
+  }
+ ],
+ "Appky": [
+  {
+   "name": "Mobbin",
+   "url": "https://mobbin.com",
+   "desc": "Obří knihovna screenshotů a celých uživatelských flow ze skutečných aplikací a webů. Když řešíš, jak má vypadat onboarding, košík nebo nastavení, podíváš se, jak to dělají ostatní.",
+   "tags": [
+    "Inspirace"
+   ]
+  },
+  {
+   "name": "Granola",
+   "url": "https://go.granola.ai",
+   "desc": "AI poznámky ze schůzek – poslouchá hovor přímo v počítači (bez bota v hovoru), pak z tvých poznámek a přepisu udělá přehledné shrnutí.",
+   "tags": [
+    "AI",
+    "Produktivita"
+   ]
+  },
+  {
+   "name": "Anything",
+   "url": "https://anything.link",
+   "desc": "AI builder: z popisu v běžné řeči postaví mobilní appku, web nebo interní nástroj, včetně napojení na služby. Na vyzkoušení, jak daleko je „vibe coding“.",
+   "tags": [
+    "AI",
+    "Builder"
+   ]
+  }
+ ]
+}

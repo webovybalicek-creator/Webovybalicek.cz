@@ -166,4 +166,5 @@ async def main():
         await b.close()
     datap.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n")
 
-asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(main())
