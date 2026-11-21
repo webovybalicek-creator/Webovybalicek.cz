@@ -460,7 +460,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* typy webů pod kartami – otevírají popup „Co umíme“ */
 /* „Postavíme i“: řádek štítků s ikonami, každý otevírá popup na daném typu */
-.web-types { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 36px 0 0; padding: 0; }
+.web-types { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: var(--grid-gap) 0 0; padding: clamp(22px, 2.6vw, 32px) clamp(28px, 3vw, 40px); border-radius: var(--r-tile); background: var(--gray); }
+.web-types .chip { background: var(--paper); }
 .web-types > p { margin: 0 10px 0 0; font: 500 13px/1 var(--f-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--stone); }
 .web-types ul { display: contents; }
 .web-types li { list-style: none; }
@@ -1312,7 +1313,7 @@ body:has(.hero--air) .site-header:not(.is-scrolled) :is(a, button, summary, inpu
 
 /* návrhy: blok o partnerství */
 .pa { margin: 0; }
-#cesty .pa-a { margin-top: clamp(40px, 5vw, 64px); }
+#cesty .pa-a { margin-top: var(--grid-gap); border-radius: var(--r-tile); }
 .pa p { margin: 0; }
 .pa-lead { font-size: clamp(24px, 2.6vw, 34px); line-height: 1.2; letter-spacing: -0.02em; font-weight: 500; }
 .pa-lead b { font-weight: 650; }
