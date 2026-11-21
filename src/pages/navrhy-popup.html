@@ -1,0 +1,48 @@
+<!--
+title: Návrhy – popup Weby, které stavíme | webovybalicek
+description: Pracovní stránka s návrhy popupu.
+cta: no
+hidden: yes
+-->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><p class="pill">Návrhy</p><h2>Popup „Weby, které stavíme“</h2><p>Posun layoutu po zavření je už opravený na celém webu. Tady jsou tři varianty, jak řešit dlouhý obsah a posuvník.</p></div>
+    <div class="navrh-btns">
+      <button type="button" class="btn btn--primary" data-open="umime-a">A – tenký posuvník</button>
+      <button type="button" class="btn btn--outline" data-open="umime-b">B – panel z boku</button>
+      <button type="button" class="btn btn--outline" data-open="umime-c">C – záložky bez posouvání</button>
+    </div>
+    <ul class="reasons reasons--small" style="margin-top:40px">
+      <li><h3>A – tenký posuvník</h3><p>Stejné okno, jen jemný šedý posuvník odsazený od zaoblených rohů.</p></li>
+      <li><h3>B – panel z boku</h3><p>Vyjede zprava přes celou výšku, posuvník je u kraje obrazovky. Dobře funguje i na mobilu.</p></li>
+      <li><h3>C – záložky</h3><p>Kategorie jako záložky nahoře, každá se vejde bez posouvání. Nejméně scrollu.</p></li>
+    </ul>
+  </div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const src = document.getElementById('umime'); if (!src) return;
+  ['a', 'b', 'c'].forEach((v) => {
+    const d = src.cloneNode(true); d.id = 'umime-' + v; d.classList.add('sheet--' + v);
+    d.querySelectorAll('[id]').forEach((el) => { if (el !== d) el.id = el.id + '-' + v; });
+    d.setAttribute('aria-labelledby', 'umime-title-' + v);
+    if (v === 'c') {
+      const groups = [...d.querySelectorAll('.sheet-group')];
+      const tabs = document.createElement('div'); tabs.className = 'sheet-tabs'; tabs.setAttribute('role', 'tablist');
+      groups.forEach((g, i) => {
+        const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab');
+        b.textContent = g.querySelector('.sheet-h').textContent.replace('Co je součástí a co umíme', 'Co je součástí');
+        b.setAttribute('aria-selected', i === 0 ? 'true' : 'false'); if (i === 0) g.classList.add('is-on');
+        b.addEventListener('click', () => { groups.forEach((x, j) => x.classList.toggle('is-on', j === i)); tabs.querySelectorAll('button').forEach((x, j) => x.setAttribute('aria-selected', j === i ? 'true' : 'false')); });
+        tabs.append(b);
+      });
+      d.querySelector('.sheet-lead').after(tabs);
+    }
+    const close = () => { if (!d.open || d.classList.contains('is-closing')) return; d.classList.add('is-closing'); setTimeout(() => { d.classList.remove('is-closing'); d.close(); }, 230); };
+    d.addEventListener('cancel', (e) => { e.preventDefault(); close(); });
+    d.addEventListener('click', (e) => { if (e.target === d || e.target.closest('[data-close]')) close(); });
+    d.addEventListener('close', () => document.documentElement.classList.remove('is-locked'));
+    document.body.append(d);
+  });
+});
+</script>
