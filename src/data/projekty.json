@@ -11,7 +11,7 @@
   "p": "",
   "num": "",
   "lbl": "",
-  "foto": ""
+  "foto": "dorsen.webp"
  },
  {
   "s": "kabinykravak-cz",
@@ -25,7 +25,7 @@
   "p": "",
   "num": "",
   "lbl": "",
-  "foto": ""
+  "foto": "kabiny-kravak.webp"
  },
  {
   "s": "mmntshop-cz",
@@ -39,7 +39,7 @@
   "p": "",
   "num": "",
   "lbl": "",
-  "foto": ""
+  "foto": "mmnt.webp"
  },
  {
   "s": "zahradkyletna-cz",
@@ -53,20 +53,20 @@
   "p": "",
   "num": "",
   "lbl": "",
-  "foto": ""
+  "foto": "zahradky-letna.webp"
  },
  {
-  "s": "ltc-congress-com",
-  "n": "LTC World Congress",
-  "u": "https://www.ltc-congress.com/",
+  "s": "maisondeluxeprague-com",
+  "n": "Maison de Luxe",
+  "u": "https://www.maisondeluxeprague.com/",
   "tags": [
-   "Vícejazyčný web",
-   "Registrace"
+   "E-shop",
+   "Luxusní móda"
   ],
-  "h": "Světový kongres ve čtyřech jazycích s registrací účastníků.",
+  "h": "E-shop s luxusními kabelkami, kde má každý kus svůj příběh.",
   "p": "",
   "num": "",
   "lbl": "",
-  "foto": ""
+  "foto": "maison.webp"
  }
 ]
