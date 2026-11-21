@@ -71,25 +71,35 @@ void main(){
   a+=exp(-max(hd,0.0)*3.6)*(1.0-al)*0.17;
   gl_FragColor=vec4(col,min(a,1.0));}`;
 
+  // GL zdroje se dají postavit znovu – iOS zahazuje WebGL kontext u karet na pozadí
   const sh = (type, src) => { const o = gl.createShader(type); gl.shaderSource(o, src); gl.compileShader(o); return gl.getShaderParameter(o, gl.COMPILE_STATUS) ? o : null; };
-  const vs = sh(gl.VERTEX_SHADER, VS), fs = sh(gl.FRAGMENT_SHADER, FS);
-  if (!vs || !fs) return;
-  const prog = gl.createProgram(); gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
-  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
-  gl.useProgram(prog);
-  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-  const la = gl.getAttribLocation(prog, 'a'); gl.enableVertexAttribArray(la); gl.vertexAttribPointer(la, 2, gl.FLOAT, false, 0, 0);
-  const U = { res: gl.getUniformLocation(prog, 'uRes'), time: gl.getUniformLocation(prog, 'uTime'), b: gl.getUniformLocation(prog, 'uB[0]'), c: gl.getUniformLocation(prog, 'uC[0]') };
-  const tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-  gl.uniform1i(gl.getUniformLocation(prog, 'uText'), 0);
-  gl.clearColor(0, 0, 0, 0);
+  let prog = null, U = null, tex = null;
+  const initGL = () => {
+    const vs = sh(gl.VERTEX_SHADER, VS), fs = sh(gl.FRAGMENT_SHADER, FS);
+    if (!vs || !fs) return false;
+    prog = gl.createProgram(); gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return false;
+    gl.useProgram(prog);
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    const la = gl.getAttribLocation(prog, 'a'); gl.enableVertexAttribArray(la); gl.vertexAttribPointer(la, 2, gl.FLOAT, false, 0, 0);
+    U = { res: gl.getUniformLocation(prog, 'uRes'), time: gl.getUniformLocation(prog, 'uTime'), b: gl.getUniformLocation(prog, 'uB[0]'), c: gl.getUniformLocation(prog, 'uC[0]') };
+    tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+    gl.uniform1i(gl.getUniformLocation(prog, 'uText'), 0);
+    gl.clearColor(0, 0, 0, 0);
+    return true;
+  };
+  if (!initGL()) return;
 
   let alive = true;
   canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); alive = false; stage.classList.remove('has-gl'); hintRow.hidden = true; tip.hidden = true; });
+  canvas.addEventListener('webglcontextrestored', () => {
+    if (!initGL()) return;
+    alive = true; stage.classList.add('has-gl'); W = 0; // smyčka si přeměří plátno a překreslí nadpis
+  });
   stage.classList.add('has-gl');
   tip.hidden = false;
 
@@ -287,9 +297,9 @@ void main(){
   const loop = (now) => {
     requestAnimationFrame(loop);
     const raw = (now - last) / 1000; last = now;
-    if (!alive || !visible || document.hidden || !W || !H) return;
     // iOS občas vynechá ResizeObserver (měnící se lišta prohlížeče) – velikost hlídáme i tady
-    if (stage.clientWidth !== W || stage.clientHeight !== H) resize();
+    if (alive && (stage.clientWidth !== W || stage.clientHeight !== H)) resize();
+    if (!alive || !visible || document.hidden || !W || !H) return;
     const dt = Math.max(0, Math.min(0.033, raw)); // časová značka snímku může být starší než performance.now()
     if (!reduced) time += dt;
     if (!seeded) { targets(0); B.forEach((b) => { b.x = b.tx; b.y = b.ty; b.z = b.tz; b.r = b.tr; }); seeded = true; }
