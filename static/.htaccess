@@ -1,5 +1,12 @@
 ErrorDocument 404 /404.html
 
+# osobní dashboard /design/ – nikdy neindexovat (i kdyby na něj vedl odkaz)
+<IfModule mod_headers.c>
+  <If "%{REQUEST_URI} =~ m#^/design#">
+    Header set X-Robots-Tag "noindex, nofollow, noarchive"
+  </If>
+</IfModule>
+
 # stránka Reference byla zrušena – vybrané projekty jsou na úvodní stránce
 RewriteEngine On
 RewriteRule ^reference/?$ /#reference [R=301,L,NE]

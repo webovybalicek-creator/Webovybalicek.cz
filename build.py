@@ -240,6 +240,13 @@ def build():
         body = body.replace("{{g_years}}", roky(years))
         body = body.replace("{{v}}", VERSION)
 
+        if meta.get("layout") == "none":  # samostatná stránka bez hlavičky/patičky webu (např. /design/)
+            target = DIST / path.strip("/") / "index.html"
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(body.replace("{{v}}", VERSION), encoding="utf-8")
+            print(f"  {path} (samostatná, noindex)")
+            continue
+
         out = layout
         nav = meta.get("nav", "")
         out = re.sub(r"\{\{nav:([\w-]+)\}\}", lambda m: ' aria-current="page"' if m.group(1) == nav else "", out)
