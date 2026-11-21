@@ -1232,7 +1232,7 @@ body:has(.hero--air) .site-header .utility-bar { background: transparent; border
 .zap-x .zap-band:last-child { rotate: -1.6deg; }
 @media (hover: hover) and (pointer: fine) { .zap-x:hover ul { animation-play-state: paused; } }
 @media (max-width: 640px) { .zap-x .zap-band--ink { rotate: 4deg; } .zap-x .zap-band:last-child { rotate: -3deg; } }
-.zap-x .cash .cash-emoji { display: block; font: 30px/1 "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; animation: cash-fly 1.6s ease-in-out infinite alternate; }
+.zap-x .cash .cash-emoji { display: block; font: 30px/1 "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; filter: hue-rotate(-38deg) saturate(2.1) brightness(1.15); /* zelené bankovky posunuté k limetkové */ animation: cash-fly 1.6s ease-in-out infinite alternate; }
 .zap-x .cash:nth-child(4n) .cash-emoji { animation-delay: -.8s; }
 @keyframes cash-fly { from { translate: 0 2px; rotate: -6deg; } to { translate: 0 -2px; rotate: 6deg; } }
 @media (prefers-reduced-motion: reduce) { .zap-x .cash .cash-emoji { animation: none; } }
