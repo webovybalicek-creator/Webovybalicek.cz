@@ -463,3 +463,12 @@ document.querySelectorAll('[data-proj]').forEach((box) => {
     el.addEventListener('focus', () => open(el));
   });
 });
+
+// Popup s videem: iframe se načte až při otevření, při zavření se odstraní (zastaví přehrávání)
+document.querySelectorAll('dialog[data-video]').forEach((d) => {
+  const box = d.querySelector('.video-frame');
+  new MutationObserver(() => {
+    if (d.open && !box.firstChild) box.innerHTML = `<iframe src="${d.dataset.video}" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+  }).observe(d, { attributes: true, attributeFilter: ['open'] });
+  d.addEventListener('close', () => { box.innerHTML = ''; });
+});
