@@ -361,30 +361,60 @@ document.querySelectorAll('.tools').forEach((box) => {
   const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let seen = true; new IntersectionObserver((es) => { seen = es[0].isIntersecting; }).observe(hero);
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-  const crew = [['Návrh', '#0a1217', '#fff', '#fff'], ['Texty', '#cdfe00', '#0a1217', '#cdfe00'], ['Kód', '#54595d', '#fff', '#fff']].map(([name, color, ink, stroke]) => {
+  const cursor = (name, color, ink, stroke) => {
     const c = document.createElement('span'); c.className = 'swarm-cur'; c.style.color = color; c.style.opacity = '0';
     c.innerHTML = `<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M1.5 1.2l4.6 12.6 2-5.3 5.3-2z" fill="currentColor" stroke="${stroke}" stroke-width="1.1" stroke-linejoin="round"/></svg><b style="-webkit-text-fill-color:${ink}">${name}</b>`;
     layer.append(c); return c;
-  });
-  const loop = async (c, i) => {
-    await sleep(500 + 700 * i);
-    for (;;) {
-      if (hero.dataset.bg !== 'swarm' || calm || document.hidden || !seen) { await sleep(600); continue; }
-      const W = layer.clientWidth, H = layer.clientHeight, wide = W > 900;
-      const w = (wide ? 90 : 50) + Math.random() * (wide ? 240 : 110), h = 40 + Math.random() * (wide ? 150 : 70);
-      // na šířku kreslit vpravo od textu, na mobilu nahoře kolem hmoty – mimo nadpis
-      const x = wide ? W * 0.42 + Math.random() * (W * 0.56 - w) : 12 + Math.random() * Math.max(10, W * 0.55 - w);
-      const y = wide ? H * 0.18 + Math.random() * (H * 0.72 - h) : 88 + Math.random() * Math.max(10, 150 - h);
-      c.style.opacity = '1'; c.style.transform = `translate(${x}px,${y}px)`; await sleep(950);
+  };
+  const busy = () => hero.dataset.bg !== 'swarm' || calm || document.hidden || !seen;
+  const size = () => { const W = layer.clientWidth, H = layer.clientHeight; return { W, H, wide: W > 900 }; };
+  const move = (c, x, y, ms = 900) => { c.style.transition = `transform ${ms}ms cubic-bezier(.3,.7,.2,1), opacity 300ms ease`; c.style.transform = `translate(${x}px,${y}px)`; };
+
+  // Návrh: kreslí rámečky, střídavě limetkový a černý, v pásu mezi textem a bublinou (na mobilu nad nadpisem)
+  const design = async (c) => {
+    await sleep(500);
+    for (let n = 0; ; n++) {
+      if (busy()) { await sleep(600); continue; }
+      const { W, H, wide } = size(), color = n % 2 ? '#0a1217' : '#cdfe00';
+      const w = wide ? 90 + Math.random() * 150 : 50 + Math.random() * 80, h = wide ? 50 + Math.random() * 90 : 30 + Math.random() * 40;
+      const x = wide ? W * 0.42 + Math.random() * (W * 0.26 - w) : 14 + Math.random() * Math.max(10, W * 0.5 - w);
+      const y = wide ? H * 0.46 + Math.random() * (H * 0.4 - h) : 118 + Math.random() * Math.max(6, 92 - h);
+      c.style.opacity = '1'; move(c, x, y); await sleep(950);
       const box = document.createElement('span'); box.className = 'air-box';
-      box.style.cssText = `left:${x}px;top:${y}px;width:0;height:0;color:${c.style.color};transition:width 700ms cubic-bezier(.3,.7,.2,1),height 700ms cubic-bezier(.3,.7,.2,1),opacity 1600ms ease`;
+      box.style.cssText = `left:${x}px;top:${y}px;width:0;height:0;color:${color};transition:width 700ms cubic-bezier(.3,.7,.2,1),height 700ms cubic-bezier(.3,.7,.2,1),opacity 1600ms ease`;
       layer.prepend(box); void box.offsetWidth; box.style.width = w + 'px'; box.style.height = h + 'px';
-      c.style.transform = `translate(${x + w}px,${y + h}px)`; await sleep(1000);
-      setTimeout(() => { box.classList.add('is-out'); setTimeout(() => box.remove(), 1700); }, 3200);
-      await sleep(300 + Math.random() * 900);
+      move(c, x + w, y + h); await sleep(1000);
+      setTimeout(() => { box.classList.add('is-out'); setTimeout(() => box.remove(), 1700); }, 2800);
+      await sleep(1400 + Math.random() * 1200);
     }
   };
-  crew.forEach(loop);
+
+  // Texty a Kód: kurzor píše na své místo krátký text, chvíli ho nechá a smaže
+  const typist = async (c, cls, delay, spot, lines) => {
+    const out = document.createElement('span'); out.className = 'air-type ' + cls; layer.prepend(out);
+    await sleep(delay);
+    for (let n = 0; ; n++) {
+      if (busy()) { await sleep(600); continue; }
+      const { W, H, wide } = size(), [x, y] = spot(W, H, wide), text = lines(wide)[n % lines(wide).length];
+      out.style.left = x + 'px'; out.style.top = y + 'px'; out.textContent = '';
+      c.style.opacity = '1'; move(c, x, y + out.offsetHeight * 0.2); await sleep(1000);
+      for (let i = 1; i <= text.length; i++) {
+        out.textContent = text.slice(0, i); move(c, x + out.offsetWidth + 2, y + 4, 80);
+        await sleep(text[i - 1] === ' ' ? 110 : 45 + Math.random() * 70);
+      }
+      await sleep(3200);
+      for (let i = text.length - 1; i >= 0; i--) { out.textContent = text.slice(0, i); move(c, x + out.offsetWidth + 2, y + 4, 60); await sleep(22); }
+      await sleep(1600 + Math.random() * 1200);
+    }
+  };
+
+  design(cursor('Návrh', '#0a1217', '#fff', '#fff'));
+  typist(cursor('Texty', '#cdfe00', '#0a1217', '#cdfe00'), 'air-type--text', 1600,
+    (W, H, wide) => wide ? [W * 0.45, H * 0.27] : [16, 218],
+    (wide) => wide ? ['Klikněte na bublinu', 'Potáhněte bublinu →'] : ['Klepněte na bublinu ↗', 'Potáhněte bublinu ↗']);
+  typist(cursor('Kód', '#54595d', '#fff', '#fff'), 'air-type--code', 3200,
+    (W, H, wide) => wide ? [W * 0.7, H * 0.8] : [16, 92],
+    () => ['<html lang="cs">', '<h1>Tvorba webů</h1>', '<a href="#kontakt">', 'npm run build']);
 })();
 
 // Kontakt: záložky „Chci nový web“ / „Jsme agentura“ – mění text vlevo i formulář; /#spoluprace otevře rovnou agenturní
