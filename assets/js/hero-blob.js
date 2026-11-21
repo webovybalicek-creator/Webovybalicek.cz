@@ -282,17 +282,27 @@ void main(){
   if (window.IntersectionObserver) new IntersectionObserver((en) => { visible = en[0].isIntersecting; }).observe(stage);
 
   render();
+  const dbg = /blobdebug/.test(location.search) ? Object.assign(document.body.appendChild(document.createElement('pre')), { style: 'position:fixed;left:4px;bottom:4px;z-index:99;margin:0;padding:4px 6px;background:#000;color:#cdfe00;font:11px/1.3 monospace;white-space:pre-wrap' }) : null;
   let seeded = false, time = 0, slow = 0, frames = 0, last = performance.now();
   const loop = (now) => {
     requestAnimationFrame(loop);
     const raw = (now - last) / 1000; last = now;
     if (!alive || !visible || document.hidden || !W || !H) return;
-    const dt = Math.min(0.033, raw);
+    // iOS občas vynechá ResizeObserver (měnící se lišta prohlížeče) – velikost hlídáme i tady
+    if (stage.clientWidth !== W || stage.clientHeight !== H) resize();
+    const dt = Math.max(0, Math.min(0.033, raw)); // časová značka snímku může být starší než performance.now()
     if (!reduced) time += dt;
     if (!seeded) { targets(0); B.forEach((b) => { b.x = b.tx; b.y = b.ty; b.z = b.tz; b.r = b.tr; }); seeded = true; }
     // slabší zařízení: postupně snížit rozlišení
     if (++frames > 20) { if (raw > 0.034) slow++; else slow = Math.max(0, slow - 1); if (slow > 25 && quality > 0.4) { quality *= 0.8; slow = 0; resize(); } }
     targets(time); step(dt / 2); step(dt / 2);
+    // pojistka: kapka nesmí utéct ke kameře ani narůst (jinak zaplní celý úvod)
+    for (let i = 0; i < N; i++) {
+      const b = B[i];
+      if (![b.x, b.y, b.z, b.r, b.vx, b.vy, b.vz].every(Number.isFinite)) { b.x = b.tx; b.y = b.ty; b.z = b.tz; b.r = b.tr; b.vx = b.vy = b.vz = 0; }
+      b.z = Math.max(-1, Math.min(1, b.z)); b.r = Math.max(-0.8, Math.min(1.4 * scale, b.r));
+    }
+    if (dbg) dbg.textContent = `${W}x${H} a=${aspect.toFixed(2)} s=${scale.toFixed(2)} q=${quality.toFixed(2)} c=${canvas.width}x${canvas.height} core=${[B[CORE].x, B[CORE].y, B[CORE].z, B[CORE].r].map((v) => v.toFixed(2))}`;
     for (let i = 0; i < N; i++) {
       const b = B[i]; bArr[i * 4] = b.x; bArr[i * 4 + 1] = b.y; bArr[i * 4 + 2] = b.z; bArr[i * 4 + 3] = b.r;
       // limetkově svítí jen kapka označená data-accent (Design), a to od chvíle, kdy ji někdo vytahuje z hmoty
