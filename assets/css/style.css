@@ -1290,5 +1290,7 @@ body:has(.hero--air) .site-header:not(.is-scrolled) :is(a, button, summary, inpu
 @media (prefers-reduced-motion: reduce) { .proj, .proj > img, .proj-body { transition: none; } }
 
 .hero-lead strong { color: var(--ink); font-weight: 650; }
-.cesty-note { margin: clamp(40px, 5vw, 64px) 0 0; max-width: 760px; text-wrap: balance; color: var(--graphite); font-size: clamp(20px, 2vw, 26px); line-height: 1.35; letter-spacing: -0.015em; }
+.cesty-note { margin: clamp(40px, 5vw, 64px) 0 0; max-width: 760px; text-wrap: balance; display: grid; gap: 12px; color: var(--graphite); font-size: clamp(20px, 2vw, 26px); line-height: 1.35; letter-spacing: -0.015em; }
+.cesty-note p { margin: 0; }
 .cesty-note strong { color: var(--ink); font-weight: 600; }
+.cesty-note .cesty-note-sub { max-width: 620px; font-size: 17px; line-height: 1.6; letter-spacing: 0; }
