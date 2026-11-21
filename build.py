@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "124"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "125"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -88,17 +88,19 @@ LOCK = '<svg class="shot-lock" viewBox="0 0 12 12" aria-hidden="true"><path d="M
 
 def render_projects(items):
     """Vybrané projekty jako harmonika (main.js, [data-proj]). Prázdná pole (text, číslo) se nevypíšou;
-    vlastní fotka z assets/img/projekty/ má přednost před screenshotem webu."""
+    v základu screenshot webu, při najetí myší se v pozadí prolne fotka z assets/img/projekty/ (pole foto)."""
     out = []
     for i, r in enumerate(items):
-        img = f"/assets/img/projekty/{r['img']}" if r.get("img") else f"/assets/img/reference/{r['s']}.webp?v={VERSION}"
+        img = f"/assets/img/reference/{r['s']}.webp?v={VERSION}"
+        foto = (f'<img class="proj-photo" src="/assets/img/projekty/{html.escape(r["foto"])}?v={VERSION}" alt="" loading="lazy" decoding="async">'
+                if r.get("foto") else "")
         tags = "".join(f"<li>{html.escape(t)}</li>" for t in r.get("tags", []))
         txt = f'<p class="proj-text">{html.escape(r["p"])}</p>' if r.get("p") else ""
         stat = (f'<p class="proj-stat"><strong>{html.escape(r["num"])}</strong><span>{html.escape(r["lbl"])}</span></p>'
                 if r.get("num") else "")
         out.append(
             f'<li class="proj{" is-open" if i == 0 else ""}" tabindex="0" aria-label="{html.escape(r["n"])}">'
-            f'<img src="{img}" alt="" loading="lazy" decoding="async"><span class="proj-shade"></span>'
+            f'<img src="{img}" alt="" loading="lazy" decoding="async">{foto}<span class="proj-shade"></span>'
             f'<span class="proj-num">{i + 1:02d}</span><span class="proj-side">{html.escape(r["n"])}</span>'
             f'<div class="proj-body"><ul class="proj-tags">{tags}</ul><h3>{html.escape(r["h"])}</h3>{txt}{stat}'
             f'<a class="link-utility" href="{html.escape(r["u"])}" target="_blank" rel="noopener">Otevřít {html.escape(r["n"])}</a></div></li>'

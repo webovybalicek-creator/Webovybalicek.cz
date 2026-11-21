@@ -1,12 +1,72 @@
 [
- {"s": "dorsen-cz", "n": "Dorsen", "u": "https://dorsen.cz/", "tags": ["Prezentace značky", "Design"],
-  "h": "Matrace z Jizerských hor, které se prodávají příběhem.", "p": "", "num": "", "lbl": "", "img": ""},
- {"s": "kabinykravak-cz", "n": "Kabiny Kravák", "u": "https://kabinykravak.cz/", "tags": ["Rezervace", "Poukazy"],
-  "h": "Ubytování, které si host zarezervuje a zaplatí bez jediného e-mailu.", "p": "", "num": "", "lbl": "", "img": ""},
- {"s": "mmntshop-cz", "n": "MMNT", "u": "https://mmntshop.cz/", "tags": ["E-shop", "WooCommerce"],
-  "h": "E-shop se svíčkami, který vypadá jako jejich obal.", "p": "", "num": "", "lbl": "", "img": ""},
- {"s": "zahradkyletna-cz", "n": "Zahrádky Letná", "u": "https://zahradkyletna.cz/", "tags": ["Gastro", "Program akcí"],
-  "h": "Největší pražská zahrádka s programem, který si obsluha mění sama.", "p": "", "num": "", "lbl": "", "img": ""},
- {"s": "ltc-congress-com", "n": "LTC World Congress", "u": "https://www.ltc-congress.com/", "tags": ["Vícejazyčný web", "Registrace"],
-  "h": "Světový kongres ve čtyřech jazycích s registrací účastníků.", "p": "", "num": "", "lbl": "", "img": ""}
+ {
+  "s": "dorsen-cz",
+  "n": "Dorsen",
+  "u": "https://dorsen.cz/",
+  "tags": [
+   "Prezentace značky",
+   "Design"
+  ],
+  "h": "Matrace z Jizerských hor, které se prodávají příběhem.",
+  "p": "",
+  "num": "",
+  "lbl": "",
+  "foto": ""
+ },
+ {
+  "s": "kabinykravak-cz",
+  "n": "Kabiny Kravák",
+  "u": "https://kabinykravak.cz/",
+  "tags": [
+   "Rezervace",
+   "Poukazy"
+  ],
+  "h": "Ubytování, které si host zarezervuje a zaplatí bez jediného e-mailu.",
+  "p": "",
+  "num": "",
+  "lbl": "",
+  "foto": ""
+ },
+ {
+  "s": "mmntshop-cz",
+  "n": "MMNT",
+  "u": "https://mmntshop.cz/",
+  "tags": [
+   "E-shop",
+   "WooCommerce"
+  ],
+  "h": "E-shop se svíčkami, který vypadá jako jejich obal.",
+  "p": "",
+  "num": "",
+  "lbl": "",
+  "foto": ""
+ },
+ {
+  "s": "zahradkyletna-cz",
+  "n": "Zahrádky Letná",
+  "u": "https://zahradkyletna.cz/",
+  "tags": [
+   "Gastro",
+   "Program akcí"
+  ],
+  "h": "Největší pražská zahrádka s programem, který si obsluha mění sama.",
+  "p": "",
+  "num": "",
+  "lbl": "",
+  "foto": ""
+ },
+ {
+  "s": "ltc-congress-com",
+  "n": "LTC World Congress",
+  "u": "https://www.ltc-congress.com/",
+  "tags": [
+   "Vícejazyčný web",
+   "Registrace"
+  ],
+  "h": "Světový kongres ve čtyřech jazycích s registrací účastníků.",
+  "p": "",
+  "num": "",
+  "lbl": "",
+  "foto": ""
+ }
 ]
