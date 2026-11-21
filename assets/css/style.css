@@ -1309,3 +1309,29 @@ body:has(.hero--air) .site-header:not(.is-scrolled) :is(a, button, summary, inpu
 .fc-icons--corner .fc-ico { width: 46px; height: 46px; }
 .fc-icons--corner .fc-ico svg { width: 24px; height: 24px; }
 .navrh-h { margin: 56px 0 20px; font-size: 20px; }
+
+/* návrhy: blok o partnerství */
+.pa { margin: 0; }
+.pa p { margin: 0; }
+.pa-lead { font-size: clamp(24px, 2.6vw, 34px); line-height: 1.2; letter-spacing: -0.02em; font-weight: 500; }
+.pa-lead b { font-weight: 650; }
+.pa-a { display: grid; grid-template-columns: auto 1fr; gap: clamp(28px, 5vw, 72px); align-items: center; padding: clamp(28px, 4vw, 56px); border-radius: var(--r-feature); background: var(--ink); color: #fff; }
+.pa-a .pa-lead b { color: var(--lime); }
+.pa-a .pa-copy { display: grid; gap: 14px; max-width: 680px; }
+.pa-a .pa-copy p:not(.pa-lead) { color: var(--on-ink-muted); font-size: 17px; line-height: 1.6; }
+.pa-stat { display: grid; gap: 6px; padding-right: clamp(28px, 5vw, 72px); border-right: 1px solid var(--on-ink-line); }
+.pa-stat strong { font-size: clamp(56px, 7vw, 96px); line-height: .9; letter-spacing: -0.04em; color: var(--lime); }
+.pa-stat span { font: 400 12px/1.3 var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--on-ink-muted); }
+.pa-b { display: grid; grid-template-columns: 1fr minmax(200px, 320px); gap: 40px; align-items: center; padding: clamp(28px, 4vw, 56px); border-radius: var(--r-feature); background: var(--gray); }
+.pa-b .pa-copy { display: grid; gap: 14px; justify-items: start; max-width: 640px; }
+.pa-b .pa-copy p:last-child { color: var(--graphite); font-size: 17px; line-height: 1.6; }
+.pa-net { width: 100%; height: auto; color: var(--ink); }
+.pa-net circle { fill: var(--ink); }
+.pa-net .pa-hub { fill: var(--lime); stroke: var(--ink); stroke-width: 2; }
+.pa-c { display: grid; gap: clamp(28px, 3vw, 44px); }
+.pa-c .pa-lead { font-size: clamp(32px, 4vw, 56px); max-width: 900px; }
+.pa-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); margin: 0; padding: 0; list-style: none; }
+.pa-facts li { display: grid; gap: 8px; padding-top: 18px; border-top: 2px solid var(--ink); }
+.pa-facts strong { font-size: 22px; letter-spacing: -0.02em; }
+.pa-facts span { color: var(--graphite); font-size: 16px; line-height: 1.5; }
+@media (max-width: 760px) { .pa-a, .pa-b, .pa-facts { grid-template-columns: 1fr; } .pa-stat { padding: 0 0 20px; border-right: 0; border-bottom: 1px solid var(--on-ink-line); } .pa-net { max-width: 260px; } }
