@@ -1201,7 +1201,8 @@ body:has(.hero--air) .site-header .utility-bar { background: transparent; border
 .agency-logos ul { display: flex; flex-wrap: wrap; align-items: center; gap: 16px clamp(24px, 3vw, 40px); margin: 0; padding: 0; list-style: none; }
 .agency-logos img { display: block; width: auto; height: 22px; filter: brightness(0) invert(1); opacity: .9; }
 .form [data-only][hidden] { display: none; }
-@media (max-width: 520px) { .contact-tabs { padding-left: 16px; } .contact-tabs button { padding: 13px 14px 12px; font-size: 14px; } }
+/* mobil: záložky přes celou šířku, panel nahoře bez zaoblení – žádné mezery v rozích */
+@media (max-width: 520px) { .contact-tabs { padding-left: 0; gap: 4px; } .contact-tabs button { flex: 1; padding: 14px 8px 13px; font-size: 14px; } .contact-tabs + .contact-panel { border-top-left-radius: 0; border-top-right-radius: 0; } }
 @media (prefers-reduced-motion: reduce) { .contact-panel [role="tabpanel"] { animation: none; } }
 #kontakt { scroll-margin-top: calc(var(--header-h, 115px) - 40px); }
 .form label { min-width: 0; } .form select, .form input, .form textarea { min-width: 0; max-width: 100%; }
