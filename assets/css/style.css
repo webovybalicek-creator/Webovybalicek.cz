@@ -1312,6 +1312,7 @@ body:has(.hero--air) .site-header:not(.is-scrolled) :is(a, button, summary, inpu
 
 /* návrhy: blok o partnerství */
 .pa { margin: 0; }
+#cesty .pa-a { margin-top: clamp(40px, 5vw, 64px); }
 .pa p { margin: 0; }
 .pa-lead { font-size: clamp(24px, 2.6vw, 34px); line-height: 1.2; letter-spacing: -0.02em; font-weight: 500; }
 .pa-lead b { font-weight: 650; }
