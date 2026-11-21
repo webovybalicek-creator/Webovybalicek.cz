@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "121"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "122"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -84,6 +84,26 @@ def render_references(data):
 
 
 LOCK = '<svg class="shot-lock" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5M2.6 5h6.8v5H2.6z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>'
+
+
+def render_projects(items):
+    """Vybrané projekty jako harmonika (main.js, [data-proj]). Prázdná pole (text, číslo) se nevypíšou;
+    vlastní fotka z assets/img/projekty/ má přednost před screenshotem webu."""
+    out = []
+    for i, r in enumerate(items):
+        img = f"/assets/img/projekty/{r['img']}" if r.get("img") else f"/assets/img/reference/{r['s']}.webp?v={VERSION}"
+        tags = "".join(f"<li>{html.escape(t)}</li>" for t in r.get("tags", []))
+        txt = f'<p class="proj-text">{html.escape(r["p"])}</p>' if r.get("p") else ""
+        stat = (f'<p class="proj-stat"><strong>{html.escape(r["num"])}</strong><span>{html.escape(r["lbl"])}</span></p>'
+                if r.get("num") else "")
+        out.append(
+            f'<li class="proj{" is-open" if i == 0 else ""}" tabindex="0" aria-label="{html.escape(r["n"])}">'
+            f'<img src="{img}" alt="" loading="lazy" decoding="async"><span class="proj-shade"></span>'
+            f'<span class="proj-num">{i + 1:02d}</span><span class="proj-side">{html.escape(r["n"])}</span>'
+            f'<div class="proj-body"><ul class="proj-tags">{tags}</ul><h3>{html.escape(r["h"])}</h3>{txt}{stat}'
+            f'<a class="link-utility" href="{html.escape(r["u"])}" target="_blank" rel="noopener">Otevřít {html.escape(r["n"])}</a></div></li>'
+        )
+    return f'<ul class="projs" data-proj>{"".join(out)}</ul>'
 
 
 def render_shots(vyber, snimky, limit=None, big=False, demo=False):
@@ -188,6 +208,7 @@ def build():
     clients = json.loads((SRC / "data" / "klienti.json").read_text(encoding="utf-8"))
     reviews = json.loads((SRC / "data" / "recenze.json").read_text(encoding="utf-8"))
     vyber = json.loads((SRC / "data" / "reference-vyber.json").read_text(encoding="utf-8"))
+    projekty = json.loads((SRC / "data" / "projekty.json").read_text(encoding="utf-8"))
     snimky_p = SRC / "data" / "reference-snimky.json"
     snimky = json.loads(snimky_p.read_text(encoding="utf-8")) if snimky_p.exists() else {}
 
@@ -207,6 +228,7 @@ def build():
         body = body.replace("{{clients}}", render_clients(clients))
         body = body.replace("{{reviews}}", render_reviews(reviews))
         body = body.replace("{{shots_strip}}", render_shots(vyber, snimky))
+        body = body.replace("{{projects}}", render_projects(projekty))
         body = body.replace("{{shots_demo}}", render_shots(vyber, snimky, limit=4, demo=True))
         body = body.replace("{{shots_grid}}", render_shots(vyber, snimky, limit=6, big=True))
         years = date.today().year - GOOGLE["since"]

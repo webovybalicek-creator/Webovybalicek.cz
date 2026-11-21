@@ -422,3 +422,14 @@ document.querySelectorAll('.tools').forEach((box) => {
   lists.forEach((l) => l.classList.add('is-js'));
   addEventListener('scroll', update, { passive: true }); addEventListener('resize', update); update();
 })();
+
+// Vybrané projekty: harmonika – najetím (myš) nebo klepnutím/fokusem se otevře projekt
+document.querySelectorAll('[data-proj]').forEach((box) => {
+  const items = [...box.children];
+  const open = (el) => items.forEach((i) => i.classList.toggle('is-open', i === el));
+  items.forEach((el) => {
+    el.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') open(el); });
+    el.addEventListener('click', () => open(el));
+    el.addEventListener('focus', () => open(el));
+  });
+});
