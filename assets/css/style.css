@@ -1336,3 +1336,6 @@ body:has(.hero--air) .site-header:not(.is-scrolled) :is(a, button, summary, inpu
 .pa-facts strong { font-size: 22px; letter-spacing: -0.02em; }
 .pa-facts span { color: var(--graphite); font-size: 16px; line-height: 1.5; }
 @media (max-width: 760px) { .pa-a, .pa-b, .pa-facts { grid-template-columns: 1fr; } .pa-stat { padding: 0 0 20px; border-right: 0; border-bottom: 1px solid var(--on-ink-line); } .pa-net { max-width: 260px; } }
+.fc-stack { margin-top: auto; padding-top: 24px; font: 400 12px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--graphite); }
+.feature-card--featured .fc-stack { color: var(--on-ink-muted); }
+.feature-card .fc-stack + .link-utility { margin-top: 18px; }
