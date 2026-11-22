@@ -784,16 +784,18 @@ html.is-locked { overflow: hidden; }
 .page-hero .crumbs a { color: var(--stone); }
 .page-hero .crumbs a:hover { color: var(--ink); }
 .page-hero h1 { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; letter-spacing: -0.025em; max-width: 20ch; margin: 0 auto 20px; text-wrap: balance; }
-.page-hero h1 em { font-style: normal; background: linear-gradient(transparent 62%, var(--lime) 62%, var(--lime) 92%, transparent 92%); }
+.page-hero h1 em { font-style: normal; }
 .page-hero .lead { max-width: 620px; margin: 0 auto; font-size: 19px; line-height: 1.6; color: var(--graphite); text-wrap: pretty; }
 .page-hero .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
 .page-hero .rating { background: var(--gray); }
 .page-hero .rating span { color: var(--graphite); }
 .page-jump { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 32px 0 0; padding: 0; list-style: none; }
-.page-jump a { display: inline-flex; gap: 10px; align-items: baseline; padding: 10px 16px; border-radius: 999px; background: var(--gray); text-decoration: none; color: var(--ink); font-size: 15px; transition: background-color 150ms ease, transform 150ms ease; }
-.page-jump a span { font: 400 13px/1 var(--f-mono); color: var(--stone); }
-@media (hover: hover) and (pointer: fine) { .page-jump a:hover { background: var(--hairline); } }
-.page-jump a:active { transform: scale(.97); }
+.page-jump .btn--outline::after { rotate: 90deg; } /* skok dolů na stránce: šipka míří dolů */
+/* zvýraznění v nadpisu se při načtení „napustí“ limetkovou vodou jako kolečko tlačítka a při odscrollování zase odteče */
+.page-hero h1 em { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 60' preserveAspectRatio='none'%3E%3Cpath d='M0 14 Q15 0 30 14 T60 14 T90 14 T120 14 T150 14 T180 14 T210 14 T240 14 V60 H0Z' fill='%23cdfe00'/%3E%3C/svg%3E") 0 1.3em / 200% .5em no-repeat;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; transition: background-position 1600ms cubic-bezier(.45, 0, .2, 1); }
+.page-hero h1 em.is-full { background-position: 100% .66em; transition-duration: 1100ms; }
+@media (prefers-reduced-motion: reduce) { .page-hero h1 em { transition: none; } }
 [id^="cena-"], .section h2[id] { scroll-margin-top: calc(var(--header-h, 80px) + 24px); }
 .crumbs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 32px; font-size: 14px; color: var(--on-ink-muted); }
 .crumbs a { text-decoration: none; color: var(--on-ink-muted); transition: color 150ms ease; }

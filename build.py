@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "161"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "162"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -220,7 +220,7 @@ def page_jumps(body):
         if not hid:
             hid = re.sub(r'[^a-z0-9]+', '-', text.lower().translate(str.maketrans('áčďéěíňóřšťúůýž', 'acdeeinorstuuyz'))).strip('-')
             rest = rest.replace(f'<h2>{text}</h2>', f'<h2 id="{hid}">{text}</h2>', 1)
-        links.append(f'<li><a href="#{hid}">{re.sub(r"<[^>]+>", "", text)}</a></li>')
+        links.append(f'<li><a href="#{hid}" class="btn btn--outline btn--sm">{re.sub(r"<[^>]+>", "", text)}</a></li>')
     jump = f'\n      <ul class="page-jump">{"".join(links)}</ul>'
     return body[:m.start()] + m.group(1) + jump + m.group(2) + rest
 

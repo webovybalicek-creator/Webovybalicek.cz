@@ -491,3 +491,10 @@ document.querySelectorAll('form[data-sleva]').forEach((form) => {
     else { msg.innerHTML = 'Nepodařilo se odeslat. Napište nám na <a href="mailto:webovybalicek@gmail.com">webovybalicek@gmail.com</a>.'; msg.classList.add('is-err'); }
   });
 });
+
+// Úvod podstránky: zvýraznění v nadpisu se napustí po načtení, při odscrollování odteče, nahoře se znovu napustí
+document.querySelectorAll('.page-hero h1 em').forEach((em) => {
+  const h1 = em.closest('h1');
+  const set = () => em.classList.toggle('is-full', h1.getBoundingClientRect().bottom > innerHeight * 0.2);
+  setTimeout(() => { set(); addEventListener('scroll', () => requestAnimationFrame(set), { passive: true }); }, 250);
+});
