@@ -1,0 +1,48 @@
+<!--
+title: Návrhy – Na čem si zakládáme | webovybalicek
+description: Pracovní stránka s variantami sekce Na čem si zakládáme.
+cta: no
+hidden: yes
+-->
+<style>
+.nv-label { max-width: calc(var(--wrap) - 2 * var(--gutter)); margin: 80px auto 22px; padding: 0 var(--gutter); font: 400 13px/1.5 var(--f-mono); color: var(--stone); }
+.nv-label strong { color: var(--ink); }
+.nv { padding: 0 var(--gutter); } .nv > .wrap { max-width: calc(var(--wrap) - 2 * var(--gutter)); }
+.pv-i { margin-bottom: 0 !important; }
+/* A */
+.pa-bento { display: grid; grid-template-columns: 1.15fr 1fr; grid-template-rows: auto auto auto; gap: var(--grid-gap); }
+.pb-big { grid-row: span 2; display: flex; flex-direction: column; padding: clamp(28px, 3.4vw, 48px); border-radius: var(--r-card); background: var(--ink); color: #fff; }
+.pb-big h3 { margin: auto 0 12px; padding-top: 80px; font-size: clamp(30px, 3.2vw, 44px); letter-spacing: -0.03em; line-height: 1.05; }
+.pb-big p { margin: 0; color: var(--on-ink-muted); font-size: 17px; line-height: 1.6; max-width: 46ch; }
+.pb-sm { display: grid; grid-template-columns: auto 1fr; gap: 20px; padding: clamp(24px, 2.6vw, 32px); border-radius: var(--r-card); background: var(--gray); }
+.pb-sm h3 { margin: 6px 0 8px; font-size: 22px; letter-spacing: -0.02em; } .pb-sm p { margin: 0; color: var(--graphite); font-size: 16px; line-height: 1.55; }
+.pb-chips { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 0; padding: 0; list-style: none; border-radius: var(--r-card); box-shadow: inset 0 0 0 1px var(--hairline); }
+.pb-chips li { display: grid; gap: 6px; padding: 22px 24px; } .pb-chips li + li { border-left: 1px solid var(--hairline); }
+.pb-chips b { font-size: 17px; } .pb-chips span { color: var(--graphite); font-size: 15px; line-height: 1.5; }
+/* B */
+.pr-rows { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--ink); }
+.pr-rows li { display: grid; grid-template-columns: 80px 1fr 1.3fr; gap: 24px; align-items: baseline; padding: 30px 0; border-bottom: 1px solid var(--hairline); }
+.pr-n { font: 400 13px/1 var(--f-mono); color: var(--stone); }
+.pr-rows h3 { margin: 0; font-size: clamp(26px, 2.8vw, 38px); letter-spacing: -0.03em; }
+.pr-rows p { margin: 0; color: var(--graphite); font-size: 17px; line-height: 1.6; }
+.pr-small { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 48px; margin: 36px 0 0 104px; padding: 0; list-style: none; color: var(--graphite); font-size: 16px; line-height: 1.55; }
+.pr-small b { color: var(--ink); font-weight: 600; }
+/* C */
+.ps { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+.ps-left { position: sticky; top: calc(var(--header-h, 80px) + 32px); }
+.ps-left h2 { margin: 12px 0; font-size: clamp(34px, 4vw, 52px); letter-spacing: -0.03em; line-height: 1.05; } .ps-left p:last-child { color: var(--graphite); font-size: 17px; }
+.ps-list { margin: 0; padding: 0; list-style: none; }
+.ps-list li { display: grid; grid-template-columns: 48px 1fr; gap: 22px; padding: 26px 0; border-top: 1px solid var(--hairline); }
+.ps-main h3 { margin: 8px 0 8px; font-size: 26px; letter-spacing: -0.02em; } .ps-list p { margin: 0; color: var(--graphite); font-size: 16px; line-height: 1.6; }
+.ps-mini { padding: 18px 0 !important; } .ps-mini h3 { margin: 0 0 4px; font-size: 18px; }
+.ps-dot { width: 10px; height: 10px; margin: 7px 0 0 19px; border-radius: 50%; background: var(--ink); }
+@media (max-width: 860px) { .pa-bento, .ps { grid-template-columns: 1fr; } .pb-big { grid-row: auto; } .pb-chips { grid-template-columns: 1fr 1fr; } .pr-rows li { grid-template-columns: 1fr; gap: 8px; } .pr-small { grid-template-columns: 1fr; margin-left: 0; } .ps-left { position: static; } }
+</style>
+<section class="page-hero"><div class="wrap"><ol class="crumbs"><li><a href="/">Domů</a></li><li>Návrhy</li></ol><h1>Na čem si <em>zakládáme</em></h1><p class="lead">Stejný obsah, tři způsoby, jak ho odprezentovat.</p></div></section>
+<p class="nv-label"><strong>A</strong> – bento: hlavní slib velký v černé kartě, další dva vedle, drobnosti v jednom řádku pod tím</p>
+<section class="nv"><div class="wrap"><div class="pa-bento"><article class="pb-big"><svg class="pillar-ico pv-i" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 17h14M5 14V10M9 14V7M13 14V9M17 4l-5 4-3-2-5 4"/><path d="M14 4h3v3"/></svg><h3>Prodáváme výsledky</h3><p>Nezajímá nás počet stránek, ale co web přinese: poptávky, objednávky, rezervace. Na začátku si řekneme, co má web splnit, a podle toho ho postavíme.</p></article><article class="pb-sm"><svg class="pillar-ico pv-i" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5 3.5 5v5c0 4 2.8 6.6 6.5 7.5 3.7-.9 6.5-3.5 6.5-7.5V5z"/><path d="m7 10 2 2 4-4"/></svg><div><h3>Spolehlivost</h3><p>Odpovídáme do 24 hodin a termíny dodržujeme. Domluvený rozpočet nepřekročíme, i kdyby to mělo jít na naše triko. Žádná nepříjemná překvapení. A po spuštění nemizíme, o web se staráme dál.</p></div></article><article class="pb-sm"><svg class="pillar-ico pv-i" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m12.5 12.5 5 5M6 9.5l1.5-2 1.5 1.5L11 6.5"/></svg><div><h3>Analýza před začátkem</h3><p>V ceně každého webu. Než začneme stavět, projdeme vaše podnikání, zákazníky i konkurenci a navrhneme strukturu webu. Stavíme podle plánu, ne naslepo.</p></div></article><ul class="pb-chips"><li><b>Poradíme upřímně</b><span>Když vám stačí levnější řešení, řekneme to.</span></li><li><b>Rozumíme e-commerce</b><span>Web je jen nástroj. Poradíme, jak dostat produkt k zákazníkovi.</span></li><li><b>Nejsme agentura</b><span>Jsme skupina freelancerů, bez zbytečné režie a manažerů.</span></li><li><b>Neodflákneme to</b><span>Neodevzdáme web, se kterým sami nejsme spokojení.</span></li></ul></div></div></section>
+<p class="nv-label"><strong>B</strong> – redakční řádky: velké nadpisy s čísly a linkami, drobnosti jako krátký seznam</p>
+<section class="nv"><div class="wrap"><ol class="pr-rows"><li><span class="pr-n">01</span><h3>Prodáváme výsledky</h3><p>Nezajímá nás počet stránek, ale co web přinese: poptávky, objednávky, rezervace. Na začátku si řekneme, co má web splnit, a podle toho ho postavíme.</p></li><li><span class="pr-n">02</span><h3>Spolehlivost</h3><p>Odpovídáme do 24 hodin a termíny dodržujeme. Domluvený rozpočet nepřekročíme, i kdyby to mělo jít na naše triko. Žádná nepříjemná překvapení. A po spuštění nemizíme, o web se staráme dál.</p></li><li><span class="pr-n">03</span><h3>Analýza před začátkem</h3><p>V ceně každého webu. Než začneme stavět, projdeme vaše podnikání, zákazníky i konkurenci a navrhneme strukturu webu. Stavíme podle plánu, ne naslepo.</p></li></ol><ul class="pr-small"><li><b>Poradíme upřímně.</b> Když vám stačí levnější řešení, řekneme to.</li><li><b>Rozumíme e-commerce.</b> Web je jen nástroj. Poradíme, jak dostat produkt k zákazníkovi.</li><li><b>Nejsme agentura.</b> Jsme skupina freelancerů, bez zbytečné režie a manažerů.</li><li><b>Neodflákneme to.</b> Neodevzdáme web, se kterým sami nejsme spokojení.</li></ul></div></section>
+<p class="nv-label"><strong>C</strong> – nadpis vlevo zůstává při scrollu, vpravo jeden společný seznam všech sedmi bodů</p>
+<section class="nv"><div class="wrap"><div class="ps"><div class="ps-left"><p class="pill">Na detailu záleží</p><h2>Na čem si zakládáme</h2><p>Sedm věcí, které od nás můžete čekat u každého webu.</p></div><ol class="ps-list"><li class="ps-main"><svg class="pillar-ico pv-i" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 17h14M5 14V10M9 14V7M13 14V9M17 4l-5 4-3-2-5 4"/><path d="M14 4h3v3"/></svg><div><h3>Prodáváme výsledky</h3><p>Nezajímá nás počet stránek, ale co web přinese: poptávky, objednávky, rezervace. Na začátku si řekneme, co má web splnit, a podle toho ho postavíme.</p></div></li><li class="ps-main"><svg class="pillar-ico pv-i" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5 3.5 5v5c0 4 2.8 6.6 6.5 7.5 3.7-.9 6.5-3.5 6.5-7.5V5z"/><path d="m7 10 2 2 4-4"/></svg><div><h3>Spolehlivost</h3><p>Odpovídáme do 24 hodin a termíny dodržujeme. Domluvený rozpočet nepřekročíme, i kdyby to mělo jít na naše triko. Žádná nepříjemná překvapení. A po spuštění nemizíme, o web se staráme dál.</p></div></li><li class="ps-main"><svg class="pillar-ico pv-i" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m12.5 12.5 5 5M6 9.5l1.5-2 1.5 1.5L11 6.5"/></svg><div><h3>Analýza před začátkem</h3><p>V ceně každého webu. Než začneme stavět, projdeme vaše podnikání, zákazníky i konkurenci a navrhneme strukturu webu. Stavíme podle plánu, ne naslepo.</p></div></li><li class="ps-mini"><span class="ps-dot"></span><div><h3>Poradíme upřímně</h3><p>Když vám stačí levnější řešení, řekneme to.</p></div></li><li class="ps-mini"><span class="ps-dot"></span><div><h3>Rozumíme e-commerce</h3><p>Web je jen nástroj. Poradíme, jak dostat produkt k zákazníkovi.</p></div></li><li class="ps-mini"><span class="ps-dot"></span><div><h3>Nejsme agentura</h3><p>Jsme skupina freelancerů, bez zbytečné režie a manažerů.</p></div></li><li class="ps-mini"><span class="ps-dot"></span><div><h3>Neodflákneme to</h3><p>Neodevzdáme web, se kterým sami nejsme spokojení.</p></div></li></ol></div></div></section>
+<div style="height:120px"></div>
