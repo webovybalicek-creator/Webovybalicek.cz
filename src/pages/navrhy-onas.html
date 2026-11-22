@@ -1,0 +1,39 @@
+<!--
+title: Návrhy – Jak pracujeme | webovybalicek
+description: Pracovní stránka s variantami sekce Jak pracujeme na stránce O nás.
+cta: no
+hidden: yes
+-->
+<style>
+.nv-label { max-width: calc(var(--wrap) - 2 * var(--gutter)); margin: 80px auto 22px; padding: 0 var(--gutter); font: 400 13px/1.5 var(--f-mono); color: var(--stone); }
+.nv-label strong { color: var(--ink); }
+.nv { padding: 0 var(--gutter); } .nv > .wrap { max-width: calc(var(--wrap) - 2 * var(--gutter)); }
+.ob-n { font: 400 12px/1 var(--f-mono); color: var(--stone); }
+/* A */
+.ob-a { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); }
+.ob-a article { display: flex; flex-direction: column; gap: 10px; padding: clamp(24px, 2.6vw, 32px); border-radius: var(--r-card); background: var(--gray); }
+.ob-a h3 { margin: 18px 0 0; font-size: 22px; letter-spacing: -0.02em; } .ob-a p { margin: 0; color: var(--graphite); font-size: 16px; line-height: 1.55; }
+.ob-a .ob-big { grid-row: span 2; justify-content: flex-end; background: var(--lime); }
+.ob-a .ob-big h3 { font-size: clamp(30px, 3.4vw, 46px); line-height: 1.05; letter-spacing: -0.03em; } .ob-a .ob-big p { color: rgba(10,18,23,.75); font-size: 18px; }
+.ob-a article:last-child { grid-column: 1 / -1; flex-direction: row; align-items: baseline; gap: 24px; background: var(--ink); color: #fff; }
+.ob-a article:last-child h3 { margin: 0; color: #fff; } .ob-a article:last-child p { color: var(--on-ink-muted); }
+/* B */
+.ob-b { display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(32px, 5vw, 80px); margin: 0; padding: 0; list-style: none; }
+.ob-b li { display: grid; grid-template-columns: 56px 1fr; gap: 16px; padding: 28px 0; border-top: 1px solid var(--ink); }
+.ob-b .ob-n { padding-top: 8px; } .ob-b h3 { margin: 0 0 8px; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -0.025em; } .ob-b p { margin: 0; color: var(--graphite); font-size: 16px; line-height: 1.6; }
+/* C */
+.ob-c { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); margin: 0; padding: 0; list-style: none; }
+.ob-c li { padding: clamp(24px, 2.6vw, 32px); border-radius: var(--r-card); box-shadow: inset 0 0 0 1px var(--hairline); transition: background-color 200ms ease; }
+.ob-c .pillar-ico { margin-bottom: 40px; }
+.ob-c h3 { margin: 0 0 8px; font-size: 22px; letter-spacing: -0.02em; } .ob-c p { margin: 0; color: var(--graphite); font-size: 16px; line-height: 1.55; }
+@media (hover: hover) and (pointer: fine) { .ob-c li:hover { background: var(--gray); } }
+@media (max-width: 860px) { .ob-a, .ob-b, .ob-c { grid-template-columns: 1fr; } .ob-a .ob-big { grid-row: auto; } }
+</style>
+<section class="page-hero"><div class="wrap"><ol class="crumbs"><li><a href="/">Domů</a></li><li>Návrhy</li></ol><h1>Jak <em>pracujeme</em></h1><p class="lead">Šest zásad ze stránky O nás, tři způsoby zobrazení.</p></div></section>
+<p class="nv-label"><strong>A</strong> – bento: první zásada velká v limetkové kartě, ostatní v šedých kartách s čísly</p>
+<section class="nv"><div class="wrap"><div class="ob-a"><article class="ob-big"><h3>Práce nás baví</h3><p>Díky tomu tvoříme weby s vysokou přidanou hodnotou, ne jen další šablonu.</p></article><article><span class="ob-n">02</span><h3>Poradíme upřímně</h3><p>Když vám stačí levnější řešení, řekneme to. I kdyby to znamenalo menší zakázku.</p></article><article><span class="ob-n">03</span><h3>Dlouhodobé vztahy</h3><p>Většina klientů s námi zůstává roky. O weby se staráme i po spuštění.</p></article><article><span class="ob-n">04</span><h3>AI s rozumem</h3><p>Nové nástroje používáme tam, kde vám ušetří čas a peníze. Kvalitu hlídá člověk.</p></article><article><span class="ob-n">05</span><h3>Neodflákneme to</h3><p>Neodevzdáme web, se kterým sami nejsme spokojení.</p></article><article><span class="ob-n">06</span><h3>Rychlá komunikace</h3><p>Odpovídáme do 24 hodin.</p></article></div></div></section>
+<p class="nv-label"><strong>B</strong> – dva sloupce s čísly a silnou linkou nahoře, bez karet</p>
+<section class="nv"><div class="wrap"><ol class="ob-b"><li><span class="ob-n">01</span><div><h3>Práce nás baví</h3><p>Díky tomu tvoříme weby s vysokou přidanou hodnotou, ne jen další šablonu.</p></div></li><li><span class="ob-n">02</span><div><h3>Poradíme upřímně</h3><p>Když vám stačí levnější řešení, řekneme to. I kdyby to znamenalo menší zakázku.</p></div></li><li><span class="ob-n">03</span><div><h3>Dlouhodobé vztahy</h3><p>Většina klientů s námi zůstává roky. O weby se staráme i po spuštění.</p></div></li><li><span class="ob-n">04</span><div><h3>AI s rozumem</h3><p>Nové nástroje používáme tam, kde vám ušetří čas a peníze. Kvalitu hlídá člověk.</p></div></li><li><span class="ob-n">05</span><div><h3>Neodflákneme to</h3><p>Neodevzdáme web, se kterým sami nejsme spokojení.</p></div></li><li><span class="ob-n">06</span><div><h3>Rychlá komunikace</h3><p>Odpovídáme do 24 hodin.</p></div></li></ol></div></section>
+<p class="nv-label"><strong>C</strong> – karty s limetkovou ikonou (jako na homepage), po najetí jemně zešednou</p>
+<section class="nv"><div class="wrap"><ul class="ob-c"><li><svg class="pillar-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3.5c3.6 0 6.5 2.9 6.5 6.5S13.6 16.5 10 16.5 3.5 13.6 3.5 10 6.4 3.5 10 3.5Z"/><path d="M7.2 11.2c.7 1 1.7 1.6 2.8 1.6s2.1-.6 2.8-1.6M7.6 8h.01M12.4 8h.01"/></svg><h3>Práce nás baví</h3><p>Díky tomu tvoříme weby s vysokou přidanou hodnotou, ne jen další šablonu.</p></li><li><svg class="pillar-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5h12v8H9l-4 3v-3H4z"/></svg><h3>Poradíme upřímně</h3><p>Když vám stačí levnější řešení, řekneme to. I kdyby to znamenalo menší zakázku.</p></li><li><svg class="pillar-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 12.5 3.5 9.5l3-3M13.5 7.5l3 3-3 3M3.5 9.5h13"/></svg><h3>Dlouhodobé vztahy</h3><p>Většina klientů s námi zůstává roky. O weby se staráme i po spuštění.</p></li><li><svg class="pillar-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5l1.8 4.2 4.5.4-3.4 3 1 4.4L10 12.2 6.1 14.5l1-4.4-3.4-3 4.5-.4z"/></svg><h3>AI s rozumem</h3><p>Nové nástroje používáme tam, kde vám ušetří čas a peníze. Kvalitu hlídá člověk.</p></li><li><svg class="pillar-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10.5l3 3 7-7"/></svg><h3>Neodflákneme to</h3><p>Neodevzdáme web, se kterým sami nejsme spokojení.</p></li><li><svg class="pillar-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v6l3.5 2M16.5 10a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z"/></svg><h3>Rychlá komunikace</h3><p>Odpovídáme do 24 hodin.</p></li></ul></div></section>
+<div style="height:120px"></div>
