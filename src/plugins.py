@@ -1,6 +1,7 @@
 """Generátor stránek doporučených pluginů (Toret affiliate)."""
 import html
 import json
+import re
 from pathlib import Path
 
 REF = "67"
@@ -41,7 +42,7 @@ def hero(crumbs, title, lead, actions=""):
     return f'''  <section class="page-hero">
     <div class="wrap">
       <ol class="crumbs">{cr}</ol>
-      <h1>{e(title)}</h1>
+      <h1>{re.sub(r"\*(.+?)\*", r"<em>\1</em>", e(title))}</h1>
       <p class="lead">{e(lead)}</p>
       {actions}
     </div>
@@ -84,26 +85,12 @@ def overview(data):
 
     body = hero(
         [("Domů", "/"), ("Doporučené pluginy", None)],
-        "Pluginy, které na e-shopech opravdu používáme",
+        "Pluginy, které na e-shopech opravdu *používáme*",
         f"Vybrali jsme {len(data['plugins'])} prověřených pluginů od českého vývojáře Toret pro dopravu, platby, fakturaci i marketing. U každého najdete, k čemu je, co umí a pro koho se hodí.",
         f'<p class="hero-actions"><a href="{bundle_url}" class="btn btn--primary" {EXT_ATTR}>Všechny pluginy v balíčku</a><a href="#sleva" class="btn btn--outline">Chci slevový kód</a></p>',
     )
     body += f'''  <section class="section">
     <div class="wrap">
-      <div class="bundle obsidian">
-        <div>
-          <span class="tag-mono">&lt;Balicek /&gt;</span>
-          <h2>{e(b['n'])}</h2>
-          <p>{e(b['t'])}</p>
-          <ul class="ticks ticks--dark">{feats}</ul>
-        </div>
-        <div class="bundle-buy">
-          <p class="bundle-price"><strong>{f"{b['p']:,}".replace(",", " ")}</strong> Kč/rok</p>
-          <a href="{bundle_url}" class="btn btn--primary btn--block" {EXT_ATTR}>Koupit balíček</a>
-          <p class="bundle-note">Vyplatí se už od 6 pluginů. S naším slevovým kódem ušetříte ještě víc.</p>
-        </div>
-      </div>
-
       <div class="sleva" id="sleva">
         <div class="sleva-copy">
           <span class="sleva-tag">Sleva</span>
@@ -127,6 +114,21 @@ def overview(data):
           <article class="card plugin"><div class="plugin-head"><h3>LearnDash</h3></div><p>Online kurzy, lekce a testy přímo na WordPressu.</p><p class="plugin-links"><a href="https://stellarwp.pxf.io/c/5070967/1601777/9639" class="btn btn--outline btn--sm" {EXT_ATTR}>Zobrazit plugin</a><a href="https://stellarwp.pxf.io/c/5070967/1287835/9639" class="btn btn--ghost btn--sm" {EXT_ATTR}>Registrace</a></p></article>
         </div>
       </div>
+
+      <div class="bundle obsidian bundle--end">
+        <div>
+          <span class="tag-mono">&lt;Balicek /&gt;</span>
+          <h2>{e(b['n'])}</h2>
+          <p>{e(b['t'])}</p>
+          <ul class="ticks ticks--dark">{feats}</ul>
+        </div>
+        <div class="bundle-buy">
+          <p class="bundle-price"><strong>{f"{b['p']:,}".replace(",", " ")}</strong> Kč/rok</p>
+          <a href="{bundle_url}" class="btn btn--primary btn--block" {EXT_ATTR}>Koupit balíček</a>
+          <p class="bundle-note">Vyplatí se už od 6 pluginů. S naším slevovým kódem ušetříte ještě víc.</p>
+        </div>
+      </div>
+
 
     </div>
   </section>
