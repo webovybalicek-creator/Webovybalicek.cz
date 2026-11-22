@@ -561,7 +561,7 @@ html.is-locked { overflow: hidden; }
 .ticks li { position: relative; padding-left: 26px; }
 .ticks li::before {
   content: ""; position: absolute; left: 0; top: 5px; top: calc(.5lh - 7.5px); width: 16px; height: 16px; border-radius: var(--r-pill); /* na střed prvního řádku */
-  background: var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.75 8.25l2 2 4.5-4.5' fill='none' stroke='%230a1217' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat;
+  background: var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.75 8.25l2 2 4.5-4.5' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat;
 }
 
 .explorer.is-ready .spec-card[hidden] { display: none; }
@@ -864,7 +864,7 @@ html.is-locked { overflow: hidden; }
 .feature-grid { display: grid; gap: var(--grid-gap); grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
 .feature-grid li { position: relative; padding: 16px 16px 16px 46px; background: var(--gray); border-radius: var(--r-tile); font-size: 16px; }
 .feature-grid li::before { content: ""; position: absolute; left: 16px; top: 18px; width: 18px; height: 18px; border-radius: var(--r-pill);
-  background: var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.75 8.25l2 2 4.5-4.5' fill='none' stroke='%230a1217' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat; }
+  background: var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.75 8.25l2 2 4.5-4.5' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat; }
 .why { margin-top: 48px; padding: 24px 28px; background: var(--material); border: 0; border-radius: var(--r-feature); }
 .why p { margin: 0; color: var(--ink); }
 .buy-card { display: grid; gap: 12px; }
@@ -1448,7 +1448,8 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
 .sv-price { margin: 22px 0 0; font-size: 34px; font-weight: 600; letter-spacing: -0.03em; } .sv-price span { font-size: 15px; font-weight: 400; color: var(--stone); letter-spacing: 0; }
 .sv-ticks { margin: 22px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
 .sv-ticks li { position: relative; padding-left: 28px; font-size: 15px; line-height: 1.5; }
-.sv-ticks li::before { content: ""; position: absolute; left: 0; top: 2px; width: 18px; height: 18px; border-radius: 50%; background: var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5.5 9.2l2.3 2.3 4.7-4.9' fill='none' stroke='%230a1217' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat; }
+.sv-ticks li::before { content: ""; position: absolute; left: 0; top: 2px; width: 18px; height: 18px; border-radius: 50%; background: var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5.5 9.2l2.3 2.3 4.7-4.9' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat; }
+.sva-card--ink .sv-ticks li::before { background-color: var(--lime); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5.5 9.2l2.3 2.3 4.7-4.9' fill='none' stroke='%230a1217' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
 .sv-spec { margin: 24px 0 0; } .sv-spec div { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-top: 1px solid var(--hairline); font-size: 14px; } .sv-spec dt { color: var(--stone); } .sv-spec dd { margin: 0; text-align: right; font-weight: 500; }
 .sv-a { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); }
 .sva-card { display: flex; flex-direction: column; padding: clamp(24px, 2.6vw, 34px); border-radius: var(--r-card); background: var(--gray); }
