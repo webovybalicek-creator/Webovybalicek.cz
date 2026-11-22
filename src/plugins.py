@@ -128,7 +128,6 @@ def overview(data):
         </div>
       </div>
 
-      <p class="note">Odkazy na této stránce jsou partnerské. Když přes ně nakoupíte, dostaneme malou provizi a vás to nic navíc nestojí. Ceny jsou orientační za roční licenci, aktuální cenu uvidíte na toret.cz.</p>
     </div>
   </section>
 '''
