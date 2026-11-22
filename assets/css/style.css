@@ -1458,3 +1458,17 @@ body:has(.hero--air) .site-header:not(.is-scrolled) :is(a, button, summary, inpu
 .manifest em.is-full { background-size: 200% .45em; transition-duration: 1100ms; }
 .manifest em + em, .manifest em.is-full ~ em { transition-delay: 0s; }
 @media (prefers-reduced-motion: reduce) { .manifest em { transition: none; } }
+/* „ouško“ s fotkou: vyjede vpravo dole, když je návštěvník skoro na konci stránky */
+.ear { position: fixed; right: 20px; bottom: 20px; z-index: 40; display: flex; align-items: center; gap: 14px; padding: 7px 10px 7px 7px; border-radius: 999px; background: var(--ink); color: #fff; text-decoration: none;
+  box-shadow: 0 12px 40px rgba(10,18,23,.28); opacity: 0; translate: 0 16px; pointer-events: none; transition: opacity 300ms ease, translate 450ms var(--ease-out), scale 150ms ease; }
+.ear.is-on { opacity: 1; translate: 0; pointer-events: auto; }
+.ear img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--ink), 0 0 0 4px var(--lime); }
+.ear-text { display: grid; gap: 2px; padding-right: 2px; }
+.ear-text strong { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
+.ear-text span { font-size: 13px; color: var(--on-ink-muted); }
+.ear-ico { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--lime); color: var(--ink); transition: rotate 300ms var(--ease-out); }
+.ear-ico svg { width: 20px; height: 20px; }
+@media (hover: hover) and (pointer: fine) { .ear:hover .ear-ico { rotate: -8deg; } }
+.ear:active { scale: .97; }
+@media (max-width: 520px) { .ear { right: 12px; bottom: 12px; } .ear-text span { display: none; } }
+@media (prefers-reduced-motion: reduce) { .ear { transition: opacity 200ms ease; translate: 0; } }

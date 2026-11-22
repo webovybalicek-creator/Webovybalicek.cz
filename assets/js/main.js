@@ -505,3 +505,22 @@ document.querySelectorAll('.manifest').forEach((p) => {
   new IntersectionObserver(([e]) => ems.forEach((em, i) => setTimeout(() => em.classList.toggle('is-full', e.isIntersecting), e.isIntersecting ? i * 350 : 0)),
     { rootMargin: '-15% 0px -15% 0px' }).observe(p);
 });
+
+// Ouško s fotkou: ukáže se skoro na konci stránky, schová se u kontaktního formuláře a patičky s výzvou (na stránce Kontakt vůbec)
+(() => {
+  const ear = document.querySelector('[data-ear]'); if (!ear) return;
+  if (location.pathname.startsWith('/kontakt')) { ear.remove(); return; }
+  const form = document.getElementById('kontakt');
+  if (form) ear.href = '#kontakt';
+  let formSeen = false;
+  const seen = new Set(); // kontaktní formulář nebo patička s výzvou na obrazovce = ouško netřeba
+  const io = new IntersectionObserver((es) => { es.forEach((e) => e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)); formSeen = seen.size > 0; tick(); });
+  [form, document.querySelector('.footer-cta .cta-actions')].forEach((el) => el && io.observe(el));
+  function tick() {
+    const doc = document.documentElement, left = doc.scrollHeight - (scrollY + innerHeight);
+    const progress = scrollY / Math.max(1, doc.scrollHeight - innerHeight);
+    ear.classList.toggle('is-on', !formSeen && scrollY > innerHeight * 0.8 && (progress > 0.55 || left < 1400));
+  }
+  addEventListener('scroll', () => requestAnimationFrame(tick), { passive: true });
+  tick();
+})();
