@@ -1508,3 +1508,11 @@ html[data-sb="d"]::-webkit-scrollbar-thumb { border-radius: 999px; background: t
 html[data-sb="d"].is-scrolling::-webkit-scrollbar-thumb { background: rgba(10,18,23,.35); }
 .sb-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
 .sb-btns button[aria-pressed="true"] { background: var(--ink); color: var(--lime); }
+
+/* posuvník webu (varianta B): černý jezdec v šedé dráze */
+html:not([data-sb]) { scrollbar-width: thin; scrollbar-color: var(--ink) var(--gray); }
+html:not([data-sb])::-webkit-scrollbar { width: 10px; }
+html:not([data-sb])::-webkit-scrollbar-button { display: none; height: 0; }
+html:not([data-sb])::-webkit-scrollbar-track { background: var(--gray); }
+html:not([data-sb])::-webkit-scrollbar-thumb { border: 2px solid var(--gray); border-radius: 999px; background: var(--ink); }
+html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: #2a3237; }
