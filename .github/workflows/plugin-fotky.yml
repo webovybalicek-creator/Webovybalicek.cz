@@ -1,0 +1,26 @@
+name: Fotky pluginů
+
+on:
+  workflow_dispatch:
+    inputs:
+      jen:
+        description: "Jen tyto pluginy (u-slugy oddělené mezerou); prázdné = všechny"
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  fotky:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install pillow
+      - run: python tools/plugin_fotky.py ${{ github.event.inputs.jen }}
+      - name: Uložit do repozitáře
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/img/pluginy
+          git diff --cached --quiet || git commit -m "Fotky pluginů (automaticky)"
+          git pull --rebase origin main && git push

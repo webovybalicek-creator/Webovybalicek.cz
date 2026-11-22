@@ -165,7 +165,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .contact-panel .btn--outline, .bundle .btn--outline {
   --circle: rgba(255,255,255,.12); --water: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ffffff'/%3E%3Cstop offset='.3' stop-color='%23ffdcee'/%3E%3Cstop offset='.55' stop-color='%23d6eeff'/%3E%3Cstop offset='.8' stop-color='%23e9ffd2'/%3E%3Cstop offset='1' stop-color='%23e6e6ea'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 12 Q15 2 30 12 T60 12 T90 12 T120 12 V120 H0Z' fill='url(%23g)'/%3E%3Cpath d='M0 12 Q15 2 30 12 T60 12 T90 12 T120 12' fill='none' stroke='%23ffffff' stroke-width='3'/%3E%3C/svg%3E"); --arrow: var(--on-ink); --arrow-on: var(--ink);
 }
-.btn--sm:not([href^="tel:"]):not([href^="mailto:"]) { padding-right: 7px; }
+.btn--sm:not([href^="tel:"]):not([href^="mailto:"]):not(.btn--ghost) { padding-right: 7px; }
+.btn--ghost.btn--sm { padding: 0 18px; } /* ghost nemá šipku v kolečku – symetrický hover */
 /* kolečko (::before posunuté na konec) */
 .btn--primary:not([href^="tel:"]):not([href^="mailto:"])::before,
 .btn--outline:not([href^="tel:"]):not([href^="mailto:"]):not(.btn--noarrow)::before {
@@ -915,6 +916,7 @@ html.is-locked { overflow: hidden; }
 .bundle h2 { color: var(--on-ink); margin: 8px 0; }
 .bundle p { color: var(--on-ink-muted); }
 .ticks--dark li { color: var(--on-ink); }
+.ticks--dark li::before { background: var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.75 8.25l2 2 4.5-4.5' fill='none' stroke='%230a1217' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat; }
 .bundle-buy { padding: 24px; background: rgba(255,255,255,.06); border-radius: var(--r-feature); }
 .bundle-price { margin: 0 0 16px; }
 .bundle-price strong { font-size: 44px; font-weight: 650; letter-spacing: -0.04em; color: var(--lime); }
