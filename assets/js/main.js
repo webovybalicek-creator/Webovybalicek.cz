@@ -549,3 +549,11 @@ document.querySelectorAll('.manifest').forEach((p) => {
   };
   addEventListener('scroll', () => requestAnimationFrame(tick), { passive: true }); tick();
 });
+
+/* sloupce časů – postupné najetí */
+(() => {
+  const bars = document.querySelectorAll('.bars'); if (!bars.length) return;
+  if (!window.IntersectionObserver) { bars.forEach((b) => b.classList.add('is-in')); return; }
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { threshold: 0.6 });
+  bars.forEach((b) => io.observe(b));
+})();

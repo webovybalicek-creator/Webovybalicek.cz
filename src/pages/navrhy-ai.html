@@ -1,0 +1,58 @@
+<!--
+title: Návrhy – AI weby | webovybalicek
+description: Pracovní stránka s variantami sekce na stránce AI weby.
+cta: no
+hidden: yes
+-->
+<style>
+.nv-label { max-width: calc(var(--wrap) - 2 * var(--gutter)); margin: 80px auto 22px; padding: 0 var(--gutter); font: 400 13px/1.5 var(--f-mono); color: var(--stone); }
+.nv-label strong { color: var(--ink); }
+.nv { padding: 0 var(--gutter); } .nv > .wrap { max-width: calc(var(--wrap) - 2 * var(--gutter)); }
+.tg { display: inline-block; padding: 4px 10px; border-radius: 999px; font: 500 11px/1.2 var(--f-mono); letter-spacing: .04em; white-space: nowrap; }
+.t-ai { background: var(--lime); color: var(--ink); } .t-hum { background: var(--ink); color: #fff; } .t-mix { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); } .t-done { background: var(--gray); color: var(--graphite); }
+.ai-a article, .ai-b-cards article { border-radius: var(--r-card); padding: clamp(24px, 2.8vw, 36px); }
+.ai-a h3, .ai-b-cards h3 { margin: 0 0 8px; font-size: 24px; letter-spacing: -0.02em; } .ai-a p, .ai-b-cards p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--graphite); }
+/* A */
+.ai-a { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: var(--grid-gap); }
+.aa-steps { grid-row: span 2; background: var(--ink); color: #fff; } .aa-steps h3 { color: #fff; } .aa-steps > p { color: var(--on-ink-muted) !important; }
+.st-list { margin: 24px 0 0; padding: 0; list-style: none; }
+.st-list li { display: grid; grid-template-columns: 32px 1fr auto; align-items: center; gap: 10px; padding: 13px 0; border-top: 1px solid var(--on-ink-line); }
+.st-list .mono { font: 400 12px/1 var(--f-mono); color: var(--stone); } .st-t { font-size: 16px; }
+.aa-steps .t-mix { background: transparent; color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.5); } .aa-steps .t-hum { background: #fff; color: var(--ink); } .aa-steps .t-done { background: rgba(255,255,255,.1); color: var(--on-ink-muted); }
+.aa-lime { background: var(--lime); } .aa-lime p { color: rgba(10,18,23,.75) !important; }
+.bars2 { display: grid; gap: 10px; margin-top: 22px; } .bars2 div { display: grid; grid-template-columns: 48px 1fr; align-items: center; gap: 10px; }
+.bars2 .mono { font: 400 12px var(--f-mono); } .bars2 .b { height: 10px; width: var(--w); border-radius: 999px; background: rgba(10,18,23,.18); } .bars2 .b--ink { background: var(--ink); }
+.aa-gray { background: var(--gray); }
+.aa-wide { grid-column: 2 / -1; display: grid; gap: 18px; background: #fff; box-shadow: inset 0 0 0 1px var(--hairline); } .aa-wide .chips { margin: 0; }
+/* B */
+.ai-b { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; margin: 0; padding: 0; list-style: none; counter-reset: s; }
+.ai-b li { position: relative; display: grid; gap: 14px; padding: 0 16px 0 0; }
+.ai-b li::before { content: ""; order: 2; height: 2px; background: var(--ink); margin-right: -16px; }
+.ai-b li:last-child::before { margin-right: 0; background: linear-gradient(90deg, var(--ink), var(--lime)); }
+.ai-b .tg { order: 1; justify-self: start; } .ai-b .mono { order: 3; font: 400 12px var(--f-mono); color: var(--stone); } .ai-b h3 { order: 4; margin: 0; font-size: 18px; letter-spacing: -0.01em; }
+.ai-b-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); margin-top: 48px; }
+.ai-b-cards article { background: var(--gray); } .ai-b-cards article:nth-child(2) { background: var(--ink); color: #fff; } .ai-b-cards article:nth-child(2) h3 { color: #fff; } .ai-b-cards article:nth-child(2) p { color: var(--on-ink-muted); }
+/* C */
+.ai-c { display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--grid-gap); align-items: start; }
+.cmp { width: 100%; border-collapse: collapse; font-size: 16px; }
+.cmp th, .cmp td { padding: 18px 16px; text-align: left; border-bottom: 1px solid var(--hairline); vertical-align: top; }
+.cmp thead th { font: 500 12px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--stone); border-bottom: 1px solid var(--ink); }
+.cmp tbody th { font-weight: 600; width: 26%; } .cmp td { color: var(--graphite); } .cmp td:last-child { color: var(--ink); font-weight: 500; background: rgba(205,254,0,.18); }
+.ai-c .aa-steps { border-radius: var(--r-card); padding: clamp(24px, 2.8vw, 36px); }
+@media (max-width: 860px) { .ai-a, .ai-b-cards, .ai-c { grid-template-columns: 1fr; } .aa-steps { grid-row: auto; } .aa-wide { grid-column: auto; } .ai-b { grid-template-columns: 1fr 1fr; row-gap: 28px; } }
+</style>
+<section class="page-hero"><div class="wrap"><ol class="crumbs"><li><a href="/">Domů</a></li><li>Návrhy</li></ol><h1>AI weby <em>v našem designu</em></h1><p class="lead">Obsah sekce ze stránky AI weby, tři způsoby zobrazení v brandu.</p></div></section>
+<p class="nv-label"><strong>A</strong> – bento v brandu: postup v černé kartě se štítky AI / člověk, rychlost v limetkové, cena v šedé, funkce dole</p>
+<section class="nv"><div class="wrap"><div class="ai-a">
+  <article class="aa-steps"><h3>Každý řádek kontroluje člověk</h3><p>AI navrhne, my upravíme, otestujeme a teprve pak spustíme.</p><ol class="st-list"><li><span class="mono">01</span><span class="st-t">Návrh struktury a textů</span><span class="tg t-ai">AI</span></li><li><span class="mono">02</span><span class="st-t">Úprava na váš obor</span><span class="tg t-hum">člověk</span></li><li><span class="mono">03</span><span class="st-t">Design a UX</span><span class="tg t-mix">AI + člověk</span></li><li><span class="mono">04</span><span class="st-t">Stavba a funkce na míru</span><span class="tg t-mix">AI + člověk</span></li><li><span class="mono">05</span><span class="st-t">Test na mobilu a počítači</span><span class="tg t-hum">člověk</span></li><li><span class="mono">06</span><span class="st-t">Spuštění</span><span class="tg t-done">hotovo</span></li></ol></article>
+  <article class="aa-lime"><h3>Rychlejší dodání</h3><p>Co dřív trvalo týden, máme za pár dní.</p><div class="bars" aria-label="Doba dodání: dříve zhruba 7 dní, s AI 2 až 3 dny">            <div><span class="mono">dříve</span><span class="bar" style="--w:100%"></span><span class="mono bar-v">~7 dní</span></div>            <div><span class="mono">s AI</span><span class="bar bar--accent" style="--w:35%"></span><span class="mono bar-v">2–3 dny</span></div>          </div></article>
+  <article class="aa-gray"><h3>Nižší cena, lepší výsledek</h3><p>Ušetřený čas se propisuje do ceny a zbytek investujeme zpátky do projektu: víc testování, víc obsahu a lepší pozice ve vyhledávačích.</p></article>
+  <article class="aa-wide"><div><h3>Funkce na míru</h3><p>Kalkulačky, konfigurátory a napojení, které dřív stály desítky hodin.</p></div><ul class="chips"><li>Kalkulačka ceny</li><li>Konfigurátor produktu</li><li>AI chatbot</li><li>Napojení na API</li></ul></article>
+</div></div></section>
+<p class="nv-label"><strong>B</strong> – časová osa postupu se štítky nad kroky a tři výhody pod ní</p>
+<section class="nv"><div class="wrap"><ol class="ai-b"><li><span class="tg t-ai">AI</span><span class="mono">01</span><h3>Návrh struktury a textů</h3></li><li><span class="tg t-hum">člověk</span><span class="mono">02</span><h3>Úprava na váš obor</h3></li><li><span class="tg t-mix">AI + člověk</span><span class="mono">03</span><h3>Design a UX</h3></li><li><span class="tg t-mix">AI + člověk</span><span class="mono">04</span><h3>Stavba a funkce na míru</h3></li><li><span class="tg t-hum">člověk</span><span class="mono">05</span><h3>Test na mobilu a počítači</h3></li><li><span class="tg t-done">hotovo</span><span class="mono">06</span><h3>Spuštění</h3></li></ol>
+<div class="ai-b-cards"><article><h3>Rychlejší dodání</h3><p>Co dřív trvalo týden, máme za pár dní.</p></article><article><h3>Nižší cena, lepší výsledek</h3><p>Ušetřený čas se propisuje do ceny a zbytek investujeme zpátky do projektu: víc testování, víc obsahu a lepší pozice ve vyhledávačích.</p></article><article><h3>Funkce na míru</h3><p>Kalkulačky, konfigurátory, AI chatbot a napojení na API, které dřív stály desítky hodin.</p></article></div></div></section>
+<p class="nv-label"><strong>C</strong> – srovnání „Klasicky vs. s AI u nás“ jako tabulka a vedle postup</p>
+<section class="nv"><div class="wrap"><div class="ai-c"><table class="cmp"><thead><tr><th></th><th>Klasicky</th><th><span class="tg t-ai">S AI</span> u nás</th></tr></thead><tbody><tr><th>Dodání</th><td>týdny</td><td>dny až pár týdnů</td></tr><tr><th>Cena</th><td>plná práce ručně</td><td>nižší, ušetřený čas se propisuje</td></tr><tr><th>Testování</th><td>co se stihne</td><td>víc testů na mobilu i počítači</td></tr><tr><th>Obsah a SEO</th><td>základ</td><td>víc obsahu, lepší pozice ve vyhledávačích</td></tr><tr><th>Kontrola kvality</th><td>člověk</td><td>člověk, každý řádek</td></tr></tbody></table>
+<article class="aa-steps"><h3>Postup</h3><ol class="st-list"><li><span class="mono">01</span><span class="st-t">Návrh struktury a textů</span><span class="tg t-ai">AI</span></li><li><span class="mono">02</span><span class="st-t">Úprava na váš obor</span><span class="tg t-hum">člověk</span></li><li><span class="mono">03</span><span class="st-t">Design a UX</span><span class="tg t-mix">AI + člověk</span></li><li><span class="mono">04</span><span class="st-t">Stavba a funkce na míru</span><span class="tg t-mix">AI + člověk</span></li><li><span class="mono">05</span><span class="st-t">Test na mobilu a počítači</span><span class="tg t-hum">člověk</span></li><li><span class="mono">06</span><span class="st-t">Spuštění</span><span class="tg t-done">hotovo</span></li></ol></article></div></div></section>
+<div style="height:120px"></div>

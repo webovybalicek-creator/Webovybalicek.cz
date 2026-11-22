@@ -568,9 +568,13 @@ html.is-locked { overflow: hidden; }
 @media (max-width: 860px) { .modules { grid-template-columns: 1fr; } .module--tall { grid-row: auto; } }
 
 .bars { display: grid; gap: 10px; margin-top: auto; }
-.bars div { display: grid; grid-template-columns: 52px 1fr; align-items: center; gap: 12px; }
+.bars div { display: grid; grid-template-columns: 52px 1fr 64px; align-items: center; gap: 12px; }
+.bar-v { text-align: right; color: var(--ink); white-space: nowrap; }
 .bar { height: 10px; border-radius: var(--r-pill); background: rgba(10,18,23,.08); position: relative; overflow: hidden; }
-.bar::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w); border-radius: inherit; background: var(--stone); }
+.bar::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w); border-radius: inherit; background: var(--stone); transform-origin: left; transform: scaleX(0); transition: transform 1.1s var(--ease-out); }
+.bars.is-in .bar::after { transform: scaleX(1); }
+.bars.is-in div:nth-child(2) .bar::after { transition-delay: .35s; }
+@media (prefers-reduced-motion: reduce) { .bar::after { transform: none; transition: none; } }
 .bar--accent::after { background: var(--ink); }
 
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
