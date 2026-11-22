@@ -1513,13 +1513,13 @@ html[data-sb="d"].is-scrolling::-webkit-scrollbar-thumb { background: rgba(10,18
 .sb-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
 .sb-btns button[aria-pressed="true"] { background: var(--ink); color: var(--lime); }
 
-/* posuvník webu (varianta B): černý jezdec v šedé dráze */
-html:not([data-sb]) { scrollbar-width: thin; scrollbar-color: var(--ink) var(--gray); }
-html:not([data-sb])::-webkit-scrollbar { width: 10px; }
+/* posuvník webu (varianta A): tenká světle šedá linka bez dráhy */
+html:not([data-sb]) { scrollbar-width: thin; scrollbar-color: rgba(10,18,23,.22) transparent; }
+html:not([data-sb])::-webkit-scrollbar { width: 8px; }
 html:not([data-sb])::-webkit-scrollbar-button { display: none; height: 0; }
-html:not([data-sb])::-webkit-scrollbar-track { background: var(--gray); }
-html:not([data-sb])::-webkit-scrollbar-thumb { border: 2px solid var(--gray); border-radius: 999px; background: var(--ink); }
-html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: #2a3237; }
+html:not([data-sb])::-webkit-scrollbar-track { background: transparent; }
+html:not([data-sb])::-webkit-scrollbar-thumb { border-radius: 999px; background: rgba(10,18,23,.22); }
+html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.4); }
 /* Na čem si zakládáme – bento: hlavní slib velký v černé kartě, další dva vedle */
 .pa-bento { display: grid; grid-template-columns: 1.15fr 1fr; gap: var(--grid-gap); }
 .pa-bento .pillar-ico { margin-bottom: 0; }
