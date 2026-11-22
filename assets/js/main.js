@@ -39,19 +39,6 @@ document.querySelectorAll('.mobile-nav a').forEach((a) =>
   a.addEventListener('click', () => a.closest('details').removeAttribute('open'))
 );
 
-// Reference – filtr podle roku
-document.querySelectorAll('.ref-filter').forEach((bar) => {
-  const list = bar.nextElementSibling;
-  const items = [...list.querySelectorAll('li[data-year]')];
-  bar.addEventListener('click', (e) => {
-    const btn = e.target.closest('button[data-year]');
-    if (!btn) return;
-    bar.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b === btn));
-    const y = btn.dataset.year;
-    items.forEach((li) => { li.hidden = y !== '' && li.dataset.year !== y; });
-  });
-});
-
 // Pluginy – filtr podle kategorie
 document.querySelectorAll('.cat-filter').forEach((bar) => {
   const groups = [...document.querySelectorAll('[data-group]')];
@@ -276,12 +263,6 @@ document.querySelectorAll('.tools').forEach((box) => {
     s.el.addEventListener('pointermove', (e) => { if (s.state !== 'built' || s.el.closest('.is-dragging')) return; const r = s.win.getBoundingClientRect(); s.goal = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height)); });
     s.el.addEventListener('pointerleave', () => { s.goal = null; s.wait = 500; });
   });
-  // tlačítko na pracovní stránce: postavit všechna okna znovu
-  document.querySelectorAll('[data-shots-replay]').forEach((btn) => btn.addEventListener('click', () => {
-    shots.forEach((s) => { s.state = 'idle'; s.y = 0; s.dir = 1; s.fast = false; s.img.style.transform = ''; s.win.classList.remove('is-built', 'is-curtain'); s.img.style.clipPath = ''; s.win.querySelectorAll('.swarm').forEach((n) => n.remove()); });
-    requestAnimationFrame(() => shots.forEach(start));
-  }));
-
   let last = performance.now();
   const tick = (now) => {
     const dt = Math.min(64, now - last); last = now;
