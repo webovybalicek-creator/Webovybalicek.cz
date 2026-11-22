@@ -1,0 +1,73 @@
+<!--
+title: Návrhy – claimy místo pásek | webovybalicek
+description: Pracovní stránka s variantami, jak odprezentovat claimy místo přeškrtnutých pásek.
+cta: no
+hidden: yes
+-->
+<style>
+.nv-label { max-width: calc(var(--wrap) - 2 * var(--gutter)); margin: 72px auto 18px; padding: 0 var(--gutter); font: 400 13px/1.5 var(--f-mono); color: var(--stone); }
+.nv-label strong { color: var(--ink); font-weight: 600; }
+.nv { padding: 0 var(--gutter); }
+.nv > .wrap { max-width: calc(var(--wrap) - 2 * var(--gutter)); }
+
+/* A – řádek faktů */
+.cl-a { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+.cl-a div { padding: 28px 24px 28px 0; }
+.cl-a div + div { padding-left: 24px; border-left: 1px solid var(--hairline); }
+.cl-a strong { display: block; white-space: nowrap; font-size: clamp(24px, 2.6vw, 38px); line-height: 1; letter-spacing: -0.03em; font-weight: 600; }
+.cl-a span { display: block; margin-top: 10px; color: var(--graphite); font-size: 15px; line-height: 1.45; }
+
+/* B – klidný textový běžec */
+.cl-b { overflow: hidden; padding: 22px 0; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); -webkit-mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.cl-b ul { display: flex; gap: 36px; width: max-content; margin: 0; padding: 0; list-style: none; animation: cl-run 60s linear infinite; }
+.cl-b li { display: flex; align-items: center; gap: 36px; white-space: nowrap; font-size: clamp(20px, 2vw, 26px); letter-spacing: -0.02em; color: var(--graphite); }
+.cl-b li::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 1px var(--ink) inset; }
+@keyframes cl-run { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .cl-b ul { animation: none; } }
+
+/* C – dvě skupiny slibů */
+.cl-c { display: grid; grid-template-columns: 1fr 1fr; gap: var(--grid-gap); }
+.cl-c section { padding: clamp(24px, 3vw, 36px); border-radius: var(--r-tile); background: var(--gray); }
+.cl-c section:last-child { background: var(--ink); color: #fff; }
+.cl-c h3 { margin: 0 0 18px; font: 500 12px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--stone); }
+.cl-c section:last-child h3 { color: var(--on-ink-muted); }
+.cl-c ul { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.cl-c li { padding: 13px 0; border-top: 1px solid rgba(10,18,23,.08); font-size: 19px; letter-spacing: -0.01em; }
+.cl-c section:last-child li { border-color: var(--on-ink-line); }
+.cl-c li:first-child { border-top: 0; }
+.cl-c li b { color: inherit; }
+.cl-c section:last-child li b { color: var(--lime); font-weight: 500; }
+
+/* D – manifest */
+.cl-d { max-width: 1040px; font-size: clamp(28px, 3.6vw, 48px); line-height: 1.22; letter-spacing: -0.025em; font-weight: 500; color: var(--stone); }
+.cl-d p { margin: 0; }
+.cl-d b { color: var(--ink); font-weight: 600; }
+.cl-d em { font-style: normal; color: var(--ink); background: linear-gradient(transparent 64%, var(--lime) 64%, var(--lime) 92%, transparent 92%); }
+@media (max-width: 860px) { .cl-a, .cl-c { grid-template-columns: 1fr 1fr; } .cl-c { grid-template-columns: 1fr; } .cl-a div:nth-child(3) { border-left: 0; padding-left: 0; } }
+</style>
+
+<section class="page-hero"><div class="wrap"><ol class="crumbs"><li><a href="/">Domů</a></li><li>Návrhy</li></ol><h1>Claimy <em>bez pásek</em></h1><p class="lead">Stejná sdělení jako na páskách, čtyři klidnější způsoby, jak je ukázat.</p></div></section>
+
+<p class="nv-label"><strong>A</strong> – řádek faktů: čtyři silná tvrzení jako čísla, oddělená linkou</p>
+<section class="nv"><div class="wrap"><div class="cl-a">
+  <div><strong>Dny</strong><span>Od nápadu k hotovému webu díky AI</span></div>
+  <div><strong>0 Kč</strong><span>Design na míru i analýza v ceně</span></div>
+  <div><strong>SEO · GEO · AEO</strong><span>Najde vás Google i AI asistenti</span></div>
+  <div><strong>100 %</strong><span>Každý řádek kontroluje člověk</span></div>
+</div></div></section>
+
+<p class="nv-label"><strong>B</strong> – klidný běžec: jeden řádek textu bez pásky a náklonu, pomalu se posouvá</p>
+<section class="nv"><div class="wrap"><div class="cl-b"><ul>
+  <li>Prodáváme výsledky</li><li>Záleží nám na detailu</li><li>Kvalitu nešidíme</li><li>Cena předem, bez překvapení</li><li>AI-first</li><li>Připraveno na SEO, GEO i AEO</li><li>Neděláme AI slop</li><li>Každý řádek kontroluje člověk</li>
+  <li>Prodáváme výsledky</li><li>Záleží nám na detailu</li><li>Kvalitu nešidíme</li><li>Cena předem, bez překvapení</li><li>AI-first</li><li>Připraveno na SEO, GEO i AEO</li><li>Neděláme AI slop</li><li>Každý řádek kontroluje člověk</li>
+</ul></div></div></section>
+
+<p class="nv-label"><strong>C</strong> – dvě skupiny slibů: rychlost s AI vs. výsledky pro byznys</p>
+<section class="nv"><div class="wrap"><div class="cl-c">
+  <section><h3>Rychlost s AI</h3><ul><li><b>AI-first</b>, rychlejší než kdy dřív</li><li>Od nápadu k hotovému webu za pár dní</li><li>Připraveno na SEO, GEO i AEO</li><li>Každý řádek kontroluje člověk</li></ul></section>
+  <section><h3>Výsledky pro byznys</h3><ul><li><b>Váš web bude vydělávat</b></li><li>Cena předem, bez překvapení</li><li>Design v ceně, podle vašeho návrhu</li><li>Záleží nám na detailu, kvalitu nešidíme</li></ul></section>
+</div></div></section>
+
+<p class="nv-label"><strong>D</strong> – manifest: jedna velká věta, klíčová slova zvýrazněná</p>
+<section class="nv"><div class="wrap"><div class="cl-d"><p>Jsme <em>AI-first</em>, ale <b>každý řádek kontroluje člověk</b>. Web máte <em>za pár dní</em>, s cenou předem, designem v ceně a připravený na SEO, GEO i AEO. A hlavně: <b>váš web bude vydělávat.</b></p></div></div></section>
+<div style="height:96px"></div>
