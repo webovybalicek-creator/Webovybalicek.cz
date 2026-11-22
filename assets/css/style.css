@@ -55,7 +55,7 @@
   /* rádiusy */
   --r-link: 8px;
   --r-tile: 8px;
-  --r-card: 12px;
+  --r-card: var(--r-tile); /* karty všude stejně zaoblené */
   --r-media: 16px;
   --r-tab: 22.4px;
   --r-feature: 24px;
