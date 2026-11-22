@@ -1561,3 +1561,5 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: #2a3237; }
 @media (hover: hover) and (pointer: fine) { .g-score:hover .g-arrow { rotate: 45deg; } }
 .g-score:active { scale: .98; }
 @media (prefers-reduced-motion: reduce) { .g-stars::before { animation: none; } }
+.pay-card .pillar-ico { margin-bottom: 28px; }
+.pay-card h3 { margin-bottom: 8px; }
