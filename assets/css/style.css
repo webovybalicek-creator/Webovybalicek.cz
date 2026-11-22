@@ -1393,3 +1393,7 @@ body:has(.hero--air) .site-header:not(.is-scrolled) :is(a, button, summary, inpu
   .feature-card:has(.fc-icons--corner) h3, .feature-card:has(.fc-icons--corner .fc-ico + .fc-ico) h3 { padding-right: 0; }
 }
 
+/* „Umíme také“ jako štítek na horní hraně karty (stejně jako „Nejčastější“) */
+.web-types { position: relative; padding-top: clamp(28px, 3vw, 36px); }
+.web-types > p { position: absolute; top: 0; left: clamp(28px, 3vw, 40px); translate: 0 -50%; margin: 0; padding: 4px 11px; border-radius: var(--r-pill); background: var(--lime); color: var(--ink); font: 550 11px/1.4 var(--f-sans); letter-spacing: .06em; text-transform: uppercase; }
+.web-types .link-utility { margin-left: 4px; }
