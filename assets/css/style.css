@@ -876,7 +876,7 @@ html.is-locked { overflow: hidden; }
 
 /* osoba */
 /* tým – řada portrétů; .ph je zástupná fotka, dokud nejsou skutečné */
-.team { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--grid-gap); margin: 0; padding: 0; list-style: none; }
+.team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--grid-gap); margin: 0; padding: 0; list-style: none; }
 .team h3 { font-size: 20px; letter-spacing: -0.01em; margin: 0 0 4px; }
 .team h3 a { color: inherit; text-decoration: none; }
 .team h3 a:hover { text-decoration: underline; text-underline-offset: 3px; }
@@ -889,7 +889,7 @@ html.is-locked { overflow: hidden; }
   background: linear-gradient(to top, rgba(241,241,241,.96) 55%, rgba(241,241,241,0)); opacity: 0; translate: 0 8px; transition: opacity 250ms ease, translate 300ms var(--ease-out); }
 @media (hover: hover) and (pointer: fine) { .team li:hover .ph span { opacity: 1; translate: 0; } }
 @media (hover: none) { .team .ph span { opacity: 1; translate: 0; } }
-@media (max-width: 860px) { .team { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; } }
+@media (max-width: 600px) { .team { grid-template-columns: 1fr; row-gap: 32px; } }
 
 /* ==========================================================
    doporučené pluginy
