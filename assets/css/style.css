@@ -422,6 +422,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
    ========================================================== */
 .section { position: relative; padding: var(--section) 0; }
 .section--mist { border-top: 1px solid var(--hairline); }
+.section + .section:not(.section--mist) { padding-top: 0; } /* dvě bílé sekce bez dělicí linky za sebou: mezera jen jednou */
 .section--dark { background: var(--ink); color: var(--on-ink); }
 .section--dark h2 { font-size: clamp(38px, 5.2vw, 60px); line-height: 1.08; letter-spacing: -0.025em; }
 
