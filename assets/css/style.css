@@ -1516,3 +1516,13 @@ html:not([data-sb])::-webkit-scrollbar-button { display: none; height: 0; }
 html:not([data-sb])::-webkit-scrollbar-track { background: var(--gray); }
 html:not([data-sb])::-webkit-scrollbar-thumb { border: 2px solid var(--gray); border-radius: 999px; background: var(--ink); }
 html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: #2a3237; }
+/* Na čem si zakládáme – bento: hlavní slib velký v černé kartě, další dva vedle */
+.pa-bento { display: grid; grid-template-columns: 1.15fr 1fr; gap: var(--grid-gap); }
+.pa-bento .pillar-ico { margin-bottom: 0; }
+.pb-big { grid-row: span 2; display: flex; flex-direction: column; padding: clamp(28px, 3.4vw, 48px); border-radius: var(--r-card); background: var(--ink); color: #fff; }
+.pb-big h3 { margin: auto 0 12px; padding-top: 80px; font-size: clamp(30px, 3.2vw, 44px); letter-spacing: -0.03em; line-height: 1.05; color: #fff; }
+.pb-big p { margin: 0; color: var(--on-ink-muted); font-size: 17px; line-height: 1.6; max-width: 46ch; }
+.pb-sm { display: grid; grid-template-columns: auto 1fr; gap: 20px; padding: clamp(24px, 2.6vw, 32px); border-radius: var(--r-card); background: var(--paper); box-shadow: inset 0 0 0 1px var(--hairline); }
+.pb-sm h3 { margin: 6px 0 8px; font-size: 22px; letter-spacing: -0.02em; }
+.pb-sm p { margin: 0; color: var(--graphite); font-size: 16px; line-height: 1.55; }
+@media (max-width: 860px) { .pa-bento { grid-template-columns: 1fr; } .pb-big { grid-row: auto; } .pb-big h3 { padding-top: 40px; } }
