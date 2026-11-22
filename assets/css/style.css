@@ -1529,3 +1529,4 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: #2a3237; }
 @media (max-width: 860px) { .pa-bento { grid-template-columns: 1fr; } .pb-big { grid-row: auto; } .pb-big h3 { padding-top: 40px; } }
 .bundle--end { margin: 56px 0 0; }
 .note--small { margin-top: 28px; font-size: 13px; line-height: 1.5; color: var(--stone); }
+.sheet-note { margin: -6px 0 18px; max-width: 620px; color: var(--graphite); font-size: 15px; line-height: 1.55; }
