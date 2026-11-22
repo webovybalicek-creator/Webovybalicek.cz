@@ -524,3 +524,28 @@ document.querySelectorAll('.manifest').forEach((p) => {
   addEventListener('scroll', () => requestAnimationFrame(tick), { passive: true });
   tick();
 })();
+
+// Manifest: při scrollu se slova postupně přebarvují ze šedé na černou (zvýrazněná slova jsou černá vždy)
+document.querySelectorAll('.manifest').forEach((p) => {
+  const words = [];
+  const walk = (node) => [...node.childNodes].forEach((n) => {
+    if (n.nodeType === 3) {
+      const frag = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach((t) => {
+        if (!t) return;
+        if (/^\s+$/.test(t)) { frag.append(t); return; }
+        const s = document.createElement('span'); s.className = 'mw'; s.textContent = t; frag.append(s); words.push(s);
+      });
+      n.replaceWith(frag);
+    } else if (n.nodeType === 1 && n.tagName !== 'EM') walk(n);
+  });
+  walk(p);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { words.forEach((w) => w.classList.add('is-lit')); return; }
+  const tick = () => {
+    const r = p.getBoundingClientRect();
+    const prog = Math.min(1, Math.max(0, (innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.35)));
+    const lit = Math.round(prog * words.length);
+    words.forEach((w, i) => w.classList.toggle('is-lit', i < lit));
+  };
+  addEventListener('scroll', () => requestAnimationFrame(tick), { passive: true }); tick();
+});

@@ -1,0 +1,30 @@
+<!--
+title: Návrhy – posuvník | webovybalicek
+description: Pracovní stránka s návrhy posuvníku.
+cta: no
+hidden: yes
+-->
+<section class="page-hero"><div class="wrap"><ol class="crumbs"><li><a href="/">Domů</a></li><li>Návrhy</li></ol><h1>Posuvník <em>v našem stylu</em></h1>
+<p class="lead">Klikněte na variantu a posuvník vpravo se hned přepne. Posouvejte stránkou a porovnejte.</p>
+<div class="sb-btns">
+  <button type="button" class="btn btn--outline btn--sm" data-sb="">Výchozí</button>
+  <button type="button" class="btn btn--outline btn--sm" data-sb="a">A – tenký šedý</button>
+  <button type="button" class="btn btn--outline btn--sm" data-sb="b">B – černý na šedé</button>
+  <button type="button" class="btn btn--outline btn--sm" data-sb="c">C – limetkový na černé</button>
+  <button type="button" class="btn btn--outline btn--sm" data-sb="d">D – jen při posouvání</button>
+</div></div></section>
+<section class="section"><div class="wrap"><ul class="reasons">
+<li><h3>A – tenký šedý</h3><p>Úzká šedá linka bez dráhy, při najetí ztmavne. Nejméně nápadný, sedí ke všemu.</p></li>
+<li><h3>B – černý na šedé</h3><p>Černý jezdec v šedé dráze, jako naše tlačítka a karty. Výraznější, ale pořád čistý.</p></li>
+<li><h3>C – limetkový na černé</h3><p>Brandový akcent: limetkový jezdec v černé dráze. Nejvýraznější.</p></li>
+<li><h3>D – jen při posouvání</h3><p>Posuvník se ukáže jen, když se stránka hýbe, pak zmizí. Jako na Macu a mobilu.</p></li>
+</ul><div style="height:140vh"></div></div></section>
+<script>
+(() => {
+  const html = document.documentElement, btns = document.querySelectorAll('.sb-btns button'); let t;
+  const set = (v) => { if (v) html.dataset.sb = v; else delete html.dataset.sb; btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.sb === v))); };
+  btns.forEach((b) => b.addEventListener('click', () => set(b.dataset.sb)));
+  addEventListener('scroll', () => { html.classList.add('is-scrolling'); clearTimeout(t); t = setTimeout(() => html.classList.remove('is-scrolling'), 900); }, { passive: true });
+  set('a');
+})();
+</script>

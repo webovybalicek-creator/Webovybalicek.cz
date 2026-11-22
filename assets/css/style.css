@@ -1480,3 +1480,31 @@ body:has(.hero--air) .site-header:not(.is-scrolled) :is(a, button, summary, inpu
 .person p:not(.role) { color: var(--graphite); font-size: 16px; line-height: 1.6; }
 @media (max-width: 600px) { .person { grid-template-columns: 1fr; } .person .avatar--photo { max-width: 220px; } }
 .team .bio { margin: 10px 0 0; color: var(--graphite); font-size: 15px; line-height: 1.55; }
+.manifest .mw { transition: color 250ms ease; }
+.manifest .mw.is-lit { color: var(--ink); }
+
+/* návrhy obecného posuvníku (html[data-sb]) */
+html[data-sb] { scrollbar-gutter: stable; }
+html[data-sb]::-webkit-scrollbar-button { display: none; height: 0; }
+html[data-sb="a"] { scrollbar-width: thin; scrollbar-color: rgba(10,18,23,.25) transparent; }
+html[data-sb="a"]::-webkit-scrollbar { width: 8px; }
+html[data-sb="a"]::-webkit-scrollbar-track { background: transparent; }
+html[data-sb="a"]::-webkit-scrollbar-thumb { border-radius: 999px; background: rgba(10,18,23,.22); }
+html[data-sb="a"]::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.4); }
+html[data-sb="b"] { scrollbar-width: thin; scrollbar-color: var(--ink) var(--gray); }
+html[data-sb="b"]::-webkit-scrollbar { width: 10px; }
+html[data-sb="b"]::-webkit-scrollbar-track { background: var(--gray); }
+html[data-sb="b"]::-webkit-scrollbar-thumb { border: 2px solid var(--gray); border-radius: 999px; background: var(--ink); }
+html[data-sb="b"]::-webkit-scrollbar-thumb:hover { background: #2a3237; }
+html[data-sb="c"] { scrollbar-width: thin; scrollbar-color: var(--lime) var(--ink); }
+html[data-sb="c"]::-webkit-scrollbar { width: 10px; }
+html[data-sb="c"]::-webkit-scrollbar-track { background: var(--ink); }
+html[data-sb="c"]::-webkit-scrollbar-thumb { border: 2px solid var(--ink); border-radius: 999px; background: var(--lime); }
+html[data-sb="d"] { scrollbar-width: thin; scrollbar-color: rgba(10,18,23,.0) transparent; transition: scrollbar-color 300ms; }
+html[data-sb="d"].is-scrolling { scrollbar-color: rgba(10,18,23,.35) transparent; }
+html[data-sb="d"]::-webkit-scrollbar { width: 8px; }
+html[data-sb="d"]::-webkit-scrollbar-track { background: transparent; }
+html[data-sb="d"]::-webkit-scrollbar-thumb { border-radius: 999px; background: transparent; }
+html[data-sb="d"].is-scrolling::-webkit-scrollbar-thumb { background: rgba(10,18,23,.35); }
+.sb-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.sb-btns button[aria-pressed="true"] { background: var(--ink); color: var(--lime); }
