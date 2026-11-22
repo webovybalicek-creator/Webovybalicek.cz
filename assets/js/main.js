@@ -498,3 +498,10 @@ document.querySelectorAll('.page-hero h1 em').forEach((em) => {
   const set = () => em.classList.toggle('is-full', h1.getBoundingClientRect().bottom > innerHeight * 0.2);
   setTimeout(() => { set(); addEventListener('scroll', () => requestAnimationFrame(set), { passive: true }); }, 250);
 });
+
+// Manifest: zvýraznění se napustí, když je věta vidět, a odteče, když odjede z obrazovky (druhé slovo s malým zpožděním)
+document.querySelectorAll('.manifest').forEach((p) => {
+  const ems = [...p.querySelectorAll('em')];
+  new IntersectionObserver(([e]) => ems.forEach((em, i) => setTimeout(() => em.classList.toggle('is-full', e.isIntersecting), e.isIntersecting ? i * 350 : 0)),
+    { rootMargin: '-15% 0px -15% 0px' }).observe(p);
+});
