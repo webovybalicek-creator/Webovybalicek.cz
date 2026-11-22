@@ -1479,3 +1479,4 @@ body:has(.hero--air) .site-header:not(.is-scrolled) :is(a, button, summary, inpu
 .person .role { margin: 0 0 16px; font: 400 13px/1.4 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--stone); }
 .person p:not(.role) { color: var(--graphite); font-size: 16px; line-height: 1.6; }
 @media (max-width: 600px) { .person { grid-template-columns: 1fr; } .person .avatar--photo { max-width: 220px; } }
+.team .bio { margin: 10px 0 0; color: var(--graphite); font-size: 15px; line-height: 1.55; }
