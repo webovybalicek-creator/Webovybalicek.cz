@@ -487,7 +487,7 @@ document.querySelectorAll('form[data-sleva]').forEach((form) => {
     let ok = false;
     try { const r = await fetch('/slevovy-kod.php', { method: 'POST', body: data, headers: { Accept: 'application/json' } }); ok = r.ok && (await r.json()).ok === true; } catch (err) { ok = false; }
     btn.disabled = false; btn.innerHTML = label;
-    if (ok) { form.classList.add('is-sent'); msg.textContent = 'Hotovo, kód je na cestě do vaší schránky.'; msg.classList.add('is-ok'); form.reset(); }
+    if (ok) { form.classList.add('is-sent'); msg.textContent = 'Hotovo, slevový kód vám posíláme e-mailem.'; msg.classList.add('is-ok'); form.reset(); }
     else { msg.innerHTML = 'Nepodařilo se odeslat. Napište nám na <a href="mailto:webovybalicek@gmail.com">webovybalicek@gmail.com</a>.'; msg.classList.add('is-err'); }
   });
 });

@@ -87,7 +87,7 @@ def overview(data):
         [("Domů", "/"), ("Doporučené pluginy", None)],
         "Pluginy, které na e-shopech opravdu používáme",
         f"Vybrali jsme {len(data['plugins'])} prověřených pluginů od českého vývojáře Toret pro dopravu, platby, fakturaci i marketing. U každého najdete, k čemu je, co umí a pro koho se hodí.",
-        f'<p class="hero-actions"><a href="{bundle_url}" class="btn btn--primary" {EXT_ATTR}>Všechny pluginy v balíčku</a><a href="#sleva" class="btn btn--outline">Chci slevový kód −15 %</a></p>',
+        f'<p class="hero-actions"><a href="{bundle_url}" class="btn btn--primary" {EXT_ATTR}>Všechny pluginy v balíčku</a><a href="#sleva" class="btn btn--outline">Chci slevový kód</a></p>',
     )
     body += f'''  <section class="section">
     <div class="wrap">
@@ -101,15 +101,15 @@ def overview(data):
         <div class="bundle-buy">
           <p class="bundle-price"><strong>{f"{b['p']:,}".replace(",", " ")}</strong> Kč/rok</p>
           <a href="{bundle_url}" class="btn btn--primary btn--block" {EXT_ATTR}>Koupit balíček</a>
-          <p class="bundle-note">Vyplatí se už od 6 pluginů. S naším slevovým kódem ušetříte dalších 15 %.</p>
+          <p class="bundle-note">Vyplatí se už od 6 pluginů. S naším slevovým kódem ušetříte ještě víc.</p>
         </div>
       </div>
 
       <div class="sleva" id="sleva">
         <div class="sleva-copy">
-          <span class="sleva-tag">−15 %</span>
+          <span class="sleva-tag">Sleva</span>
           <h2>Slevový kód na pluginy Toret</h2>
-          <p>Nechte nám e-mail a hned vám pošleme kód, který v košíku na toret.cz odečte 15&nbsp;% z ceny.</p>
+          <p>Nechte nám e-mail a pošleme vám náš slevový kód, který uplatníte v košíku na toret.cz.</p>
         </div>
         <form class="sleva-form" data-sleva novalidate>
           <label class="sleva-field"><span class="sr-only">E-mail</span><input type="email" name="email" required placeholder="vas@email.cz" autocomplete="email"></label>
@@ -190,7 +190,7 @@ def detail(p, data):
           <li>Pravidelné aktualizace</li>
           <li>Funguje s ostatními pluginy Toret</li>
         </ul>
-        <p class="buy-note">Chcete slevu 15 %? <a href="/doporucene-pluginy/#sleva" class="link">Pošleme vám slevový kód</a>.</p>
+        <p class="buy-note">Chcete slevu? <a href="/doporucene-pluginy/#sleva" class="link">Pošleme vám slevový kód</a>.</p>
       </aside>
     </div>
   </section>

@@ -19,6 +19,11 @@ jobs:
       - name: Build
         run: python3 build.py
 
+      - name: Neveřejný slevový kód (ze secretu, není v repozitáři)
+        env:
+          SLEVA_KOD: ${{ secrets.SLEVA_KOD }}
+        run: printf '<?php $CODE = %s;\n' "$(python3 -c 'import json,os;print(json.dumps(os.environ["SLEVA_KOD"]))')" > dist/sleva-config.php
+
       - name: Nahrát na FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:

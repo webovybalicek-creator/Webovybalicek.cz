@@ -16,7 +16,14 @@ $lock = sys_get_temp_dir() . '/wb_sleva_' . md5($ip);
 if (is_file($lock) && time() - filemtime($lock) < 20) out(429, ['ok' => false, 'error' => 'rate']);
 @touch($lock);
 
-$CODE = '15webovybalicek';
+// kód je neveřejný (dohoda s Toretem) – není v repozitáři, deploy ho zapíše do sleva-config.php ze secretu SLEVA_KOD
+$CODE = '';
+if (is_file(__DIR__ . '/sleva-config.php')) include __DIR__ . '/sleva-config.php';
+if ($CODE === '') { // kód zatím není nastavený: aspoň nám přijde zájemce a kód pošleme ručně
+  $nh = implode("\r\n", ['From: ' . '=?UTF-8?B?' . base64_encode('Web webovybalicek') . "?= <noreply@webovybalicek.cz>", "Reply-To: $email", 'MIME-Version: 1.0', 'Content-Type: text/plain; charset=UTF-8']);
+  $ok = @mail('webovybalicek@gmail.com', '=?UTF-8?B?' . base64_encode('Slevový kód Toret – POSLAT RUČNĚ – ' . $email) . '?=', "Zájemce o slevový kód: $email\nKód není nastavený v GitHub secretu SLEVA_KOD, pošlete ho prosím ručně.", $nh);
+  out($ok ? 200 : 500, ['ok' => (bool)$ok]);
+}
 $shop = 'https://toret.cz/ref/67/';
 $from = 'noreply@webovybalicek.cz';
 $enc = fn($s) => '=?UTF-8?B?' . base64_encode($s) . '?=';
@@ -33,7 +40,7 @@ $html = <<<HTML
   <tr><td style="padding:36px 36px 8px;">
     <p style="margin:0 0 10px;font:12px/1.4 'Courier New',monospace;letter-spacing:1px;text-transform:uppercase;color:#7b8084;">Pluginy Toret pro WooCommerce</p>
     <h1 style="margin:0 0 16px;font-size:30px;line-height:1.15;letter-spacing:-0.8px;">Tady je váš slevový kód <span style="background:#cdfe00;padding:0 6px;border-radius:6px;">−15 %</span></h1>
-    <p style="margin:0;font-size:16px;line-height:1.6;color:#54595d;">Díky za zájem. Kód zadejte v košíku na toret.cz a sleva 15&nbsp;% se vám odečte z nákupu pluginů.</p>
+    <p style="margin:0;font-size:16px;line-height:1.6;color:#54595d;">Díky za zájem. Kód zadejte v košíku na toret.cz a sleva 15&nbsp;% se vám odečte z nákupu pluginů. Kód je jen pro vás, prosíme, nesdílejte ho veřejně. Nelze ho kombinovat s jinou slevou.</p>
   </td></tr>
   <tr><td style="padding:24px 36px;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0a1217;border-radius:16px;"><tr><td align="center" style="padding:26px 16px;">
@@ -57,7 +64,7 @@ $html = <<<HTML
 </td></tr></table>
 </body></html>
 HTML;
-$text = "Tady je váš slevový kód na pluginy Toret: $CODE\n\nKód zadejte v košíku na toret.cz a sleva 15 % se odečte z nákupu.\nPluginy: $shop\n\nPoradíme i s instalací: 723 933 774, webovybalicek@gmail.com\n\nwebovybalicek";
+$text = "Tady je váš slevový kód na pluginy Toret: $CODE\n\nKód zadejte v košíku na toret.cz a sleva 15 % se odečte z nákupu. Kód je jen pro vás, nelze ho kombinovat s jinou slevou.\nPluginy: $shop\n\nPoradíme i s instalací: 723 933 774, webovybalicek@gmail.com\n\nwebovybalicek";
 
 $b = 'wb' . bin2hex(random_bytes(8));
 $body = "--$b\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n" . chunk_split(base64_encode($text))
