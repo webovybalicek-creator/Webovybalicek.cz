@@ -208,7 +208,6 @@ def detail(p, data, seo):
 
     body += f'''  <section class="section">
     <div class="wrap">
-      {"" if free else sleva_block(p["n"])}
       <div class="section-head"><p class="pill">Přínosy</p><h2>Proč {e(p['n'])} na váš WooCommerce e-shop</h2></div>
       <div class="grid-cards">{benefits}</div>
     </div>
@@ -266,6 +265,7 @@ def detail(p, data, seo):
         <a href="{BASE}" class="btn btn--outline">Všechny pluginy</a>
       </div>
       <div class="plugins">{rel}</div>
+      {"" if free else sleva_block(p["n"])}
       <p class="note note--small">Odkazy jsou partnerské. Když přes ně nakoupíte, dostaneme malou provizi a vás to nic navíc nestojí. Cena je orientační za roční licenci, aktuální uvidíte na toret.cz.</p>
     </div>
   </section>
