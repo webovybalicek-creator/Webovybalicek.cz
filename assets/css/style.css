@@ -1303,7 +1303,7 @@ body:has(.hero--air) .site-header:not(.is-scrolled) :is(a, button, summary, inpu
 .fc-ico { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--ink); color: var(--lime); box-shadow: 0 0 0 3px var(--gray); }
 .fc-ico + .fc-ico { margin-left: -8px; }
 .fc-ico svg { width: 19px; height: 19px; fill: currentColor; }
-.feature-card--featured .fc-ico { background: var(--lime); color: var(--ink); box-shadow: 0 0 0 3px var(--ink); }
+.feature-card--featured .fc-ico, .price-card--featured .fc-ico { background: var(--lime); color: var(--ink); box-shadow: 0 0 0 3px var(--ink); }
 .fc-icons--label { align-items: center; }
 .fc-icons--label em { margin-left: 12px; font: 400 12px/1 var(--f-mono); font-style: normal; letter-spacing: .04em; text-transform: uppercase; color: var(--graphite); }
 .feature-card--featured .fc-icons--label em { color: var(--on-ink-muted); }
@@ -1385,12 +1385,18 @@ body:has(.hero--air) .site-header:not(.is-scrolled) :is(a, button, summary, inpu
 /* ikony v rohu karty: nadpis si drží odstup, na mobilu menší kolečka */
 .feature-card:has(.fc-icons--corner) h3 { padding-right: 76px; }
 .feature-card:has(.fc-icons--corner .fc-ico + .fc-ico) h3 { padding-right: 120px; }
+/* ceník: menší kolečka v užších kartách, štítek zůstává vlevo nahoře */
+.price-card .fc-icons--corner { top: 24px; right: 24px; }
+.price-card .fc-icons--corner .fc-ico { width: 40px; height: 40px; }
+.price-card .fc-icons--corner .fc-ico svg { width: 21px; height: 21px; }
+.price-card .card-label { padding-right: 96px; }
 @media (max-width: 760px) {
   /* mobil: ikony nad nadpisem, ať se s ním netlačí */
   .fc-icons--corner { position: static; margin: 0 0 18px; }
   .fc-icons--corner .fc-ico { width: 40px; height: 40px; }
   .fc-icons--corner .fc-ico svg { width: 21px; height: 21px; }
   .feature-card:has(.fc-icons--corner) h3, .feature-card:has(.fc-icons--corner .fc-ico + .fc-ico) h3 { padding-right: 0; }
+  .price-card .card-label { padding-right: 0; }
 }
 
 /* „Umíme také“ jako černý štítek na horní hraně karty */
