@@ -9,7 +9,11 @@ ErrorDocument 404 /404.html
 
 # stránka Reference byla zrušena – vybrané projekty jsou na úvodní stránce
 RewriteEngine On
-RewriteRule ^reference/?$ /#reference [R=301,L,NE]
+RewriteRule ^reference(/.*)?$ /#projekty [R=301,L,NE]
 
 # blog byl zrušen
 RewriteRule ^(blog|4-tipy-jak-vydelavat-blogem|5-efektivnich-tipu-jak-zvysit-navstevnost-webu)/?$ / [R=301,L]
+
+# staré archivy WordPressu
+RewriteRule ^category/ / [R=301,L]
+RewriteRule ^(author|tag)/ / [R=301,L]

@@ -142,9 +142,42 @@ def overview(data):
     return meta, body
 
 
-def detail(p, data):
+ICO = [
+    '<path d="M11.2 2 4.8 11h4.4l-1 7 6.4-9H10.2z"/>',
+    '<path d="M3 17h14M5 14V10M9 14V7M13 14V9M17 4l-5 4-3-2-5 4"/><path d="M14 4h3v3"/>',
+    '<path d="M10 2.5 3.5 5v5c0 4 2.8 6.6 6.5 7.5 3.7-.9 6.5-3.5 6.5-7.5V5z"/><path d="m7 10 2 2 4-4"/>',
+    '<circle cx="10" cy="10" r="7"/><path d="M10 6v4l2.5 2.5"/>',
+]
+
+
+def sleva_block(name):
+    return f'''<div class="sleva sleva--bar" id="sleva">
+        <div class="sleva-copy">
+          <span class="sleva-tag">Sleva</span>
+          <h2>Chcete plugin {e(name)} levněji?</h2>
+          <p>Nechte nám e-mail a pošleme vám náš slevový kód na pluginy Toret. Uplatníte ho v košíku na toret.cz.</p>
+        </div>
+        <form class="sleva-form" data-sleva novalidate>
+          <label class="sleva-field"><span class="sr-only">E-mail</span><input type="email" name="email" required placeholder="vas@email.cz" autocomplete="email"></label>
+          <button type="submit" class="btn btn--primary">Poslat kód</button>
+          <p class="sleva-msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>'''
+
+
+def seo_title(kw):
+    for t in (f"{kw} – funkce, cena a sleva | webovybalicek", f"{kw} – cena a sleva | webovybalicek", f"{kw} – cena a sleva", kw):
+        if len(t) <= 62:
+            return t
+    return kw
+
+
+def detail(p, data, seo):
     cats = {c["k"]: c for c in data["categories"]}
     cat = cats[p["c"]]
+    S = seo.get(p["u"], {})
+    kw = S.get("kw", f"{p['n']} pro WooCommerce")
+    lead = S.get("lead", p["t"])
     feats = "".join(f"<li>{e(f)}</li>" for f in p["f"])
     extra = ""
     if p["u"] in EXTRA:
@@ -154,21 +187,40 @@ def detail(p, data):
     rel = "".join(card(x, cats) for x in related)
     free = not p["p"]
     cta_label = "Stáhnout zdarma" if free else f"Koupit {p['n']}"
-    actions = f'<p class="hero-actions"><a href="{buy_url(p)}" class="btn btn--primary" {EXT_ATTR}>{e(cta_label)}</a><a href="/kontakt/" class="btn btn--outline">Nainstalujeme vám ho</a></p>'
-
+    url = buy_url(p)
+    h1 = kw.replace(p["n"], f"*{p['n']}*", 1) if p["n"] in kw else f"*{p['n']}*: {kw}"
+    actions = (f'<p class="hero-actions"><a href="{url}" class="btn btn--primary" {EXT_ATTR}>{e(cta_label)}</a>'
+               + ('' if free else '<a href="#sleva" class="btn btn--outline">Chci slevový kód</a>') + '</p>')
     body = hero(
         [("Domů", "/"), ("Doporučené pluginy", BASE), (cat["n"], f"{BASE}#{p['c']}"), (p["n"], None)],
-        f"{p['n']} pro WooCommerce",
-        p["t"],
-        actions,
+        h1, lead, actions,
     )
+    benefits = "".join(
+        f'<article class="card pay-card"><svg class="pillar-ico" viewBox="0 0 20 20" aria-hidden="true">{ICO[i % 4]}</svg><h3>{e(t)}</h3><p>{e(x)}</p></article>'
+        for i, (t, x) in enumerate(S.get("b", [])))
+    faqs = list(S.get("q", [])) + [
+        (f"Kolik stojí plugin {p['n']}?",
+         "Plugin je zdarma." if free else f"Licence stojí {price(p)} a zahrnuje aktualizace a podporu Toretu. Se slevovým kódem, který vám pošleme, ušetříte."),
+        ("Nainstalujete a nastavíte mi plugin?", "Ano. Plugin vám nainstalujeme, napojíme a nastavíme na míru vašemu e-shopu. Stačí nám napsat."),
+        ("Je plugin kompatibilní s Elementorem a dalšími pluginy?", "Pluginy Toret jsou navzájem kompatibilní a fungují s Elementorem, Divi i Gutenbergem. Pravidelně se aktualizují."),
+    ]
+    faq_html = "".join(f'<details name="faq"{" open" if i == 0 else ""}><summary>{e(q)}</summary><p>{e(a)}</p></details>' for i, (q, a) in enumerate(faqs))
+
     body += f'''  <section class="section">
+    <div class="wrap">
+      {"" if free else sleva_block(p["n"])}
+      <div class="section-head"><p class="pill">Přínosy</p><h2>Proč {e(p['n'])} na váš WooCommerce e-shop</h2></div>
+      <div class="grid-cards">{benefits}</div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="wrap with-aside">
       <div class="plugin-detail">
-        <h2>K čemu plugin je</h2>
+        <h2>K čemu plugin {e(p['n'])} je</h2>
         <p class="plugin-intro">{e(p['i'])}</p>
 
-        <h2>Co umí</h2>
+        <h2>Co plugin umí</h2>
         <ul class="feature-grid">{feats}</ul>
 
         <h2>Pro koho se hodí</h2>
@@ -184,19 +236,30 @@ def detail(p, data):
         <span class="tag-mono">toret.cz</span>
         <h3>{e(p['n'])}</h3>
         <p class="buy-price"><strong>{price(p)}</strong></p>
-        <a href="{buy_url(p)}" class="btn btn--primary btn--block" {EXT_ATTR}>{e(cta_label)}</a>
+        <a href="{url}" class="btn btn--primary btn--block" {EXT_ATTR}>{e(cta_label)}</a>
         {extra}
         <ul class="buy-points">
           <li>Česky a s českou podporou</li>
           <li>Pravidelné aktualizace</li>
           <li>Funguje s ostatními pluginy Toret</li>
         </ul>
-        <p class="buy-note">Chcete slevu? <a href="/doporucene-pluginy/#sleva" class="link">Pošleme vám slevový kód</a>.</p>
+        {"" if free else '<p class="buy-note">Chcete slevu? <a href="#sleva" class="link">Pošleme vám slevový kód</a>.</p>'}
       </aside>
     </div>
   </section>
 
   <section class="section section--mist">
+    <div class="wrap split">
+      <div class="section-head section-head--sticky">
+        <p class="pill">Časté dotazy</p>
+        <h2>{e(p['n'])} pro WooCommerce: otázky a odpovědi</h2>
+        <p><a href="{url}" class="btn btn--primary" {EXT_ATTR}>{e(cta_label)}</a></p>
+      </div>
+      <div class="accordion">{faq_html}</div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="wrap">
       <div class="section-head section-head--row">
         <div><h2>Další pluginy: {e(cat['n'].lower())}</h2></div>
@@ -207,10 +270,29 @@ def detail(p, data):
     </div>
   </section>
 '''
+    path = f"{BASE}{p['u']}/"
+    site = "https://webovybalicek.cz"
+    ld = [
+        {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": f"{p['n']} pro WooCommerce",
+         "applicationCategory": "BusinessApplication", "operatingSystem": "WordPress, WooCommerce",
+         "description": lead, "url": site + path, "brand": {"@type": "Brand", "name": "Toret"},
+         "offers": {"@type": "Offer", "price": str(p["p"] or 0), "priceCurrency": "CZK", "url": url,
+                    "availability": "https://schema.org/InStock"}},
+        {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Domů", "item": site + "/"},
+            {"@type": "ListItem", "position": 2, "name": "Doporučené pluginy", "item": site + BASE},
+            {"@type": "ListItem", "position": 3, "name": p["n"], "item": site + path}]},
+        {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faqs]},
+    ]
+    head = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld)
     meta = {
-        "title": f"{p['n']} pro WooCommerce: co umí a pro koho je | webovybalicek",
-        "description": f"{p['t']} {p['i'][:110].rsplit(' ', 1)[0]}…",
-        "path": f"{BASE}{p['u']}/",
+        "title": seo_title(kw),
+        "description": S.get("md") or f"{p['t']} {p['i'][:110].rsplit(' ', 1)[0]}…",
+        "path": path,
+        "head": head,
+        "ogtype": "article",
+        "nav": "",
     }
     return meta, body
 
@@ -218,5 +300,7 @@ def detail(p, data):
 def pages(src: Path):
     data = json.loads((src / "data" / "pluginy.json").read_text(encoding="utf-8"))
     out = [overview(data)]
-    out += [detail(p, data) for p in data["plugins"]]
+    import runpy
+    seo = runpy.run_path(str(src / "data" / "pluginy-seo.py"))["S"]
+    out += [detail(p, data, seo) for p in data["plugins"]]
     return out

@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "234"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "236"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -285,6 +285,8 @@ def build():
         out = out.replace("{{title}}", html.escape(meta.get("title", "webovybalicek")))
         out = out.replace("{{description}}", html.escape(meta.get("description", "")))
         out = out.replace("{{path}}", path)
+        out = out.replace("{{ogtype}}", meta.get("ogtype", "website"))
+        out = out.replace("{{head}}", meta.get("head", ""))
         out = out.replace("{{v}}", VERSION)
         out = out.replace("{{cta}}", "" if meta.get("cta") == "no" else cta)
         out = out.replace("{{content}}", body)
