@@ -1382,3 +1382,14 @@ body:has(.hero--air) .site-header:not(.is-scrolled) :is(a, button, summary, inpu
 .sheet-tabs button:active { transform: scale(.97); }
 .sheet-tabs button[aria-selected="true"] { background: var(--ink); color: var(--lime); }
 .navrh-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+/* ikony v rohu karty: nadpis si drží odstup, na mobilu menší kolečka */
+.feature-card:has(.fc-icons--corner) h3 { padding-right: 76px; }
+.feature-card:has(.fc-icons--corner .fc-ico + .fc-ico) h3 { padding-right: 120px; }
+@media (max-width: 760px) {
+  /* mobil: ikony nad nadpisem, ať se s ním netlačí */
+  .fc-icons--corner { position: static; margin: 0 0 18px; }
+  .fc-icons--corner .fc-ico { width: 40px; height: 40px; }
+  .fc-icons--corner .fc-ico svg { width: 21px; height: 21px; }
+  .feature-card:has(.fc-icons--corner) h3, .feature-card:has(.fc-icons--corner .fc-ico + .fc-ico) h3 { padding-right: 0; }
+}
+
