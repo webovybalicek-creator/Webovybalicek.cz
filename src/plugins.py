@@ -49,18 +49,17 @@ def hero(crumbs, title, lead, actions=""):
 '''
 
 
-IMG_DIR = Path(__file__).resolve().parent.parent / "assets/img/pluginy"
-
-
-def plugin_img(p, cls="plugin-img"):
-    if not (IMG_DIR / f"{p['u']}.webp").exists():
-        return ""
-    return f'<img class="{cls}" src="/assets/img/pluginy/{p["u"]}.webp" alt="" loading="lazy" decoding="async" width="960" height="504">'
+def plugin_visual(p, cats):
+    """Vlastní úvodní obrázek karty v našem brandu (bez cizích obrázků): WooCommerce + název pluginu."""
+    cat = cats.get(p["c"], {}).get("n", "")
+    return (f'<span class="pv"><span class="pv-cat">{e(cat)}</span>'
+            f'<span class="pv-woo">WooCommerce</span><span class="pv-plus" aria-hidden="true">+</span>'
+            f'<span class="pv-name">{e(p["n"])}</span></span>')
 
 
 def card(p, cats):
     return f'''<article class="card plugin" data-cat="{p['c']}">
-  <a href="{BASE}{p['u']}/" class="plugin-media" tabindex="-1" aria-hidden="true">{plugin_img(p)}</a>
+  <a href="{BASE}{p['u']}/" class="plugin-media" tabindex="-1" aria-hidden="true">{plugin_visual(p, cats)}</a>
   <div class="plugin-head"><h3><a href="{BASE}{p['u']}/" class="plugin-link">{e(p['n'])}</a></h3><span class="plugin-price">{price(p)}</span></div>
   <p>{e(p['t'])}</p>
   <p class="plugin-links"><a href="{BASE}{p['u']}/" class="btn btn--outline btn--sm">Co umí</a><a href="{buy_url(p)}" class="btn btn--ghost btn--sm" {EXT_ATTR}>Koupit</a></p>

@@ -1416,10 +1416,15 @@ body:has(.hero--air) .site-header:not(.is-scrolled) :is(a, button, summary, inpu
 .web-types > p { position: absolute; top: 0; left: clamp(28px, 3vw, 40px); translate: 0 -50%; margin: 0; padding: 4px 11px; border-radius: var(--r-pill); background: var(--ink); color: var(--lime); font: 550 11px/1.4 var(--f-sans); letter-spacing: .06em; text-transform: uppercase; }
 .web-types .link-utility { margin-left: 4px; }
 
-/* pluginy: úvodní obrázek v kartě */
-.plugin-media { display: block; margin: -8px -8px 18px; border-radius: var(--r-card); overflow: hidden; aspect-ratio: 960 / 504; background: var(--gray); }
-.plugin-img { display: block; width: 100%; height: 100%; object-fit: cover; transition: scale 500ms var(--ease-out); }
-@media (hover: hover) and (pointer: fine) { .plugin:hover .plugin-img { scale: 1.03; } }
+/* pluginy: vlastní úvodní „obrázek“ v kartě – černá dlaždice v našem brandu */
+.plugin-media { display: block; margin: -8px -8px 18px; text-decoration: none; }
+.pv { position: relative; display: grid; place-content: center; justify-items: center; gap: 6px; aspect-ratio: 16 / 9; padding: 18px; border-radius: var(--r-card); background: var(--ink); color: #fff; overflow: hidden; text-align: center; }
+.pv::before { content: ""; position: absolute; inset: auto -30% -70% auto; width: 80%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(205,254,0,.22), transparent 65%); transition: translate 600ms var(--ease-out); }
+.pv-cat { position: absolute; left: 14px; top: 12px; font: 400 11px/1 var(--f-mono); letter-spacing: .04em; color: var(--on-ink-muted); }
+.pv-woo { font: 500 13px/1 var(--f-sans); color: var(--on-ink-muted); }
+.pv-plus { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--lime); color: var(--ink); font: 600 15px/1 var(--f-sans); }
+.pv-name { position: relative; font: 600 clamp(20px, 1.9vw, 26px)/1.1 var(--f-sans); letter-spacing: -0.02em; }
+@media (hover: hover) and (pointer: fine) { .plugin:hover .pv::before { translate: -20% -20%; } }
 /* pluginy: slevový kód */
 .sleva { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px clamp(24px, 4vw, 64px); align-items: center; margin-bottom: 40px; padding: clamp(28px, 4vw, 48px); border-radius: var(--r-tile); background: var(--lime); color: var(--ink); scroll-margin-top: calc(var(--header-h, 80px) + 24px); }
 .sleva-copy h2 { margin: 12px 0 8px; font-size: clamp(26px, 3vw, 38px); line-height: 1.1; letter-spacing: -0.025em; }
