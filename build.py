@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "158"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "159"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -209,8 +209,8 @@ def design_data():
 def page_jumps(body):
     """Úvod podstránky (design D): pod perex přidá rychlé skoky na hlavní nadpisy stránky.
     Jen když úvod nemá vlastní tlačítka/skoky a stránka má aspoň 2 nadpisy h2."""
-    m = re.search(r'(<section class="page-hero">.*?)(\n    </div>\n  </section>)', body, re.S)
-    if not m or 'hero-actions' in m.group(1) or 'page-jump' in m.group(1):
+    m = re.search(r'(<section class="page-hero"[^>]*>.*?)(\n    </div>\n  </section>)', body, re.S)
+    if not m or 'hero-actions' in m.group(1) or 'page-jump' in m.group(1) or 'data-nojump' in m.group(1):
         return body
     heads = re.findall(r'<h2(?: id="([^"]+)")?>(.*?)</h2>', body[m.end():])
     if len(heads) < 2:
