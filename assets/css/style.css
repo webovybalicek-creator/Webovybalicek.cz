@@ -98,7 +98,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
 
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: var(--r-link); }
-.section--dark :focus-visible, .hero-panel :focus-visible, .page-hero :focus-visible,
+.section--dark :focus-visible, .hero-panel :focus-visible,
 .explorer-stage :focus-visible, .contact-panel :focus-visible, .bundle :focus-visible { outline-color: var(--lime); }
 
 .skip-link { position: absolute; left: -9999px; }
@@ -142,7 +142,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .btn--outline { background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 1px var(--hairline); }
 .btn--ghost { background: transparent; color: var(--graphite); }
 /* na tmavém */
-.section--dark .btn--outline, .hero-panel .btn--outline, .page-hero .btn--outline,
+.section--dark .btn--outline, .hero-panel .btn--outline,
 .contact-panel .btn--outline, .bundle .btn--outline {
   background: transparent; color: var(--on-ink); box-shadow: inset 0 0 0 1px rgba(255,255,255,.28);
 }
@@ -150,7 +150,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .btn--primary:hover { background: var(--lime-hover); }
   .btn--outline:hover { background: var(--gray); }
   .btn--ghost:hover { background: var(--gray); color: var(--ink); }
-  .section--dark .btn--outline:hover, .hero-panel .btn--outline:hover, .page-hero .btn--outline:hover,
+  .section--dark .btn--outline:hover, .hero-panel .btn--outline:hover:hover,
   .contact-panel .btn--outline:hover, .bundle .btn--outline:hover { background: rgba(255,255,255,.08); }
 }
 
@@ -161,7 +161,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   padding-right: 7px; gap: 12px;
 }
 .btn--outline { --circle: var(--gray); --arrow-on: var(--ink); }
-.section--dark .btn--outline, .hero-panel .btn--outline, .page-hero .btn--outline,
+.section--dark .btn--outline, .hero-panel .btn--outline,
 .contact-panel .btn--outline, .bundle .btn--outline {
   --circle: rgba(255,255,255,.12); --water: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ffffff'/%3E%3Cstop offset='.3' stop-color='%23ffdcee'/%3E%3Cstop offset='.55' stop-color='%23d6eeff'/%3E%3Cstop offset='.8' stop-color='%23e9ffd2'/%3E%3Cstop offset='1' stop-color='%23e6e6ea'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 12 Q15 2 30 12 T60 12 T90 12 T120 12 V120 H0Z' fill='url(%23g)'/%3E%3Cpath d='M0 12 Q15 2 30 12 T60 12 T90 12 T120 12' fill='none' stroke='%23ffffff' stroke-width='3'/%3E%3C/svg%3E"); --arrow: var(--on-ink); --arrow-on: var(--ink);
 }
@@ -776,22 +776,30 @@ html.is-locked { overflow: hidden; }
 /* ==========================================================
    podstránky
    ========================================================== */
-.page-hero { padding: 16px var(--gutter) 0; }
-.page-hero > .wrap {
-  max-width: calc(var(--wrap) - 2 * var(--gutter)); padding: clamp(32px, 5vw, 64px);
-  background: var(--ink); color: var(--on-ink); border-radius: var(--r-panel);
-}
-.page-hero h1 { font-size: clamp(34px, 4.8vw, 60px); line-height: 1.06; letter-spacing: -0.02em; max-width: 18ch; margin-bottom: 20px; }
-.page-hero .lead { max-width: 680px; font-size: 19px; line-height: 1.6; color: var(--on-ink-muted); margin: 0; }
-.page-hero .hero-actions { margin-top: 28px; }
-.page-hero .rating { background: rgba(255,255,255,.06); }
-.page-hero .rating span { color: var(--on-ink-muted); }
+/* úvod podstránky (design D): minimal na střed, zvýraznění v nadpisu, rychlé skoky */
+.page-hero { padding: 0 var(--gutter); }
+.page-hero > .wrap { max-width: calc(var(--wrap) - 2 * var(--gutter)); padding: clamp(40px, 6vw, 88px) 0 clamp(24px, 3vw, 40px); text-align: center; }
+.page-hero .crumbs { justify-content: center; color: var(--stone); margin-bottom: 24px; }
+.page-hero .crumbs a { color: var(--stone); }
+.page-hero .crumbs a:hover { color: var(--ink); }
+.page-hero h1 { font-size: clamp(36px, 5vw, 64px); line-height: 1.04; letter-spacing: -0.025em; max-width: 20ch; margin: 0 auto 20px; text-wrap: balance; }
+.page-hero h1 em { font-style: normal; background: linear-gradient(transparent 62%, var(--lime) 62%, var(--lime) 92%, transparent 92%); }
+.page-hero .lead { max-width: 620px; margin: 0 auto; font-size: 19px; line-height: 1.6; color: var(--graphite); text-wrap: pretty; }
+.page-hero .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
+.page-hero .rating { background: var(--gray); }
+.page-hero .rating span { color: var(--graphite); }
+.page-jump { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 32px 0 0; padding: 0; list-style: none; }
+.page-jump a { display: inline-flex; gap: 10px; align-items: baseline; padding: 10px 16px; border-radius: 999px; background: var(--gray); text-decoration: none; color: var(--ink); font-size: 15px; transition: background-color 150ms ease, transform 150ms ease; }
+.page-jump a span { font: 400 13px/1 var(--f-mono); color: var(--stone); }
+@media (hover: hover) and (pointer: fine) { .page-jump a:hover { background: var(--hairline); } }
+.page-jump a:active { transform: scale(.97); }
+[id^="cena-"], .section h2[id] { scroll-margin-top: calc(var(--header-h, 80px) + 24px); }
 .crumbs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 32px; font-size: 14px; color: var(--on-ink-muted); }
 .crumbs a { text-decoration: none; color: var(--on-ink-muted); transition: color 150ms ease; }
 .crumbs a:hover { color: var(--on-ink); }
 .crumbs li + li::before { content: "/"; margin-right: 6px; opacity: .4; }
 .article-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 20px; font-size: 14px; color: var(--stone); }
-.page-hero .article-meta { color: var(--on-ink-muted); }
+.page-hero .article-meta { justify-content: center; color: var(--stone); }
 
 /* text článků */
 .prose { max-width: 700px; font-size: 18px; line-height: 1.75; }

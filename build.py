@@ -205,6 +205,25 @@ def design_data():
     return json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
 
 
+
+def page_jumps(body):
+    """Úvod podstránky (design D): pod perex přidá rychlé skoky na hlavní nadpisy stránky.
+    Jen když úvod nemá vlastní tlačítka/skoky a stránka má aspoň 2 nadpisy h2."""
+    m = re.search(r'(<section class="page-hero">.*?)(\n    </div>\n  </section>)', body, re.S)
+    if not m or 'hero-actions' in m.group(1) or 'page-jump' in m.group(1):
+        return body
+    heads = re.findall(r'<h2(?: id="([^"]+)")?>(.*?)</h2>', body[m.end():])
+    if len(heads) < 2:
+        return body
+    links, rest = [], body[m.end():]
+    for hid, text in heads[:6]:
+        if not hid:
+            hid = re.sub(r'[^a-z0-9]+', '-', text.lower().translate(str.maketrans('áčďéěíňóřšťúůýž', 'acdeeinorstuuyz'))).strip('-')
+            rest = rest.replace(f'<h2>{text}</h2>', f'<h2 id="{hid}">{text}</h2>', 1)
+        links.append(f'<li><a href="#{hid}">{re.sub(r"<[^>]+>", "", text)}</a></li>')
+    jump = f'\n      <ul class="page-jump">{"".join(links)}</ul>'
+    return body[:m.start()] + m.group(1) + jump + m.group(2) + rest
+
 def build():
     if DIST.exists():
         shutil.rmtree(DIST)
@@ -250,6 +269,7 @@ def build():
         body = body.replace("{{g_since}}", str(GOOGLE["since"]))
         body = body.replace("{{g_years}}", roky(years))
         body = body.replace("{{v}}", VERSION)
+        body = page_jumps(body)
 
         if meta.get("layout") == "none":  # samostatná stránka bez hlavičky/patičky webu (např. /design/)
             target = DIST / path.strip("/") / "index.html"
