@@ -561,7 +561,7 @@ html.is-locked { overflow: hidden; }
 .ticks li { position: relative; padding-left: 26px; }
 .ticks li::before {
   content: ""; position: absolute; left: 0; top: 5px; top: calc(.5lh - 7.5px); width: 16px; height: 16px; border-radius: var(--r-pill); /* na střed prvního řádku */
-  background: var(--st-done) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.75 8.25l2 2 4.5-4.5' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat;
+  background: var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.75 8.25l2 2 4.5-4.5' fill='none' stroke='%230a1217' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat;
 }
 
 .explorer.is-ready .spec-card[hidden] { display: none; }
@@ -864,14 +864,14 @@ html.is-locked { overflow: hidden; }
 .feature-grid { display: grid; gap: var(--grid-gap); grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
 .feature-grid li { position: relative; padding: 16px 16px 16px 46px; background: var(--gray); border-radius: var(--r-tile); font-size: 16px; }
 .feature-grid li::before { content: ""; position: absolute; left: 16px; top: 18px; width: 18px; height: 18px; border-radius: var(--r-pill);
-  background: var(--st-done) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.75 8.25l2 2 4.5-4.5' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat; }
+  background: var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.75 8.25l2 2 4.5-4.5' fill='none' stroke='%230a1217' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat; }
 .why { margin-top: 48px; padding: 24px 28px; background: var(--material); border: 0; border-radius: var(--r-feature); }
 .why p { margin: 0; color: var(--ink); }
 .buy-card { display: grid; gap: 12px; }
 .buy-card h3, .buy-card p { margin: 0; }
 .buy-price strong { font-size: 32px; font-weight: 650; letter-spacing: -0.035em; }
 .buy-points { display: grid; gap: 6px; padding: 12px 0; border-block: 1px solid var(--hairline); font-size: 15px; color: var(--graphite); }
-.buy-points li::before { content: "✓"; color: var(--st-done); margin-right: 8px; font-weight: 600; }
+.buy-points li::before { content: "✓"; color: var(--ink); margin-right: 8px; font-weight: 600; }
 .buy-note { font-size: 14px; color: var(--stone) !important; }
 
 /* ==========================================================
