@@ -472,3 +472,22 @@ document.querySelectorAll('dialog[data-video]').forEach((d) => {
   }).observe(d, { attributes: true, attributeFilter: ['open'] });
   d.addEventListener('close', () => { box.innerHTML = ''; });
 });
+
+// Slevový kód Toret: e-mail -> slevovy-kod.php pošle stylový e-mail s kódem
+document.querySelectorAll('form[data-sleva]').forEach((form) => {
+  const started = Date.now();
+  form.insertAdjacentHTML('afterbegin', '<label class="hp" aria-hidden="true">Web <input type="text" name="web" tabindex="-1" autocomplete="off"></label>');
+  const btn = form.querySelector('button'), msg = form.querySelector('.sleva-msg'), input = form.querySelector('input[type=email]');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msg.className = 'sleva-msg';
+    if (!input.checkValidity()) { msg.textContent = 'Zkontrolujte prosím e-mail.'; msg.classList.add('is-err'); input.focus(); return; }
+    const data = new FormData(form); data.set('t', String(Date.now() - started));
+    btn.disabled = true; const label = btn.innerHTML; btn.textContent = 'Posílám…';
+    let ok = false;
+    try { const r = await fetch('/slevovy-kod.php', { method: 'POST', body: data, headers: { Accept: 'application/json' } }); ok = r.ok && (await r.json()).ok === true; } catch (err) { ok = false; }
+    btn.disabled = false; btn.innerHTML = label;
+    if (ok) { form.classList.add('is-sent'); msg.textContent = 'Hotovo, kód je na cestě do vaší schránky.'; msg.classList.add('is-ok'); form.reset(); }
+    else { msg.innerHTML = 'Nepodařilo se odeslat. Napište nám na <a href="mailto:webovybalicek@gmail.com">webovybalicek@gmail.com</a>.'; msg.classList.add('is-err'); }
+  });
+});

@@ -1413,3 +1413,23 @@ body:has(.hero--air) .site-header:not(.is-scrolled) :is(a, button, summary, inpu
 .web-types { position: relative; padding-top: clamp(28px, 3vw, 36px); }
 .web-types > p { position: absolute; top: 0; left: clamp(28px, 3vw, 40px); translate: 0 -50%; margin: 0; padding: 4px 11px; border-radius: var(--r-pill); background: var(--ink); color: var(--lime); font: 550 11px/1.4 var(--f-sans); letter-spacing: .06em; text-transform: uppercase; }
 .web-types .link-utility { margin-left: 4px; }
+
+/* pluginy: úvodní obrázek v kartě */
+.plugin-media { display: block; margin: -8px -8px 18px; border-radius: var(--r-card); overflow: hidden; aspect-ratio: 960 / 504; background: var(--gray); }
+.plugin-img { display: block; width: 100%; height: 100%; object-fit: cover; transition: scale 500ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .plugin:hover .plugin-img { scale: 1.03; } }
+/* pluginy: slevový kód */
+.sleva { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px clamp(24px, 4vw, 64px); align-items: center; margin-bottom: 40px; padding: clamp(28px, 4vw, 48px); border-radius: var(--r-tile); background: var(--lime); color: var(--ink); scroll-margin-top: calc(var(--header-h, 80px) + 24px); }
+.sleva-copy h2 { margin: 12px 0 8px; font-size: clamp(26px, 3vw, 38px); line-height: 1.1; letter-spacing: -0.025em; }
+.sleva-copy p { margin: 0; font-size: 17px; line-height: 1.55; color: rgba(10,18,23,.75); }
+.sleva-tag { display: inline-block; padding: 5px 11px; border-radius: var(--r-pill); background: var(--ink); color: var(--lime); font: 500 13px/1 var(--f-mono); }
+.sleva-form { display: flex; flex-wrap: wrap; gap: 10px; }
+.sleva-field { flex: 1 1 220px; }
+.sleva-field input { width: 100%; height: 52px; padding: 0 20px; border: 0; border-radius: 999px; background: var(--paper); color: var(--ink); font: 400 16px var(--f-sans); }
+.sleva-field input:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.sleva .btn--primary { height: 52px; background: var(--ink); color: var(--lime); --circle: var(--lime); --arrow-on: var(--ink); }
+.sleva-msg { flex-basis: 100%; margin: 0; min-height: 1.5em; font-size: 15px; }
+.sleva-msg.is-err { color: #9b1c1c; }
+.sleva-msg.is-ok { font-weight: 600; }
+.sleva-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+@media (max-width: 760px) { .sleva { grid-template-columns: 1fr; } }

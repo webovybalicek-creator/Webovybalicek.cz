@@ -1,0 +1,16 @@
+name: Test e-mailu se slevovým kódem
+
+on:
+  workflow_dispatch:
+    inputs:
+      email:
+        description: "Kam poslat testovací e-mail"
+        required: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -sS -f -X POST https://new.webovybalicek.cz/slevovy-kod.php \
+            --form-string "email=${{ github.event.inputs.email }}" --form-string "t=9000" --form-string "web="

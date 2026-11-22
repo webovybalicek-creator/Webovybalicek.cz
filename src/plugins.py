@@ -49,8 +49,18 @@ def hero(crumbs, title, lead, actions=""):
 '''
 
 
+IMG_DIR = Path(__file__).resolve().parent.parent / "assets/img/pluginy"
+
+
+def plugin_img(p, cls="plugin-img"):
+    if not (IMG_DIR / f"{p['u']}.webp").exists():
+        return ""
+    return f'<img class="{cls}" src="/assets/img/pluginy/{p["u"]}.webp" alt="" loading="lazy" decoding="async" width="960" height="504">'
+
+
 def card(p, cats):
     return f'''<article class="card plugin" data-cat="{p['c']}">
+  <a href="{BASE}{p['u']}/" class="plugin-media" tabindex="-1" aria-hidden="true">{plugin_img(p)}</a>
   <div class="plugin-head"><h3><a href="{BASE}{p['u']}/" class="plugin-link">{e(p['n'])}</a></h3><span class="plugin-price">{price(p)}</span></div>
   <p>{e(p['t'])}</p>
   <p class="plugin-links"><a href="{BASE}{p['u']}/" class="btn btn--outline btn--sm">Co umí</a><a href="{buy_url(p)}" class="btn btn--ghost btn--sm" {EXT_ATTR}>Koupit</a></p>
@@ -77,7 +87,7 @@ def overview(data):
         [("Domů", "/"), ("Doporučené pluginy", None)],
         "Pluginy, které na e-shopech opravdu používáme",
         f"Vybrali jsme {len(data['plugins'])} prověřených pluginů od českého vývojáře Toret pro dopravu, platby, fakturaci i marketing. U každého najdete, k čemu je, co umí a pro koho se hodí.",
-        f'<p class="hero-actions"><a href="{bundle_url}" class="btn btn--primary" {EXT_ATTR}>Všechny pluginy v balíčku</a><a href="mailto:webovybalicek@gmail.com?subject=Slevov%C3%BD%20k%C3%B3d%20Toret" class="btn btn--outline">Napsat si o slevový kód</a></p>',
+        f'<p class="hero-actions"><a href="{bundle_url}" class="btn btn--primary" {EXT_ATTR}>Všechny pluginy v balíčku</a><a href="#sleva" class="btn btn--outline">Chci slevový kód −15 %</a></p>',
     )
     body += f'''  <section class="section">
     <div class="wrap">
@@ -91,13 +101,21 @@ def overview(data):
         <div class="bundle-buy">
           <p class="bundle-price"><strong>{f"{b['p']:,}".replace(",", " ")}</strong> Kč/rok</p>
           <a href="{bundle_url}" class="btn btn--primary btn--block" {EXT_ATTR}>Koupit balíček</a>
-          <p class="bundle-note">Vyplatí se už od 6 pluginů. Napište si o slevový kód a ušetříte ještě víc.</p>
+          <p class="bundle-note">Vyplatí se už od 6 pluginů. S naším slevovým kódem ušetříte dalších 15 %.</p>
         </div>
       </div>
 
-      <div class="callout-bar card">
-        <span class="card-label">sleva</span>
-        <p><strong>Až 50 % sleva při nákupu více pluginů.</strong> Napište si o slevový kód na <a href="mailto:webovybalicek@gmail.com" class="link">webovybalicek@gmail.com</a>.</p>
+      <div class="sleva" id="sleva">
+        <div class="sleva-copy">
+          <span class="sleva-tag">−15 %</span>
+          <h2>Slevový kód na pluginy Toret</h2>
+          <p>Nechte nám e-mail a hned vám pošleme kód, který v košíku na toret.cz odečte 15&nbsp;% z ceny.</p>
+        </div>
+        <form class="sleva-form" data-sleva novalidate>
+          <label class="sleva-field"><span class="sr-only">E-mail</span><input type="email" name="email" required placeholder="vas@email.cz" autocomplete="email"></label>
+          <button type="submit" class="btn btn--primary">Poslat kód</button>
+          <p class="sleva-msg" role="status" aria-live="polite"></p>
+        </form>
       </div>
 
       <div class="ref-filter cat-filter" role="group" aria-label="Filtrovat podle kategorie">{filt}</div>
@@ -172,7 +190,7 @@ def detail(p, data):
           <li>Pravidelné aktualizace</li>
           <li>Funguje s ostatními pluginy Toret</li>
         </ul>
-        <p class="buy-note">Kupujete více pluginů? Napište si o <a href="mailto:webovybalicek@gmail.com?subject=Slevov%C3%BD%20k%C3%B3d%20Toret" class="link">slevový kód až 50 %</a>.</p>
+        <p class="buy-note">Chcete slevu 15 %? <a href="/doporucene-pluginy/#sleva" class="link">Pošleme vám slevový kód</a>.</p>
       </aside>
     </div>
   </section>
