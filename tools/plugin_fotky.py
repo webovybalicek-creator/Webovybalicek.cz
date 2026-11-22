@@ -35,7 +35,9 @@ def main():
         img = get(m.group(1).replace("&amp;", "&"))
         if not img:
             print("X obrázek", p["u"]); continue
-        im = Image.open(io.BytesIO(img)).convert("RGB")
+        im = Image.open(io.BytesIO(img)).convert("RGBA")
+        bg = Image.new("RGBA", im.size, (240, 240, 240, 255))  # průhledné rohy na šedou jako karty
+        im = Image.alpha_composite(bg, im).convert("RGB")
         im.thumbnail((960, 960))
         im.save(OUT / f"{p['u']}.webp", quality=80, method=6)
         print("OK", p["u"], im.size, m.group(1))
