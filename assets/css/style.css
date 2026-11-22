@@ -1446,3 +1446,7 @@ body:has(.hero--air) .site-header:not(.is-scrolled) :is(a, button, summary, inpu
 .sleva-msg.is-ok { font-weight: 600; }
 .sleva-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 @media (max-width: 760px) { .sleva { grid-template-columns: 1fr; } }
+/* „Žádný AI slop“: štítek na horní hraně bloku jako u karet, text přes celou šířku */
+.noslop { position: relative; grid-template-columns: 1fr; border-radius: var(--r-tile); padding-top: clamp(36px, 4vw, 52px); }
+.noslop-tag { grid-row: auto; position: absolute; top: 0; left: clamp(28px, 4vw, 52px); translate: 0 -50%; padding: 4px 11px; font: 550 11px/1.4 var(--f-sans); letter-spacing: .06em; }
+@media (max-width: 760px) { .noslop-tag { justify-self: auto; } }
