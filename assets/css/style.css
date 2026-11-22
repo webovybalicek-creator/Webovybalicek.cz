@@ -792,7 +792,8 @@ html.is-locked { overflow: hidden; }
    ========================================================== */
 /* úvod podstránky (design D): minimal na střed, zvýraznění v nadpisu, rychlé skoky */
 .page-hero { padding: 0 var(--gutter); }
-.page-hero > .wrap { max-width: calc(var(--wrap) - 2 * var(--gutter)); padding: clamp(40px, 6vw, 88px) 0 clamp(24px, 3vw, 40px); text-align: center; }
+.page-hero > .wrap { max-width: calc(var(--wrap) - 2 * var(--gutter)); padding: clamp(40px, 6vw, 88px) 0; text-align: center; }
+.page-hero + .section:not(.section--mist) { padding-top: 0; } /* pod úvodem stejná mezera jako nad ním */
 .page-hero .crumbs { justify-content: center; color: var(--stone); margin-bottom: 24px; }
 .page-hero .crumbs a { color: var(--stone); }
 .page-hero .crumbs a:hover { color: var(--ink); }
