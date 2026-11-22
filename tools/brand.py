@@ -31,7 +31,7 @@ PAGES = {'': 'Homepage', 'cenik': 'Ceník', 'o-nas': 'O nás', 'ai-weby': 'AI we
          'jak-probiha-tvorba-webu-a-nase-spoluprace': 'Spolupráce', 'digital-project-manager-consultant': 'Honza',
          'nejcastejsi-dotazy': 'Časté dotazy'}
 
-ICONS = ['<path d="M10 2.5l1.6 4.4 4.4 1.6-4.4 1.6L10 14.5l-1.6-4.4L4 8.5l4.4-1.6z"/>',
+ICONS = ['<path d="M11.2 2 4.8 11h4.4l-1 7 6.4-9H10.2z"/>',
          '<rect x="2.5" y="3.5" width="15" height="11" rx="1.5"/><path d="M7 17.5h6M10 14.5v3M2.5 7h15"/>',
          '<path d="M3 4h2l1.6 8.5h9L17 6.5H6"/><circle cx="8" cy="16" r="1.2"/><circle cx="14" cy="16" r="1.2"/>',
          '<path d="M10 2.5 3.5 5v5c0 4 2.8 6.6 6.5 7.5 3.7-.9 6.5-3.5 6.5-7.5V5z"/><path d="m7 10 2 2 4-4"/>']
