@@ -130,6 +130,7 @@ def overview(data):
       </div>
 
 
+      <p class="note note--small">Odkazy na této stránce jsou partnerské. Když přes ně nakoupíte, dostaneme malou provizi a vás to nic navíc nestojí. Ceny jsou orientační za roční licenci, aktuální cenu uvidíte na toret.cz.</p>
     </div>
   </section>
 '''
@@ -202,7 +203,7 @@ def detail(p, data):
         <a href="{BASE}" class="btn btn--outline">Všechny pluginy</a>
       </div>
       <div class="plugins">{rel}</div>
-      <p class="note">Odkazy jsou partnerské. Když přes ně nakoupíte, dostaneme malou provizi a vás to nic navíc nestojí. Cena je orientační za roční licenci, aktuální uvidíte na toret.cz.</p>
+      <p class="note note--small">Odkazy jsou partnerské. Když přes ně nakoupíte, dostaneme malou provizi a vás to nic navíc nestojí. Cena je orientační za roční licenci, aktuální uvidíte na toret.cz.</p>
     </div>
   </section>
 '''
