@@ -1603,3 +1603,8 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
 .sva-card--ink { background: var(--ink); color: #fff; } .sva-card--ink h3 { color: #fff; } .sva-card--ink > p, .sva-card--ink .sv-spec dt { color: var(--on-ink-muted); } .sva-card--ink .sv-spec div { border-color: var(--on-ink-line); }
 .sva-card .pillar-ico { margin-bottom: 26px; }
 @media (max-width: 860px) { .sv-a { grid-template-columns: 1fr; } .sva-card > p { min-height: 0; } }
+.sv-a--4 { grid-template-columns: repeat(4, 1fr); }
+.sv-a--4 .sv-price { margin: auto 0 24px; padding-top: 24px; } .sv-a--4 .btn { margin-top: 0; } .sv-a--4 .sva-card > p { min-height: 0; }
+.sv-a + .pricing-foot { margin-top: 28px; }
+@media (max-width: 1100px) { .sv-a--4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .sv-a--4 { grid-template-columns: 1fr; } }
