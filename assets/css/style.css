@@ -765,11 +765,16 @@ html.is-locked { overflow: hidden; }
    patička – černé konverzní pole
    ========================================================== */
 .site-footer { position: relative; overflow: hidden; container-type: inline-size; background: var(--gray); color: var(--graphite); font-size: 15px; }
-.footer-cta { display: grid; gap: 24px 64px; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: end; padding-top: clamp(64px, 9vw, 120px); padding-bottom: clamp(48px, 6vw, 72px); }
-.footer-cta h2 { margin: 0; color: var(--ink); font-size: clamp(42px, 6.6vw, 84px); line-height: 1.04; letter-spacing: -0.03em; }
-.footer-cta p { color: var(--graphite); font-size: 18px; }
+.footer-cta { padding-top: clamp(56px, 7vw, 96px); padding-bottom: clamp(48px, 6vw, 72px); }
 .cta-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; }
-@media (max-width: 860px) { .footer-cta { grid-template-columns: 1fr; } }
+.ca { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px 48px; align-items: end; padding: clamp(32px, 5vw, 64px); border-radius: var(--r-feature); background: var(--ink); color: #fff; }
+.ca h2 { align-self: start; margin: 0; color: #fff; font-size: clamp(40px, 5.6vw, 76px); line-height: 1.02; letter-spacing: -0.03em; }
+.ca h2 em { font-style: normal; color: var(--lime); }
+.ca-person { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+.ca-person img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; background: #222; }
+.ca-person strong { display: block; font-size: 16px; color: #fff; } .ca-person span { font-size: 14px; color: var(--on-ink-muted); }
+.ca p { margin: 0 0 24px; color: var(--on-ink-muted); font-size: 17px; line-height: 1.6; } .ca .cta-actions { margin: 0; }
+@media (max-width: 960px) { .ca { grid-template-columns: 1fr; } }
 .footer-grid { display: grid; gap: 32px; grid-template-columns: 1.4fr repeat(3, 1fr); padding-top: 48px; border-top: 1px solid var(--hairline); }
 .site-footer > .footer-grid:first-child { margin-top: 0; padding-top: 64px; border-top: 0; }
 .site-footer .logo { color: var(--ink); margin-bottom: 20px; }
