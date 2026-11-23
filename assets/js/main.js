@@ -1,6 +1,6 @@
 // Rychlost načtení (PageSpeed): WebGL bublina v úvodu se rozpohybuje až po první akci návštěvníka (wbTouch –
-// pohyb myši, scroll, dotyk, klávesa), do té doby je vidět jeden statický snímek. Ostatní dekorativní animace
-// (roj kurzorů, pruh referencí, „stavění“ snímků) startují 1 s po načtení stránky, nebo dřív při první akci (wbGo).
+// pohyb myši, scroll, dotyk, klávesa), do té doby je vidět jeden statický snímek. Kurzory v úvodu startují
+// hned po načtení stránky (wbGo), reference (pruh a „stavění“ snímků) úplně bez čekání.
 window.wbTouch = new Promise((res) => {
   const ev = ['pointermove', 'pointerdown', 'touchstart', 'scroll', 'wheel', 'keydown'];
   const go = () => { ev.forEach((n) => removeEventListener(n, go, true)); res(); };
@@ -10,7 +10,7 @@ window.wbGo = window.wbGo || new Promise((res) => {
   const ev = ['pointermove', 'pointerdown', 'touchstart', 'scroll', 'wheel', 'keydown'];
   const go = () => { ev.forEach((n) => removeEventListener(n, go, true)); res(); };
   ev.forEach((n) => addEventListener(n, go, { capture: true, passive: true }));
-  const later = () => setTimeout(go, 1000);
+  const later = () => setTimeout(go, 0);
   if (document.readyState === 'complete') later(); else addEventListener('load', later, { once: true });
 });
 // Mobilní menu – zavřít po kliknutí na odkaz
@@ -226,7 +226,7 @@ document.querySelectorAll('.tools').forEach((box) => {
     s.state = 'built'; s.wait = 900;
   }
 
-  let awake = false;
+  const awake = true; // reference startují hned
   const start = (s) => {
     if (!awake || s.state !== 'idle' || !s.seen || !(s.img.complete && s.img.naturalWidth)) return;
     if (calm) { s.win.classList.add('is-built'); s.state = 'built'; return; }
@@ -244,7 +244,6 @@ document.querySelectorAll('.tools').forEach((box) => {
     s.el.addEventListener('pointerleave', () => { s.goal = null; s.wait = 500; });
   });
   let last = performance.now();
-  window.wbGo.then(() => { awake = true; shots.forEach(start); last = performance.now(); requestAnimationFrame(tick); });
   const tick = (now) => {
     const dt = Math.min(64, now - last); last = now;
     for (const s of shots) {
@@ -262,6 +261,7 @@ document.querySelectorAll('.tools').forEach((box) => {
     }
     requestAnimationFrame(tick);
   };
+  requestAnimationFrame(tick);
   // Pruh: nekonečná smyčka, která jede sama a dá se táhnout myší i prstem (se setrvačností)
   document.querySelectorAll('.shots-loop').forEach((loop) => {
     if (calm) return; // při omezeném pohybu zůstává obyčejný vodorovný posuv
@@ -304,7 +304,7 @@ document.querySelectorAll('.tools').forEach((box) => {
       }
       requestAnimationFrame(run);
     };
-    window.wbGo.then(() => { prev = performance.now(); requestAnimationFrame(run); });
+    requestAnimationFrame(run);
   });
 })();
 
