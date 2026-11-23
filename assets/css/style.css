@@ -1465,7 +1465,25 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
 .legal h2:first-child { margin-top: 0; }
 .legal h3 { margin: 32px 0 10px; color: var(--ink); font-size: 19px; }
 .legal p { margin: 0 0 14px; }
-.legal ol, .legal ul { margin: 0 0 18px; padding-left: 1.4em; display: grid; gap: 10px; }
+.legal ol, .legal ul { margin: 0 0 18px; padding: 0; display: grid; gap: 10px; }
+/* číslování článků a odstavců (1., 1.1) v okraji, text zarovnaný s nadpisy */
+.legal--num { counter-reset: sec; }
+.legal--num h2 { position: relative; counter-increment: sec; }
+.legal--num h2::before { content: counter(sec) "."; position: absolute; right: calc(100% + 16px); top: .18em; font: 400 15px/1.6 var(--f-mono); color: var(--stone); }
+.legal--num > ol { counter-reset: it; }
+.legal--num > ol > li { position: relative; counter-increment: it; }
+.legal--num > ol > li::before { content: counter(sec) "." counter(it); position: absolute; right: calc(100% + 16px); top: .2em; font: 400 13px/1.7 var(--f-mono); color: var(--stone); white-space: nowrap; }
+.legal ul > li { position: relative; padding-left: 18px; }
+.legal ul > li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); }
+.legal ul > li { padding-left: 22px; }
+.legal:not(.legal--num) ol { counter-reset: it; }
+.legal:not(.legal--num) ol > li { position: relative; padding-left: 30px; counter-increment: it; }
+.legal:not(.legal--num) ol > li::before { content: counter(it) "."; position: absolute; left: 0; font: 400 14px/1.9 var(--f-mono); color: var(--stone); }
+@media (max-width: 960px) {
+  .legal--num h2::before { position: static; margin-right: 10px; }
+  .legal--num > ol > li { padding-left: 44px; }
+  .legal--num > ol > li::before { right: auto; left: 0; }
+}
 .legal ul ul, .legal ol ul { margin: 10px 0 0; gap: 6px; }
 .legal li::marker { color: var(--stone); }
 .legal a { color: var(--ink); }
