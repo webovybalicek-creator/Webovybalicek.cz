@@ -1546,8 +1546,8 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
 @media (max-width: 760px) { .barter-row { flex-direction: column; align-items: flex-start; } }
 /* kontakt: decentní tečky v levém horním rohu (obě záložky) */
 .kapky--left { left: 0; right: auto; }
-.kapky--soft { color: var(--lime); opacity: .18; }
-.contact-panel .kapky { height: 170px; }
+.kapky--soft { color: var(--lime); opacity: .32; }
+.contact-panel .kapky { height: 255px; }
 /* svislá varianta kroků (Jak probíhá tvorba webu) – stejný styl jako na homepage */
 .steps--v { grid-template-columns: 1fr; gap: 28px; max-width: 760px; }
 .steps--v li { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 18px; }
@@ -1579,3 +1579,4 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
 .barter-card .kapky { height: 70%; }
 .barter-card + .pricing-foot { margin-top: 28px; }
 @media (max-width: 760px) { .barter-card { grid-template-columns: 1fr; } }
+#ochrana-designu { scroll-margin-top: 130px; }
