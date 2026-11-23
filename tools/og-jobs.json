@@ -1436,5 +1436,182 @@
    "Pojem",
    "Srozumitelně"
   ]
+ },
+ {
+  "slug": "web-pro-advokaty",
+  "path": "/web-pro-advokaty/",
+  "k": "Weby podle oboru",
+  "h": "Web pro *advokáty*",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "web-pro-terapeuty",
+  "path": "/web-pro-terapeuty/",
+  "k": "Weby podle oboru",
+  "h": "Web pro *terapeuty* a kouče",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "web-pro-lektory",
+  "path": "/web-pro-lektory/",
+  "k": "Weby podle oboru",
+  "h": "Web pro *lektory* a online kurzy",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "web-pro-kadernictvi",
+  "path": "/web-pro-kadernictvi/",
+  "k": "Weby podle oboru",
+  "h": "Web pro *kadeřnictví* a salony",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "web-pro-fotografy",
+  "path": "/web-pro-fotografy/",
+  "k": "Weby podle oboru",
+  "h": "Web pro *fotografy* a kreativce",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "web-pro-interierove-designery",
+  "path": "/web-pro-interierove-designery/",
+  "k": "Weby podle oboru",
+  "h": "Web pro *interiérové* designéry",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "web-pro-chaty-a-apartmany",
+  "path": "/web-pro-chaty-a-apartmany/",
+  "k": "Weby podle oboru",
+  "h": "Web pro *chaty* a apartmány",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "web-pro",
+  "path": "/web-pro/",
+  "k": "Weby podle oboru",
+  "h": "Web pro *váš obor*",
+  "tags": [
+   "Advokáti",
+   "Salony",
+   "Ubytování"
+  ]
+ },
+ {
+  "slug": "reseni-prevod-webu-z-wixu",
+  "path": "/reseni/prevod-webu-z-wixu/",
+  "k": "Řešíme",
+  "h": "Převod webu *z Wixu*",
+  "tags": [
+   "Rychle",
+   "Bez ztráty SEO",
+   "Na míru"
+  ]
+ },
+ {
+  "slug": "reseni-redesign-webu",
+  "path": "/reseni/redesign-webu/",
+  "k": "Řešíme",
+  "h": "Redesign *webu*",
+  "tags": [
+   "Rychle",
+   "Bez ztráty SEO",
+   "Na míru"
+  ]
+ },
+ {
+  "slug": "reseni-pomaly-wordpress",
+  "path": "/reseni/pomaly-wordpress/",
+  "k": "Řešíme",
+  "h": "Pomalý *WordPress*? Zrychlíme ho",
+  "tags": [
+   "Rychle",
+   "Bez ztráty SEO",
+   "Na míru"
+  ]
+ },
+ {
+  "slug": "reseni-napojeni-zasilkovny-a-plateb",
+  "path": "/reseni/napojeni-zasilkovny-a-plateb/",
+  "k": "Řešíme",
+  "h": "Napojení *Zásilkovny*, plateb a fakturace",
+  "tags": [
+   "Rychle",
+   "Bez ztráty SEO",
+   "Na míru"
+  ]
+ },
+ {
+  "slug": "reseni-napadeny-web",
+  "path": "/reseni/napadeny-web/",
+  "k": "Řešíme",
+  "h": "Napadený *web*? Vyčistíme ho",
+  "tags": [
+   "Rychle",
+   "Bez ztráty SEO",
+   "Na míru"
+  ]
+ },
+ {
+  "slug": "reseni-prevzeti-webu",
+  "path": "/reseni/prevzeti-webu/",
+  "k": "Řešíme",
+  "h": "Převezmeme *váš web*",
+  "tags": [
+   "Rychle",
+   "Bez ztráty SEO",
+   "Na míru"
+  ]
+ },
+ {
+  "slug": "reseni",
+  "path": "/reseni/",
+  "k": "Řešíme",
+  "h": "Co vás s webem *trápí*?",
+  "tags": [
+   "Wix",
+   "Rychlost",
+   "Bezpečnost"
+  ]
+ },
+ {
+  "slug": "kalkulacka-ceny-webu",
+  "path": "/kalkulacka-ceny-webu/",
+  "k": "Kalkulačka",
+  "h": "Kolik bude stát *váš web*?",
+  "pill": "za minutu",
+  "tags": [
+   "AI web",
+   "E-shop",
+   "Cena"
+  ]
  }
 ]

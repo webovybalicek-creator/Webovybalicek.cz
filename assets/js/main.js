@@ -538,3 +538,36 @@ document.querySelectorAll('svg[data-kapky]').forEach((svg) => {
   card.addEventListener('pointermove', (e) => { pt = e; if (!raf) raf = requestAnimationFrame(move); });
   card.addEventListener('pointerleave', () => { dots.forEach((d) => { d.c.style.transform = ''; d.on = false; }); });
 });
+// Kalkulačka ceny webu: součet vybraných položek → rozpětí (×1,25), spěch +RUSH; výběr se propíše do formuláře
+document.querySelectorAll('[data-calc]').forEach((box) => {
+  const outs = box.querySelectorAll('[data-out]');
+  const form = box.querySelector('form');
+  const msg = form?.querySelector('[name="message"]');
+  const type = form?.querySelector('[name="type"]');
+  const urgent = form?.querySelector('[name="urgent"]');
+  const rush = parseFloat(box.dataset.rush || '0');
+  const kc = (n) => Math.round(n / 1000) * 1000;
+  const fmt = (n) => n.toLocaleString('cs-CZ').replace(/\s/g, ' ') + ' Kč';
+  let edited = false;
+  msg?.addEventListener('input', () => { edited = true; });
+  const calc = () => {
+    let sum = 0;
+    const picked = [];
+    box.querySelectorAll('.calc-form input[data-p]:checked').forEach((i) => {
+      sum += +i.dataset.p;
+      if (+i.dataset.p || i.name === 'c-base') picked.push(i.dataset.n);
+    });
+    const fast = box.querySelector('input[data-rush]')?.checked;
+    if (fast) { sum *= 1 + rush; picked.push('Potřebuji web rychle'); }
+    const lo = kc(sum), hi = kc(sum * 1.25);
+    outs.forEach((o) => { o.textContent = `${fmt(lo)} – ${fmt(hi)}`; });
+    const base = box.querySelector('input[name="c-base"]:checked');
+    if (type && base) type.value = base.value;
+    if (urgent) urgent.checked = !!fast;
+    if (msg && !edited) msg.value = `Výběr z kalkulačky (orientačně ${fmt(lo)} – ${fmt(hi)}):\n- ${picked.join('\n- ')}\n\nO nás: `;
+  };
+  box.addEventListener('change', calc);
+  calc();
+  const bar = box.querySelector('.calc-bar'), res = box.querySelector('.calc-result');
+  if (bar && res && 'IntersectionObserver' in window) new IntersectionObserver(([en]) => bar.classList.toggle('is-off', en.isIntersecting)).observe(res);
+});
