@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "277"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "278"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -186,7 +186,7 @@ def render_reviews(data):
         return (f'<div class="{cls}"><ul class="reviews-track">{cards}</ul>'
                 f'<ul class="reviews-track" aria-hidden="true">{dup}</ul></div>')
 
-    data = [r for r in data if r.get("f")]  # jen recenze s fotkou
+    data = [r for r in data if r.get("f") or r.get("i")]  # jen recenze s fotkou (i = místo loga/fotky iniciály)
     if not data:
         return ""
     if len(data) >= 8:
