@@ -253,6 +253,19 @@ def build():
     sources += [(m, b, "") for m, b in plugins.pages(SRC)]
     sources += [(m, b, "") for m, b in typy.pages(SRC)]
 
+    # reference pro landing pages: výběr z homepage, jinak libovolný web z reference.json (jen se snímkem)
+    vyber_by = {r["s"]: r for r in vyber}
+    refs_by = {re.sub(r"^www\.", "", re.sub(r"^https?://", "", r["u"]).strip("/")).replace(".", "-"): r for r in refs}
+
+    def pick(k, label=None):
+        if k in vyber_by:
+            return vyber_by[k]
+        r = refs_by.get(k)
+        if not r or k not in snimky:
+            return None
+        name = re.sub(r"\.(cz|com|eu|sk|nl|hu)$", "", r["t"].split(" /")[0]).replace("-", " ")
+        return {"s": k, "u": r["u"], "n": name[:1].upper() + name[1:], "d": r["d"].rstrip("."), "t": label or ""}
+
     urls = []
     for meta, body, stem in sources:
         meta.setdefault("nav", "")
@@ -264,8 +277,8 @@ def build():
         body = body.replace("{{shots_strip}}", render_shots(vyber, snimky))
         body = body.replace("{{projects}}", render_projects(projekty))
         body = body.replace("{{shots_demo}}", render_shots(vyber, snimky, limit=4, demo=True))
-        body = re.sub(r"\{\{shots_pick:([\w,-]+)\}\}", lambda m: render_shots(
-            [r for k in m.group(1).split(",") for r in vyber if r["s"] == k], snimky, demo=True).replace("shots--demo", "shots--pick"), body)
+        body = re.sub(r"\{\{shots_pick:([\w,.-]+)(?:\|([^}]*))?\}\}", lambda m: render_shots(
+            [pick(k, m.group(2)) for k in m.group(1).split(",") if pick(k, m.group(2))], snimky, demo=True).replace("shots--demo", "shots--pick"), body)
         body = body.replace("{{shots_grid}}", render_shots(vyber, snimky, limit=6, big=True))
         years = date.today().year - GOOGLE["since"]
         body = body.replace("{{g_rating}}", GOOGLE["rating"])

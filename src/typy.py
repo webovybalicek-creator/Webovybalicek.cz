@@ -96,12 +96,12 @@ def detail(t, by_key, svc):
     </div>
   </section>
 '''
-    if t.get("refs"):
+    if t.get("refs") or t.get("dalsi"):
         body += f'''
   <section class="section">
     <div class="wrap">
       <div class="section-head"><p class="pill">Reference</p><h2>Weby, které jsme postavili</h2></div>
-      {{{{shots_pick:{",".join(t["refs"])}}}}}
+      {{{{shots_pick:{",".join(t["refs"] + t.get("dalsi", []))}|{t["n"]}}}}}
     </div>
   </section>
 '''
