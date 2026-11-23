@@ -30,7 +30,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "281"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "282"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -182,6 +182,39 @@ def page_jumps(body):
     jump = f'\n      <ul class="page-jump">{"".join(links)}</ul>'
     return body[:m.start()] + m.group(1) + jump + m.group(2) + rest
 
+
+# --- strukturovaná data pro vyhledávače a AI odpovědi (GEO/AEO) ---
+ORG = {
+    "@context": "https://schema.org", "@type": "ProfessionalService", "@id": SITE + "/#org",
+    "name": "webovybalicek", "url": SITE + "/", "logo": SITE + "/assets/img/brand/wb-avatar-lime.png",
+    "image": SITE + "/assets/img/og/default.jpg",
+    "description": "Tvorba prezentačních webů a e-shopů pro živnostníky, malé a střední firmy. AI zrychluje práci, kvalitu hlídá člověk.",
+    "telephone": "+420723933774", "email": "webovybalicek@gmail.com", "founder": {"@type": "Person", "name": "Vladimír Fischer"},
+    "address": {"@type": "PostalAddress", "addressLocality": "Říčany", "postalCode": "251 01", "addressCountry": "CZ"},
+    "areaServed": [{"@type": "Country", "name": "Česko"}, {"@type": "Country", "name": "Slovensko"}],
+    "taxID": "03051820", "priceRange": "od 25 000 Kč",
+    "aggregateRating": {"@type": "AggregateRating", "ratingValue": GOOGLE["rating"].replace(",", "."), "reviewCount": GOOGLE["count"], "bestRating": "5"},
+    "sameAs": ["https://g.page/webovybalicek-cz/"],
+}
+WEBSITE = {"@context": "https://schema.org", "@type": "WebSite", "@id": SITE + "/#web", "name": "webovybalicek", "url": SITE + "/",
+           "inLanguage": "cs", "publisher": {"@id": SITE + "/#org"}}
+
+
+def ld(items):
+    return "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in items)
+
+
+def faq_ld(body):
+    """FAQPage z <details><summary>Otázka</summary>odpověď</details> na stránce."""
+    qa = []
+    for q, a in re.findall(r"<details[^>]*>\s*<summary[^>]*>(.*?)</summary>(.*?)</details>", body, re.S):
+        q = html.unescape(re.sub(r"<[^>]+>", "", q)).strip()
+        a = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", a))).strip()
+        if q and a:
+            qa.append({"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}})
+    return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": qa} if len(qa) >= 2 else None
+
+
 def build():
     if DIST.exists():
         shutil.rmtree(DIST)
@@ -240,6 +273,7 @@ def build():
         return render_shots(items, snimky, demo=True).replace("shots--demo", "shots--pick")
 
     urls = []
+    pages = []
     for meta, body, stem in sources:
         meta.setdefault("nav", "")
         path = meta.get("path") or ("/" if stem == "index" else f"/{stem}/")
@@ -271,7 +305,13 @@ def build():
         out = out.replace("{{path}}", path)
         out = out.replace("{{ogtype}}", meta.get("ogtype", "website"))
         out = out.replace("{{ogimage}}", SITE + meta.get("image", "/assets/img/og/default.jpg"))
-        out = out.replace("{{head}}", meta.get("head", ""))
+        head = meta.get("head", "")
+        extra = [ORG, WEBSITE] if path == "/" else []
+        if "FAQPage" not in head and meta.get("hidden") != "yes":
+            f = faq_ld(body)
+            if f:
+                extra.append(f)
+        out = out.replace("{{head}}", head + ld(extra))
         out = out.replace("{{v}}", VERSION)
         out = out.replace("{{cta}}", "" if meta.get("cta") == "no" else cta)
         out = out.replace("{{content}}", body)
@@ -287,6 +327,7 @@ def build():
         target.write_text(out, encoding="utf-8")
         if not hidden:
             urls.append(path)
+            pages.append((path, meta.get("title", ""), meta.get("description", "")))
         print(f"  {path}")
 
     # stránka 404 i jako /404.html (ErrorDocument v .htaccess)
@@ -300,7 +341,22 @@ def build():
     sitemap.append("</urlset>")
     (DIST / "sitemap.xml").write_text("\n".join(sitemap), encoding="utf-8")
 
-    robots = "User-agent: *\nDisallow: /\n" if STAGING else f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n"
+    ai_bots = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "PerplexityBot", "Google-Extended", "Applebot-Extended", "Bingbot"]
+    robots = ("User-agent: *\nDisallow: /\n" if STAGING else
+              "User-agent: *\nAllow: /\nDisallow: /design/\n\n# AI vyhledávače a asistenti – výslovně povoleno\n"
+              + "".join(f"User-agent: {b}\n" for b in ai_bots) + "Allow: /\nDisallow: /design/\n\n"
+              + f"Sitemap: {SITE}/sitemap.xml\n")
+    if not STAGING:
+        main = [p for p in pages if not p[0].startswith(("/doporucene-pluginy/", "/tvorba-webu/"))]
+        lps = [p for p in pages if p[0].startswith("/tvorba-webu/")]
+        def line(p):
+            return f"- [{p[1].split(' | ')[0]}]({SITE}{p[0]}): {p[2]}"
+        llms = ["# webovybalicek", "",
+                "> Tvorba prezentačních webů a e-shopů pro živnostníky, malé a střední firmy v Česku a na Slovensku. "
+                "AI zrychluje práci, kvalitu hlídá člověk. Prezentační web od 25 000 Kč, e-shop od 35 000 Kč. "
+                "Vladimír Fischer, Říčany u Prahy, +420 723 933 774, webovybalicek@gmail.com.", "",
+                "## Hlavní stránky", *[line(p) for p in main], "", "## Typy webů", *[line(p) for p in lps], ""]
+        (DIST / "llms.txt").write_text("\n".join(llms), encoding="utf-8")
     (DIST / "robots.txt").write_text(robots, encoding="utf-8")
     print(f"Hotovo: {len(urls)} stránek → dist/ ({'staging, noindex' if STAGING else 'produkce'})")
 
