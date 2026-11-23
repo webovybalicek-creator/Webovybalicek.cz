@@ -1557,3 +1557,24 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
 .kapky--left { left: 0; right: auto; }
 .kapky--soft { color: var(--lime); opacity: .18; }
 .contact-panel .kapky { height: 170px; }
+/* svislá varianta kroků (Jak probíhá tvorba webu) – stejný styl jako na homepage */
+.steps--v { grid-template-columns: 1fr; gap: 28px; max-width: 760px; }
+.steps--v li { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 18px; }
+.steps--v .step-n { margin: 0; }
+.steps--v h3 { margin-top: 10px; }
+.steps--b.steps--v::before, .steps--b.steps--v::after { left: 21px; top: 23px; bottom: 23px; width: 4px; height: auto; right: auto; background: radial-gradient(circle, #c4c7c9 1.5px, transparent 2px) 50% 0 / 4px 10px repeat-y; }
+.steps--b.steps--v::after { bottom: auto; height: calc((100% - 46px) * var(--p)); background-image: radial-gradient(circle, var(--ink) 1.7px, transparent 2.1px); }
+/* Co si připravit: dvě karty vedle sebe (šedá + černá jako ve Srovnání), štítky na horní hraně */
+.prep { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px var(--grid-gap); align-items: stretch; margin-top: 12px; }
+.prep .card-flag { left: clamp(28px, 3.4vw, 44px); right: auto; }
+.prep-card { padding: clamp(28px, 3.4vw, 44px); border-radius: var(--r-card); background: var(--gray); }
+.prep-card h3 { margin: 0 0 6px; font-size: clamp(24px, 2.4vw, 30px); letter-spacing: -0.02em; }
+.prep-desc { margin: 0 0 8px; color: var(--graphite); font-size: 16px; }
+.prep-card--ink { background: var(--ink); color: #fff; overflow: visible; }
+.prep-card--ink h3 { color: #fff; }
+.prep-card--ink .prep-desc { color: var(--on-ink-muted); }
+.prep-card--ink.has-kapky { overflow: visible; }
+.prep-card--ink .kapky { height: 200px; clip-path: inset(0 round 0 var(--r-card) 0 0); }
+.prep-card .ticks strong { font-weight: 600; }
+.card-flag--lime, .grid-cards > .card .card-flag--lime { background: var(--lime); color: var(--ink); }
+@media (max-width: 860px) { .prep { grid-template-columns: 1fr; } }
