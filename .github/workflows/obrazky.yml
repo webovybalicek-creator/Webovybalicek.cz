@@ -15,7 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: pip install pillow && python tools/stahni.py ${{ github.event.inputs.obrazky }}
+      - name: Stáhnout
+        env:
+          OBRAZKY: ${{ github.event.inputs.obrazky }}
+        run: pip install pillow && python tools/stahni.py
       - name: Uložit do repozitáře
         run: |
           git config user.name "github-actions[bot]"
