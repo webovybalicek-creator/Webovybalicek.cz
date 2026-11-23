@@ -1,9 +1,17 @@
-// Dekorativní animace (roj kurzorů, pruh referencí, úvodní kurzory) startují až po první interakci návštěvníka
-// (pohyb myši, scroll, dotyk, klávesa). Načtení stránky tak není zatížené – vzhled pro návštěvníka zůstává stejný.
+// Rychlost načtení (PageSpeed): WebGL bublina v úvodu se rozpohybuje až po první akci návštěvníka (wbTouch –
+// pohyb myši, scroll, dotyk, klávesa), do té doby je vidět jeden statický snímek. Ostatní dekorativní animace
+// (roj kurzorů, pruh referencí, „stavění“ snímků) startují 1 s po načtení stránky, nebo dřív při první akci (wbGo).
+window.wbTouch = new Promise((res) => {
+  const ev = ['pointermove', 'pointerdown', 'touchstart', 'scroll', 'wheel', 'keydown'];
+  const go = () => { ev.forEach((n) => removeEventListener(n, go, true)); res(); };
+  ev.forEach((n) => addEventListener(n, go, { capture: true, passive: true }));
+});
 window.wbGo = window.wbGo || new Promise((res) => {
   const ev = ['pointermove', 'pointerdown', 'touchstart', 'scroll', 'wheel', 'keydown'];
   const go = () => { ev.forEach((n) => removeEventListener(n, go, true)); res(); };
   ev.forEach((n) => addEventListener(n, go, { capture: true, passive: true }));
+  const later = () => setTimeout(go, 1000);
+  if (document.readyState === 'complete') later(); else addEventListener('load', later, { once: true });
 });
 // Mobilní menu – zavřít po kliknutí na odkaz
 document.querySelectorAll('.mobile-nav a').forEach((a) =>

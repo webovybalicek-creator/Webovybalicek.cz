@@ -296,7 +296,7 @@ void main(){
   let seeded = false, time = 0, slow = 0, frames = 0, last = performance.now();
   // do první interakce návštěvníka jen jeden statický snímek (načtení stránky bez zátěže), pak plná animace
   let awake = false, still = 0, parked = false;
-  const go = window.wbGo || Promise.resolve();
+  const go = window.wbTouch || window.wbGo || Promise.resolve();
   go.then(() => { awake = true; if (parked) { parked = false; last = performance.now(); requestAnimationFrame(loop); } });
   const loop = (now) => {
     if (!awake && still > 1) { parked = true; return; }

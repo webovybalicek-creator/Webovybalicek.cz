@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Menší varianty obrázků pro srcset (rychlejší web): reference 480 px, fotky projektů 960 px.
-Spouštět po každé změně snímků referencí nebo fotek projektů:  python3 tools/varianty.py
+Spouští se AUTOMATICKY při každém deployi (deploy.yml) – ručně není potřeba nic hlídat.
+Varianta se vytvoří znovu, kdykoli se změní obsah původního obrázku (kontrola podle otisku v .zdroj.json).
 build.py použije variantu jen tehdy, když existuje (jinak zůstane původní obrázek)."""
+import hashlib
+import json
 from pathlib import Path
 from PIL import Image
 
@@ -11,15 +14,24 @@ JOBS = [(ROOT / "assets/img/reference", 480, 74), (ROOT / "assets/img/projekty",
 for folder, width, q in JOBS:
     out = folder / str(width)
     out.mkdir(exist_ok=True)
+    man_path = out / ".zdroj.json"
+    man = json.loads(man_path.read_text()) if man_path.exists() else {}
     n = 0
     for f in sorted(folder.glob("*.webp")):
+        h = hashlib.md5(f.read_bytes()).hexdigest()
         dst = out / f.name
-        if dst.exists() and dst.stat().st_mtime >= f.stat().st_mtime:
+        if dst.exists() and man.get(f.name) == h:
             continue
         im = Image.open(f)
         if im.width <= width:
+            dst.unlink(missing_ok=True)
+            man.pop(f.name, None)
             continue
-        im = im.resize((width, round(im.height * width / im.width)), Image.LANCZOS)
-        im.save(dst, "WEBP", quality=q, method=6)
+        im.resize((width, round(im.height * width / im.width)), Image.LANCZOS).save(dst, "WEBP", quality=q, method=6)
+        man[f.name] = h
         n += 1
-    print(f"{folder.relative_to(ROOT)}: {n} nových variant {width}px")
+    for old in out.glob("*.webp"):  # varianta bez původního obrázku pryč
+        if not (folder / old.name).exists():
+            old.unlink(); man.pop(old.name, None)
+    man_path.write_text(json.dumps(man, indent=0, sort_keys=True))
+    print(f"{folder.relative_to(ROOT)}: {n} nových/obnovených variant {width}px")
