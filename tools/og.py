@@ -25,6 +25,10 @@ WAVE = ("url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' view
 CSS = f"""
 @font-face {{ font-family: Geist; src: url(/assets/fonts/Geist-latin-ext.woff2) format("woff2"); font-weight: 100 900; }}
 @font-face {{ font-family: Geist; src: url(/assets/fonts/Geist-latin.woff2) format("woff2"); font-weight: 100 900; unicode-range: U+0000-00FF; }}
+@font-face {{ font-family: Aspekta; src: url(/assets/fonts/AspektaVF.woff2) format("woff2"); font-weight: 100 900; }}
+.lg {{ display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; color: #0a1217; }}
+.lg svg {{ height: 30px; width: auto; display: block; }}
+.lg span {{ font: 620 30px/1 Aspekta, sans-serif; letter-spacing: -0.022em; }}
 * {{ box-sizing: border-box; margin: 0; }}
 body {{ width: 1200px; height: 630px; overflow: hidden; font-family: Geist, sans-serif; color: #0a1217; background: #f1f1f1; position: relative; }}
 .kapky {{ position: absolute; top: 0; right: 0; height: 330px; color: #0a1217; }}
@@ -56,7 +60,7 @@ def card(group, title, price, ref=None, svg=None):
         right = f'<div class="ico">{re.sub(r'class="[^"]*"', "", svg, 1)}</div>'
     foot = (f'<span class="price">{html.escape(price)}</span>' if price else "") + "<span>webovybalicek.cz</span>"
     return (f'<!doctype html><meta charset="utf-8"><style>{CSS}</style><body>{KAPKA}{right}'
-            f'<div class="txt"><img class="logo" src="/assets/img/logo/wb-logo.svg"><p class="pill">{html.escape(group)}</p>'
+            f'<div class="txt"><div class="lg"><svg viewBox="0 0 400 263"><path fill="currentColor" d="M0 0h119.5L190 122.77 130 228zM280 0h120L250 263l-60-105.2z"/></svg><span>webovybalicek</span></div><p class="pill">{html.escape(group)}</p>'
             f'<h1>{t}</h1><div class="foot">{foot}</div></div></body>')
 
 
@@ -70,7 +74,6 @@ async def main():
         ref = next((vyber[k] for k in t.get("refs", []) if k in vyber), None)
         jobs.append((t["s"], card(t["g"], t["h"], price, ref, t["svg"])))
     jobs.append(("tvorba-webu", card("Tvorba webů", "Weby pro *každý obor*", "29 typů webů", vyber.get("kabinykravak-cz"))))
-    jobs.append(("default", card("Tvorba webů s pomocí AI", "Weby, za kterými jsou *výsledky*", "", vyber.get("dorsen-cz"))))
 
     handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(ROOT))
     handler.log_message = lambda *a: None
