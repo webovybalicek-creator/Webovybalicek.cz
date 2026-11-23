@@ -29,7 +29,9 @@ def grab(page, sel, wrap=True):
 PAGES = {'': 'Homepage', 'cenik': 'Ceník', 'o-nas': 'O nás', 'ai-weby': 'AI weby', 'srovnani': 'Srovnání',
          'sprava-webu': 'Správa webu', 'nastroje': 'Nástroje', 'doporucene-pluginy': 'Doporučené pluginy',
          'jak-probiha-tvorba-webu-a-nase-spoluprace': 'Spolupráce', 'digital-project-manager-consultant': 'Honza',
-         'nejcastejsi-dotazy': 'Časté dotazy'}
+         'nejcastejsi-dotazy': 'Časté dotazy', 'fotograf-a-videomaker': 'Jakub – foto a video',
+         'obsah-cinnosti-pri-tvorbe-webu': 'Co obnáší tvorba webu', 'tvorba-webu': 'Tvorba webů',
+         'tvorba-webu/naborovy-web': 'Landing page typu webu', 'obchodni-podminky': 'Obchodní podmínky'}
 
 ICONS = ['<path d="M11.2 2 4.8 11h4.4l-1 7 6.4-9H10.2z"/>',
          '<rect x="2.5" y="3.5" width="15" height="11" rx="1.5"/><path d="M7 17.5h6M10 14.5v3M2.5 7h15"/>',
@@ -67,6 +69,10 @@ P.append(('P05', 'Ikony v kolečku', '.pillar-ico', '<div class="br-row">' + ''.
 P.append(('P06', 'Fajfky', '.sv-ticks', '<ul class="sv-ticks" style="max-width:420px"><li>Výrazně rychlejší dodání</li><li>Nižší cena díky rychlejší tvorbě</li><li>Zaškolení a správa po spuštění</li></ul>'))
 P.append(('P07', 'Parametry', '.sv-spec', '<dl class="sv-spec" style="max-width:420px"><div><dt>Dodání</dt><dd>dny až týdny</dd></div><div><dt>Vlastní administrace</dt><dd>ano</dd></div></dl>'))
 P.append(('P08', 'Sloupce času', '.bars', grab('ai-weby', '.bars', False)))
+P.append(('P09', 'Štítek na hraně karty', '.has-flag › .card-flag · .card-flag--lime', '<div class="br-row" style="gap:24px;padding-top:12px"><div class="card has-flag" style="width:240px;padding:28px;background:var(--gray);border:0"><p class="card-flag">Ochrana</p>Černý štítek</div><div class="card has-flag" style="width:240px;padding:28px;background:var(--ink);color:#fff;border:0"><p class="card-flag card-flag--lime">Nový web</p>Limetkový štítek</div></div>'))
+P.append(('P10', 'Odkazy na sítě', '.social-links', grab('fotograf-a-videomaker', '.social-links', False)))
+P.append(('P11', 'Tečková kapka', 'svg.kapky[data-kapky] · --ink · --lime · --soft', '<div class="br-row"><div class="has-kapky" style="position:relative;width:320px;height:200px;border-radius:var(--r-card);background:var(--lime)">' + grab('', '.noslop svg.kapky', False) + '</div><div class="has-kapky" style="position:relative;width:320px;height:200px;border-radius:var(--r-card);background:var(--ink)">' + grab('', '.pb-big svg.kapky', False) + '</div></div><p class="mono">Tečky ustupují kurzoru (main.js). Jen desktop od 1100 px.</p>'))
+P.append(('P12', 'Číslování právních textů', '.legal--num', '<div class="legal legal--num" style="margin:0 0 0 60px;max-width:640px"><h2>Ukázkový článek</h2><ol><li>První odstavec článku s číslem 1.1 v okraji.</li><li>Druhý odstavec s číslem 1.2.</li></ol><ul><li>Odrážka s limetkovou kuličkou</li></ul></div>'))
 
 # ---------- Bloky (ze živých stránek) ----------
 B = [
@@ -98,12 +104,21 @@ B = [
  ('B26', 'Pás referencí', '.refstrip', '', '.refstrip'),
  ('B27', 'Recenze Google', '#recenze', '', '#recenze'),
  ('B28', 'Kontakt – formulář', '.contact-section', '', '#kontakt'),
+ ('B29', 'Svislé kroky', '.steps--b.steps--v', 'jak-probiha-tvorba-webu-a-nase-spoluprace', '.steps--v'),
+ ('B30', 'Karty s fotkou a čipy', '.svc-cards', 'fotograf-a-videomaker', '.svc-cards'),
+ ('B31', 'Velké video', '.section--ink · [data-video-inline]', 'fotograf-a-videomaker', '#video'),
+ ('B32', 'Barter – řádek', '.barter-row', '', '.barter-row'),
+ ('B33', 'Barter – černá karta', '.barter-card', 'cenik', '.barter-card'),
+ ('B34', 'Kroky se štítky AI / člověk', '.work-card', 'obsah-cinnosti-pri-tvorbe-webu', '.grid-cards'),
+ ('B35', 'Seznam typů webů', '.sheet-types--page', 'tvorba-webu', '.sheet-types--page'),
+ ('B36', 'Reference na landing page', '.shots--pick', 'tvorba-webu/naborovy-web', '.shots--pick'),
 ]
 G = [('G01', 'Ucho „Máte otázku?“', '.ear', 'Plovoucí pilulka vpravo dole. Na této stránce je vidět po odscrollování.'),
      ('G02', 'Výsuvný panel Umíme', '.sheet--b · data-open="umime"', '<button type="button" class="btn btn--outline" data-open="umime">Otevřít panel</button>'),
      ('G03', 'Video popup Elementor', '#video-elementor · data-open="video-elementor"', '<button type="button" class="btn btn--outline" data-open="video-elementor">Otevřít video</button>'),
      ('G04', 'Černé CTA pole', '{{cta}} · .cta', 'Velký blok „Pojďme probrat váš web“ nad patičkou – je dole na této stránce.'),
-     ('G05', 'Oznamovací pruh a hlavička', '.announce · header', 'Nahoře na každé stránce.')]
+     ('G05', 'Oznamovací pruh a hlavička', '.announce · header', 'Nahoře na každé stránce.'),
+     ('G06', 'Cookie lišta a nastavení', '.cc-bar · #cc-settings · data-cc="settings"', 'Tenký bílý pruh dole při první návštěvě. <button type="button" class="btn btn--outline" data-cc="settings">Otevřít nastavení cookies</button>')]
 
 def head(code, name, cls, src=None):
     s = f' · <a href="/{src}/">{PAGES.get(src, src)}</a>' if src else (' · <a href="/">Homepage</a>' if src == '' else '')
