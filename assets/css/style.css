@@ -1565,7 +1565,7 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
 /* kontakt: decentní tečky v levém horním rohu (obě záložky) */
 .kapky--left { left: 0; right: auto; }
 .kapky--soft { color: #fff; opacity: .16; }
-.contact-panel .kapky { height: 255px; }
+.contact-panel .kapky { height: 510px; max-height: none; }
 /* svislá varianta kroků (Jak probíhá tvorba webu) – stejný styl jako na homepage */
 .steps--v { grid-template-columns: 1fr; gap: 28px; max-width: 760px; }
 .steps--v li { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 18px; }
