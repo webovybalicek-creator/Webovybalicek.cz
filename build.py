@@ -30,12 +30,12 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "284"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "285"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
 # Google Analytics 4 (G-XXXX): prázdné = měření vypnuté. Spustí se jen po souhlasu se statistickými cookies.
-GA_ID = ""
+GA_ID = "G-NC8R87KWWH"
 
 GOOGLE = {"rating": "4,8", "count": 24, "since": 2019}
 
