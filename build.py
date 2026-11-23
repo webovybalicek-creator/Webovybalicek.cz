@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "242"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "243"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -247,9 +247,11 @@ def build():
     import sys
     sys.path.insert(0, str(SRC))
     import plugins
+    import typy
 
     sources = [parse(page) + (page.stem,) for page in sorted((SRC / "pages").glob("*.html"))]
     sources += [(m, b, "") for m, b in plugins.pages(SRC)]
+    sources += [(m, b, "") for m, b in typy.pages(SRC)]
 
     urls = []
     for meta, body, stem in sources:
@@ -262,6 +264,8 @@ def build():
         body = body.replace("{{shots_strip}}", render_shots(vyber, snimky))
         body = body.replace("{{projects}}", render_projects(projekty))
         body = body.replace("{{shots_demo}}", render_shots(vyber, snimky, limit=4, demo=True))
+        body = re.sub(r"\{\{shots_pick:([\w,-]+)\}\}", lambda m: render_shots(
+            [r for k in m.group(1).split(",") for r in vyber if r["s"] == k], snimky, demo=True).replace("shots--demo", "shots--pick"), body)
         body = body.replace("{{shots_grid}}", render_shots(vyber, snimky, limit=6, big=True))
         years = date.today().year - GOOGLE["since"]
         body = body.replace("{{g_rating}}", GOOGLE["rating"])
@@ -286,6 +290,7 @@ def build():
         out = out.replace("{{description}}", html.escape(meta.get("description", "")))
         out = out.replace("{{path}}", path)
         out = out.replace("{{ogtype}}", meta.get("ogtype", "website"))
+        out = out.replace("{{ogimage}}", SITE + meta.get("image", "/assets/img/og/default.jpg"))
         out = out.replace("{{head}}", meta.get("head", ""))
         out = out.replace("{{v}}", VERSION)
         out = out.replace("{{cta}}", "" if meta.get("cta") == "no" else cta)
