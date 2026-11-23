@@ -258,7 +258,7 @@ T = {
         f=["Interaktivní výběr jednotek na vizualizaci", "Filtry podle dispozice, ceny a patra", "Karta jednotky s půdorysem v PDF",
            "Ceník a stav: volné, rezervované, prodané", "Poptávka napojená na CRM", "Galerie, vizualizace a lokalita",
            "Import jednotek z Excelu", "Vícejazyčná verze pro investory"],
-        svc="wp", price="od 45 000 Kč", refs=["hst-realestate-com", "dorint-cz", "dorsen-cz", "dorthon-cz", "continest-cz", "sgm-international-nl", "pronomahospitality-nl"],
+        svc="wp", price="od 45 000 Kč", refs=["hst-realestate-com", "continest-cz", "sgm-international-nl", "pronomahospitality-nl"],
         q=[("Jde stav bytů aktualizovat hromadně?", "Ano. Jednotky naimportujeme z Excelu a změny uděláte v tabulce nebo v administraci."),
            ("Umíte interaktivní výběr bytu na obrázku?", "Ano. Na vizualizaci domu nebo půdorysu označíme jednotky, které reagují na kliknutí."),
            ("Napojíte poptávky na naše CRM?", "Ano, přes API nebo e-mailový parser. Napojení prověříme na začátku.")],
