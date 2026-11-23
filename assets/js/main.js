@@ -1,3 +1,10 @@
+// Dekorativní animace (roj kurzorů, pruh referencí, úvodní kurzory) startují až po první interakci návštěvníka
+// (pohyb myši, scroll, dotyk, klávesa). Načtení stránky tak není zatížené – vzhled pro návštěvníka zůstává stejný.
+window.wbGo = window.wbGo || new Promise((res) => {
+  const ev = ['pointermove', 'pointerdown', 'touchstart', 'scroll', 'wheel', 'keydown'];
+  const go = () => { ev.forEach((n) => removeEventListener(n, go, true)); res(); };
+  ev.forEach((n) => addEventListener(n, go, { capture: true, passive: true }));
+});
 // Mobilní menu – zavřít po kliknutí na odkaz
 document.querySelectorAll('.mobile-nav a').forEach((a) =>
   a.addEventListener('click', () => a.closest('details').removeAttribute('open'))
@@ -211,8 +218,9 @@ document.querySelectorAll('.tools').forEach((box) => {
     s.state = 'built'; s.wait = 900;
   }
 
+  let awake = false;
   const start = (s) => {
-    if (s.state !== 'idle' || !s.seen || !(s.img.complete && s.img.naturalWidth)) return;
+    if (!awake || s.state !== 'idle' || !s.seen || !(s.img.complete && s.img.naturalWidth)) return;
     if (calm) { s.win.classList.add('is-built'); s.state = 'built'; return; }
     build(s);
   };
@@ -228,6 +236,7 @@ document.querySelectorAll('.tools').forEach((box) => {
     s.el.addEventListener('pointerleave', () => { s.goal = null; s.wait = 500; });
   });
   let last = performance.now();
+  window.wbGo.then(() => { awake = true; shots.forEach(start); last = performance.now(); requestAnimationFrame(tick); });
   const tick = (now) => {
     const dt = Math.min(64, now - last); last = now;
     for (const s of shots) {
@@ -245,7 +254,6 @@ document.querySelectorAll('.tools').forEach((box) => {
     }
     requestAnimationFrame(tick);
   };
-  requestAnimationFrame(tick);
   // Pruh: nekonečná smyčka, která jede sama a dá se táhnout myší i prstem (se setrvačností)
   document.querySelectorAll('.shots-loop').forEach((loop) => {
     if (calm) return; // při omezeném pohybu zůstává obyčejný vodorovný posuv
@@ -288,7 +296,7 @@ document.querySelectorAll('.tools').forEach((box) => {
       }
       requestAnimationFrame(run);
     };
-    requestAnimationFrame(run);
+    window.wbGo.then(() => { prev = performance.now(); requestAnimationFrame(run); });
   });
 })();
 
@@ -353,6 +361,7 @@ document.querySelectorAll('.tools').forEach((box) => {
     }
   };
 
+  window.wbGo.then(() => {
   design(cursor('Návrh', '#0a1217', '#fff', '#fff'));
   typist(cursor('Texty', '#cdfe00', '#0a1217', '#cdfe00'), 'air-type--text', 1600,
     (W, H, wide) => wide ? [W * 0.6, H * 0.34] : [W - 232, 232],
@@ -360,6 +369,7 @@ document.querySelectorAll('.tools').forEach((box) => {
   typist(cursor('Kód', '#54595d', '#fff', '#fff'), 'air-type--code', 3200,
     (W, H, wide) => wide ? [W * 0.7, H * 0.8] : [16, 92],
     () => ['<html lang="cs">', '<h1>Tvorba webů</h1>', '<a href="#kontakt">', 'npm run build']);
+  });
 })();
 
 // Kontakt: záložky „Chci nový web“ / „Jsme agentura“ – mění text vlevo i formulář; /#spoluprace otevře rovnou agenturní

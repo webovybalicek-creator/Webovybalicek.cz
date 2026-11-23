@@ -24,6 +24,7 @@
 }
 
 :root {
+  --header-h: 114px; /* výchozí výška hlavičky (main.js ji upřesní) – bez posunu obsahu při načtení */
   /* perleťový lem: stejná paleta, jakou má na hraně perleťová hmota v úvodu (hero-blob.js, pal()) */
   --pearl-rim: conic-gradient(from var(--pearl-a), #d5b2b2, #d2a5c1, #cc9fcc, #c0a4d2, #b2b1d5, #a4c0d2, #9fcbcb, #a4d2c0, #b2d5b1, #c0d2a4, #cccc9f, #d2c1a5, #d5b2b2);
   /* barvy */
@@ -1697,3 +1698,5 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
   .calc-bar b { font-size: 15px; }
   .calc-bar.is-off { opacity: 0; transform: translateY(16px); pointer-events: none; }
 }
+
+@media (max-width: 960px) { :root { --header-h: 77px; } }

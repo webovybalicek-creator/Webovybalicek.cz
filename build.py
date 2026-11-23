@@ -30,7 +30,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "288"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "289"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -66,13 +66,22 @@ def parse(path: Path):
 LOCK = '<svg class="shot-lock" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5M2.6 5h6.8v5H2.6z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>'
 
 
+def srcset(folder, name, full_w, small_w, sizes):
+    """srcset s menší variantou z tools/varianty.py (jen pokud existuje)."""
+    if not (ROOT / "assets" / "img" / folder / str(small_w) / name).exists():
+        return ""
+    return (f' srcset="/assets/img/{folder}/{small_w}/{name}?v={VERSION} {small_w}w, /assets/img/{folder}/{name}?v={VERSION} {full_w}w"'
+            f' sizes="{sizes}"')
+
+
 def render_projects(items):
     """Vybrané projekty jako harmonika (main.js, [data-proj]). Prázdná pole (text, číslo) se nevypíšou;
     zavřený pruh = screenshot webu, otevřená karta = fotka z assets/img/projekty/ (pole foto)."""
     out = []
     for i, r in enumerate(items):
         img = f"/assets/img/reference/{r['s']}.webp?v={VERSION}"
-        foto = (f'<img class="proj-photo" src="/assets/img/projekty/{html.escape(r["foto"])}?v={VERSION}" alt="" decoding="async">'
+        foto = (f'<img class="proj-photo" src="/assets/img/projekty/{html.escape(r["foto"])}?v={VERSION}"'
+                f'{srcset("projekty", r["foto"], 1800, 960, "(max-width: 960px) 92vw, 760px")} alt="" loading="lazy" decoding="async">'
                 if r.get("foto") else "")
         tags = "".join(f"<li>{html.escape(t)}</li>" for t in r.get("tags", []))
         txt = f'<p class="proj-text">{html.escape(r["p"])}</p>' if r.get("p") else ""
@@ -80,7 +89,7 @@ def render_projects(items):
                 if r.get("num") else "")
         out.append(
             f'<li class="proj{" is-open" if i == 0 else ""}" tabindex="0" aria-label="{html.escape(r["n"])}">'
-            f'<img src="{img}" alt="" loading="lazy" decoding="async">{foto}<span class="proj-shade"></span>'
+            f'<img src="{img}"{srcset("reference", r["s"] + ".webp", 880, 480, "(max-width: 960px) 92vw, 760px")} alt="" loading="lazy" decoding="async">{foto}<span class="proj-shade"></span>'
             f'<span class="proj-num">{i + 1:02d}</span><span class="proj-side">{html.escape(r["n"])}</span>'
             f'<div class="proj-body"><ul class="proj-tags">{tags}</ul><h3>{html.escape(r["h"])}</h3>{txt}{stat}'
             f'<a class="link-utility" href="{html.escape(r["u"])}" target="_blank" rel="noopener">Otevřít {html.escape(r["n"])}</a></div></li>'
@@ -103,7 +112,7 @@ def render_shots(vyber, snimky, limit=None, big=False, demo=False):
         out.append(
             f'<li><a class="shot" href="{html.escape(r["u"])}" target="_blank" rel="noopener" data-shot data-blocks="{bloky}">'
             f'<span class="shot-frame"><span class="shot-bar"><i></i><i></i><i></i><b>{LOCK}{html.escape(host)}</b><s aria-hidden="true" data-t="{html.escape(r["t"])}">↗</s></span>'
-            f'<span class="shot-win"><img src="/assets/img/reference/{r["s"]}.webp?v={VERSION}" width="{m["w"]}" height="{m["h"]}" '
+            f'<span class="shot-win"><img src="/assets/img/reference/{r["s"]}.webp?v={VERSION}"{srcset("reference", r["s"] + ".webp", m["w"], 480, "(max-width: 600px) 260px, 340px")} width="{m["w"]}" height="{m["h"]}" '
             f'{lazy}decoding="async" alt="Náhled webu {html.escape(host)}"><u class="shot-type" aria-hidden="true">{html.escape(r["t"])}</u></span></span>'
             f'<span class="shot-meta"><strong>{html.escape(r["n"])}</strong><em>{html.escape(r["t"])}</em>'
             f'<span>{html.escape(r["d"])}</span></span></a></li>'
@@ -249,6 +258,12 @@ def build():
         shutil.rmtree(DIST)
     DIST.mkdir()
     shutil.copytree(ROOT / "assets", DIST / "assets")
+    try:  # zmenšené CSS (rcssmin); bez knihovny zůstane čitelné
+        import rcssmin
+        css = DIST / "assets" / "css" / "style.css"
+        css.write_text(rcssmin.cssmin(css.read_text(encoding="utf-8")), encoding="utf-8")
+    except ImportError:
+        pass
     # soubory do kořene webu (PHP pro formulář, .htaccess)
     for f in (ROOT / "static").iterdir():
         shutil.copy2(f, DIST / f.name)

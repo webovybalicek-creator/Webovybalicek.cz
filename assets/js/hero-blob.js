@@ -294,7 +294,12 @@ void main(){
   render();
   const dbg = /blobdebug/.test(location.search) ? Object.assign(document.body.appendChild(document.createElement('pre')), { style: 'position:fixed;left:4px;bottom:4px;z-index:99;margin:0;padding:4px 6px;background:#000;color:#cdfe00;font:11px/1.3 monospace;white-space:pre-wrap' }) : null;
   let seeded = false, time = 0, slow = 0, frames = 0, last = performance.now();
+  // do první interakce návštěvníka jen jeden statický snímek (načtení stránky bez zátěže), pak plná animace
+  let awake = false, still = 0, parked = false;
+  const go = window.wbGo || Promise.resolve();
+  go.then(() => { awake = true; if (parked) { parked = false; last = performance.now(); requestAnimationFrame(loop); } });
   const loop = (now) => {
+    if (!awake && still > 1) { parked = true; return; }
     requestAnimationFrame(loop);
     const raw = (now - last) / 1000; last = now;
     // iOS občas vynechá ResizeObserver (měnící se lišta prohlížeče) – velikost hlídáme i tady
@@ -323,6 +328,7 @@ void main(){
     gl.uniform2f(U.res, canvas.width, canvas.height); gl.uniform1f(U.time, time);
     gl.uniform4fv(U.b, bArr); gl.uniform3fv(U.c, cArr);
     gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES, 0, 3);
+    if (!awake) still++;
     if (tip.hidden) { /* nic */ } else if (!narrowMq.matches) { if (tip.style.transform) tip.style.transform = ''; } else {
       const ta = 226 * Math.PI / 180, td = 3.05 * scale;
       const ts = toScreen({ x: A[0] + Math.cos(ta) * td, y: A[1] + Math.sin(ta) * td, z: 0, r: 0 });
