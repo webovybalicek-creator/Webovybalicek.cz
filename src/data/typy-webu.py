@@ -486,7 +486,7 @@ T = {
         f=["Jazykové mutace s vlastními adresami", "Hreflang a SEO pro každý jazyk", "Překlady s pomocí AI a korekturou",
            "Přepínač jazyků", "Ceny a měny podle trhu", "Lokalizované formuláře a e-maily",
            "Samostatné domény nebo podadresáře", "Převod z jednojazyčného webu"],
-        svc="wp", refs=["ltc-congress-com", "hst-realestate-com", "realityumore-com"],
+        svc="wp", refs=["ltc-congress-com", "realityumore-com", "michalovyazyly-cz", "ironot-cz", "chelektrotechnik-cz"],
         q=[("Jsou překlady od AI dost dobré?", "AI dá kvalitní základ. Důležité texty vždy kontroluje člověk, ideálně rodilý mluvčí nebo váš kolega z daného trhu."),
            ("Doména .com, nebo podadresář /en/?", "Pro začátek stačí podadresáře na jedné doméně. Samostatné domény mají smysl pro silné lokální trhy."),
            ("Jde přidat další jazyk později?", "Ano, web připravíme tak, aby další jazyk šel doplnit bez přestavby.")],
