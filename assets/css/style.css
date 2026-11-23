@@ -1580,3 +1580,8 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
 .barter-card + .pricing-foot { margin-top: 28px; }
 @media (max-width: 760px) { .barter-card { grid-template-columns: 1fr; } }
 #ochrana-designu { scroll-margin-top: 130px; }
+/* Co obnáší tvorba webu: číslo kroku a štítek AI / člověk v jedné řádce */
+.work-card { position: relative; }
+.work-card .card-label { display: inline-block; margin: 0 10px 16px 0; font-size: 15px; color: var(--ink); }
+.work-card .tg { vertical-align: 1px; }
+.work-card h3 { margin-top: 0; }
