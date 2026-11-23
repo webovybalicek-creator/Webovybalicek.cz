@@ -722,7 +722,7 @@ html.is-locked { overflow: hidden; }
 .site-footer h3 { font-size: 12px; font-weight: 550; letter-spacing: .08em; text-transform: uppercase; color: var(--stone); margin-bottom: 14px; }
 .site-footer ul { display: grid; gap: 8px; }
 .site-footer a { text-decoration: none; transition: color 150ms ease; }
-.site-footer ul a:hover, .site-footer p a:hover { color: var(--ink); }
+.site-footer ul a:hover, .site-footer p a:hover, .site-footer .footer-link:hover { color: var(--ink); }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 /* obří adresa, která „zapadá“ pod spodní okraj stránky */
 .footer-giant { display: block; width: max-content; margin: clamp(24px, 3vw, 40px) auto -0.26em; font-weight: 700; font-size: 14.6cqw; line-height: .9; letter-spacing: -0.06em; white-space: nowrap; color: #e1e2e4; user-select: none; pointer-events: none; }
@@ -1603,3 +1603,36 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
 .work-card .card-label { display: inline-block; margin: 0 10px 16px 0; font-size: 15px; color: var(--ink); }
 .work-card .tg { vertical-align: 1px; }
 .work-card h3 { margin-top: 0; }
+
+/* cookie lišta (src/cookies.html, assets/js/consent.js): přijmout a odmítnout stejně výrazné */
+.cc-bar { position: fixed; left: 16px; bottom: 16px; z-index: 90; width: min(440px, calc(100vw - 32px)); padding: 22px 24px; border-radius: var(--r-card); background: var(--ink); color: var(--on-ink); box-shadow: 0 24px 60px -20px rgba(10,18,23,.45); }
+.cc-bar[hidden] { display: none; }
+.cc-title { margin: 0 0 6px; font-size: 17px; font-weight: 600; color: #fff; }
+.cc-text { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--on-ink-muted); }
+.cc-text .link { color: #fff; }
+.cc-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 16px; }
+.btn--cc { flex: 1 1 140px; justify-content: center; background: #fff; color: var(--ink); }
+.btn--cc::before, .btn--cc::after { display: none !important; }
+.cc-more { flex-basis: 100%; padding: 4px 0 0; border: 0; background: none; color: #fff; font: inherit; font-size: 14px; text-align: left; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.has-cc .ear { display: none; }
+.cc-sheet { width: min(640px, calc(100vw - 32px)); }
+.cc-list { display: grid; gap: 0; margin: 8px 0 16px; padding: 0; list-style: none; }
+.cc-list li { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 0; border-top: 1px solid var(--hairline); }
+.cc-list h3 { margin: 0 0 4px; font-size: 17px; }
+.cc-list p { margin: 0; color: var(--graphite); font-size: 15px; line-height: 1.5; }
+.cc-switch { position: relative; flex: none; width: 46px; height: 26px; cursor: pointer; }
+.cc-switch input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: inherit; }
+.cc-switch i { position: absolute; inset: 0; border-radius: 999px; background: var(--hairline); transition: background-color 150ms ease; }
+.cc-switch i::after { content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.2); transition: translate 150ms var(--ease-out); }
+.cc-switch input:checked + i { background: var(--ink); }
+.cc-switch input:checked + i::after { translate: 20px 0; background: var(--lime); }
+.cc-switch input:disabled + i { opacity: .55; }
+.cc-switch input:focus-visible + i { outline: 2px solid var(--ink); outline-offset: 2px; }
+.cc-foot { justify-content: flex-end; gap: 8px; }
+.footer-link { padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; text-align: left; }
+.video-ask { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 14px; padding: 24px; background: var(--ink); color: var(--on-ink); text-align: center; }
+.video-ask[hidden] { display: none; }
+.video-ask p { margin: 0; max-width: 40ch; }
+.video-ask-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px; }
+.video-ask .link { color: #fff; }
+@media (max-width: 600px) { .cc-bar { left: 8px; right: 8px; bottom: 8px; width: auto; padding: 18px; } .cc-foot .btn { flex: 1 1 100%; } }

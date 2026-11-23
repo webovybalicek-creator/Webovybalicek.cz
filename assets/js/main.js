@@ -450,11 +450,18 @@ document.querySelectorAll('[data-proj]').forEach((box) => {
 document.querySelectorAll('dialog[data-video]').forEach((d) => {
   const box = d.querySelector('.video-frame');
   const poster = box.querySelector('[data-play]');
-  poster.addEventListener('click', () => {
+  const ask = box.querySelector('.video-ask');
+  const play = () => {
     box.insertAdjacentHTML('beforeend', `<iframe src="${d.dataset.video}" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`);
-    poster.hidden = true;
+    poster.hidden = true; if (ask) ask.hidden = true;
+  };
+  // YouTube až se souhlasem s externími médii (cookie lišta), jinak se nejdřív zeptáme
+  poster.addEventListener('click', () => {
+    if (!window.wbConsent || window.wbConsent.get()?.media) play();
+    else { poster.hidden = true; ask.hidden = false; ask.querySelector('button').focus(); }
   });
-  d.addEventListener('close', () => { box.querySelector('iframe')?.remove(); poster.hidden = false; });
+  ask?.querySelector('[data-play-allow]').addEventListener('click', () => { window.wbConsent.allow('media'); play(); });
+  d.addEventListener('close', () => { box.querySelector('iframe')?.remove(); poster.hidden = false; if (ask) ask.hidden = true; });
 });
 
 // Slevový kód Toret: e-mail -> slevovy-kod.php pošle stylový e-mail s kódem

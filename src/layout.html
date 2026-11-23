@@ -25,7 +25,10 @@
   <link rel="preload" href="/assets/fonts/Geist-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/AspektaVF.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/style.css?v={{v}}">
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});</script>
+  <script src="/assets/js/consent.js?v={{v}}" defer></script>
   <script src="/assets/js/main.js?v={{v}}" defer></script>
+{{analytics}}
 {{head}}</head>
 <body>
 
@@ -129,6 +132,8 @@
         <li><a href="/obchodni-podminky/">Obchodní podmínky</a></li>
         <li><a href="/obchodni-podminky/#ochrana-designu">Ochrana designu</a></li>
         <li><a href="/ochrana-informaci-gdpr/">Ochrana osobních údajů</a></li>
+        <li><a href="/zasady-cookies-eu/">Zásady cookies</a></li>
+        <li><button type="button" class="footer-link" data-cc="settings">Nastavení cookies</button></li>
       </ul>
     </div>
   </div>
@@ -136,6 +141,7 @@
 </footer>
 
 {{umime}}
+{{cookies}}
   <!-- ============ VIDEO ELEMENTOR (popup) ============ -->
   <dialog class="sheet sheet--video" id="video-elementor" aria-labelledby="video-elementor-title" data-video="https://www.youtube-nocookie.com/embed/le72grP_Q6k?autoplay=1&amp;rel=0&amp;playsinline=1&amp;iv_load_policy=3">
     <div class="sheet-head">
@@ -145,7 +151,7 @@
       </div>
       <button type="button" class="sheet-close" data-close aria-label="Zavřít"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
     </div>
-    <div class="sheet-body"><div class="video-frame"><button type="button" class="video-poster" data-play><img src="/assets/img/kapky-lime.svg" alt="" width="400" height="300" class="video-dots"><span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8.5 6.2v11.6a.8.8 0 0 0 1.2.7l9.3-5.8a.8.8 0 0 0 0-1.4L9.7 5.5a.8.8 0 0 0-1.2.7z"/></svg></span><span class="video-label">Přehrát ukázku editoru</span></button></div><p class="video-note">Propagační video společnosti Elementor. Na webech od nás máte stejný editor, nastavený a zaškolený.</p></div>
+    <div class="sheet-body"><div class="video-frame"><button type="button" class="video-poster" data-play><img src="/assets/img/kapky-lime.svg" alt="" width="400" height="300" class="video-dots"><span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8.5 6.2v11.6a.8.8 0 0 0 1.2.7l9.3-5.8a.8.8 0 0 0 0-1.4L9.7 5.5a.8.8 0 0 0-1.2.7z"/></svg></span><span class="video-label">Přehrát ukázku editoru</span></button><div class="video-ask" hidden><p>Video se přehraje z YouTube, které může ukládat vlastní cookies.</p><p class="video-ask-actions"><button type="button" class="btn btn--primary" data-play-allow>Povolit a přehrát</button><a href="https://www.youtube.com/watch?v=le72grP_Q6k" class="link" target="_blank" rel="noopener">Otevřít na YouTube</a></p></div></div><p class="video-note">Propagační video společnosti Elementor. Na webech od nás máte stejný editor, nastavený a zaškolený.</p></div>
   </dialog>
 
   <a href="/kontakt/" class="ear" data-ear aria-label="Máte otázku? Kontaktujte nás">

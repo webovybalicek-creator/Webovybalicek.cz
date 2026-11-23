@@ -47,4 +47,32 @@ $headers = implode("\r\n", [
 
 $ok = @mail($to, $subject, $body, $headers, "-f$from");
 if (!$ok) $ok = @mail($to, $subject, $body, $headers);
+
+// kopie do Slacku (webhook je v slack-config.php, generuje ho deploy ze secretu SLACK_WEBHOOK)
+$SLACK_WEBHOOK = '';
+if (is_file(__DIR__ . '/slack-config.php')) include __DIR__ . '/slack-config.php';
+if ($SLACK_WEBHOOK !== '' && function_exists('curl_init')) {
+  $esc = fn($s) => str_replace(['&', '<', '>'], ['&amp;', '&lt;', '&gt;'], $s);
+  $field = fn($t, $v) => ['title' => $t, 'value' => $esc($v !== '' ? $v : '—'), 'short' => false];
+  // stejná podoba jako dřív z Elementoru: barevný pruh, nadpis, pod sebou pole tučně + hodnota
+  $payload = ['attachments' => [[
+    'color' => '#cdfe00',
+    'title' => $agency ? 'Nová poptávka spolupráce' : 'Nová poptávka',
+    'text' => 'Nová poptávka z formuláře na webu',
+    'fields' => [
+      $field('Jméno', $name), $field('E-mail', $email), $field('Telefon', $phone),
+      $field('Co potřebuje', $type), $field('Zpráva', $msg),
+      $field('Spěchá', $urgent === 'ANO' ? 'Potřebuji web rychle' : 'ne'),
+      $field('Stránka', $page),
+    ],
+    'footer' => 'webovybalicek.cz',
+    'ts' => time(),
+  ]]];
+  $ch = curl_init($SLACK_WEBHOOK);
+  curl_setopt_array($ch, [CURLOPT_POST => true, CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
+    CURLOPT_POSTFIELDS => json_encode($payload, JSON_UNESCAPED_UNICODE), CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 5]);
+  $slackOk = curl_exec($ch) === 'ok';
+  curl_close($ch);
+  $ok = $ok || $slackOk;
+}
 out($ok ? 200 : 500, ['ok' => (bool)$ok]);

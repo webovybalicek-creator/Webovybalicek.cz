@@ -24,6 +24,11 @@ jobs:
           SLEVA_KOD: ${{ secrets.SLEVA_KOD }}
         run: printf '<?php $CODE = %s;\n' "$(python3 -c 'import json,os;print(json.dumps(os.environ["SLEVA_KOD"]))')" > dist/sleva-config.php
 
+      - name: Slack webhook pro poptávky (ze secretu, ne v repozitáři)
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        run: printf '<?php $SLACK_WEBHOOK = %s;\n' "$(python3 -c 'import json,os;print(json.dumps(os.environ.get("SLACK_WEBHOOK","")))')" > dist/slack-config.php
+
       - name: Nahrát na FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:

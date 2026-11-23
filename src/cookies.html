@@ -1,0 +1,34 @@
+  <!-- ============ COOKIE LIŠTA (souhlas) – assets/js/consent.js ============ -->
+  <section class="cc-bar" id="cc-bar" role="region" aria-label="Souhlas s cookies" hidden>
+    <p class="cc-title">Cookies a soukromí</p>
+    <p class="cc-text">Nezbytné cookies potřebujeme, aby web fungoval. Ostatní (statistiky, marketing, videa z YouTube) použijeme jen s vaším souhlasem. Volbu můžete kdykoliv změnit v patičce. <a href="/zasady-cookies-eu/" class="link">Zásady cookies</a></p>
+    <div class="cc-actions">
+      <button type="button" class="btn btn--cc" data-cc="reject">Odmítnout vše</button>
+      <button type="button" class="btn btn--cc" data-cc="accept">Přijmout vše</button>
+      <button type="button" class="cc-more" data-cc="settings">Nastavení</button>
+    </div>
+  </section>
+
+  <dialog class="sheet cc-sheet" id="cc-settings" aria-labelledby="cc-settings-title">
+    <div class="sheet-head">
+      <div>
+        <p class="pill">Soukromí</p>
+        <h2 id="cc-settings-title">Nastavení cookies</h2>
+      </div>
+      <button type="button" class="sheet-close" data-close aria-label="Zavřít"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="sheet-body">
+      <p class="sheet-lead">Vyberte, co nám dovolíte. Bez souhlasu se nic kromě nezbytných cookies neukládá. Podrobnosti najdete v <a href="/zasady-cookies-eu/" class="link">Zásadách cookies</a>.</p>
+      <ul class="cc-list">
+        <li><div><h3>Nezbytné</h3><p>Uložení vaší volby a základní fungování webu. Nejdou vypnout.</p></div><span class="cc-switch"><input type="checkbox" checked disabled aria-label="Nezbytné cookies (vždy zapnuté)"><i aria-hidden="true"></i></span></li>
+        <li><div><h3>Statistické</h3><p>Anonymní měření návštěvnosti, abychom věděli, co na webu funguje.</p></div><label class="cc-switch"><input type="checkbox" data-cat="analytics" aria-label="Statistické cookies"><i aria-hidden="true"></i></label></li>
+        <li><div><h3>Marketingové</h3><p>Měření reklam a zobrazení relevantní reklamy na jiných webech.</p></div><label class="cc-switch"><input type="checkbox" data-cat="marketing" aria-label="Marketingové cookies"><i aria-hidden="true"></i></label></li>
+        <li><div><h3>Externí média</h3><p>Přehrávání videí z YouTube. YouTube (Google) může ukládat vlastní cookies.</p></div><label class="cc-switch"><input type="checkbox" data-cat="media" aria-label="Externí média"><i aria-hidden="true"></i></label></li>
+      </ul>
+    </div>
+    <div class="sheet-foot cc-foot">
+      <button type="button" class="btn btn--outline btn--noarrow" data-cc="reject">Odmítnout vše</button>
+      <button type="button" class="btn btn--outline btn--noarrow" data-cc="save">Uložit výběr</button>
+      <button type="button" class="btn btn--outline btn--noarrow" data-cc="accept">Přijmout vše</button>
+    </div>
+  </dialog>

@@ -31,10 +31,13 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "268"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "269"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
+# Google Analytics 4 (G-XXXX): prázdné = měření vypnuté. Spustí se jen po souhlasu se statistickými cookies.
+GA_ID = ""
+
 GOOGLE = {"rating": "4,8", "count": 24, "since": 2019}
 
 
@@ -236,6 +239,9 @@ def build():
     layout = (SRC / "layout.html").read_text(encoding="utf-8")
     cta = (SRC / "cta.html").read_text(encoding="utf-8")
     umime = (SRC / "umime.html").read_text(encoding="utf-8")
+    cookies = (SRC / "cookies.html").read_text(encoding="utf-8")
+    analytics = ("  <script type=\"text/plain\" data-consent=\"analytics\" data-src=\"https://www.googletagmanager.com/gtag/js?id=%s\"></script>\n"
+                 "  <script type=\"text/plain\" data-consent=\"analytics\">gtag('js', new Date());gtag('config', '%s');</script>" % (GA_ID, GA_ID)) if GA_ID else ""
     refs = json.loads((SRC / "data" / "reference.json").read_text(encoding="utf-8"))
     clients = json.loads((SRC / "data" / "klienti.json").read_text(encoding="utf-8"))
     reviews = json.loads((SRC / "data" / "recenze.json").read_text(encoding="utf-8"))
@@ -321,6 +327,8 @@ def build():
         out = out.replace("{{cta}}", "" if meta.get("cta") == "no" else cta)
         out = out.replace("{{content}}", body)
         out = out.replace("{{umime}}", umime)
+        out = out.replace("{{cookies}}", cookies)
+        out = out.replace("{{analytics}}", analytics)
         hidden = meta.get("hidden") == "yes"  # pracovní stránky: vždy noindex, mimo sitemapu
         if STAGING or hidden:
             out = out.replace("<head>\n", '<head>\n  <meta name="robots" content="noindex, nofollow">\n', 1)
