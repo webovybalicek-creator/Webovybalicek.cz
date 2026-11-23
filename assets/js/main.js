@@ -445,24 +445,24 @@ document.querySelectorAll('[data-proj]').forEach((box) => {
   });
 });
 
-// Popup s videem: nejdřív náš náhled s tlačítkem, video (YouTube) se načte a spustí až po kliknutí.
-// Při zavření se iframe odstraní (zastaví přehrávání) a vrátí se náhled.
-document.querySelectorAll('dialog[data-video]').forEach((d) => {
-  const box = d.querySelector('.video-frame');
+// Videa: nejdřív náš náhled s tlačítkem, YouTube se načte a spustí až po kliknutí – a jen se souhlasem
+// s externími médii (cookie lišta), jinak se nejdřív zeptáme. Popup (dialog[data-video]) i vložené [data-video-inline].
+const setupVideo = (box, src, resetOn) => {
   const poster = box.querySelector('[data-play]');
   const ask = box.querySelector('.video-ask');
   const play = () => {
-    box.insertAdjacentHTML('beforeend', `<iframe src="${d.dataset.video}" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`);
+    box.insertAdjacentHTML('beforeend', `<iframe src="${src}" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`);
     poster.hidden = true; if (ask) ask.hidden = true;
   };
-  // YouTube až se souhlasem s externími médii (cookie lišta), jinak se nejdřív zeptáme
   poster.addEventListener('click', () => {
     if (!window.wbConsent || window.wbConsent.get()?.media) play();
     else { poster.hidden = true; ask.hidden = false; ask.querySelector('button').focus(); }
   });
   ask?.querySelector('[data-play-allow]').addEventListener('click', () => { window.wbConsent.allow('media'); play(); });
-  d.addEventListener('close', () => { box.querySelector('iframe')?.remove(); poster.hidden = false; if (ask) ask.hidden = true; });
-});
+  resetOn?.addEventListener('close', () => { box.querySelector('iframe')?.remove(); poster.hidden = false; if (ask) ask.hidden = true; });
+};
+document.querySelectorAll('dialog[data-video]').forEach((d) => setupVideo(d.querySelector('.video-frame'), d.dataset.video, d));
+document.querySelectorAll('[data-video-inline]').forEach((el) => setupVideo(el.querySelector('.video-frame'), el.dataset.videoInline));
 
 // Slevový kód Toret: e-mail -> slevovy-kod.php pošle stylový e-mail s kódem
 document.querySelectorAll('form[data-sleva]').forEach((form) => {
