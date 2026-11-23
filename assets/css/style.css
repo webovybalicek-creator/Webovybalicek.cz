@@ -1668,7 +1668,7 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
 @media (hover: hover) and (pointer: fine) { .social-links a:hover { background: var(--lime); } }
 #umime .sheet-types { grid-template-columns: 1fr; gap: 0; } #umime .sheet-types li { padding-block: 10px; } /* panel Co umíme: jeden sloupec, ať se texty nemačkají */
 /* mobil: karty se štítkem na horní hraně odsadit o přečnívající polovinu štítku, ať se štítek nemačká na kartu nad ním */
-@media (max-width: 960px) { .feature-card--featured, .web-types, .noslop { margin-top: 14px; } }
+@media (max-width: 960px) { .feature-card--featured, .noslop { margin-top: 14px; } .web-types { margin-top: calc(var(--grid-gap) + 16px); } }
 @media (max-width: 760px) { .price-card--featured, .has-flag, .prep-card { margin-top: 14px; } }
 .glossary:last-child { margin-bottom: 0; } /* poslední okruh: bez extra mezery nad CTA */
 /* svislé kroky: tečková linka jen mezi kroky (končí u posledního kolečka), dosažený úsek černě */
