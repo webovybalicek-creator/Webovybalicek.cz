@@ -18,7 +18,7 @@ jobs:
       PROD: ${{ github.event.repository.name == 'webovybalicek.cz' }}
       STAGING: ${{ github.event.repository.name == 'webovybalicek.cz' && '0' || '1' }}
       # cílová složka na ostrém FTP (prázdné = jen sonda, nic nenahrává)
-      FTP_DIR: ''
+      FTP_DIR: './'
     steps:
       - uses: actions/checkout@v4
 
