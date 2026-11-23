@@ -12,8 +12,7 @@ src/pages/*.html       obsah stránek s hlavičkou v HTML komentáři:
                        nav: cenik
                        cta: no
                        -->
-src/data/reference.json  data referencí → značka {{references}}
-src/data/klienti.json    loga klientů → značka {{clients}} (soubory v assets/img/klienti/)
+src/data/reference.json  všechny reference (názvy/popisy pro landing pages)
 assets/                kopíruje se beze změny
 
 Výstup: dist/  (deploy na FTP)
@@ -31,7 +30,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "279"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "280"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -62,28 +61,6 @@ def parse(path: Path):
                 meta[k.strip()] = v.strip()
         text = text[m.end():]
     return meta, text
-
-
-def render_references(data):
-    items = []
-    for r in data:
-        url = r["u"] or "#"
-        host = re.sub(r"^https?://(www\.)?", "", url).rstrip("/")
-        items.append(
-            f'<li data-year="{r["y"]}"><a class="card ref" href="{html.escape(url)}" rel="noopener" target="_blank">'
-            f'<span class="ref-top"><span class="ref-url">{html.escape(r["t"])}</span>'
-            f'<span class="mono">{r["y"]}</span></span>'
-            f'<span class="ref-desc">{html.escape(r["d"])}</span>'
-            f'<span class="ref-host">{html.escape(host)}</span></a></li>'
-        )
-    years = sorted({r["y"] for r in data}, reverse=True)
-    filters = '<button type="button" aria-pressed="true" data-year="">Vše</button>' + "".join(
-        f'<button type="button" aria-pressed="false" data-year="{y}">{y}</button>' for y in years
-    )
-    return (
-        f'<div class="ref-filter" role="group" aria-label="Filtrovat podle roku">{filters}</div>'
-        f'<ul class="refs refs--all" data-ref-list>{"".join(items)}</ul>'
-    )
 
 
 LOCK = '<svg class="shot-lock" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5M2.6 5h6.8v5H2.6z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>'
@@ -140,28 +117,6 @@ def render_shots(vyber, snimky, limit=None, big=False, demo=False):
     kopie = items.replace("<a ", '<a tabindex="-1" ').replace(' fetchpriority="high"', ' loading="lazy"')
     return (f'<div class="shots-loop"><ul class="shots shots--strip">{items}</ul>'
             f'<ul class="shots shots--strip" aria-hidden="true">{kopie}</ul></div>')
-
-
-def render_clients(data):
-    """Pás log klientů: dvě stejné řady za sebou, aby se posun plynule opakoval."""
-    items = []
-    for c in data:
-        ratio = c["w"] / c["h"]
-        # opticky vyrovnaná velikost: široká loga nižší, vysoká vyšší (stejná plocha)
-        # "s" v klienti.json dorovnává váhu kresby: tučná loga < 1, tenká > 1
-        height = round(25 * (4 / ratio) ** 0.5 * c.get("s", 1))
-        items.append(
-            f'<li><span class="logo-tile"><span class="logo-mark" style="--src:url(/assets/img/klienti/{c["f"]}.svg)"><img src="/assets/img/klienti/{c["f"]}.svg" alt="{html.escape(c["n"])}" '
-            f'width="{round(height * ratio)}" height="{height}" style="--h:{height / 16:g}em" '
-            f'loading="lazy" decoding="async"></span></span></li>'
-        )
-    row = "".join(items)
-    return (
-        '<div class="logos" role="group" aria-label="Naši klienti">'
-        f'<ul class="logos-track">{row}</ul>'
-        f'<ul class="logos-track" aria-hidden="true">{re.sub(r'alt="[^"]*"', 'alt=""', row)}</ul>'
-        "</div>"
-    )
 
 
 def render_reviews(data):
@@ -243,7 +198,6 @@ def build():
     analytics = ("  <script type=\"text/plain\" data-consent=\"analytics\" data-src=\"https://www.googletagmanager.com/gtag/js?id=%s\"></script>\n"
                  "  <script type=\"text/plain\" data-consent=\"analytics\">gtag('js', new Date());gtag('config', '%s');</script>" % (GA_ID, GA_ID)) if GA_ID else ""
     refs = json.loads((SRC / "data" / "reference.json").read_text(encoding="utf-8"))
-    clients = json.loads((SRC / "data" / "klienti.json").read_text(encoding="utf-8"))
     reviews = json.loads((SRC / "data" / "recenze.json").read_text(encoding="utf-8"))
     vyber = json.loads((SRC / "data" / "reference-vyber.json").read_text(encoding="utf-8"))
     projekty = json.loads((SRC / "data" / "projekty.json").read_text(encoding="utf-8"))
@@ -289,15 +243,10 @@ def build():
     for meta, body, stem in sources:
         meta.setdefault("nav", "")
         path = meta.get("path") or ("/" if stem == "index" else f"/{stem}/")
-        body = body.replace("{{references}}", render_references(refs))
-        body = body.replace("{{ref_count}}", str(len(refs)))
-        body = body.replace("{{clients}}", render_clients(clients))
         body = body.replace("{{reviews}}", render_reviews(reviews))
         body = body.replace("{{shots_strip}}", render_shots(vyber, snimky))
         body = body.replace("{{projects}}", render_projects(projekty))
-        body = body.replace("{{shots_demo}}", render_shots(vyber, snimky, limit=4, demo=True))
         body = re.sub(r"\{\{shots_pick:([\w,.-]+)(?:\|([^}]*))?\}\}", lambda m: shots_pick(m.group(1), m.group(2)), body)
-        body = body.replace("{{shots_grid}}", render_shots(vyber, snimky, limit=6, big=True))
         years = date.today().year - GOOGLE["since"]
         body = body.replace("{{g_rating}}", GOOGLE["rating"])
         body = body.replace("{{g_count}}", recenze(GOOGLE["count"]))

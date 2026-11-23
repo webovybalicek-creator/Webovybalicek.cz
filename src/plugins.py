@@ -135,7 +135,7 @@ def overview(data):
   </section>
 '''
     meta = {
-        "title": "Doporučené pluginy pro WooCommerce: doprava, platby, fakturace | webovybalicek",
+        "title": "Doporučené pluginy pro WooCommerce | webovybalicek",
         "description": f"{len(data['plugins'])} prověřených pluginů Toret pro české e-shopy: Zásilkovna, PPL, DPD, platební brány, iDoklad, Fakturoid, XML feedy a další. Sleva až 50 %.",
         "path": BASE,
     }
