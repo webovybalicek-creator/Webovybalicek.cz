@@ -1517,6 +1517,6 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
 
 /* štítek na horní hraně karty (stejný jako „Umíme také“) – např. Správa webu */
 .has-flag { position: relative; overflow: visible; }
-.card-flag, .grid-cards > .card .card-flag { position: absolute; top: 0; left: 32px; translate: 0 -50%; margin: 0; padding: 4px 11px; border-radius: var(--r-pill); background: var(--ink); color: var(--lime); font: 550 11px/1.4 var(--f-sans); letter-spacing: .06em; text-transform: uppercase; }
+.card-flag, .grid-cards > .card .card-flag { position: absolute; top: 0; right: 32px; translate: 0 -50%; margin: 0; padding: 4px 11px; border-radius: var(--r-pill); background: var(--ink); color: var(--lime); font: 550 11px/1.4 var(--f-sans); letter-spacing: .06em; text-transform: uppercase; }
 .ca .kapky { height: 62%; }
 .ob-big .kapky { height: auto; width: 100%; max-height: none; }
