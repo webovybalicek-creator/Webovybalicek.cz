@@ -30,7 +30,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "282"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "283"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -183,6 +183,35 @@ def page_jumps(body):
     return body[:m.start()] + m.group(1) + jump + m.group(2) + rest
 
 
+# --- náhledy pro sdílení (og:image) – texty pro stránky ze src/pages; LP a pluginy mají meta["og"] ---
+# Každá veřejná URL má vlastní obrázek assets/img/og/p/<slug>.jpg (tools/og.py). Nová URL = doplnit sem řádek
+# (nebo meta "og") a spustit tools/og.py – vyrenderuje jen chybějící obrázky.
+OG_PAGES = {
+    "/": ("Tvorba webů s pomocí AI", "Weby, za kterými jsou *výsledky*"),
+    "/ai-weby/": ("AI weby", "Web hotový *během dnů*, kontroluje ho člověk"),
+    "/cenik/": ("Ceník", "Férové ceny *bez skrytých* poplatků"),
+    "/digital-project-manager-consultant/": ("Konzultace · Honza", "Projekt dotažený *k výsledkům*"),
+    "/fotograf-a-videomaker/": ("Foto a video · Jakub", "Fotky a video, které *prodávají*"),
+    "/jak-probiha-tvorba-webu-a-nase-spoluprace/": ("Spolupráce", "Jak probíhá *tvorba webu*"),
+    "/kontakt/": ("Kontakt", "Napište nám, ozveme se *do 24 hodin*"),
+    "/nastroje/": ("Nástroje", "Čím *stavíme weby*"),
+    "/nejcastejsi-dotazy/": ("Časté dotazy", "Odpovědi na *nejčastější otázky*"),
+    "/nejcastejsi-pojmy-ohledne-tvorby-webu/": ("Slovníček", "Pojmy kolem webu *srozumitelně*"),
+    "/o-nas/": ("O nás", "Malý tým, *velké výsledky*"),
+    "/obsah-cinnosti-pri-tvorbe-webu/": ("Tvorba webu krok za krokem", "Co všechno *obnáší* tvorba webu"),
+    "/obchodni-podminky/": ("Právní informace", "Obchodní *podmínky*"),
+    "/ochrana-informaci-gdpr/": ("Právní informace", "Ochrana *osobních údajů*"),
+    "/zasady-cookies-eu/": ("Právní informace", "Zásady *cookies*"),
+    "/recaptcha-navod/": ("Návod", "Jak získat klíče *Google reCAPTCHA*"),
+    "/sprava-webu/": ("Správa webu", "Web v bezpečí a *vždy aktuální*"),
+    "/srovnani/": ("Srovnání", "AI web, prezentační web, nebo *e-shop*?"),
+}
+
+
+def og_slug(path):
+    return path.strip("/").replace("/", "-") or "index"
+
+
 # --- strukturovaná data pro vyhledávače a AI odpovědi (GEO/AEO) ---
 ORG = {
     "@context": "https://schema.org", "@type": "ProfessionalService", "@id": SITE + "/#org",
@@ -274,6 +303,7 @@ def build():
 
     urls = []
     pages = []
+    og_jobs = []
     for meta, body, stem in sources:
         meta.setdefault("nav", "")
         path = meta.get("path") or ("/" if stem == "index" else f"/{stem}/")
@@ -304,6 +334,9 @@ def build():
         out = out.replace("{{description}}", html.escape(meta.get("description", "")))
         out = out.replace("{{path}}", path)
         out = out.replace("{{ogtype}}", meta.get("ogtype", "website"))
+        og_img = f"/assets/img/og/p/{og_slug(path)}.jpg"
+        if not meta.get("image") and (ROOT / og_img.lstrip("/")).exists():
+            meta["image"] = og_img
         out = out.replace("{{ogimage}}", SITE + meta.get("image", "/assets/img/og/default.jpg"))
         head = meta.get("head", "")
         extra = [ORG, WEBSITE] if path == "/" else []
@@ -328,6 +361,12 @@ def build():
         if not hidden:
             urls.append(path)
             pages.append((path, meta.get("title", ""), meta.get("description", "")))
+            og = meta.get("og") or ({"k": OG_PAGES[path][0], "h": OG_PAGES[path][1]} if path in OG_PAGES else None)
+            if not og and path != "/404/":
+                core = re.split(r" [|–] ", meta.get("title", ""))[0]
+                og = {"k": "webovybalicek", "h": core}
+            if og:
+                og_jobs.append({"slug": og_slug(path), "path": path, **og})
         print(f"  {path}")
 
     # stránka 404 i jako /404.html (ErrorDocument v .htaccess)
@@ -346,6 +385,7 @@ def build():
               "User-agent: *\nAllow: /\nDisallow: /design/\n\n# AI vyhledávače a asistenti – výslovně povoleno\n"
               + "".join(f"User-agent: {b}\n" for b in ai_bots) + "Allow: /\nDisallow: /design/\n\n"
               + f"Sitemap: {SITE}/sitemap.xml\n")
+    (ROOT / "tools" / "og-jobs.json").write_text(json.dumps(og_jobs, ensure_ascii=False, indent=1), encoding="utf-8")
     if not STAGING:
         main = [p for p in pages if not p[0].startswith(("/doporucene-pluginy/", "/tvorba-webu/"))]
         lps = [p for p in pages if p[0].startswith("/tvorba-webu/")]

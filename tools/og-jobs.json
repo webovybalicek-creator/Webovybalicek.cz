@@ -1,0 +1,1010 @@
+[
+ {
+  "slug": "ai-weby",
+  "path": "/ai-weby/",
+  "k": "AI weby",
+  "h": "Web hotový *během dnů*, kontroluje ho člověk"
+ },
+ {
+  "slug": "cenik",
+  "path": "/cenik/",
+  "k": "Ceník",
+  "h": "Férové ceny *bez skrytých* poplatků"
+ },
+ {
+  "slug": "digital-project-manager-consultant",
+  "path": "/digital-project-manager-consultant/",
+  "k": "Konzultace · Honza",
+  "h": "Projekt dotažený *k výsledkům*"
+ },
+ {
+  "slug": "fotograf-a-videomaker",
+  "path": "/fotograf-a-videomaker/",
+  "k": "Foto a video · Jakub",
+  "h": "Fotky a video, které *prodávají*"
+ },
+ {
+  "slug": "index",
+  "path": "/",
+  "k": "Tvorba webů s pomocí AI",
+  "h": "Weby, za kterými jsou *výsledky*"
+ },
+ {
+  "slug": "jak-probiha-tvorba-webu-a-nase-spoluprace",
+  "path": "/jak-probiha-tvorba-webu-a-nase-spoluprace/",
+  "k": "Spolupráce",
+  "h": "Jak probíhá *tvorba webu*"
+ },
+ {
+  "slug": "kontakt",
+  "path": "/kontakt/",
+  "k": "Kontakt",
+  "h": "Napište nám, ozveme se *do 24 hodin*"
+ },
+ {
+  "slug": "nastroje",
+  "path": "/nastroje/",
+  "k": "Nástroje",
+  "h": "Čím *stavíme weby*"
+ },
+ {
+  "slug": "nejcastejsi-dotazy",
+  "path": "/nejcastejsi-dotazy/",
+  "k": "Časté dotazy",
+  "h": "Odpovědi na *nejčastější otázky*"
+ },
+ {
+  "slug": "nejcastejsi-pojmy-ohledne-tvorby-webu",
+  "path": "/nejcastejsi-pojmy-ohledne-tvorby-webu/",
+  "k": "Slovníček",
+  "h": "Pojmy kolem webu *srozumitelně*"
+ },
+ {
+  "slug": "o-nas",
+  "path": "/o-nas/",
+  "k": "O nás",
+  "h": "Malý tým, *velké výsledky*"
+ },
+ {
+  "slug": "obchodni-podminky",
+  "path": "/obchodni-podminky/",
+  "k": "Právní informace",
+  "h": "Obchodní *podmínky*"
+ },
+ {
+  "slug": "obsah-cinnosti-pri-tvorbe-webu",
+  "path": "/obsah-cinnosti-pri-tvorbe-webu/",
+  "k": "Tvorba webu krok za krokem",
+  "h": "Co všechno *obnáší* tvorba webu"
+ },
+ {
+  "slug": "ochrana-informaci-gdpr",
+  "path": "/ochrana-informaci-gdpr/",
+  "k": "Právní informace",
+  "h": "Ochrana *osobních údajů*"
+ },
+ {
+  "slug": "recaptcha-navod",
+  "path": "/recaptcha-navod/",
+  "k": "Návod",
+  "h": "Jak získat klíče *Google reCAPTCHA*"
+ },
+ {
+  "slug": "sprava-webu",
+  "path": "/sprava-webu/",
+  "k": "Správa webu",
+  "h": "Web v bezpečí a *vždy aktuální*"
+ },
+ {
+  "slug": "srovnani",
+  "path": "/srovnani/",
+  "k": "Srovnání",
+  "h": "AI web, prezentační web, nebo *e-shop*?"
+ },
+ {
+  "slug": "zasady-cookies-eu",
+  "path": "/zasady-cookies-eu/",
+  "k": "Právní informace",
+  "h": "Zásady *cookies*"
+ },
+ {
+  "slug": "doporucene-pluginy",
+  "path": "/doporucene-pluginy/",
+  "k": "Doporučené pluginy",
+  "h": "Prověřené pluginy pro *české e-shopy*",
+  "pill": "44 pluginů",
+  "tags": [
+   "WooCommerce",
+   "Doprava",
+   "Platby"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-zasilkovna",
+  "path": "/doporucene-pluginy/zasilkovna/",
+  "k": "Plugin pro WooCommerce · Doprava a doručení",
+  "h": "*Zásilkovna* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-ppl",
+  "path": "/doporucene-pluginy/ppl/",
+  "k": "Plugin pro WooCommerce · Doprava a doručení",
+  "h": "*PPL* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-dpd",
+  "path": "/doporucene-pluginy/dpd/",
+  "k": "Plugin pro WooCommerce · Doprava a doručení",
+  "h": "*DPD* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-gls",
+  "path": "/doporucene-pluginy/gls/",
+  "k": "Plugin pro WooCommerce · Doprava a doručení",
+  "h": "*GLS* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-ceska-posta",
+  "path": "/doporucene-pluginy/ceska-posta/",
+  "k": "Plugin pro WooCommerce · Doprava a doručení",
+  "h": "*Česká pošta* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-slovenska-posta",
+  "path": "/doporucene-pluginy/slovenska-posta/",
+  "k": "Plugin pro WooCommerce · Doprava a doručení",
+  "h": "*Slovenská pošta* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-one-by-allegro",
+  "path": "/doporucene-pluginy/one-by-allegro/",
+  "k": "Plugin pro WooCommerce · Doprava a doručení",
+  "h": "*One by Allegro* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-toptrans",
+  "path": "/doporucene-pluginy/toptrans/",
+  "k": "Plugin pro WooCommerce · Doprava a doručení",
+  "h": "*TOPTRANS* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-fofr",
+  "path": "/doporucene-pluginy/fofr/",
+  "k": "Plugin pro WooCommerce · Doprava a doručení",
+  "h": "*FOFR* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-go-balik",
+  "path": "/doporucene-pluginy/go-balik/",
+  "k": "Plugin pro WooCommerce · Doprava a doručení",
+  "h": "*GO balík* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-balikobot",
+  "path": "/doporucene-pluginy/balikobot/",
+  "k": "Plugin pro WooCommerce · Doprava a doručení",
+  "h": "*Balíkobot* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-ybox24",
+  "path": "/doporucene-pluginy/ybox24/",
+  "k": "Plugin pro WooCommerce · Doprava a doručení",
+  "h": "*ybox24* pro WooCommerce",
+  "pill": "Zdarma",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-vlastni-pobocky-a-doprava",
+  "path": "/doporucene-pluginy/vlastni-pobocky-a-doprava/",
+  "k": "Plugin pro WooCommerce · Doprava a doručení",
+  "h": "*Vlastní pobočky a doprava* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-sledovani-zasilek",
+  "path": "/doporucene-pluginy/sledovani-zasilek/",
+  "k": "Plugin pro WooCommerce · Doprava a doručení",
+  "h": "*Sledování zásilek* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-dropshipping",
+  "path": "/doporucene-pluginy/dropshipping/",
+  "k": "Plugin pro WooCommerce · Doprava a doručení",
+  "h": "*Dropshipping.cz* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-gopay",
+  "path": "/doporucene-pluginy/gopay/",
+  "k": "Plugin pro WooCommerce · Platby",
+  "h": "*GoPay Inline* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-comgate",
+  "path": "/doporucene-pluginy/comgate/",
+  "k": "Plugin pro WooCommerce · Platby",
+  "h": "*Comgate* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-thepay",
+  "path": "/doporucene-pluginy/thepay/",
+  "k": "Plugin pro WooCommerce · Platby",
+  "h": "*ThePay 2.0* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-csob",
+  "path": "/doporucene-pluginy/csob/",
+  "k": "Plugin pro WooCommerce · Platby",
+  "h": "*ČSOB* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-gp-webpay",
+  "path": "/doporucene-pluginy/gp-webpay/",
+  "k": "Plugin pro WooCommerce · Platby",
+  "h": "*GP webpay* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-fio-banka",
+  "path": "/doporucene-pluginy/fio-banka/",
+  "k": "Plugin pro WooCommerce · Platby",
+  "h": "*Fio banka* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-qr-platby",
+  "path": "/doporucene-pluginy/qr-platby/",
+  "k": "Plugin pro WooCommerce · Platby",
+  "h": "*QR platby* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-edenred",
+  "path": "/doporucene-pluginy/edenred/",
+  "k": "Plugin pro WooCommerce · Platby",
+  "h": "*Edenred* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-toret-faktura",
+  "path": "/doporucene-pluginy/toret-faktura/",
+  "k": "Plugin pro WooCommerce · Fakturace a účetnictví",
+  "h": "*Toret Faktura* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-idoklad",
+  "path": "/doporucene-pluginy/idoklad/",
+  "k": "Plugin pro WooCommerce · Fakturace a účetnictví",
+  "h": "*iDoklad* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-fakturoid",
+  "path": "/doporucene-pluginy/fakturoid/",
+  "k": "Plugin pro WooCommerce · Fakturace a účetnictví",
+  "h": "*Fakturoid* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-vyfakturuj",
+  "path": "/doporucene-pluginy/vyfakturuj/",
+  "k": "Plugin pro WooCommerce · Fakturace a účetnictví",
+  "h": "*Vyfakturuj* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-eu-vat",
+  "path": "/doporucene-pluginy/eu-vat/",
+  "k": "Plugin pro WooCommerce · Fakturace a účetnictví",
+  "h": "*Toret EU VAT* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-cislovani-objednavek",
+  "path": "/doporucene-pluginy/cislovani-objednavek/",
+  "k": "Plugin pro WooCommerce · Fakturace a účetnictví",
+  "h": "*Order Numbers* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-eet",
+  "path": "/doporucene-pluginy/eet/",
+  "k": "Plugin pro WooCommerce · Fakturace a účetnictví",
+  "h": "*EET 2.0* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-xml-feedy",
+  "path": "/doporucene-pluginy/xml-feedy/",
+  "k": "Plugin pro WooCommerce · Marketing a srovnávače",
+  "h": "*XML Feedy* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-srovnavace-zbozi",
+  "path": "/doporucene-pluginy/srovnavace-zbozi/",
+  "k": "Plugin pro WooCommerce · Marketing a srovnávače",
+  "h": "*Srovnávače zboží* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-ai-markdown",
+  "path": "/doporucene-pluginy/ai-markdown/",
+  "k": "Plugin pro WooCommerce · Marketing a srovnávače",
+  "h": "*AI Markdown* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-ads-for-ai",
+  "path": "/doporucene-pluginy/ads-for-ai/",
+  "k": "Plugin pro WooCommerce · Marketing a srovnávače",
+  "h": "*Ads for AI* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-smartemailing",
+  "path": "/doporucene-pluginy/smartemailing/",
+  "k": "Plugin pro WooCommerce · Marketing a srovnávače",
+  "h": "*SmartEmailing* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-glami-pixel",
+  "path": "/doporucene-pluginy/glami-pixel/",
+  "k": "Plugin pro WooCommerce · Marketing a srovnávače",
+  "h": "*Glami Pixel* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-toolkit",
+  "path": "/doporucene-pluginy/toolkit/",
+  "k": "Plugin pro WooCommerce · Pokladna a produkty",
+  "h": "*Toolkit* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-velkoobchod",
+  "path": "/doporucene-pluginy/velkoobchod/",
+  "k": "Plugin pro WooCommerce · Pokladna a produkty",
+  "h": "*Velkoobchod* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-synchronizace-skladu",
+  "path": "/doporucene-pluginy/synchronizace-skladu/",
+  "k": "Plugin pro WooCommerce · Pokladna a produkty",
+  "h": "*Synchronizace skladu* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-adulto",
+  "path": "/doporucene-pluginy/adulto/",
+  "k": "Plugin pro WooCommerce · Pokladna a produkty",
+  "h": "*Adulto.cz* pro WooCommerce",
+  "pill": "Zdarma",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-telefon",
+  "path": "/doporucene-pluginy/telefon/",
+  "k": "Plugin pro WooCommerce · Pokladna a produkty",
+  "h": "*Telefon* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-ceske-osloveni",
+  "path": "/doporucene-pluginy/ceske-osloveni/",
+  "k": "Plugin pro WooCommerce · Pokladna a produkty",
+  "h": "*České oslovení* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-dotaz-na-produkt",
+  "path": "/doporucene-pluginy/dotaz-na-produkt/",
+  "k": "Plugin pro WooCommerce · Pokladna a produkty",
+  "h": "*Dotaz na produkt* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "doporucene-pluginy-drobeckova-navigace",
+  "path": "/doporucene-pluginy/drobeckova-navigace/",
+  "k": "Plugin pro WooCommerce · Pokladna a produkty",
+  "h": "*Breadcrumbs* pro WooCommerce",
+  "pill": "Sleva až 50 %",
+  "tags": [
+   "WooCommerce",
+   "Plugin",
+   "Toret"
+  ]
+ },
+ {
+  "slug": "tvorba-webu",
+  "path": "/tvorba-webu/",
+  "k": "Tvorba webů",
+  "h": "Weby pro *každý obor*",
+  "pill": "29 typů webů",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-e-shop",
+  "path": "/tvorba-webu/e-shop/",
+  "k": "Prodej online",
+  "h": "E-shop, který *prodává* a nezdržuje",
+  "pill": "od 35 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-b2b-e-shop",
+  "path": "/tvorba-webu/b2b-e-shop/",
+  "k": "Prodej online",
+  "h": "B2B e-shop pro *velkoobchod*",
+  "pill": "od 45 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-darkove-poukazy",
+  "path": "/tvorba-webu/darkove-poukazy/",
+  "k": "Prodej online",
+  "h": "Dárkové poukazy, které se *prodávají samy*",
+  "pill": "od 25 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-vstupenky-a-registrace",
+  "path": "/tvorba-webu/vstupenky-a-registrace/",
+  "k": "Prodej online",
+  "h": "Vstupenky a registrace *bez prostředníka*",
+  "pill": "od 25 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-predplatne",
+  "path": "/tvorba-webu/predplatne/",
+  "k": "Prodej online",
+  "h": "Předplatné s *pravidelnými platbami*",
+  "pill": "od 35 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-e-learning",
+  "path": "/tvorba-webu/e-learning/",
+  "k": "Vzdělávání a členství",
+  "h": "E-learning, kde se *opravdu učí*",
+  "pill": "od 40 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-online-kurzy",
+  "path": "/tvorba-webu/online-kurzy/",
+  "k": "Vzdělávání a členství",
+  "h": "Prodávejte kurzy a webináře *na autopilota*",
+  "pill": "od 25 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-clenska-sekce",
+  "path": "/tvorba-webu/clenska-sekce/",
+  "k": "Vzdělávání a členství",
+  "h": "Členská sekce pro *vaši komunitu*",
+  "pill": "od 35 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-klientsky-portal",
+  "path": "/tvorba-webu/klientsky-portal/",
+  "k": "Vzdělávání a členství",
+  "h": "Klientský portál a *intranet* na míru",
+  "pill": "od 45 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-rezervacni-system",
+  "path": "/tvorba-webu/rezervacni-system/",
+  "k": "Rezervace a služby",
+  "h": "Rezervační systém, díky kterému *nezvoní telefon*",
+  "pill": "od 25 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-ubytovani",
+  "path": "/tvorba-webu/ubytovani/",
+  "k": "Rezervace a služby",
+  "h": "Web pro ubytování s *přímou rezervací*",
+  "pill": "od 25 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-restaurace-a-kavarny",
+  "path": "/tvorba-webu/restaurace-a-kavarny/",
+  "k": "Rezervace a služby",
+  "h": "Web pro restauraci, kde má *chuť i menu*",
+  "pill": "od 25 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-kliniky-salony-studia",
+  "path": "/tvorba-webu/kliniky-salony-studia/",
+  "k": "Rezervace a služby",
+  "h": "Web pro kliniky, salony a *studia*",
+  "pill": "od 25 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-remeslnici-a-stavebni-firmy",
+  "path": "/tvorba-webu/remeslnici-a-stavebni-firmy/",
+  "k": "Rezervace a služby",
+  "h": "Web pro řemeslníky, který *přivede zakázky*",
+  "pill": "od 20 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-developerske-projekty",
+  "path": "/tvorba-webu/developerske-projekty/",
+  "k": "Nemovitosti",
+  "h": "Web pro developerský projekt, který *prodává byty*",
+  "pill": "od 45 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-realitni-web",
+  "path": "/tvorba-webu/realitni-web/",
+  "k": "Nemovitosti",
+  "h": "Realitní web s nabídkou, která *se hledá snadno*",
+  "pill": "od 40 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-kalkulacky",
+  "path": "/tvorba-webu/kalkulacky/",
+  "k": "Nástroje a interaktivita",
+  "h": "Kalkulačka na web, která *odpoví hned*",
+  "pill": "od 8 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-interaktivni-formulare",
+  "path": "/tvorba-webu/interaktivni-formulare/",
+  "k": "Nástroje a interaktivita",
+  "h": "Formuláře, které lidé *dovyplní*",
+  "pill": "od 6 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-konfigurator-produktu",
+  "path": "/tvorba-webu/konfigurator-produktu/",
+  "k": "Nástroje a interaktivita",
+  "h": "Konfigurátor, ve kterém si zákazník *poskládá produkt*",
+  "pill": "od 15 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-katalog-a-vyhledavac",
+  "path": "/tvorba-webu/katalog-a-vyhledavac/",
+  "k": "Nástroje a interaktivita",
+  "h": "Katalog a vyhledávač, který *se plní sám*",
+  "pill": "od 45 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-ai-chatbot",
+  "path": "/tvorba-webu/ai-chatbot/",
+  "k": "Nástroje a interaktivita",
+  "h": "AI asistent, který *zná váš web*",
+  "pill": "od 10 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-firemni-web",
+  "path": "/tvorba-webu/firemni-web/",
+  "k": "Prezentace a obsah",
+  "h": "Firemní web, který *vede k poptávce*",
+  "pill": "od 20 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-landing-page",
+  "path": "/tvorba-webu/landing-page/",
+  "k": "Prezentace a obsah",
+  "h": "Landing page pro *jednu věc*: konverzi",
+  "pill": "od 12 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-portfolio",
+  "path": "/tvorba-webu/portfolio/",
+  "k": "Prezentace a obsah",
+  "h": "Portfolio, ve kterém *vynikne vaše práce*",
+  "pill": "od 20 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-konference-a-akce",
+  "path": "/tvorba-webu/konference-a-akce/",
+  "k": "Prezentace a obsah",
+  "h": "Web pro konference a akce, *na který se chodí*",
+  "pill": "od 25 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-naborovy-web",
+  "path": "/tvorba-webu/naborovy-web/",
+  "k": "Prezentace a obsah",
+  "h": "Náborový web, který *přitáhne lidi*",
+  "pill": "od 25 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-neziskovky-a-spolky",
+  "path": "/tvorba-webu/neziskovky-a-spolky/",
+  "k": "Prezentace a obsah",
+  "h": "Web pro neziskovky, který *pomáhá pomáhat*",
+  "pill": "od 25 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-magazin-a-blog",
+  "path": "/tvorba-webu/magazin-a-blog/",
+  "k": "Prezentace a obsah",
+  "h": "Magazín a blog, které *se čtou*",
+  "pill": "od 25 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-vicejazycny-web",
+  "path": "/tvorba-webu/vicejazycny-web/",
+  "k": "Prezentace a obsah",
+  "h": "Vícejazyčný web pro *každý trh*",
+  "pill": "od 25 000 Kč",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ }
+]

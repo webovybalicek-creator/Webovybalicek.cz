@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="cs"><head><meta charset="utf-8"><title>webovybalicek – brandmanuál</title>
+<style>
+@font-face { font-family: Geist; src: url(/assets/fonts/Geist-latin-ext.woff2) format("woff2"); font-weight: 100 900; }
+@font-face { font-family: Geist; src: url(/assets/fonts/Geist-latin.woff2) format("woff2"); font-weight: 100 900; unicode-range: U+0000-00FF; }
+@font-face { font-family: Aspekta; src: url(/assets/fonts/AspektaVF.woff2) format("woff2"); font-weight: 100 900; }
+@page { size: 297mm 210mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; }
+:root { --ink:#0a1217; --lime:#cdfe00; --gray:#f1f1f1; --line:#e6e7e8; --stone:#85898b; --graphite:#54595d; }
+body { font: 400 13px/1.55 Geist, sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 297mm; height: 210mm; padding: 16mm 18mm; position: relative; overflow: hidden; page-break-after: always; display: flex; flex-direction: column; }
+.page:last-child { page-break-after: auto; }
+.head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 9mm; }
+.kick { font: 500 10.5px/1 ui-monospace, Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--graphite); }
+.num { font: 500 10.5px/1 ui-monospace, Menlo, monospace; color: var(--stone); }
+h1 { font-size: 40px; line-height: 1.04; letter-spacing: -.03em; font-weight: 650; }
+h2 { font-size: 30px; line-height: 1.08; letter-spacing: -.025em; font-weight: 650; margin-bottom: 4mm; }
+h3 { font-size: 14px; font-weight: 650; margin-bottom: 2mm; }
+.lead { font-size: 14px; color: var(--graphite); max-width: 150mm; }
+em.w { font-style: normal; background: linear-gradient(var(--lime),var(--lime)) left 0 bottom .1em / 100% .38em no-repeat; }
+.grid { display: grid; gap: 6mm; flex: 1; }
+.tile { background: var(--gray); border-radius: 8px; display: grid; place-items: center; padding: 8mm; position: relative; }
+.tile.dark { background: var(--ink); color: #fff; }
+.tile.lime { background: var(--lime); }
+.tile img { max-width: 100%; max-height: 100%; }
+.cap { font-size: 11px; color: var(--graphite); margin-top: 2mm; }
+.cap b { color: var(--ink); }
+.foot { position: absolute; left: 18mm; right: 18mm; bottom: 9mm; display: flex; justify-content: space-between; font-size: 10px; color: var(--stone); }
+ul.dots { list-style: none; padding: 0; }
+ul.dots li { padding-left: 16px; position: relative; margin: 1.5mm 0; }
+ul.dots li::before { content: ""; position: absolute; left: 0; top: .5em; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 1px rgba(10,18,23,.12); }
+.sw { border-radius: 8px; padding: 6mm; display: flex; flex-direction: column; justify-content: flex-end; min-height: 52mm; }
+.sw p { font: 500 11px/1.6 ui-monospace, Menlo, monospace; }
+.sw strong { font: 650 18px/1.2 Geist; display: block; margin-bottom: 2mm; letter-spacing: -.01em; }
+.pill { display: inline-block; padding: 5px 12px; border-radius: 999px; background: var(--lime); font-weight: 600; font-size: 12px; }
+.pill.ink { background: var(--ink); color: var(--lime); }
+.dont { background: var(--gray); border-radius: 8px; height: 38mm; display: grid; place-items: center; position: relative; overflow: hidden; }
+.dont::after { content: "✕"; position: absolute; top: 3mm; right: 4mm; width: 22px; height: 22px; border-radius: 50%; background: #e5484d; color: #fff; font: 700 12px/22px Geist; text-align: center; }
+.dont img { max-width: 78%; max-height: 50%; }
+.cover { background: var(--ink); color: #fff; }
+.dotsbg { background: #f6f6f6 radial-gradient(circle, rgba(10,18,23,.16) 1.1px, transparent 1.6px) 0 0 / 22px 22px; }
+.ball { border-radius: 50%; background: radial-gradient(circle at 34% 30%, #fbffd9 0 6%, #e6ff5c 22%, #cdfe00 48%, #a9d400 82%, #8db000 100%); box-shadow: 0 18px 30px -12px rgba(90,110,0,.45); }
+.check { display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; background:var(--ink); }
+.check svg { width:12px; height:12px; fill:none; stroke:#fff; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
+table { border-collapse: collapse; width: 100%; font-size: 12px; }
+td, th { text-align: left; padding: 2.2mm 3mm 2.2mm 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 500 10px/1 ui-monospace, Menlo, monospace; text-transform: uppercase; letter-spacing: .08em; color: var(--stone); }
+</style></head><body>
+
+<!-- 1 Titulní -->
+<section class="page cover">
+  <img src="webovybalicek-logo-limetka-bile.svg" style="width:110mm">
+  <div style="margin-top:auto">
+    <p class="kick" style="color:rgba(255,255,255,.6)">Brandmanuál · verze 1.0 · listopad 2026</p>
+    <h1 style="font-size:64px;margin-top:6mm">Logo, barvy<br>a <span style="color:var(--lime)">prvky značky</span></h1>
+    <p style="margin-top:6mm;color:rgba(255,255,255,.66);font-size:14px;max-width:140mm">Pravidla pro používání značky webovybalicek na webu, v e-mailu, na sociálních sítích i v tisku.</p>
+  </div>
+  <img src="og-blob.png" style="position:absolute;right:-60mm;top:-30mm;width:230mm;opacity:.9;filter:brightness(1.02)">
+  <div class="ball" style="position:absolute;right:58mm;bottom:40mm;width:30mm;height:30mm"></div>
+  <div class="ball" style="position:absolute;right:30mm;bottom:22mm;width:9mm;height:9mm"></div>
+</section>
+
+<!-- 2 Logo -->
+<section class="page">
+  <div class="head"><p class="kick">01 · Logo</p><p class="num">2</p></div>
+  <h2>Logo = značka <em class="w">W</em> + slovo webovybalicek</h2>
+  <p class="lead">Značka tvoří dva šikmé díly, které se potkávají v písmenu W. Slovo je vysázené písmem Aspekta (řez 620) a převedené do křivek. Logo píšeme vždy dohromady a malými písmeny, bez háčků a čárek.</p>
+  <div class="grid" style="grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;margin-top:8mm">
+    <div class="tile" style="grid-row:span 2"><img src="webovybalicek-logo-cerne.svg" style="width:85%"><p class="cap" style="position:absolute;left:6mm;bottom:5mm"><b>Hlavní logo</b> – vodorovné, výchozí volba</p></div>
+    <div class="tile"><img src="webovybalicek-logo-vertikalni-cerne.svg" style="width:70%"><p class="cap" style="position:absolute;left:6mm;bottom:4mm"><b>Vertikální</b> – úzké a čtvercové formáty</p></div>
+    <div class="tile"><img src="webovybalicek-znacka-cerna.svg" style="width:32%"><p class="cap" style="position:absolute;left:6mm;bottom:4mm"><b>Značka</b> – ikony, favicon, avatar</p></div>
+  </div>
+</section>
+
+<!-- 3 Ochranná zóna -->
+<section class="page">
+  <div class="head"><p class="kick">02 · Ochranná zóna a velikost</p><p class="num">3</p></div>
+  <h2>Kolem loga nech volný prostor</h2>
+  <div class="grid" style="grid-template-columns:1.6fr 1fr;margin-top:6mm">
+    <div class="tile" style="padding:0">
+      <div style="position:relative;padding:22mm;outline:1px dashed #b7bbbd;outline-offset:-1px;background:repeating-linear-gradient(45deg,rgba(205,254,0,.25) 0 6px,transparent 6px 12px)">
+        <div style="background:var(--gray);padding:0"><img src="webovybalicek-logo-cerne.svg" style="width:150mm;display:block"></div>
+        <span style="position:absolute;left:4mm;top:50%;transform:translateY(-50%);font:500 11px ui-monospace">X</span>
+        <span style="position:absolute;top:4mm;left:50%;font:500 11px ui-monospace">X</span>
+      </div>
+    </div>
+    <div>
+      <h3>Ochranná zóna</h3>
+      <p>Minimálně <b>X = výška značky W</b> ze všech stran. Do zóny nezasahuje text, okraj ani jiný prvek.</p>
+      <h3 style="margin-top:7mm">Minimální velikost</h3>
+      <table>
+        <tr><th>Varianta</th><th>Obrazovka</th><th>Tisk</th></tr>
+        <tr><td>Vodorovné logo</td><td>120 px šířka</td><td>30 mm</td></tr>
+        <tr><td>Vertikální logo</td><td>80 px šířka</td><td>20 mm</td></tr>
+        <tr><td>Samotná značka</td><td>16 px</td><td>5 mm</td></tr>
+      </table>
+      <p class="cap" style="margin-top:4mm">Pod minimální velikostí použij samotnou značku.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4 Barevné verze -->
+<section class="page">
+  <div class="head"><p class="kick">03 · Barevné verze</p><p class="num">4</p></div>
+  <h2>Na světlém černé, na tmavém bílé</h2>
+  <p class="lead">Limetková značka patří jen na černé pozadí. Na limetce je logo vždy černé.</p>
+  <div class="grid" style="grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;margin-top:8mm">
+    <div><div class="tile" style="height:100%;background:#fff;box-shadow:inset 0 0 0 1px var(--line)"><img src="webovybalicek-logo-cerne.svg" style="width:80%"></div></div>
+    <div><div class="tile" style="height:100%"><img src="webovybalicek-logo-cerne.svg" style="width:80%"></div></div>
+    <div><div class="tile lime" style="height:100%"><img src="webovybalicek-logo-cerne.svg" style="width:80%"></div></div>
+    <div><div class="tile dark" style="height:100%"><img src="webovybalicek-logo-bile.svg" style="width:80%"></div></div>
+    <div><div class="tile dark" style="height:100%"><img src="webovybalicek-logo-limetka-bile.svg" style="width:80%"></div></div>
+    <div><div class="tile" style="height:100%;background:#54595d"><img src="webovybalicek-logo-bile.svg" style="width:80%"></div></div>
+  </div>
+  <p class="cap" style="margin-top:3mm">Bílá · šedá #f1f1f1 · limetka → černé logo. &nbsp; Ink a tmavé fotky → bílé logo nebo limetková značka s bílým slovem.</p>
+</section>
+
+<!-- 5 Barvy -->
+<section class="page">
+  <div class="head"><p class="kick">04 · Barvy</p><p class="num">5</p></div>
+  <h2>Ink, šedé, limetka a perleť</h2>
+  <p class="lead">Základ je černobílý. Limetka je signál: akce, výběr, zvýraznění. Nikdy jí nebarvi velké plochy textu.</p>
+  <div class="grid" style="grid-template-columns:1.4fr 1fr 1fr 1fr;margin-top:8mm;flex:none">
+    <div class="sw" style="background:var(--ink);color:#fff"><strong>Ink</strong><p>#0A1217<br>RGB 10 18 23<br>CMYK 57 22 0 91<br>Pantone Black 6 C*</p></div>
+    <div class="sw" style="background:var(--lime)"><strong>Limetka</strong><p>#CDFE00<br>RGB 205 254 0<br>CMYK 19 0 100 0<br>Pantone 389 C*</p></div>
+    <div class="sw" style="background:#fff;box-shadow:inset 0 0 0 1px var(--line)"><strong>Bílá</strong><p>#FFFFFF<br>RGB 255 255 255</p></div>
+    <div class="sw" style="background:var(--gray)"><strong>Šedá</strong><p>#F1F1F1<br>RGB 241 241 241</p></div>
+  </div>
+  <div class="grid" style="grid-template-columns:repeat(4,1fr);margin-top:5mm;flex:none">
+    <div class="sw" style="min-height:30mm;background:#54595d;color:#fff"><strong>Grafit</strong><p>#54595D · vedlejší text</p></div>
+    <div class="sw" style="min-height:30mm;background:#85898b;color:#fff"><strong>Kámen</strong><p>#85898B · popisky</p></div>
+    <div class="sw" style="min-height:30mm;background:#e6e7e8"><strong>Linka</strong><p>#E6E7E8 · oddělovače</p></div>
+    <div class="sw" style="min-height:30mm;background:conic-gradient(from 200deg,#d5b2b2,#cc9fcc,#b2b1d5,#9fcbcb,#b2d5b1,#cccc9f,#d5b2b2);"><strong>Perleť</strong><p>jen akcent, okraje a hmota</p></div>
+  </div>
+  <p class="cap" style="margin-top:4mm">Poměr na ploše zhruba 70 % bílá a šedá, 25 % ink, 5 % limetka. *CMYK a Pantone jsou orientační, před tiskem ověřit nátiskem.</p>
+</section>
+
+<!-- 6 Typografie -->
+<section class="page">
+  <div class="head"><p class="kick">05 · Typografie</p><p class="num">6</p></div>
+  <h2>Geist pro texty, Aspekta jen v logu</h2>
+  <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:6mm">
+    <div class="tile" style="place-items:start;align-content:start">
+      <p class="kick">Geist · texty webu a dokumentů</p>
+      <p style="font:650 64px/1 Geist;letter-spacing:-.035em;margin-top:6mm">Weby, za kterými jsou výsledky</p>
+      <p style="font-size:15px;margin-top:6mm;color:var(--graphite)">Pomáháme živnostníkům, malým a středním firmám dosahovat vyššího zisku. Příliš žluťoučký kůň úpěl ďábelské ódy.</p>
+      <p class="cap" style="margin-top:6mm">Nadpisy 650 · těsnější proklad −3 % · text 400 · zdarma (OFL)</p>
+    </div>
+    <div style="display:grid;gap:6mm;grid-template-rows:1fr 1fr">
+      <div class="tile" style="place-items:start;align-content:start">
+        <p class="kick">Aspekta · jen slovo v logu</p>
+        <p style="font:620 46px/1 Aspekta;letter-spacing:-.022em;margin-top:5mm">webovybalicek</p>
+        <p class="cap" style="margin-top:4mm">Řez 620, proklad −2,2 %. Pro jiný text nepoužívat.</p>
+      </div>
+      <div class="tile" style="place-items:start;align-content:start">
+        <p class="kick">Monospace · štítky a nadtitulky</p>
+        <p style="font:500 20px/1.4 ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;margin-top:5mm">Tvorba webů s pomocí AI</p>
+        <p class="cap" style="margin-top:4mm">Verzálky, prostrkání 8 %, šedá barva.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 Prvky -->
+<section class="page">
+  <div class="head"><p class="kick">06 · Grafické prvky</p><p class="num">7</p></div>
+  <h2>Hmota, kapky, rastr a štítky</h2>
+  <div class="grid" style="grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;margin-top:6mm">
+    <div class="tile dotsbg" style="padding:0;overflow:hidden"><img src="og-blob.png" style="position:absolute;width:230%;right:-12%;top:-30%;max-width:none;max-height:none"><p class="cap" style="position:absolute;left:5mm;bottom:4mm"><b>Perleťová hmota</b> – úvod webu, náhledy</p></div>
+    <div class="tile dotsbg"><div style="position:relative;width:60mm;height:34mm"><div class="ball" style="position:absolute;left:8mm;top:4mm;width:26mm;height:26mm"></div><div class="ball" style="position:absolute;left:40mm;top:2mm;width:9mm;height:9mm"></div><div class="ball" style="position:absolute;left:46mm;top:22mm;width:5mm;height:5mm"></div></div><p class="cap" style="position:absolute;left:5mm;bottom:4mm"><b>Limetkové kapky</b> – odtržené od hmoty</p></div>
+    <div class="tile dotsbg"><p class="cap" style="position:absolute;left:5mm;bottom:4mm"><b>Tečkový rastr</b> – podklad, 22 px, ink 16 %</p></div>
+    <div class="tile"><div style="display:flex;gap:4mm;align-items:center;flex-wrap:wrap;justify-content:center"><span class="pill">Design</span><span class="pill ink">AI</span><span class="pill" style="background:#fff;box-shadow:inset 0 0 0 1px var(--line)">SEO</span></div><p class="cap" style="position:absolute;left:5mm;bottom:4mm"><b>Štítky</b> – plně zaoblené, 600</p></div>
+    <div class="tile"><p style="font:650 34px/1.1 Geist;letter-spacing:-.03em">jsou <em class="w">výsledky</em></p><p class="cap" style="position:absolute;left:5mm;bottom:4mm"><b>Limetkové podtržení</b> – jedno slovo v nadpisu</p></div>
+    <div class="tile"><div style="display:flex;gap:4mm;align-items:center"><span class="check"><svg viewBox="0 0 12 12"><path d="M2.5 6.2 5 8.5l4.5-5"/></svg></span><span>Fajfka v seznamu</span></div><p class="cap" style="position:absolute;left:5mm;bottom:4mm"><b>Fajfky a odrážky</b> – černé kolečko, limetkové tečky</p></div>
+  </div>
+  <p class="cap" style="margin-top:3mm">Zaoblení karet 8 px, fotek 16 px. Šipky tenké a lehce natočené ↗. Bez stínů na kartách, bez přechodů v textu.</p>
+</section>
+
+<!-- 8 Nesprávné použití -->
+<section class="page">
+  <div class="head"><p class="kick">07 · Nesprávné použití</p><p class="num">8</p></div>
+  <h2>Tohle s logem nedělej</h2>
+  <div class="grid" style="grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto;margin-top:6mm;flex:none;gap:5mm">
+    <div><div class="dont"><img src="webovybalicek-logo-cerne.svg" style="transform:scaleX(1.45)"></div><p class="cap">Nedeformovat poměr stran</p></div>
+    <div><div class="dont"><img src="webovybalicek-logo-cerne.svg" style="transform:rotate(-12deg)"></div><p class="cap">Neotáčet</p></div>
+    <div><div class="dont"><img src="webovybalicek-logo-cerne.svg" style="filter:hue-rotate(0deg) invert(23%) sepia(92%) saturate(3000%) hue-rotate(255deg)"></div><p class="cap">Neměnit barvy (staré fialové logo je neplatné)</p></div>
+    <div><div class="dont"><img src="webovybalicek-logo-cerne.svg" style="filter:drop-shadow(4px 6px 3px rgba(0,0,0,.5))"></div><p class="cap">Bez stínů a efektů</p></div>
+    <div><div class="dont"><p style="font:700 22px Arial"><span style="font-size:24px">W</span> webový balíček</p></div><p class="cap">Nepřepisovat jiným písmem ani s diakritikou</p></div>
+    <div><div class="dont" style="background:var(--lime)"><img src="webovybalicek-logo-limetka-bile.svg"></div><p class="cap">Limetka na limetce, bílá na světlém</p></div>
+    <div><div class="dont" style="background:linear-gradient(120deg,#ff7a59,#7a5cff,#00c2a8)"><img src="webovybalicek-logo-cerne.svg"></div><p class="cap">Ne na neklidném pozadí</p></div>
+    <div><div class="dont"><div style="display:flex;align-items:center;gap:20px"><img src="webovybalicek-znacka-cerna.svg" style="width:18%;max-width:none"><img src="webovybalicek-slovo-cerne.svg" style="width:55%;max-width:none"></div></div><p class="cap">Neměnit vzájemnou polohu a mezery</p></div>
+  </div>
+</section>
+
+<!-- 9 Aplikace -->
+<section class="page">
+  <div class="head"><p class="kick">08 · Aplikace</p><p class="num">9</p></div>
+  <h2>Kde se značka potkává se světem</h2>
+  <div class="grid" style="grid-template-columns:1.25fr 1fr;margin-top:6mm">
+    <div><img src="nahled-pro-sdileni-1200x630.jpg" style="width:100%;border-radius:8px;box-shadow:0 0 0 1px var(--line)"><p class="cap"><b>Náhled pro sdílení</b> 1200 × 630 – hmota, kapky, kurzory, nadpis s limetkovým podtržením</p></div>
+    <div style="display:grid;gap:6mm;align-content:start">
+      <div class="tile" style="background:#fff;box-shadow:inset 0 0 0 1px var(--line);padding:5mm"><img src="nahled-podpisu.png" style="width:100%"></div>
+      <p class="cap" style="margin-top:-4mm"><b>E-mailový podpis</b> – fotka, limetková linka, logo</p>
+      <div style="display:flex;gap:5mm;align-items:flex-end">
+        <img src="webovybalicek-ikona-limetka-zaoblena.svg" style="width:24mm"><img src="webovybalicek-ikona-cerna-zaoblena.svg" style="width:24mm"><img src="webovybalicek-ikona-limetka.svg" style="width:14mm;border-radius:50%"><img src="webovybalicek-ikona-cerna.svg" style="width:14mm;border-radius:50%">
+      </div>
+      <p class="cap" style="margin-top:-4mm"><b>Ikony a avatary</b> – favicon, aplikace, profil na Googlu, Slacku, Asaně</p>
+    </div>
+  </div>
+  <div class="foot"><span>webovybalicek · Vladimír Fischer · IČ 03051820 · Říčany u Prahy</span><span>webovybalicek.cz · webovybalicek@gmail.com · +420 723 933 774</span></div>
+</section>
+</body></html>

@@ -138,6 +138,8 @@ def overview(data):
         "title": "Doporučené pluginy pro WooCommerce | webovybalicek",
         "description": f"{len(data['plugins'])} prověřených pluginů Toret pro české e-shopy: Zásilkovna, PPL, DPD, platební brány, iDoklad, Fakturoid, XML feedy a další. Sleva až 50 %.",
         "path": BASE,
+        "og": {"k": "Doporučené pluginy", "h": "Prověřené pluginy pro *české e-shopy*", "pill": f"{len(data['plugins'])} pluginů",
+               "tags": ["WooCommerce", "Doprava", "Platby"]},
     }
     return meta, body
 
@@ -295,6 +297,8 @@ def detail(p, data, seo):
         "head": head,
         "ogtype": "article",
         "nav": "",
+        "og": {"k": f"Plugin pro WooCommerce · {cat['n']}", "h": f"*{p['n']}* pro WooCommerce", "pill": "Zdarma" if free else "Sleva až 50 %",
+               "tags": ["WooCommerce", "Plugin", "Toret"]},
     }
     return meta, body
 

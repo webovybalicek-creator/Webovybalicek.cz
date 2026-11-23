@@ -148,7 +148,7 @@ def detail(t, by_key, svc):
             {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faqs]},
     ]
     meta = {"title": title(t["kw"]), "description": t["md"], "path": path, "head": ld_script(ld),
-            "image": f"/assets/img/og/{t["s"]}.jpg", "nav": ""}
+            "nav": "", "og": {"k": t["g"], "h": t["h"], "pill": price, "tags": ["Design", "AI", "SEO"]}}
     return meta, body
 
 
@@ -170,7 +170,8 @@ def overview(items):
            "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": t["n"], "url": SITE + t["path"]} for i, t in enumerate(items)]}]
     meta = {"title": "Tvorba webů na míru pro každý obor | webovybalicek",
             "description": "E-shopy, rezervace, kurzy, členské sekce, portály i firemní weby. Podívejte se, jaké weby stavíme s pomocí AI, co umí a kolik stojí.",
-            "path": BASE, "head": ld_script(ld), "image": "/assets/img/og/tvorba-webu.jpg", "nav": ""}
+            "path": BASE, "head": ld_script(ld), "nav": "",
+            "og": {"k": "Tvorba webů", "h": "Weby pro *každý obor*", "pill": "29 typů webů", "tags": ["Design", "AI", "SEO"]}}
     return meta, body
 
 
