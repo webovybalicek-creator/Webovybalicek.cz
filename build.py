@@ -30,7 +30,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "283"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "284"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -270,10 +270,12 @@ def build():
     sys.path.insert(0, str(SRC))
     import plugins
     import typy
+    import seo
 
     sources = [parse(page) + (page.stem,) for page in sorted((SRC / "pages").glob("*.html"))]
     sources += [(m, b, "") for m, b in plugins.pages(SRC)]
     sources += [(m, b, "") for m, b in typy.pages(SRC)]
+    sources += [(m, b, "") for m, b in seo.pages(SRC)]
 
     # reference pro landing pages: výběr z homepage, jinak libovolný web z reference.json (jen se snímkem)
     vyber_by = {r["s"]: r for r in vyber}

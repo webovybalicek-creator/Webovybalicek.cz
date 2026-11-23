@@ -1006,5 +1006,435 @@
    "AI",
    "SEO"
   ]
+ },
+ {
+  "slug": "tvorba-webu-praha",
+  "path": "/tvorba-webu-praha/",
+  "k": "Kde působíme",
+  "h": "Tvorba webů *v Praze*",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-ricany",
+  "path": "/tvorba-webu-ricany/",
+  "k": "Kde působíme",
+  "h": "Tvorba webů *v Říčanech*",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-praha-vychod",
+  "path": "/tvorba-webu-praha-vychod/",
+  "k": "Kde působíme",
+  "h": "Tvorba webů *Praha-východ*",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-praha-zapad",
+  "path": "/tvorba-webu-praha-zapad/",
+  "k": "Kde působíme",
+  "h": "Tvorba webů *Praha-západ*",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "tvorba-webu-stredocesky-kraj",
+  "path": "/tvorba-webu-stredocesky-kraj/",
+  "k": "Kde působíme",
+  "h": "Tvorba webů *ve Středočeském kraji*",
+  "tags": [
+   "Design",
+   "AI",
+   "SEO"
+  ]
+ },
+ {
+  "slug": "kde-pusobime",
+  "path": "/kde-pusobime/",
+  "k": "Kde působíme",
+  "h": "Praha a *Středočeský kraj*",
+  "tags": [
+   "Osobně",
+   "Online",
+   "Říčany"
+  ]
+ },
+ {
+  "slug": "srovnani-wordpress-vs-wix",
+  "path": "/srovnani/wordpress-vs-wix/",
+  "k": "Srovnání",
+  "h": "WordPress, nebo *Wix*?",
+  "tags": [
+   "WordPress",
+   "vs",
+   "Wix"
+  ]
+ },
+ {
+  "slug": "srovnani-woocommerce-vs-shoptet",
+  "path": "/srovnani/woocommerce-vs-shoptet/",
+  "k": "Srovnání e-shopů",
+  "h": "WooCommerce, nebo *Shoptet*?",
+  "tags": [
+   "WooCommerce",
+   "vs",
+   "Shoptet"
+  ]
+ },
+ {
+  "slug": "srovnani-web-na-miru-vs-sablona",
+  "path": "/srovnani/web-na-miru-vs-sablona/",
+  "k": "Srovnání",
+  "h": "Web na míru, nebo *šablona*?",
+  "tags": [
+   "Web na míru",
+   "vs",
+   "Šablona"
+  ]
+ },
+ {
+  "slug": "kolik-stoji-web",
+  "path": "/kolik-stoji-web/",
+  "k": "Ceny 2026",
+  "h": "Kolik stojí *web*?",
+  "pill": "od 20 000 Kč",
+  "tags": [
+   "Web",
+   "Doména",
+   "Hosting"
+  ]
+ },
+ {
+  "slug": "slovnicek-webhosting",
+  "path": "/slovnicek/webhosting/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *webhosting*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-server",
+  "path": "/slovnicek/server/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *server*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-domena",
+  "path": "/slovnicek/domena/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *doména*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-dns",
+  "path": "/slovnicek/dns/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *DNS*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-ssl-certifikat",
+  "path": "/slovnicek/ssl-certifikat/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *SSL certifikát*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-databaze",
+  "path": "/slovnicek/databaze/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *databáze*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-cms",
+  "path": "/slovnicek/cms/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *CMS*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-wordpress",
+  "path": "/slovnicek/wordpress/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *WordPress*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-plugin",
+  "path": "/slovnicek/plugin/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *plugin*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-design-na-miru",
+  "path": "/slovnicek/design-na-miru/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *design na míru*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-dynamicky-obsah",
+  "path": "/slovnicek/dynamicky-obsah/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *dynamický obsah*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-filtr",
+  "path": "/slovnicek/filtr/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *filtr*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-slider-banner",
+  "path": "/slovnicek/slider-banner/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *slider banner*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-pop-up-okno",
+  "path": "/slovnicek/pop-up-okno/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *pop-up okno*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-optimalizace-obrazku",
+  "path": "/slovnicek/optimalizace-obrazku/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *optimalizace obrázků*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-platebni-brana",
+  "path": "/slovnicek/platebni-brana/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *platební brána*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-zasilkovna",
+  "path": "/slovnicek/zasilkovna/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *Zásilkovna*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-xml-feed",
+  "path": "/slovnicek/xml-feed/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *XML feed*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-seo",
+  "path": "/slovnicek/seo/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *SEO*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-geo",
+  "path": "/slovnicek/geo/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *GEO*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-aeo",
+  "path": "/slovnicek/aeo/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *AEO*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-strukturovana-data",
+  "path": "/slovnicek/strukturovana-data/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *strukturovaná data*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-google-analytics",
+  "path": "/slovnicek/google-analytics/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *Google Analytics*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-hotjar",
+  "path": "/slovnicek/hotjar/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *Hotjar*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-cookie",
+  "path": "/slovnicek/cookie/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *cookie*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-gdpr",
+  "path": "/slovnicek/gdpr/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *GDPR*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-ai-web",
+  "path": "/slovnicek/ai-web/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *AI web*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-prezentacni-web",
+  "path": "/slovnicek/prezentacni-web/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *prezentační web*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
+ },
+ {
+  "slug": "slovnicek-ai-chatbot",
+  "path": "/slovnicek/ai-chatbot/",
+  "k": "Slovníček pojmů",
+  "h": "Co je *AI chatbot*?",
+  "tags": [
+   "Web",
+   "Pojem",
+   "Srozumitelně"
+  ]
  }
 ]
