@@ -1502,3 +1502,15 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
 .sheet-types li:has(h4 a:focus-visible) { outline: 2px solid var(--ink); outline-offset: 2px; }
 .sheet-types h4 a:focus-visible { outline: none; }
 .kapky circle { transform-box: fill-box; transition: transform 700ms var(--ease-out, cubic-bezier(.23, 1, .32, 1)); }
+
+/* video popup: vlastní náhled místo YouTube přehrávače před spuštěním */
+.video-poster { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 18px; width: 100%; padding: 0; border: 0; background: var(--ink); color: var(--on-ink); cursor: pointer; font: inherit; }
+.video-poster[hidden] { display: none; }
+.video-dots { position: absolute; top: 0; right: 0; height: 78%; width: auto; pointer-events: none; }
+.video-play { position: relative; display: grid; place-items: center; width: 88px; height: 88px; border-radius: 50%; background: var(--lime); transition: scale 160ms var(--ease-out); }
+.video-play svg { width: 34px; height: 34px; margin-left: 4px; fill: var(--ink); }
+.video-poster:active .video-play { scale: .96; }
+.video-label { position: relative; font: 400 13px/1.4 var(--f-mono); letter-spacing: .04em; color: var(--on-ink-muted); }
+.video-poster:focus-visible { outline: none; }
+.video-poster:focus-visible .video-play { outline: 2px solid var(--lime); outline-offset: 4px; }
+@media (max-width: 600px) { .video-play { width: 64px; height: 64px; } .video-play svg { width: 26px; height: 26px; } }

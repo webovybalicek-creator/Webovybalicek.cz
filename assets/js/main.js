@@ -445,13 +445,16 @@ document.querySelectorAll('[data-proj]').forEach((box) => {
   });
 });
 
-// Popup s videem: iframe se načte až při otevření, při zavření se odstraní (zastaví přehrávání)
+// Popup s videem: nejdřív náš náhled s tlačítkem, video (YouTube) se načte a spustí až po kliknutí.
+// Při zavření se iframe odstraní (zastaví přehrávání) a vrátí se náhled.
 document.querySelectorAll('dialog[data-video]').forEach((d) => {
   const box = d.querySelector('.video-frame');
-  new MutationObserver(() => {
-    if (d.open && !box.firstChild) box.innerHTML = `<iframe src="${d.dataset.video}" title="Video" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
-  }).observe(d, { attributes: true, attributeFilter: ['open'] });
-  d.addEventListener('close', () => { box.innerHTML = ''; });
+  const poster = box.querySelector('[data-play]');
+  poster.addEventListener('click', () => {
+    box.insertAdjacentHTML('beforeend', `<iframe src="${d.dataset.video}" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`);
+    poster.hidden = true;
+  });
+  d.addEventListener('close', () => { box.querySelector('iframe')?.remove(); poster.hidden = false; });
 });
 
 // Slevový kód Toret: e-mail -> slevovy-kod.php pošle stylový e-mail s kódem
