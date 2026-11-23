@@ -538,3 +538,29 @@ document.querySelectorAll('.manifest').forEach((p) => {
   const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { threshold: 0.6 });
   bars.forEach((b) => io.observe(b));
 })();
+
+// Tečková kresba kapek (Na čem si zakládáme): tečky mírně ustupují kurzoru a pomalu se vrací
+document.querySelectorAll('svg[data-kapky]').forEach((svg) => {
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const card = svg.parentElement;
+  const dots = [...svg.querySelectorAll('circle')].map((c) => ({ c, x: +c.getAttribute('cx'), y: +c.getAttribute('cy') }));
+  const R = 70, PUSH = 16;
+  let raf = 0, pt = null;
+  const move = () => {
+    raf = 0;
+    const box = svg.getBoundingClientRect();
+    if (!box.width) return;
+    const k = svg.viewBox.baseVal.width / box.width;
+    const px = (pt.x - box.left) * k, py = (pt.y - box.top) * k;
+    for (const d of dots) {
+      const dx = d.x - px, dy = d.y - py, dist = Math.hypot(dx, dy);
+      if (dist < R) {
+        const f = (1 - dist / R) ** 2 * PUSH / (dist || 1);
+        d.c.style.transform = `translate(${(dx * f).toFixed(1)}px, ${(dy * f).toFixed(1)}px)`;
+        d.on = true;
+      } else if (d.on) { d.c.style.transform = ''; d.on = false; }
+    }
+  };
+  card.addEventListener('pointermove', (e) => { pt = e; if (!raf) raf = requestAnimationFrame(move); });
+  card.addEventListener('pointerleave', () => { dots.forEach((d) => { d.c.style.transform = ''; d.on = false; }); });
+});
