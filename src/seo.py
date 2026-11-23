@@ -118,9 +118,12 @@ def lokality(src, by_key):
 
 
 # ---------------------------------------------------------------- srovnání
-def table(a, b, rows):
-    tr = "".join(f'<tr><th scope="row">{e(r)}</th><td data-l="{e(a)}">{e(x)}</td><td data-l="{e(b)}">{e(y)}</td></tr>' for r, x, y in rows)
-    return f'<div class="vs-wrap"><table class="vs-table"><thead><tr><th></th><th>{e(a)}</th><th>{e(b)}</th></tr></thead><tbody>{tr}</tbody></table></div>'
+def table(a, b, rows, us="Web od nás"):
+    tr = "".join(f'<tr><th scope="row">{e(r[0])}</th><td data-l="{e(a)}">{e(r[1])}</td><td data-l="{e(b)}">{e(r[2])}</td>'
+                 + (f'<td class="is-us" data-l="{e(us)}">{e(r[3])}</td>' if len(r) > 3 else "") + "</tr>" for r in rows)
+    has = any(len(r) > 3 for r in rows)
+    th_us = f'<th class="is-us"><span class="vs-badge">Doporučujeme</span>{e(us)}</th>' if has else ""
+    return f'<div class="vs-wrap"><table class="vs-table{" vs-table--3" if has else ""}"><thead><tr><th></th><th>{e(a)}</th><th>{e(b)}</th>{th_us}</tr></thead><tbody>{tr}</tbody></table></div>'
 
 
 def srovnani(src):
@@ -140,7 +143,7 @@ def srovnani(src):
 
   <section class="section">
     <div class="wrap">
-      <div class="section-head"><p class="pill">Srovnání</p><h2>{e(x["a"])} a {e(x["b"])} bod po bodu</h2></div>
+      <div class="section-head"><p class="pill">Srovnání</p><h2>{e(x["a"])}, {e(x["b"])} a web od nás bod po bodu</h2></div>
       {table(x["a"], x["b"], x["rows"])}
       <p class="note">Ceny třetích stran jsou orientační (listopad 2026), aktuální najdete u poskytovatele.</p>
     </div>
@@ -148,9 +151,10 @@ def srovnani(src):
 
   <section class="section">
     <div class="wrap">
-      <div class="grid-cards grid-cards--2">
+      <div class="grid-cards grid-cards--3">
         <article class="card pay-card"><h3>Kdy zvolit {e(x["a"])}</h3><ul class="sv-ticks">{ticks(x["a_when"])}</ul></article>
         <article class="card pay-card"><h3>Kdy zvolit {e(x["b"])}</h3><ul class="sv-ticks">{ticks(x["b_when"])}</ul></article>
+        <article class="card pay-card pay-card--us"><p class="pill">Doporučujeme</p><h3>Kdy zvolit nás</h3><ul class="sv-ticks">{ticks(x["us_when"])}</ul><p><a href="/kontakt/" class="btn btn--primary">Chci nezávaznou nabídku</a></p></article>
       </div>
     </div>
   </section>
