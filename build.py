@@ -31,7 +31,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "257"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "260"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -275,8 +275,8 @@ def build():
         """Reference na landing page: nejdřív weby z homepage, víc než 4 = posuvný pruh jako na homepage."""
         items = [pick(k, label) for k in sorted(dict.fromkeys(keys.split(",")), key=lambda k: k not in vyber_by)]
         items = [r for r in items if r]
-        if len(items) > 4:
-            return render_shots(items, snimky)
+        if len(items) > 4:  # pevné pořadí (nejhezčí z homepage první), bez náhodného míchání
+            return render_shots(items, snimky).replace('<div class="shots-loop">', '<div class="shots-loop" data-order="fixed">', 1)
         return render_shots(items, snimky, demo=True).replace("shots--demo", "shots--pick")
 
     urls = []
