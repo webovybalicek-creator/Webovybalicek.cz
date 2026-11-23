@@ -1618,5 +1618,5038 @@
     "h": 53
    }
   ]
+ },
+ "dorthon-cz": {
+  "url": "https://dorthon.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Velkoobchod v oblasti vybavení koupelen | DORTHON",
+  "desc": "Dorthon je specializovaný velkoobchod zaměřený na dodávky keramických obkladů, dlažeb a kompletního vybavení koupelen. Nabízíme širokou škálu produktů od předních světových výrobců, které spojují kvalitu, funkčnost a moderní design.",
+  "h1": "",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 130
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 900
+   },
+   {
+    "t": "text",
+    "x": 283,
+    "y": 378,
+    "w": 875,
+    "h": 144
+   },
+   {
+    "t": "text",
+    "x": 345,
+    "y": 1000,
+    "w": 750,
+    "h": 21
+   },
+   {
+    "t": "text",
+    "x": 345,
+    "y": 1041,
+    "w": 750,
+    "h": 48
+   },
+   {
+    "t": "text",
+    "x": 345,
+    "y": 1109,
+    "w": 750,
+    "h": 96
+   },
+   {
+    "t": "btn",
+    "x": 668,
+    "y": 1239,
+    "w": 105,
+    "h": 35
+   },
+   {
+    "t": "text",
+    "x": 37,
+    "y": 1374,
+    "w": 1366,
+    "h": 21
+   },
+   {
+    "t": "text",
+    "x": 37,
+    "y": 1415,
+    "w": 1366,
+    "h": 48
+   },
+   {
+    "t": "text",
+    "x": 37,
+    "y": 1523,
+    "w": 751,
+    "h": 48
+   },
+   {
+    "t": "text",
+    "x": 834,
+    "y": 1567,
+    "w": 469,
+    "h": 168
+   },
+   {
+    "t": "media",
+    "x": 37,
+    "y": 1591,
+    "w": 751,
+    "h": 209
+   }
+  ]
+ },
+ "denisadedicova-com": {
+  "url": "https://www.denisadedicova.com/",
+  "w": 880,
+  "h": 3152,
+  "title": "Lektorka, konzultantka online vzdělávacích kurzů | Denisadedicova.com",
+  "desc": "Jsem lektorka, konzultantka, autorka několika online vzdělávacích kurzů a zakladatelka módní značky Deedivine. Dělám to, co mě baví a co miluju.",
+  "h1": "POMŮŽU VÁM BÝT\nTOU NEJLEPŠÍ VERZÍ\nVÁS SAMOTNÝCH",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 140
+   },
+   {
+    "t": "media",
+    "x": 300,
+    "y": 180,
+    "w": 1120,
+    "h": 747
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 385,
+    "w": 530,
+    "h": 234
+   },
+   {
+    "t": "text",
+    "x": 42,
+    "y": 1189,
+    "w": 396,
+    "h": 234
+   },
+   {
+    "t": "text",
+    "x": 522,
+    "y": 1189,
+    "w": 396,
+    "h": 234
+   },
+   {
+    "t": "text",
+    "x": 1002,
+    "y": 1264,
+    "w": 396,
+    "h": 78
+   },
+   {
+    "t": "media",
+    "x": 80,
+    "y": 1749,
+    "w": 560,
+    "h": 51
+   }
+  ]
+ },
+ "eventy-eezy-cz": {
+  "url": "https://eventy.eezy.cz/",
+  "w": 880,
+  "h": 1632,
+  "title": "Eventy.eezy.cz - Eventy.eezy.cz",
+  "desc": "Hotel Grandior Prague",
+  "h1": "Události",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 100
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 300
+   },
+   {
+    "t": "text",
+    "x": 370,
+    "y": 221,
+    "w": 700,
+    "h": 39
+   },
+   {
+    "t": "media",
+    "x": 60,
+    "y": 365,
+    "w": 387,
+    "h": 242
+   },
+   {
+    "t": "media",
+    "x": 527,
+    "y": 365,
+    "w": 387,
+    "h": 242
+   },
+   {
+    "t": "media",
+    "x": 993,
+    "y": 365,
+    "w": 387,
+    "h": 242
+   },
+   {
+    "t": "text",
+    "x": 60,
+    "y": 660,
+    "w": 387,
+    "h": 44
+   },
+   {
+    "t": "text",
+    "x": 527,
+    "y": 660,
+    "w": 387,
+    "h": 44
+   },
+   {
+    "t": "text",
+    "x": 993,
+    "y": 660,
+    "w": 387,
+    "h": 44
+   },
+   {
+    "t": "text",
+    "x": 60,
+    "y": 720,
+    "w": 387,
+    "h": 96
+   },
+   {
+    "t": "text",
+    "x": 527,
+    "y": 720,
+    "w": 387,
+    "h": 96
+   },
+   {
+    "t": "text",
+    "x": 993,
+    "y": 720,
+    "w": 387,
+    "h": 72
+   },
+   {
+    "t": "media",
+    "x": 60,
+    "y": 964,
+    "w": 387,
+    "h": 242
+   },
+   {
+    "t": "media",
+    "x": 527,
+    "y": 964,
+    "w": 387,
+    "h": 242
+   },
+   {
+    "t": "media",
+    "x": 993,
+    "y": 964,
+    "w": 387,
+    "h": 242
+   },
+   {
+    "t": "text",
+    "x": 60,
+    "y": 1259,
+    "w": 387,
+    "h": 44
+   },
+   {
+    "t": "text",
+    "x": 527,
+    "y": 1259,
+    "w": 387,
+    "h": 44
+   },
+   {
+    "t": "text",
+    "x": 993,
+    "y": 1259,
+    "w": 387,
+    "h": 22
+   },
+   {
+    "t": "text",
+    "x": 993,
+    "y": 1297,
+    "w": 387,
+    "h": 72
+   },
+   {
+    "t": "text",
+    "x": 60,
+    "y": 1319,
+    "w": 387,
+    "h": 96
+   },
+   {
+    "t": "text",
+    "x": 527,
+    "y": 1319,
+    "w": 387,
+    "h": 96
+   },
+   {
+    "t": "media",
+    "x": 60,
+    "y": 1562,
+    "w": 387,
+    "h": 238
+   },
+   {
+    "t": "media",
+    "x": 527,
+    "y": 1562,
+    "w": 387,
+    "h": 238
+   },
+   {
+    "t": "media",
+    "x": 993,
+    "y": 1562,
+    "w": 387,
+    "h": 238
+   }
+  ]
+ },
+ "monikaweiglova-com": {
+  "url": "https://www.monikaweiglova.com/",
+  "w": 880,
+  "h": 3422,
+  "title": "Psychosomatika | Přístup Gabora Maté",
+  "desc": "Dovolte si být sami sebou. Soucit a všímavost jako klíče pro vstup do prostoru transformace a přijetí.",
+  "h1": "NÁVRAT K CELISTVOSTI",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 163
+   },
+   {
+    "t": "text",
+    "x": 690,
+    "y": 1054,
+    "w": 61,
+    "h": 19
+   },
+   {
+    "t": "text",
+    "x": 295,
+    "y": 1100,
+    "w": 850,
+    "h": 48
+   },
+   {
+    "t": "btn",
+    "x": 578,
+    "y": 1167,
+    "w": 285,
+    "h": 43
+   },
+   {
+    "t": "text",
+    "x": 295,
+    "y": 1410,
+    "w": 850,
+    "h": 67
+   },
+   {
+    "t": "text",
+    "x": 295,
+    "y": 1626,
+    "w": 850,
+    "h": 48
+   },
+   {
+    "t": "text",
+    "x": 295,
+    "y": 1772,
+    "w": 850,
+    "h": 28
+   }
+  ]
+ },
+ "nabrunch-cz": {
+  "url": "https://nabrunch.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Brunch Praha i celé Česko: kam na brunch a snídani | naBrunch.cz",
+  "desc": "Ověřené tipy, kam na brunch a snídani v Praze, Brně i dalších městech. Fotky, otevírací doba, mapa a naše srdcovky – podniky, které jsme sami navštívili.",
+  "h1": "Víme, kam naBrunch!",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 71
+   },
+   {
+    "t": "btn",
+    "x": 1126,
+    "y": 17,
+    "w": 130,
+    "h": 36
+   },
+   {
+    "t": "text",
+    "x": 184,
+    "y": 126,
+    "w": 533,
+    "h": 133
+   },
+   {
+    "t": "media",
+    "x": 773,
+    "y": 139,
+    "w": 483,
+    "h": 480
+   },
+   {
+    "t": "text",
+    "x": 184,
+    "y": 291,
+    "w": 512,
+    "h": 59
+   },
+   {
+    "t": "btn",
+    "x": 463,
+    "y": 386,
+    "w": 142,
+    "h": 50
+   },
+   {
+    "t": "btn",
+    "x": 610,
+    "y": 386,
+    "w": 100,
+    "h": 50
+   },
+   {
+    "t": "text",
+    "x": 184,
+    "y": 822,
+    "w": 322,
+    "h": 36
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 886,
+    "w": 160,
+    "h": 313
+   },
+   {
+    "t": "media",
+    "x": 184,
+    "y": 886,
+    "w": 250,
+    "h": 313
+   },
+   {
+    "t": "media",
+    "x": 458,
+    "y": 886,
+    "w": 250,
+    "h": 313
+   },
+   {
+    "t": "media",
+    "x": 732,
+    "y": 886,
+    "w": 250,
+    "h": 313
+   },
+   {
+    "t": "media",
+    "x": 1006,
+    "y": 886,
+    "w": 250,
+    "h": 313
+   },
+   {
+    "t": "text",
+    "x": 0,
+    "y": 1212,
+    "w": 160,
+    "h": 22
+   },
+   {
+    "t": "text",
+    "x": 184,
+    "y": 1212,
+    "w": 250,
+    "h": 22
+   },
+   {
+    "t": "text",
+    "x": 458,
+    "y": 1212,
+    "w": 250,
+    "h": 22
+   },
+   {
+    "t": "text",
+    "x": 732,
+    "y": 1212,
+    "w": 250,
+    "h": 22
+   },
+   {
+    "t": "text",
+    "x": 1006,
+    "y": 1212,
+    "w": 250,
+    "h": 22
+   },
+   {
+    "t": "text",
+    "x": 184,
+    "y": 1622,
+    "w": 214,
+    "h": 36
+   },
+   {
+    "t": "media",
+    "x": 184,
+    "y": 1686,
+    "w": 250,
+    "h": 114
+   },
+   {
+    "t": "media",
+    "x": 458,
+    "y": 1686,
+    "w": 250,
+    "h": 114
+   },
+   {
+    "t": "media",
+    "x": 732,
+    "y": 1686,
+    "w": 250,
+    "h": 114
+   },
+   {
+    "t": "media",
+    "x": 1006,
+    "y": 1686,
+    "w": 250,
+    "h": 114
+   },
+   {
+    "t": "media",
+    "x": 1280,
+    "y": 1686,
+    "w": 160,
+    "h": 114
+   }
+  ]
+ },
+ "carujeme-cz": {
+  "url": "https://carujeme.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Recepty | Návody | Dekorace | Rady a tipy | Carujeme.cz",
+  "desc": "Objevujte lahodné recepty, kreativní návody a inspirativní rady pro vaše kouzelné okamžiky.",
+  "h1": "Vaříme, tvoříme a sdílíme.",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 76
+   },
+   {
+    "t": "btn",
+    "x": 1288,
+    "y": 16,
+    "w": 120,
+    "h": 43
+   },
+   {
+    "t": "btn",
+    "x": 1116,
+    "y": 18,
+    "w": 152,
+    "h": 39
+   },
+   {
+    "t": "media",
+    "x": 32,
+    "y": 124,
+    "w": 391,
+    "h": 412
+   },
+   {
+    "t": "media",
+    "x": 435,
+    "y": 124,
+    "w": 340,
+    "h": 200
+   },
+   {
+    "t": "text",
+    "x": 824,
+    "y": 161,
+    "w": 584,
+    "h": 114
+   },
+   {
+    "t": "text",
+    "x": 824,
+    "y": 287,
+    "w": 584,
+    "h": 57
+   },
+   {
+    "t": "media",
+    "x": 435,
+    "y": 336,
+    "w": 340,
+    "h": 200
+   },
+   {
+    "t": "btn",
+    "x": 824,
+    "y": 380,
+    "w": 113,
+    "h": 46
+   },
+   {
+    "t": "btn",
+    "x": 949,
+    "y": 380,
+    "w": 180,
+    "h": 46
+   },
+   {
+    "t": "media",
+    "x": 32,
+    "y": 576,
+    "w": 853,
+    "h": 460
+   },
+   {
+    "t": "media",
+    "x": 913,
+    "y": 576,
+    "w": 132,
+    "h": 104
+   },
+   {
+    "t": "btn",
+    "x": 1061,
+    "y": 615,
+    "w": 315,
+    "h": 49
+   },
+   {
+    "t": "text",
+    "x": 1061,
+    "y": 616,
+    "w": 347,
+    "h": 47
+   },
+   {
+    "t": "media",
+    "x": 913,
+    "y": 725,
+    "w": 132,
+    "h": 104
+   },
+   {
+    "t": "btn",
+    "x": 1061,
+    "y": 752,
+    "w": 337,
+    "h": 72
+   },
+   {
+    "t": "text",
+    "x": 1061,
+    "y": 753,
+    "w": 347,
+    "h": 71
+   },
+   {
+    "t": "media",
+    "x": 913,
+    "y": 874,
+    "w": 132,
+    "h": 104
+   },
+   {
+    "t": "text",
+    "x": 1061,
+    "y": 926,
+    "w": 347,
+    "h": 24
+   },
+   {
+    "t": "media",
+    "x": 913,
+    "y": 1023,
+    "w": 132,
+    "h": 104
+   },
+   {
+    "t": "btn",
+    "x": 1061,
+    "y": 1062,
+    "w": 325,
+    "h": 49
+   },
+   {
+    "t": "text",
+    "x": 1061,
+    "y": 1063,
+    "w": 347,
+    "h": 47
+   },
+   {
+    "t": "text",
+    "x": 32,
+    "y": 1078,
+    "w": 853,
+    "h": 82
+   },
+   {
+    "t": "text",
+    "x": 32,
+    "y": 1174,
+    "w": 853,
+    "h": 54
+   },
+   {
+    "t": "text",
+    "x": 32,
+    "y": 1299,
+    "w": 1376,
+    "h": 37
+   },
+   {
+    "t": "btn",
+    "x": 32,
+    "y": 1357,
+    "w": 257,
+    "h": 58
+   },
+   {
+    "t": "btn",
+    "x": 301,
+    "y": 1357,
+    "w": 171,
+    "h": 58
+   },
+   {
+    "t": "btn",
+    "x": 484,
+    "y": 1357,
+    "w": 213,
+    "h": 58
+   },
+   {
+    "t": "btn",
+    "x": 709,
+    "y": 1357,
+    "w": 182,
+    "h": 58
+   },
+   {
+    "t": "btn",
+    "x": 903,
+    "y": 1357,
+    "w": 201,
+    "h": 58
+   },
+   {
+    "t": "btn",
+    "x": 1116,
+    "y": 1357,
+    "w": 183,
+    "h": 58
+   },
+   {
+    "t": "text",
+    "x": 93,
+    "y": 1377,
+    "w": 132,
+    "h": 19
+   },
+   {
+    "t": "text",
+    "x": 362,
+    "y": 1377,
+    "w": 48,
+    "h": 19
+   },
+   {
+    "t": "text",
+    "x": 545,
+    "y": 1377,
+    "w": 83,
+    "h": 19
+   },
+   {
+    "t": "text",
+    "x": 770,
+    "y": 1377,
+    "w": 59,
+    "h": 19
+   },
+   {
+    "t": "text",
+    "x": 964,
+    "y": 1377,
+    "w": 75,
+    "h": 19
+   },
+   {
+    "t": "text",
+    "x": 1177,
+    "y": 1377,
+    "w": 58,
+    "h": 19
+   },
+   {
+    "t": "btn",
+    "x": 32,
+    "y": 1427,
+    "w": 194,
+    "h": 58
+   },
+   {
+    "t": "btn",
+    "x": 238,
+    "y": 1427,
+    "w": 168,
+    "h": 58
+   },
+   {
+    "t": "btn",
+    "x": 418,
+    "y": 1427,
+    "w": 209,
+    "h": 58
+   },
+   {
+    "t": "btn",
+    "x": 639,
+    "y": 1427,
+    "w": 175,
+    "h": 58
+   },
+   {
+    "t": "btn",
+    "x": 826,
+    "y": 1427,
+    "w": 180,
+    "h": 58
+   },
+   {
+    "t": "btn",
+    "x": 1018,
+    "y": 1427,
+    "w": 297,
+    "h": 58
+   },
+   {
+    "t": "text",
+    "x": 93,
+    "y": 1447,
+    "w": 60,
+    "h": 19
+   },
+   {
+    "t": "text",
+    "x": 299,
+    "y": 1447,
+    "w": 43,
+    "h": 19
+   },
+   {
+    "t": "text",
+    "x": 479,
+    "y": 1447,
+    "w": 86,
+    "h": 19
+   },
+   {
+    "t": "text",
+    "x": 700,
+    "y": 1447,
+    "w": 52,
+    "h": 19
+   },
+   {
+    "t": "text",
+    "x": 887,
+    "y": 1447,
+    "w": 54,
+    "h": 19
+   },
+   {
+    "t": "text",
+    "x": 1079,
+    "y": 1447,
+    "w": 174,
+    "h": 19
+   },
+   {
+    "t": "text",
+    "x": 68,
+    "y": 1615,
+    "w": 469,
+    "h": 35
+   },
+   {
+    "t": "text",
+    "x": 68,
+    "y": 1658,
+    "w": 469,
+    "h": 48
+   },
+   {
+    "t": "btn",
+    "x": 577,
+    "y": 1677,
+    "w": 104,
+    "h": 36
+   },
+   {
+    "t": "btn",
+    "x": 772,
+    "y": 1677,
+    "w": 116,
+    "h": 36
+   },
+   {
+    "t": "btn",
+    "x": 896,
+    "y": 1677,
+    "w": 83,
+    "h": 36
+   },
+   {
+    "t": "btn",
+    "x": 987,
+    "y": 1677,
+    "w": 83,
+    "h": 36
+   },
+   {
+    "t": "btn",
+    "x": 1078,
+    "y": 1677,
+    "w": 98,
+    "h": 36
+   }
+  ]
+ },
+ "najdikadernictvi-cz": {
+  "url": "https://najdikadernictvi.cz/",
+  "w": 880,
+  "h": 2351,
+  "title": "Najdi kadeřnictví a barbershop ve svém městě",
+  "desc": "Najděte kadeřnictví nebo barbershop kousek od vás: 14 649 salonů v celé ČR. Hned uvidíte, kdo má otevřeno, telefon i cestu. Bez registrace.",
+  "h1": "Kadeřnictví a barbershopy ve vašem okolí",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 81
+   },
+   {
+    "t": "btn",
+    "x": 1183,
+    "y": 20,
+    "w": 137,
+    "h": 40
+   },
+   {
+    "t": "text",
+    "x": 420,
+    "y": 153,
+    "w": 600,
+    "h": 85
+   },
+   {
+    "t": "text",
+    "x": 434,
+    "y": 248,
+    "w": 572,
+    "h": 46
+   },
+   {
+    "t": "btn",
+    "x": 510,
+    "y": 417,
+    "w": 88,
+    "h": 36
+   },
+   {
+    "t": "btn",
+    "x": 685,
+    "y": 417,
+    "w": 154,
+    "h": 36
+   },
+   {
+    "t": "btn",
+    "x": 847,
+    "y": 417,
+    "w": 93,
+    "h": 36
+   },
+   {
+    "t": "btn",
+    "x": 948,
+    "y": 417,
+    "w": 135,
+    "h": 36
+   },
+   {
+    "t": "btn",
+    "x": 669,
+    "y": 461,
+    "w": 102,
+    "h": 36
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 798,
+    "w": 1280,
+    "h": 18
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 828,
+    "w": 1280,
+    "h": 18
+   },
+   {
+    "t": "text",
+    "x": 120,
+    "y": 902,
+    "w": 1200,
+    "h": 26
+   },
+   {
+    "t": "text",
+    "x": 120,
+    "y": 934,
+    "w": 612,
+    "h": 21
+   },
+   {
+    "t": "media",
+    "x": 120,
+    "y": 1044,
+    "w": 282,
+    "h": 268
+   },
+   {
+    "t": "media",
+    "x": 426,
+    "y": 1044,
+    "w": 282,
+    "h": 268
+   },
+   {
+    "t": "media",
+    "x": 732,
+    "y": 1044,
+    "w": 282,
+    "h": 268
+   },
+   {
+    "t": "media",
+    "x": 1038,
+    "y": 1044,
+    "w": 282,
+    "h": 268
+   },
+   {
+    "t": "text",
+    "x": 120,
+    "y": 1324,
+    "w": 282,
+    "h": 20
+   },
+   {
+    "t": "text",
+    "x": 426,
+    "y": 1324,
+    "w": 282,
+    "h": 20
+   },
+   {
+    "t": "text",
+    "x": 732,
+    "y": 1324,
+    "w": 282,
+    "h": 20
+   },
+   {
+    "t": "text",
+    "x": 1038,
+    "y": 1324,
+    "w": 282,
+    "h": 20
+   },
+   {
+    "t": "text",
+    "x": 732,
+    "y": 1345,
+    "w": 282,
+    "h": 40
+   },
+   {
+    "t": "media",
+    "x": 120,
+    "y": 1427,
+    "w": 282,
+    "h": 268
+   },
+   {
+    "t": "media",
+    "x": 426,
+    "y": 1427,
+    "w": 282,
+    "h": 268
+   },
+   {
+    "t": "media",
+    "x": 732,
+    "y": 1427,
+    "w": 282,
+    "h": 268
+   },
+   {
+    "t": "media",
+    "x": 1038,
+    "y": 1427,
+    "w": 282,
+    "h": 268
+   },
+   {
+    "t": "text",
+    "x": 120,
+    "y": 1707,
+    "w": 282,
+    "h": 20
+   },
+   {
+    "t": "text",
+    "x": 426,
+    "y": 1707,
+    "w": 282,
+    "h": 20
+   },
+   {
+    "t": "text",
+    "x": 732,
+    "y": 1707,
+    "w": 282,
+    "h": 20
+   },
+   {
+    "t": "text",
+    "x": 1038,
+    "y": 1707,
+    "w": 282,
+    "h": 20
+   },
+   {
+    "t": "text",
+    "x": 1038,
+    "y": 1728,
+    "w": 282,
+    "h": 40
+   }
+  ]
+ },
+ "michalovyazyly-cz": {
+  "url": "https://michalovyazyly.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Michalovy azyly - Luxusní milenecké azyly v Praze",
+  "desc": "Vyzkoušejte naše azyly pro milence v Praze. Nabízíme služby jako hodinový hotel, ale se 100% čistotou a diskrétností.",
+  "h1": "",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 197
+   },
+   {
+    "t": "media",
+    "x": 135,
+    "y": 108,
+    "w": 255,
+    "h": 77
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 197,
+    "w": 1440,
+    "h": 450
+   },
+   {
+    "t": "text",
+    "x": 311,
+    "y": 272,
+    "w": 819,
+    "h": 224
+   },
+   {
+    "t": "text",
+    "x": 294,
+    "y": 516,
+    "w": 852,
+    "h": 56
+   },
+   {
+    "t": "media",
+    "x": 135,
+    "y": 687,
+    "w": 570,
+    "h": 300
+   },
+   {
+    "t": "media",
+    "x": 735,
+    "y": 687,
+    "w": 570,
+    "h": 300
+   },
+   {
+    "t": "text",
+    "x": 165,
+    "y": 1017,
+    "w": 510,
+    "h": 56
+   },
+   {
+    "t": "text",
+    "x": 765,
+    "y": 1017,
+    "w": 510,
+    "h": 56
+   },
+   {
+    "t": "btn",
+    "x": 270,
+    "y": 1187,
+    "w": 300,
+    "h": 45
+   },
+   {
+    "t": "btn",
+    "x": 870,
+    "y": 1187,
+    "w": 300,
+    "h": 45
+   },
+   {
+    "t": "btn",
+    "x": 270,
+    "y": 1252,
+    "w": 300,
+    "h": 53
+   },
+   {
+    "t": "btn",
+    "x": 870,
+    "y": 1252,
+    "w": 300,
+    "h": 53
+   },
+   {
+    "t": "media",
+    "x": 135,
+    "y": 1365,
+    "w": 570,
+    "h": 300
+   },
+   {
+    "t": "media",
+    "x": 735,
+    "y": 1365,
+    "w": 570,
+    "h": 300
+   },
+   {
+    "t": "text",
+    "x": 165,
+    "y": 1695,
+    "w": 510,
+    "h": 56
+   },
+   {
+    "t": "text",
+    "x": 765,
+    "y": 1695,
+    "w": 510,
+    "h": 56
+   }
+  ]
+ },
+ "michalandfriends-com": {
+  "url": "https://michalandfriends.com/",
+  "w": 880,
+  "h": 3422,
+  "title": "Accommodation in Prague",
+  "desc": "Michal & Friends Apartments offer accommodation in Prague in beautiful fully equipped and furnished apartments. Feel like at home away from your home.",
+  "h1": "WELCOME TO PRAGUE",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 130
+   },
+   {
+    "t": "btn",
+    "x": 399,
+    "y": 42,
+    "w": 95,
+    "h": 46
+   },
+   {
+    "t": "btn",
+    "x": 544,
+    "y": 42,
+    "w": 85,
+    "h": 46
+   },
+   {
+    "t": "btn",
+    "x": 789,
+    "y": 42,
+    "w": 182,
+    "h": 46
+   },
+   {
+    "t": "btn",
+    "x": 1146,
+    "y": 42,
+    "w": 81,
+    "h": 46
+   },
+   {
+    "t": "btn",
+    "x": 1247,
+    "y": 43,
+    "w": 158,
+    "h": 45
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 46,
+    "w": 1440,
+    "h": 725
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 130,
+    "w": 1440,
+    "h": 558
+   },
+   {
+    "t": "text",
+    "x": 489,
+    "y": 279,
+    "w": 463,
+    "h": 60
+   },
+   {
+    "t": "media",
+    "x": 720,
+    "y": 768,
+    "w": 670,
+    "h": 447
+   },
+   {
+    "t": "text",
+    "x": 35,
+    "y": 813,
+    "w": 447,
+    "h": 14
+   },
+   {
+    "t": "text",
+    "x": 35,
+    "y": 847,
+    "w": 625,
+    "h": 148
+   },
+   {
+    "t": "text",
+    "x": 35,
+    "y": 1015,
+    "w": 625,
+    "h": 90
+   },
+   {
+    "t": "btn",
+    "x": 35,
+    "y": 1140,
+    "w": 205,
+    "h": 45
+   },
+   {
+    "t": "text",
+    "x": 35,
+    "y": 1462,
+    "w": 1370,
+    "h": 50
+   },
+   {
+    "t": "media",
+    "x": 36,
+    "y": 1573,
+    "w": 326,
+    "h": 227
+   },
+   {
+    "t": "media",
+    "x": 384,
+    "y": 1573,
+    "w": 326,
+    "h": 227
+   },
+   {
+    "t": "media",
+    "x": 731,
+    "y": 1573,
+    "w": 326,
+    "h": 227
+   },
+   {
+    "t": "media",
+    "x": 1079,
+    "y": 1573,
+    "w": 326,
+    "h": 227
+   }
+  ]
+ },
+ "uhrdinu-cz": {
+  "url": "https://www.uhrdinu.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Cukrárna U Hrdinů",
+  "desc": "Poctivá cukrárna na Letné. Jsme sousedská cukrárna, která tu byla „odjakživa“. Najdete nás na adrese: Dukelských Hrdinů 232, Praha 7. Přijďte ochutnat naše dobroty.",
+  "h1": "Cukrárna U Hrdinů",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 150
+   },
+   {
+    "t": "text",
+    "x": 347,
+    "y": 349,
+    "w": 745,
+    "h": 104
+   },
+   {
+    "t": "text",
+    "x": 554,
+    "y": 473,
+    "w": 333,
+    "h": 22
+   },
+   {
+    "t": "text",
+    "x": 470,
+    "y": 1000,
+    "w": 500,
+    "h": 60
+   },
+   {
+    "t": "text",
+    "x": 470,
+    "y": 1074,
+    "w": 500,
+    "h": 150
+   },
+   {
+    "t": "text",
+    "x": 470,
+    "y": 1239,
+    "w": 500,
+    "h": 60
+   },
+   {
+    "t": "media",
+    "x": 80,
+    "y": 1403,
+    "w": 180,
+    "h": 270
+   },
+   {
+    "t": "media",
+    "x": 520,
+    "y": 1403,
+    "w": 180,
+    "h": 270
+   },
+   {
+    "t": "media",
+    "x": 960,
+    "y": 1403,
+    "w": 180,
+    "h": 270
+   },
+   {
+    "t": "text",
+    "x": 740,
+    "y": 1449,
+    "w": 180,
+    "h": 43
+   },
+   {
+    "t": "text",
+    "x": 300,
+    "y": 1457,
+    "w": 180,
+    "h": 43
+   },
+   {
+    "t": "text",
+    "x": 1180,
+    "y": 1461,
+    "w": 180,
+    "h": 43
+   },
+   {
+    "t": "text",
+    "x": 740,
+    "y": 1503,
+    "w": 180,
+    "h": 120
+   },
+   {
+    "t": "text",
+    "x": 1180,
+    "y": 1515,
+    "w": 180,
+    "h": 96
+   }
+  ]
+ },
+ "elitebloggers-cz": {
+  "url": "https://elitebloggers.cz/",
+  "w": 880,
+  "h": 2548,
+  "title": "Influencer marketing | Elitebloggers.cz",
+  "desc": "Jsme tu proto, abychom vás propojili s českými a slovenskými influencery. Společně vytvoříme kampaň, která bude jedinečná, autentická a efektivní. Žijeme influencer marketingem.",
+  "h1": "INFLUENCER MARKETING AGENCY",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 115
+   },
+   {
+    "t": "text",
+    "x": 160,
+    "y": 48,
+    "w": 197,
+    "h": 19
+   },
+   {
+    "t": "text",
+    "x": 263,
+    "y": 303,
+    "w": 913,
+    "h": 41
+   },
+   {
+    "t": "text",
+    "x": 263,
+    "y": 364,
+    "w": 913,
+    "h": 72
+   },
+   {
+    "t": "media",
+    "x": 20,
+    "y": 930,
+    "w": 270,
+    "h": 300
+   },
+   {
+    "t": "media",
+    "x": 310,
+    "y": 930,
+    "w": 260,
+    "h": 300
+   },
+   {
+    "t": "media",
+    "x": 590,
+    "y": 930,
+    "w": 260,
+    "h": 300
+   },
+   {
+    "t": "media",
+    "x": 870,
+    "y": 930,
+    "w": 260,
+    "h": 300
+   },
+   {
+    "t": "media",
+    "x": 1150,
+    "y": 930,
+    "w": 270,
+    "h": 300
+   },
+   {
+    "t": "text",
+    "x": 780,
+    "y": 1466,
+    "w": 580,
+    "h": 31
+   },
+   {
+    "t": "media",
+    "x": 20,
+    "y": 1510,
+    "w": 640,
+    "h": 290
+   },
+   {
+    "t": "text",
+    "x": 780,
+    "y": 1557,
+    "w": 580,
+    "h": 24
+   },
+   {
+    "t": "text",
+    "x": 780,
+    "y": 1595,
+    "w": 580,
+    "h": 144
+   },
+   {
+    "t": "text",
+    "x": 780,
+    "y": 1754,
+    "w": 580,
+    "h": 46
+   }
+  ]
+ },
+ "institutoriganum-cz": {
+  "url": "https://institutoriganum.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Institutoriganum.cz | Institut Origanum",
+  "desc": "Více než 30 let zkušeností v oboru",
+  "h1": "Privátní léčba závislostí a péče o duševní zdraví pro náročné klienty",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 160
+   },
+   {
+    "t": "text",
+    "x": 235,
+    "y": 263,
+    "w": 970,
+    "h": 264
+   },
+   {
+    "t": "text",
+    "x": 770,
+    "y": 790,
+    "w": 205,
+    "h": 203
+   },
+   {
+    "t": "media",
+    "x": 1065,
+    "y": 790,
+    "w": 275,
+    "h": 154
+   },
+   {
+    "t": "text",
+    "x": 100,
+    "y": 867,
+    "w": 570,
+    "h": 76
+   },
+   {
+    "t": "btn",
+    "x": 261,
+    "y": 977,
+    "w": 248,
+    "h": 49
+   },
+   {
+    "t": "text",
+    "x": 770,
+    "y": 1013,
+    "w": 275,
+    "h": 44
+   },
+   {
+    "t": "text",
+    "x": 770,
+    "y": 1077,
+    "w": 275,
+    "h": 25
+   },
+   {
+    "t": "text",
+    "x": 60,
+    "y": 1242,
+    "w": 570,
+    "h": 68
+   },
+   {
+    "t": "text",
+    "x": 810,
+    "y": 1242,
+    "w": 570,
+    "h": 68
+   },
+   {
+    "t": "text",
+    "x": 60,
+    "y": 1330,
+    "w": 570,
+    "h": 81
+   },
+   {
+    "t": "text",
+    "x": 60,
+    "y": 1416,
+    "w": 570,
+    "h": 81
+   },
+   {
+    "t": "text",
+    "x": 60,
+    "y": 1503,
+    "w": 570,
+    "h": 56
+   },
+   {
+    "t": "text",
+    "x": 60,
+    "y": 1564,
+    "w": 570,
+    "h": 56
+   },
+   {
+    "t": "text",
+    "x": 60,
+    "y": 1626,
+    "w": 570,
+    "h": 56
+   },
+   {
+    "t": "text",
+    "x": 60,
+    "y": 1687,
+    "w": 570,
+    "h": 56
+   },
+   {
+    "t": "text",
+    "x": 60,
+    "y": 1749,
+    "w": 570,
+    "h": 51
+   }
+  ]
+ },
+ "chelektrotechnik-cz": {
+  "url": "https://chelektrotechnik.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Profesionální elektrotechnické služby | silnoproud, slaboproud, měření a regulace",
+  "desc": "Česká elektrotechnická firma s odborností v silnoproudu, slaboproudu, měření a regulaci. Poskytujeme precizní řešení s důrazem na kvalitu, spolehlivost a inovace. Spolupracujte s profesionály v oboru!",
+  "h1": "Silný partner pro úspěch vašich projektů",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 130
+   },
+   {
+    "t": "text",
+    "x": 295,
+    "y": 458,
+    "w": 850,
+    "h": 259
+   },
+   {
+    "t": "btn",
+    "x": 644,
+    "y": 757,
+    "w": 153,
+    "h": 43
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 1353,
+    "w": 1280,
+    "h": 57
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 1430,
+    "w": 1280,
+    "h": 63
+   },
+   {
+    "t": "text",
+    "x": 140,
+    "y": 1708,
+    "w": 272,
+    "h": 31
+   },
+   {
+    "t": "text",
+    "x": 580,
+    "y": 1708,
+    "w": 272,
+    "h": 31
+   },
+   {
+    "t": "text",
+    "x": 1020,
+    "y": 1708,
+    "w": 272,
+    "h": 31
+   },
+   {
+    "t": "text",
+    "x": 140,
+    "y": 1759,
+    "w": 272,
+    "h": 41
+   },
+   {
+    "t": "text",
+    "x": 580,
+    "y": 1759,
+    "w": 272,
+    "h": 41
+   }
+  ]
+ },
+ "malirstvikamis-cz": {
+  "url": "https://malirstvikamis.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Nátěry fasád a malířské práce | Malířství Kamiš",
+  "desc": "Postaráme se o celý průběh malování – od přípravy až po finální úklid. Realizujeme profesionální nátěry fasád i výmalbu interiérů v Praze a Středočeském kraji.",
+  "h1": "Nátěry fasád a malířské práce",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 130
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 900
+   },
+   {
+    "t": "text",
+    "x": 345,
+    "y": 462,
+    "w": 750,
+    "h": 173
+   },
+   {
+    "t": "text",
+    "x": 349,
+    "y": 655,
+    "w": 743,
+    "h": 48
+   },
+   {
+    "t": "btn",
+    "x": 428,
+    "y": 737,
+    "w": 276,
+    "h": 63
+   },
+   {
+    "t": "btn",
+    "x": 724,
+    "y": 737,
+    "w": 288,
+    "h": 63
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 1438,
+    "w": 1280,
+    "h": 57
+   },
+   {
+    "t": "text",
+    "x": 140,
+    "y": 1685,
+    "w": 272,
+    "h": 31
+   },
+   {
+    "t": "text",
+    "x": 580,
+    "y": 1685,
+    "w": 272,
+    "h": 31
+   },
+   {
+    "t": "text",
+    "x": 1020,
+    "y": 1685,
+    "w": 272,
+    "h": 31
+   },
+   {
+    "t": "text",
+    "x": 140,
+    "y": 1737,
+    "w": 272,
+    "h": 63
+   },
+   {
+    "t": "text",
+    "x": 580,
+    "y": 1737,
+    "w": 272,
+    "h": 63
+   },
+   {
+    "t": "text",
+    "x": 1020,
+    "y": 1737,
+    "w": 272,
+    "h": 63
+   }
+  ]
+ },
+ "betonovyseptic-cz": {
+  "url": "https://betonovyseptic.cz/",
+  "w": 880,
+  "h": 2732,
+  "title": "betonovyseptic.cz",
+  "desc": "",
+  "h1": "Betonové jímky, septiky a žumpy do 4 dnů!",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 102
+   },
+   {
+    "t": "btn",
+    "x": 134,
+    "y": 25,
+    "w": 292,
+    "h": 52
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 101,
+    "w": 1440,
+    "h": 606
+   },
+   {
+    "t": "text",
+    "x": 134,
+    "y": 187,
+    "w": 650,
+    "h": 90
+   },
+   {
+    "t": "btn",
+    "x": 134,
+    "y": 574,
+    "w": 203,
+    "h": 46
+   },
+   {
+    "t": "text",
+    "x": 859,
+    "y": 838,
+    "w": 369,
+    "h": 38
+   },
+   {
+    "t": "text",
+    "x": 166,
+    "y": 885,
+    "w": 144,
+    "h": 28
+   },
+   {
+    "t": "text",
+    "x": 519,
+    "y": 885,
+    "w": 193,
+    "h": 28
+   },
+   {
+    "t": "media",
+    "x": 720,
+    "y": 1167,
+    "w": 720,
+    "h": 479
+   },
+   {
+    "t": "text",
+    "x": 134,
+    "y": 1333,
+    "w": 543,
+    "h": 76
+   },
+   {
+    "t": "text",
+    "x": 617,
+    "y": 1777,
+    "w": 207,
+    "h": 23
+   }
+  ]
+ },
+ "continest-cz": {
+  "url": "https://continest.cz/",
+  "w": 880,
+  "h": 3214,
+  "title": "Continest.cz",
+  "desc": "Skládací kontejnery Continest",
+  "h1": "Unikátní skládací kontejnery\nCONTINEST",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 130
+   },
+   {
+    "t": "text",
+    "x": 306,
+    "y": 378,
+    "w": 828,
+    "h": 144
+   },
+   {
+    "t": "text",
+    "x": 37,
+    "y": 1000,
+    "w": 683,
+    "h": 36
+   },
+   {
+    "t": "text",
+    "x": 860,
+    "y": 1040,
+    "w": 503,
+    "h": 48
+   },
+   {
+    "t": "media",
+    "x": 37,
+    "y": 1056,
+    "w": 683,
+    "h": 456
+   },
+   {
+    "t": "text",
+    "x": 860,
+    "y": 1102,
+    "w": 503,
+    "h": 144
+   },
+   {
+    "t": "text",
+    "x": 860,
+    "y": 1261,
+    "w": 503,
+    "h": 72
+   },
+   {
+    "t": "btn",
+    "x": 860,
+    "y": 1367,
+    "w": 227,
+    "h": 39
+   },
+   {
+    "t": "text",
+    "x": 37,
+    "y": 1646,
+    "w": 1366,
+    "h": 21
+   },
+   {
+    "t": "text",
+    "x": 37,
+    "y": 1687,
+    "w": 1366,
+    "h": 48
+   },
+   {
+    "t": "media",
+    "x": 37,
+    "y": 1795,
+    "w": 442,
+    "h": 5
+   },
+   {
+    "t": "media",
+    "x": 499,
+    "y": 1795,
+    "w": 442,
+    "h": 5
+   },
+   {
+    "t": "media",
+    "x": 961,
+    "y": 1795,
+    "w": 442,
+    "h": 5
+   }
+  ]
+ },
+ "sgm-international-nl": {
+  "url": "https://sgm-international.nl/",
+  "w": 880,
+  "h": 1570,
+  "title": "SGM is a real estate investment company | sgm-international.nl",
+  "desc": "Which directly or through its European subsidiaries invests in, develops and manages a diverse portfolio of real estate assets across Europe.",
+  "h1": "Established in 2002, SGM is a real estate investment company which directly or through its European subsidiaries invests in, develops and manages a diverse portfolio of real estate assets across Europe.",
+  "bloky": [
+   {
+    "t": "media",
+    "x": 0,
+    "y": 14,
+    "w": 1440,
+    "h": 638
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 153,
+    "w": 1440,
+    "h": 638
+   },
+   {
+    "t": "text",
+    "x": 330,
+    "y": 179,
+    "w": 780,
+    "h": 208
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 736,
+    "w": 1440,
+    "h": 296
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 838,
+    "w": 1440,
+    "h": 473
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 851,
+    "w": 1440,
+    "h": 473
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 1216,
+    "w": 1440,
+    "h": 198
+   },
+   {
+    "t": "text",
+    "x": 50,
+    "y": 1296,
+    "w": 1340,
+    "h": 34
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 1414,
+    "w": 1440,
+    "h": 386
+   },
+   {
+    "t": "media",
+    "x": 50,
+    "y": 1444,
+    "w": 407,
+    "h": 356
+   },
+   {
+    "t": "media",
+    "x": 517,
+    "y": 1444,
+    "w": 438,
+    "h": 291
+   },
+   {
+    "t": "media",
+    "x": 517,
+    "y": 1762,
+    "w": 438,
+    "h": 38
+   }
+  ]
+ },
+ "pronomahospitality-nl": {
+  "url": "https://pronomahospitality.nl/",
+  "w": 880,
+  "h": 1401,
+  "title": "Hotel investment management company | pronomahospitality.nl",
+  "desc": "Hotel investment management company established for pursuing an investment strategy in European hotels, resorts and touristic residence properties.",
+  "h1": "Pronoma is a hotel investment and management company established for pursuing an investment strategy in European hotels, resorts and touristic residence properties.",
+  "bloky": [
+   {
+    "t": "media",
+    "x": 0,
+    "y": 14,
+    "w": 1440,
+    "h": 596
+   },
+   {
+    "t": "text",
+    "x": 330,
+    "y": 179,
+    "w": 780,
+    "h": 166
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 763,
+    "w": 1440,
+    "h": 473
+   },
+   {
+    "t": "text",
+    "x": 50,
+    "y": 1419,
+    "w": 407,
+    "h": 26
+   },
+   {
+    "t": "text",
+    "x": 517,
+    "y": 1419,
+    "w": 407,
+    "h": 26
+   },
+   {
+    "t": "text",
+    "x": 983,
+    "y": 1419,
+    "w": 407,
+    "h": 26
+   },
+   {
+    "t": "text",
+    "x": 50,
+    "y": 1568,
+    "w": 407,
+    "h": 26
+   },
+   {
+    "t": "text",
+    "x": 517,
+    "y": 1568,
+    "w": 407,
+    "h": 26
+   },
+   {
+    "t": "text",
+    "x": 983,
+    "y": 1568,
+    "w": 407,
+    "h": 26
+   }
+  ]
+ },
+ "enecapgroup-com": {
+  "url": "https://enecapgroup.com/",
+  "w": 880,
+  "h": 3016,
+  "title": "Creating Value, Driving Success",
+  "desc": "Test",
+  "h1": "Vytváříme hodnoty, řídíme úspěch – to je naše cesta!",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 120
+   },
+   {
+    "t": "media",
+    "x": 45,
+    "y": 22,
+    "w": 300,
+    "h": 75
+   },
+   {
+    "t": "text",
+    "x": 408,
+    "y": 219,
+    "w": 625,
+    "h": 187
+   },
+   {
+    "t": "text",
+    "x": 408,
+    "y": 445,
+    "w": 625,
+    "h": 108
+   },
+   {
+    "t": "text",
+    "x": 408,
+    "y": 609,
+    "w": 625,
+    "h": 54
+   },
+   {
+    "t": "btn",
+    "x": 1271,
+    "y": 833,
+    "w": 149,
+    "h": 47
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 900,
+    "w": 1440,
+    "h": 643
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 1046,
+    "w": 1280,
+    "h": 53
+   },
+   {
+    "t": "text",
+    "x": 320,
+    "y": 1688,
+    "w": 800,
+    "h": 53
+   }
+  ]
+ },
+ "realityumore-com": {
+  "url": "https://realityumore.com/",
+  "w": 880,
+  "h": 3348,
+  "title": "Prodej nemovitostí v zahraničí | Realityumore.com",
+  "desc": "Uložte své finanční prostředky do nemovitosti v zahraničí, získáte tím i příjemnou možnost trávit dovolenou u moře a zhodnotíte finance. Prodejem nic nekončí, můžeme klientům zprostředkovat pronájem nemovitosti a generování dalších příjmů.",
+  "h1": "PRODEJ NEMOVITOSTÍ V ZAHRANIČÍ",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 150
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 630
+   },
+   {
+    "t": "media",
+    "x": 120,
+    "y": 39,
+    "w": 175,
+    "h": 72
+   },
+   {
+    "t": "btn",
+    "x": 1156,
+    "y": 57,
+    "w": 103,
+    "h": 32
+   },
+   {
+    "t": "text",
+    "x": 449,
+    "y": 252,
+    "w": 543,
+    "h": 22
+   },
+   {
+    "t": "text",
+    "x": 393,
+    "y": 293,
+    "w": 654,
+    "h": 50
+   },
+   {
+    "t": "btn",
+    "x": 604,
+    "y": 364,
+    "w": 233,
+    "h": 52
+   },
+   {
+    "t": "text",
+    "x": 141,
+    "y": 591,
+    "w": 1158,
+    "h": 31
+   },
+   {
+    "t": "text",
+    "x": 120,
+    "y": 873,
+    "w": 1200,
+    "h": 31
+   },
+   {
+    "t": "media",
+    "x": 120,
+    "y": 947,
+    "w": 373,
+    "h": 215
+   },
+   {
+    "t": "media",
+    "x": 533,
+    "y": 947,
+    "w": 373,
+    "h": 215
+   },
+   {
+    "t": "media",
+    "x": 947,
+    "y": 947,
+    "w": 373,
+    "h": 215
+   },
+   {
+    "t": "text",
+    "x": 140,
+    "y": 1199,
+    "w": 333,
+    "h": 36
+   },
+   {
+    "t": "text",
+    "x": 553,
+    "y": 1199,
+    "w": 333,
+    "h": 36
+   },
+   {
+    "t": "text",
+    "x": 967,
+    "y": 1199,
+    "w": 333,
+    "h": 18
+   },
+   {
+    "t": "media",
+    "x": 120,
+    "y": 1411,
+    "w": 373,
+    "h": 215
+   },
+   {
+    "t": "media",
+    "x": 533,
+    "y": 1411,
+    "w": 373,
+    "h": 215
+   },
+   {
+    "t": "media",
+    "x": 947,
+    "y": 1411,
+    "w": 373,
+    "h": 215
+   },
+   {
+    "t": "text",
+    "x": 140,
+    "y": 1663,
+    "w": 333,
+    "h": 36
+   },
+   {
+    "t": "text",
+    "x": 553,
+    "y": 1663,
+    "w": 333,
+    "h": 36
+   },
+   {
+    "t": "text",
+    "x": 967,
+    "y": 1663,
+    "w": 333,
+    "h": 18
+   }
+  ]
+ },
+ "hyposnadno-cz": {
+  "url": "https://hyposnadno.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Hypotéka bez stresu a složitostí | Nejvýhodnější sazby",
+  "desc": "Schválení do 14ti dní (od zaslání všech podkladů), zdarma znalecký odhad nemovistosti, zdarma zápis do katastru.",
+  "h1": "Přes 80 procent našich klientů dosáhne na hypotéku.",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 130
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 241,
+    "w": 630,
+    "h": 45
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 306,
+    "w": 630,
+    "h": 203
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 528,
+    "w": 630,
+    "h": 42
+   },
+   {
+    "t": "btn",
+    "x": 80,
+    "y": 604,
+    "w": 220,
+    "h": 54
+   },
+   {
+    "t": "text",
+    "x": 245,
+    "y": 858,
+    "w": 950,
+    "h": 135
+   },
+   {
+    "t": "text",
+    "x": 295,
+    "y": 1194,
+    "w": 850,
+    "h": 62
+   },
+   {
+    "t": "text",
+    "x": 666,
+    "y": 1461,
+    "w": 425,
+    "h": 32
+   }
+  ]
+ },
+ "moltalent-cz": {
+  "url": "https://moltalent.cz/",
+  "w": 880,
+  "h": 3131,
+  "title": "Nastartuj talent | Moltalent.cz",
+  "desc": "Rozvíjej své nadání a posuň ambice o stupínek výš! Podporujeme mladé vědce, sportovce i umělce.",
+  "h1": "NASTARTUJ TALENT",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 130
+   },
+   {
+    "t": "media",
+    "x": 80,
+    "y": 44,
+    "w": 1280,
+    "h": 720
+   },
+   {
+    "t": "text",
+    "x": 859,
+    "y": 235,
+    "w": 456,
+    "h": 154
+   },
+   {
+    "t": "text",
+    "x": 889,
+    "y": 439,
+    "w": 396,
+    "h": 78
+   },
+   {
+    "t": "btn",
+    "x": 889,
+    "y": 551,
+    "w": 191,
+    "h": 52
+   },
+   {
+    "t": "btn",
+    "x": 1100,
+    "y": 551,
+    "w": 104,
+    "h": 52
+   },
+   {
+    "t": "media",
+    "x": 1198,
+    "y": 578,
+    "w": 242,
+    "h": 405
+   },
+   {
+    "t": "text",
+    "x": 662,
+    "y": 838,
+    "w": 598,
+    "h": 48
+   },
+   {
+    "t": "media",
+    "x": 80,
+    "y": 876,
+    "w": 512,
+    "h": 275
+   },
+   {
+    "t": "text",
+    "x": 662,
+    "y": 906,
+    "w": 598,
+    "h": 96
+   },
+   {
+    "t": "text",
+    "x": 662,
+    "y": 1017,
+    "w": 598,
+    "h": 72
+   },
+   {
+    "t": "text",
+    "x": 662,
+    "y": 1103,
+    "w": 598,
+    "h": 72
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 1159,
+    "w": 126,
+    "h": 477
+   },
+   {
+    "t": "text",
+    "x": 180,
+    "y": 1350,
+    "w": 333,
+    "h": 48
+   },
+   {
+    "t": "text",
+    "x": 553,
+    "y": 1350,
+    "w": 333,
+    "h": 48
+   },
+   {
+    "t": "text",
+    "x": 927,
+    "y": 1350,
+    "w": 333,
+    "h": 48
+   },
+   {
+    "t": "text",
+    "x": 180,
+    "y": 1418,
+    "w": 333,
+    "h": 192
+   },
+   {
+    "t": "text",
+    "x": 553,
+    "y": 1418,
+    "w": 333,
+    "h": 192
+   },
+   {
+    "t": "text",
+    "x": 927,
+    "y": 1418,
+    "w": 333,
+    "h": 192
+   },
+   {
+    "t": "btn",
+    "x": 180,
+    "y": 1651,
+    "w": 128,
+    "h": 52
+   },
+   {
+    "t": "btn",
+    "x": 553,
+    "y": 1651,
+    "w": 128,
+    "h": 52
+   },
+   {
+    "t": "btn",
+    "x": 927,
+    "y": 1651,
+    "w": 128,
+    "h": 52
+   }
+  ]
+ },
+ "bspk-cz": {
+  "url": "https://bspk.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "bespoke LAWYERS",
+  "desc": "V bespoke LAWYERS transformujeme každý váš požadavek v mistrovské právní dílo, s přesností a odborností na míru vašim potřebám.",
+  "h1": "WHERE REAL ESTATE LAW MEETS MASTER MINDS",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 350
+   },
+   {
+    "t": "media",
+    "x": 520,
+    "y": 105,
+    "w": 400,
+    "h": 140
+   },
+   {
+    "t": "text",
+    "x": 120,
+    "y": 356,
+    "w": 1200,
+    "h": 187
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 1100,
+    "w": 1280,
+    "h": 106
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 1505,
+    "w": 224,
+    "h": 78
+   },
+   {
+    "t": "text",
+    "x": 344,
+    "y": 1505,
+    "w": 224,
+    "h": 26
+   },
+   {
+    "t": "text",
+    "x": 608,
+    "y": 1505,
+    "w": 224,
+    "h": 26
+   },
+   {
+    "t": "text",
+    "x": 872,
+    "y": 1505,
+    "w": 224,
+    "h": 52
+   },
+   {
+    "t": "text",
+    "x": 1136,
+    "y": 1505,
+    "w": 224,
+    "h": 26
+   }
+  ]
+ },
+ "mybelka-cz": {
+  "url": "https://mybelka.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Mybelka – Kožené kabelky dle Tvého návrhu",
+  "desc": "",
+  "h1": "",
+  "bloky": [
+   {
+    "t": "btn",
+    "x": 1096,
+    "y": 95,
+    "w": 109,
+    "h": 34
+   },
+   {
+    "t": "media",
+    "x": 150,
+    "y": 164,
+    "w": 732,
+    "h": 640
+   },
+   {
+    "t": "media",
+    "x": 882,
+    "y": 164,
+    "w": 558,
+    "h": 640
+   },
+   {
+    "t": "media",
+    "x": 894,
+    "y": 164,
+    "w": 396,
+    "h": 640
+   },
+   {
+    "t": "text",
+    "x": 190,
+    "y": 617,
+    "w": 480,
+    "h": 72
+   },
+   {
+    "t": "text",
+    "x": 922,
+    "y": 617,
+    "w": 254,
+    "h": 36
+   },
+   {
+    "t": "text",
+    "x": 934,
+    "y": 617,
+    "w": 263,
+    "h": 36
+   },
+   {
+    "t": "text",
+    "x": 934,
+    "y": 665,
+    "w": 316,
+    "h": 45
+   },
+   {
+    "t": "btn",
+    "x": 190,
+    "y": 730,
+    "w": 163,
+    "h": 42
+   },
+   {
+    "t": "btn",
+    "x": 922,
+    "y": 730,
+    "w": 201,
+    "h": 42
+   },
+   {
+    "t": "btn",
+    "x": 934,
+    "y": 730,
+    "w": 135,
+    "h": 42
+   },
+   {
+    "t": "text",
+    "x": 150,
+    "y": 884,
+    "w": 555,
+    "h": 72
+   },
+   {
+    "t": "text",
+    "x": 735,
+    "y": 884,
+    "w": 555,
+    "h": 72
+   },
+   {
+    "t": "text",
+    "x": 735,
+    "y": 966,
+    "w": 555,
+    "h": 24
+   },
+   {
+    "t": "media",
+    "x": 150,
+    "y": 1020,
+    "w": 555,
+    "h": 213
+   },
+   {
+    "t": "media",
+    "x": 735,
+    "y": 1020,
+    "w": 555,
+    "h": 213
+   },
+   {
+    "t": "text",
+    "x": 393,
+    "y": 1293,
+    "w": 245,
+    "h": 53
+   },
+   {
+    "t": "text",
+    "x": 150,
+    "y": 1484,
+    "w": 1140,
+    "h": 36
+   },
+   {
+    "t": "text",
+    "x": 150,
+    "y": 1525,
+    "w": 1140,
+    "h": 23
+   },
+   {
+    "t": "media",
+    "x": 150,
+    "y": 1573,
+    "w": 263,
+    "h": 227
+   },
+   {
+    "t": "media",
+    "x": 443,
+    "y": 1573,
+    "w": 263,
+    "h": 227
+   },
+   {
+    "t": "media",
+    "x": 735,
+    "y": 1573,
+    "w": 263,
+    "h": 227
+   },
+   {
+    "t": "media",
+    "x": 1028,
+    "y": 1573,
+    "w": 263,
+    "h": 227
+   }
+  ]
+ },
+ "dokuio-com": {
+  "url": "https://dokuio.com/",
+  "w": 880,
+  "h": 3149,
+  "title": "Vzory smluv zdarma v PDF – vyplňte online | Dokuio",
+  "desc": "Vzory smluv zdarma podle českého práva: kupní smlouva na auto, darovací smlouva, půjčka, plná moc. Vyplňte online, stáhněte PDF nebo Word.",
+  "h1": "Vzory smluv zdarma v PDF. Vyplňte online za pár minut, nebo si stáhněte prázdný vzor. I ve Wordu, bez registrace.",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 77
+   },
+   {
+    "t": "btn",
+    "x": 1236,
+    "y": 18,
+    "w": 100,
+    "h": 40
+   },
+   {
+    "t": "text",
+    "x": 163,
+    "y": 322,
+    "w": 920,
+    "h": 180
+   },
+   {
+    "t": "text",
+    "x": 163,
+    "y": 738,
+    "w": 820,
+    "h": 90
+   },
+   {
+    "t": "text",
+    "x": 163,
+    "y": 970,
+    "w": 1115,
+    "h": 21
+   },
+   {
+    "t": "text",
+    "x": 163,
+    "y": 1003,
+    "w": 364,
+    "h": 112
+   },
+   {
+    "t": "text",
+    "x": 538,
+    "y": 1003,
+    "w": 364,
+    "h": 112
+   },
+   {
+    "t": "text",
+    "x": 914,
+    "y": 1003,
+    "w": 364,
+    "h": 112
+   },
+   {
+    "t": "text",
+    "x": 163,
+    "y": 1127,
+    "w": 364,
+    "h": 112
+   },
+   {
+    "t": "text",
+    "x": 538,
+    "y": 1127,
+    "w": 364,
+    "h": 112
+   },
+   {
+    "t": "text",
+    "x": 163,
+    "y": 1276,
+    "w": 1115,
+    "h": 21
+   },
+   {
+    "t": "text",
+    "x": 163,
+    "y": 1309,
+    "w": 364,
+    "h": 112
+   },
+   {
+    "t": "text",
+    "x": 538,
+    "y": 1309,
+    "w": 364,
+    "h": 112
+   },
+   {
+    "t": "text",
+    "x": 914,
+    "y": 1309,
+    "w": 364,
+    "h": 112
+   },
+   {
+    "t": "text",
+    "x": 163,
+    "y": 1433,
+    "w": 364,
+    "h": 110
+   },
+   {
+    "t": "text",
+    "x": 538,
+    "y": 1433,
+    "w": 364,
+    "h": 110
+   },
+   {
+    "t": "text",
+    "x": 914,
+    "y": 1433,
+    "w": 364,
+    "h": 110
+   },
+   {
+    "t": "text",
+    "x": 163,
+    "y": 1579,
+    "w": 1115,
+    "h": 21
+   },
+   {
+    "t": "text",
+    "x": 163,
+    "y": 1612,
+    "w": 364,
+    "h": 112
+   },
+   {
+    "t": "text",
+    "x": 538,
+    "y": 1612,
+    "w": 364,
+    "h": 112
+   },
+   {
+    "t": "text",
+    "x": 163,
+    "y": 1760,
+    "w": 1115,
+    "h": 21
+   },
+   {
+    "t": "text",
+    "x": 163,
+    "y": 1793,
+    "w": 364,
+    "h": 7
+   },
+   {
+    "t": "text",
+    "x": 538,
+    "y": 1793,
+    "w": 364,
+    "h": 7
+   }
+  ]
+ },
+ "diteajacasopis-cz": {
+  "url": "https://diteajacasopis.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Diteajacasopis.cz | Časopis pro maminky",
+  "desc": "Dítě a já je čtvrtletník věnovaný maminkám malých dětí a všem jejich blízkým, kteří chtějí ověřené a srozumitelné informace, zajímavé a chytré tipy v návaznosti na témata, která řeší každý den.",
+  "h1": "Aktuální vydání časopisu\nDítě a já",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 130
+   },
+   {
+    "t": "media",
+    "x": 760,
+    "y": 170,
+    "w": 410,
+    "h": 581
+   },
+   {
+    "t": "text",
+    "x": 270,
+    "y": 388,
+    "w": 410,
+    "h": 67
+   },
+   {
+    "t": "btn",
+    "x": 425,
+    "y": 475,
+    "w": 101,
+    "h": 57
+   },
+   {
+    "t": "media",
+    "x": 20,
+    "y": 1011,
+    "w": 1400,
+    "h": 348
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 1480,
+    "w": 1400,
+    "h": 34
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 1554,
+    "w": 319,
+    "h": 246
+   },
+   {
+    "t": "media",
+    "x": 401,
+    "y": 1554,
+    "w": 638,
+    "h": 246
+   },
+   {
+    "t": "media",
+    "x": 1121,
+    "y": 1554,
+    "w": 319,
+    "h": 246
+   },
+   {
+    "t": "btn",
+    "x": 421,
+    "y": 1574,
+    "w": 81,
+    "h": 31
+   },
+   {
+    "t": "btn",
+    "x": 588,
+    "y": 1574,
+    "w": 105,
+    "h": 31
+   },
+   {
+    "t": "btn",
+    "x": 1141,
+    "y": 1574,
+    "w": 81,
+    "h": 31
+   },
+   {
+    "t": "btn",
+    "x": 1308,
+    "y": 1574,
+    "w": 105,
+    "h": 31
+   }
+  ]
+ },
+ "remax-drive-cz": {
+  "url": "https://remax-drive.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Remax-drive.cz | Realitní kancelář Benešovsko",
+  "desc": "Jsme součástí mezinárodní sítě realitních kanceláří RE/MAX, která nám zajišťuje ideální zázemí pro poskytování realitních služeb s vysokými standardy. Naši realitní kancelář najdete na Benešovsku, úspěšně prodáváme i nemovitosti vzdálenější.",
+  "h1": "",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 24,
+    "w": 1440,
+    "h": 1776
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 24,
+    "w": 180,
+    "h": 214
+   }
+  ]
+ },
+ "akbahylova-cz": {
+  "url": "https://akbahylova.cz/",
+  "w": 880,
+  "h": 3098,
+  "title": "Právní poradenství | Akbahylova.cz",
+  "desc": "Poskytuji právní služby jednotlivcům, podnikatelům i obchodním společnostem, a to v nejrůznějších odvětvích práva. Ke každému případu přistupuji s pečlivostí, zodpovědností a s respektem k Vašim potřebám. Dávám si záležet na tom, abyste se v průběhu spolupráce cítili jistě a rozuměli dalším krokům.",
+  "h1": "Mgr. Kateřina Bahylová",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 90
+   },
+   {
+    "t": "text",
+    "x": 430,
+    "y": 234,
+    "w": 580,
+    "h": 70
+   },
+   {
+    "t": "text",
+    "x": 345,
+    "y": 324,
+    "w": 750,
+    "h": 95
+   },
+   {
+    "t": "btn",
+    "x": 565,
+    "y": 454,
+    "w": 180,
+    "h": 45
+   },
+   {
+    "t": "btn",
+    "x": 765,
+    "y": 454,
+    "w": 111,
+    "h": 45
+   },
+   {
+    "t": "media",
+    "x": 80,
+    "y": 699,
+    "w": 512,
+    "h": 450
+   },
+   {
+    "t": "text",
+    "x": 692,
+    "y": 816,
+    "w": 668,
+    "h": 48
+   },
+   {
+    "t": "text",
+    "x": 694,
+    "y": 955,
+    "w": 666,
+    "h": 24
+   },
+   {
+    "t": "media",
+    "x": 976,
+    "y": 1199,
+    "w": 384,
+    "h": 575
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 1307,
+    "w": 796,
+    "h": 48
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 1375,
+    "w": 796,
+    "h": 95
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 1484,
+    "w": 796,
+    "h": 119
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 1618,
+    "w": 796,
+    "h": 71
+   }
+  ]
+ },
+ "herpetologie-cz": {
+  "url": "https://herpetologie.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Biologické průzkumy, odborný dozor a monitoring obojživelníků a plazů",
+  "desc": "Specializuji se na biologické průzkumy a ochranu obojživelníků a plazů v rámci stavebních i krajinářských projektů. Kombinuji dlouholeté terénní zkušenosti s moderními metodami, včetně detekce druhů pomocí eDNA.",
+  "h1": "Biologické průzkumy, odborný dozor\na monitoring obojživelníků a plazů",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 130
+   },
+   {
+    "t": "media",
+    "x": 80,
+    "y": 24,
+    "w": 250,
+    "h": 82
+   },
+   {
+    "t": "text",
+    "x": 141,
+    "y": 564,
+    "w": 1158,
+    "h": 101
+   },
+   {
+    "t": "btn",
+    "x": 141,
+    "y": 685,
+    "w": 130,
+    "h": 54
+   },
+   {
+    "t": "btn",
+    "x": 291,
+    "y": 685,
+    "w": 127,
+    "h": 54
+   },
+   {
+    "t": "media",
+    "x": 80,
+    "y": 1000,
+    "w": 413,
+    "h": 750
+   },
+   {
+    "t": "media",
+    "x": 468,
+    "y": 1107,
+    "w": 413,
+    "h": 536
+   },
+   {
+    "t": "text",
+    "x": 947,
+    "y": 1191,
+    "w": 413,
+    "h": 50
+   },
+   {
+    "t": "text",
+    "x": 947,
+    "y": 1262,
+    "w": 413,
+    "h": 250
+   },
+   {
+    "t": "btn",
+    "x": 947,
+    "y": 1546,
+    "w": 111,
+    "h": 54
+   }
+  ]
+ },
+ "polarispet-cz": {
+  "url": "https://polarispet.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Krmivo pro psy | Polarispet.cz",
+  "desc": "Dopřejte svému parťákovi výživu, která září přírodou! Ať už je jakýkoliv, každý pes si zaslouží být zdravý a spokojený. Krmivo Polaris je plné čerstvého masa, ovoce, zeleniny a dalších superpotravin. Bez lepku, sóji a pšenice. Jen funkční a kvalitní suroviny, které podporují imunitu, trávení, klouby, srdce i srst. ",
+  "h1": "Hvězda",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 180
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 900
+   },
+   {
+    "t": "media",
+    "x": 70,
+    "y": 42,
+    "w": 165,
+    "h": 96
+   },
+   {
+    "t": "text",
+    "x": 100,
+    "y": 185,
+    "w": 217,
+    "h": 78
+   },
+   {
+    "t": "text",
+    "x": 265,
+    "y": 253,
+    "w": 356,
+    "h": 78
+   },
+   {
+    "t": "media",
+    "x": 70,
+    "y": 396,
+    "w": 732,
+    "h": 299
+   },
+   {
+    "t": "btn",
+    "x": 70,
+    "y": 765,
+    "w": 270,
+    "h": 69
+   },
+   {
+    "t": "btn",
+    "x": 360,
+    "y": 765,
+    "w": 213,
+    "h": 69
+   },
+   {
+    "t": "media",
+    "x": 870,
+    "y": 820,
+    "w": 500,
+    "h": 361
+   },
+   {
+    "t": "text",
+    "x": 70,
+    "y": 952,
+    "w": 581,
+    "h": 81
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 1358,
+    "w": 69,
+    "h": 400
+   },
+   {
+    "t": "media",
+    "x": 89,
+    "y": 1358,
+    "w": 300,
+    "h": 400
+   },
+   {
+    "t": "media",
+    "x": 410,
+    "y": 1358,
+    "w": 300,
+    "h": 400
+   },
+   {
+    "t": "media",
+    "x": 730,
+    "y": 1358,
+    "w": 300,
+    "h": 400
+   },
+   {
+    "t": "media",
+    "x": 1050,
+    "y": 1358,
+    "w": 300,
+    "h": 400
+   },
+   {
+    "t": "media",
+    "x": 1370,
+    "y": 1358,
+    "w": 70,
+    "h": 400
+   }
+  ]
+ },
+ "uppio-cz": {
+  "url": "https://uppio.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Půjčovna a pronájem pracovních autoplošin | Uppio.cz",
+  "desc": "Snadné zapůjčení moderních autoplošin do 3.5 tuny s dosahem po celé České republice. ✔️ Nabízíme moderní pracovní autoplošiny, které prochází pravidelným servisem a kontrolami.",
+  "h1": "Půjčovna autoplošin",
+  "bloky": [
+   {
+    "t": "text",
+    "x": 37,
+    "y": 212,
+    "w": 522,
+    "h": 162
+   },
+   {
+    "t": "media",
+    "x": 619,
+    "y": 212,
+    "w": 784,
+    "h": 441
+   },
+   {
+    "t": "text",
+    "x": 37,
+    "y": 398,
+    "w": 522,
+    "h": 96
+   },
+   {
+    "t": "btn",
+    "x": 37,
+    "y": 542,
+    "w": 220,
+    "h": 47
+   },
+   {
+    "t": "btn",
+    "x": 273,
+    "y": 542,
+    "w": 245,
+    "h": 47
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 1437,
+    "w": 1440,
+    "h": 363
+   }
+  ]
+ },
+ "jdemeokrokdal-cz": {
+  "url": "https://jdemeokrokdal.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Iniciativa pro zálohování | Jdemeokrokdal.cz",
+  "desc": "Od nejlepších třídičů k nejlepším recyklátorům. Jdeme o krok dál! Jsme jedničky ve třídění obalových materiálů. Je však potřeba tyto materiály i správně recyklovat.",
+  "h1": "Evropa zálohuje! Aneb co s PET lahvemi a plechovkami na dovolené?",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 130
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 940
+   },
+   {
+    "t": "media",
+    "x": 110,
+    "y": 29,
+    "w": 175,
+    "h": 72
+   },
+   {
+    "t": "text",
+    "x": 110,
+    "y": 300,
+    "w": 1220,
+    "h": 215
+   },
+   {
+    "t": "text",
+    "x": 110,
+    "y": 335,
+    "w": 1220,
+    "h": 143
+   },
+   {
+    "t": "btn",
+    "x": 110,
+    "y": 538,
+    "w": 322,
+    "h": 66
+   },
+   {
+    "t": "btn",
+    "x": 110,
+    "y": 538,
+    "w": 234,
+    "h": 66
+   },
+   {
+    "t": "btn",
+    "x": 110,
+    "y": 538,
+    "w": 335,
+    "h": 66
+   },
+   {
+    "t": "btn",
+    "x": 110,
+    "y": 574,
+    "w": 289,
+    "h": 66
+   },
+   {
+    "t": "text",
+    "x": 110,
+    "y": 1090,
+    "w": 1220,
+    "h": 40
+   },
+   {
+    "t": "text",
+    "x": 110,
+    "y": 1150,
+    "w": 1220,
+    "h": 84
+   },
+   {
+    "t": "media",
+    "x": 100,
+    "y": 1640,
+    "w": 704,
+    "h": 160
+   },
+   {
+    "t": "text",
+    "x": 854,
+    "y": 1698,
+    "w": 476,
+    "h": 79
+   },
+   {
+    "t": "text",
+    "x": 854,
+    "y": 1797,
+    "w": 476,
+    "h": 3
+   }
+  ]
+ },
+ "promove21-cz": {
+  "url": "https://promove21.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Profesionální eventová agentura | | Promove21.cz",
+  "desc": "Specializujeme se na organizaci maturitních plesů, společenských a firemních eventů. S profesionálním přístupem se postaráme o každý detail Vaší akce.",
+  "h1": "Profesionální\neventová agentura",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 130
+   },
+   {
+    "t": "text",
+    "x": 491,
+    "y": 354,
+    "w": 459,
+    "h": 125
+   },
+   {
+    "t": "text",
+    "x": 345,
+    "y": 499,
+    "w": 750,
+    "h": 83
+   },
+   {
+    "t": "btn",
+    "x": 651,
+    "y": 616,
+    "w": 138,
+    "h": 46
+   },
+   {
+    "t": "media",
+    "x": 80,
+    "y": 1000,
+    "w": 433,
+    "h": 600
+   },
+   {
+    "t": "media",
+    "x": 473,
+    "y": 1050,
+    "w": 413,
+    "h": 500
+   },
+   {
+    "t": "text",
+    "x": 927,
+    "y": 1129,
+    "w": 129,
+    "h": 20
+   },
+   {
+    "t": "text",
+    "x": 927,
+    "y": 1251,
+    "w": 433,
+    "h": 83
+   },
+   {
+    "t": "btn",
+    "x": 927,
+    "y": 1424,
+    "w": 91,
+    "h": 47
+   },
+   {
+    "t": "media",
+    "x": 553,
+    "y": 1700,
+    "w": 433,
+    "h": 100
+   },
+   {
+    "t": "media",
+    "x": 947,
+    "y": 1750,
+    "w": 413,
+    "h": 50
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 1777,
+    "w": 114,
+    "h": 20
+   }
+  ]
+ },
+ "kancelarekologie-cz": {
+  "url": "https://kancelarekologie.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Kancelář krajinné ekologie",
+  "desc": "Jsme tým odborníků vedený Kateřinou Lagner Zímovou, krajinnou ekoložkou a nezávislou konzultantkou v oblasti životního prostředí. Kateřina miluje přírodu a zároveň fandí rozvoji technologií a lidské činnosti.",
+  "h1": "",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 130
+   },
+   {
+    "t": "media",
+    "x": 80,
+    "y": 29,
+    "w": 270,
+    "h": 72
+   },
+   {
+    "t": "media",
+    "x": 835,
+    "y": 138,
+    "w": 525,
+    "h": 525
+   },
+   {
+    "t": "media",
+    "x": 565,
+    "y": 413,
+    "w": 350,
+    "h": 350
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 470,
+    "w": 448,
+    "h": 72
+   },
+   {
+    "t": "btn",
+    "x": 80,
+    "y": 586,
+    "w": 162,
+    "h": 45
+   },
+   {
+    "t": "media",
+    "x": 720,
+    "y": 1000,
+    "w": 640,
+    "h": 600
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 1107,
+    "w": 540,
+    "h": 36
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 1163,
+    "w": 540,
+    "h": 120
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 1317,
+    "w": 540,
+    "h": 36
+   },
+   {
+    "t": "media",
+    "x": 80,
+    "y": 1600,
+    "w": 640,
+    "h": 200
+   },
+   {
+    "t": "text",
+    "x": 820,
+    "y": 1768,
+    "w": 540,
+    "h": 33
+   }
+  ]
+ },
+ "advokat-nemcova-cz": {
+  "url": "https://advokat-nemcova.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Advokátka pro každý životní příběh | Advokat-nemcova.cz",
+  "desc": "Jsem advokátka pro každý životní příběh. Poskytuji právní služby pro příběhy radostné i smutné, jednorázové i dlouhotrvající, osobní i pracovní.",
+  "h1": "Advokátka\npro každý životní příběh",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 135
+   },
+   {
+    "t": "media",
+    "x": 20,
+    "y": 25,
+    "w": 150,
+    "h": 86
+   },
+   {
+    "t": "btn",
+    "x": 1119,
+    "y": 39,
+    "w": 230,
+    "h": 58
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 293,
+    "w": 472,
+    "h": 128
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 1000,
+    "w": 1400,
+    "h": 57
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 1077,
+    "w": 1400,
+    "h": 58
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 1189,
+    "w": 1400,
+    "h": 31
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 1257,
+    "w": 1400,
+    "h": 31
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 1291,
+    "w": 1400,
+    "h": 31
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 1324,
+    "w": 1400,
+    "h": 29
+   },
+   {
+    "t": "text",
+    "x": 62,
+    "y": 1515,
+    "w": 369,
+    "h": 42
+   },
+   {
+    "t": "text",
+    "x": 535,
+    "y": 1515,
+    "w": 369,
+    "h": 42
+   },
+   {
+    "t": "text",
+    "x": 1009,
+    "y": 1515,
+    "w": 369,
+    "h": 42
+   },
+   {
+    "t": "text",
+    "x": 62,
+    "y": 1731,
+    "w": 369,
+    "h": 69
+   },
+   {
+    "t": "text",
+    "x": 535,
+    "y": 1731,
+    "w": 369,
+    "h": 42
+   },
+   {
+    "t": "text",
+    "x": 1009,
+    "y": 1731,
+    "w": 369,
+    "h": 69
+   }
+  ]
+ },
+ "homedesigner-cz": {
+  "url": "https://www.homedesigner.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "HOME DESIGNER | Luxusní interiéry na míru – Markéta Langrová",
+  "desc": "Luxusní návrhy a kompletní realizace interiérů na klíč. Navrhuji nadčasové, útulné a praktické interiéry.",
+  "h1": "",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 130
+   },
+   {
+    "t": "media",
+    "x": 100,
+    "y": 1184,
+    "w": 1240,
+    "h": 616
+   }
+  ]
+ },
+ "eezy-cz": {
+  "url": "https://eezy.cz/",
+  "w": 880,
+  "h": 3422,
+  "title": "Pořádáme konference a eventy na míru, vydáme vaši knihu či časopis | eezy.cz",
+  "desc": "Pořádáme konference a eventy na míru, vydáme vaši knihu či časopis. Vydali jsme již 450 titulů, máme přes 215 realizovaných akcí a jsme 15 let na trhu.",
+  "h1": "Pořádáme konference a eventy na míru,\nvydáváme knihy a časopisy",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 100
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 900
+   },
+   {
+    "t": "text",
+    "x": 295,
+    "y": 400,
+    "w": 850,
+    "h": 101
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 833,
+    "w": 264,
+    "h": 18
+   },
+   {
+    "t": "text",
+    "x": 304,
+    "y": 833,
+    "w": 264,
+    "h": 18
+   },
+   {
+    "t": "text",
+    "x": 588,
+    "y": 833,
+    "w": 264,
+    "h": 18
+   },
+   {
+    "t": "text",
+    "x": 872,
+    "y": 833,
+    "w": 264,
+    "h": 18
+   },
+   {
+    "t": "text",
+    "x": 1156,
+    "y": 833,
+    "w": 264,
+    "h": 18
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 1011,
+    "w": 1400,
+    "h": 16
+   },
+   {
+    "t": "text",
+    "x": 30,
+    "y": 1107,
+    "w": 690,
+    "h": 50
+   },
+   {
+    "t": "media",
+    "x": 30,
+    "y": 1177,
+    "w": 730,
+    "h": 430
+   },
+   {
+    "t": "text",
+    "x": 800,
+    "y": 1192,
+    "w": 530,
+    "h": 216
+   },
+   {
+    "t": "text",
+    "x": 800,
+    "y": 1204,
+    "w": 530,
+    "h": 192
+   },
+   {
+    "t": "text",
+    "x": 800,
+    "y": 1216,
+    "w": 530,
+    "h": 168
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 1727,
+    "w": 1400,
+    "h": 16
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 1763,
+    "w": 1400,
+    "h": 37
+   }
+  ]
+ },
+ "blejsknise-preciosa-com": {
+  "url": "https://blejsknise.preciosa.com/",
+  "w": 880,
+  "h": 2756,
+  "title": "Blejsknise.preciosa.com | Práce po škole",
+  "desc": "V Preciose dostaneš prostor rozvíjet svůj talent i svoje znalosti ze školy. Sáhneš si na jedinečný český křišťál i moderní technologie nebo zahraniční obchod. Stav nové stroje, zkoušej nové chemické postupy, hledej nové trendy.",
+  "h1": "Blejskni se s námi!",
+  "bloky": [
+   {
+    "t": "media",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 900
+   },
+   {
+    "t": "text",
+    "x": 286,
+    "y": 324,
+    "w": 869,
+    "h": 121
+   },
+   {
+    "t": "btn",
+    "x": 569,
+    "y": 658,
+    "w": 302,
+    "h": 74
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 1134,
+    "w": 1400,
+    "h": 74
+   },
+   {
+    "t": "media",
+    "x": 22,
+    "y": 1299,
+    "w": 237,
+    "h": 238
+   },
+   {
+    "t": "media",
+    "x": 312,
+    "y": 1299,
+    "w": 237,
+    "h": 238
+   },
+   {
+    "t": "media",
+    "x": 602,
+    "y": 1299,
+    "w": 237,
+    "h": 238
+   },
+   {
+    "t": "media",
+    "x": 892,
+    "y": 1299,
+    "w": 237,
+    "h": 238
+   },
+   {
+    "t": "media",
+    "x": 1182,
+    "y": 1299,
+    "w": 237,
+    "h": 238
+   },
+   {
+    "t": "text",
+    "x": 600,
+    "y": 1557,
+    "w": 240,
+    "h": 72
+   }
+  ]
+ },
+ "fundr-cz": {
+  "url": "https://fundr.cz/",
+  "w": 880,
+  "h": 2904,
+  "title": "Nová éra českého F2F fundraisingu | Fundr.cz",
+  "desc": "Bezpečně, transparentně, bez hotovosti! Seznamte se s novou tváří F2F fundraisingu v Česku. České neziskovky přicházejí s novým pilířem udržitelného financování: Profesionální F2F fundraising propojuje dárce s neziskovkami bezpečně a bez nátlaku.",
+  "h1": "Bezpečně, transparentně, bez hotovosti! Seznamte se s novou tváří F2F fundraisingu v Česku",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 130
+   },
+   {
+    "t": "media",
+    "x": 100,
+    "y": 130,
+    "w": 1240,
+    "h": 891
+   },
+   {
+    "t": "text",
+    "x": 200,
+    "y": 278,
+    "w": 505,
+    "h": 430
+   },
+   {
+    "t": "btn",
+    "x": 200,
+    "y": 862,
+    "w": 241,
+    "h": 59
+   },
+   {
+    "t": "btn",
+    "x": 471,
+    "y": 862,
+    "w": 234,
+    "h": 59
+   },
+   {
+    "t": "text",
+    "x": 735,
+    "y": 1101,
+    "w": 605,
+    "h": 74
+   },
+   {
+    "t": "text",
+    "x": 100,
+    "y": 1149,
+    "w": 605,
+    "h": 46
+   },
+   {
+    "t": "text",
+    "x": 756,
+    "y": 1220,
+    "w": 584,
+    "h": 84
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 1567,
+    "w": 560,
+    "h": 46
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 1643,
+    "w": 560,
+    "h": 124
+   }
+  ]
+ },
+ "centrum-senorina-cz": {
+  "url": "https://centrum-senorina.cz/",
+  "w": 880,
+  "h": 2096,
+  "title": "Centrum-senorina.cz | centrum-senorina.cz",
+  "desc": "Podporujeme rodiny pečující o blízké s Alzheimerovou nemocí a dalšími typy demence. Poradna, odlehčovací služby, podpůrné skupiny, osvěta.",
+  "h1": "",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 220
+   },
+   {
+    "t": "media",
+    "x": 150,
+    "y": 40,
+    "w": 125,
+    "h": 141
+   },
+   {
+    "t": "btn",
+    "x": 910,
+    "y": 49,
+    "w": 99,
+    "h": 53
+   },
+   {
+    "t": "media",
+    "x": 170,
+    "y": 310,
+    "w": 327,
+    "h": 250
+   },
+   {
+    "t": "media",
+    "x": 557,
+    "y": 310,
+    "w": 327,
+    "h": 250
+   },
+   {
+    "t": "media",
+    "x": 943,
+    "y": 310,
+    "w": 327,
+    "h": 250
+   },
+   {
+    "t": "text",
+    "x": 170,
+    "y": 585,
+    "w": 327,
+    "h": 36
+   },
+   {
+    "t": "text",
+    "x": 557,
+    "y": 585,
+    "w": 327,
+    "h": 36
+   },
+   {
+    "t": "text",
+    "x": 943,
+    "y": 585,
+    "w": 327,
+    "h": 36
+   },
+   {
+    "t": "text",
+    "x": 170,
+    "y": 641,
+    "w": 327,
+    "h": 54
+   },
+   {
+    "t": "text",
+    "x": 557,
+    "y": 641,
+    "w": 327,
+    "h": 81
+   },
+   {
+    "t": "text",
+    "x": 943,
+    "y": 641,
+    "w": 327,
+    "h": 54
+   },
+   {
+    "t": "text",
+    "x": 245,
+    "y": 827,
+    "w": 950,
+    "h": 90
+   },
+   {
+    "t": "text",
+    "x": 285,
+    "y": 954,
+    "w": 870,
+    "h": 54
+   },
+   {
+    "t": "text",
+    "x": 285,
+    "y": 1026,
+    "w": 870,
+    "h": 108
+   },
+   {
+    "t": "text",
+    "x": 285,
+    "y": 1152,
+    "w": 870,
+    "h": 81
+   },
+   {
+    "t": "text",
+    "x": 285,
+    "y": 1251,
+    "w": 870,
+    "h": 27
+   },
+   {
+    "t": "text",
+    "x": 150,
+    "y": 1396,
+    "w": 1140,
+    "h": 45
+   },
+   {
+    "t": "media",
+    "x": 0,
+    "y": 1511,
+    "w": 106,
+    "h": 125
+   },
+   {
+    "t": "media",
+    "x": 194,
+    "y": 1511,
+    "w": 140,
+    "h": 125
+   },
+   {
+    "t": "media",
+    "x": 422,
+    "y": 1511,
+    "w": 140,
+    "h": 125
+   },
+   {
+    "t": "media",
+    "x": 650,
+    "y": 1511,
+    "w": 140,
+    "h": 125
+   },
+   {
+    "t": "media",
+    "x": 878,
+    "y": 1511,
+    "w": 140,
+    "h": 125
+   },
+   {
+    "t": "media",
+    "x": 1106,
+    "y": 1511,
+    "w": 140,
+    "h": 125
+   },
+   {
+    "t": "media",
+    "x": 1334,
+    "y": 1511,
+    "w": 106,
+    "h": 125
+   },
+   {
+    "t": "btn",
+    "x": 596,
+    "y": 1706,
+    "w": 249,
+    "h": 45
+   }
+  ]
+ },
+ "katalog-kempu-cz": {
+  "url": "https://katalog-kempu.cz/",
+  "w": 880,
+  "h": 3004,
+  "title": "Katalog-kempu.cz",
+  "desc": "Nejlepší vyhledávač kempů v Evropě. Podívejte se kam vyrazit příště.",
+  "h1": "Máme pro vás tipy na nejlepší místa ke kempování",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 200
+   },
+   {
+    "t": "text",
+    "x": 345,
+    "y": 237,
+    "w": 750,
+    "h": 114
+   },
+   {
+    "t": "btn",
+    "x": 630,
+    "y": 425,
+    "w": 180,
+    "h": 48
+   },
+   {
+    "t": "media",
+    "x": 740,
+    "y": 750,
+    "w": 600,
+    "h": 100
+   },
+   {
+    "t": "text",
+    "x": 80,
+    "y": 770,
+    "w": 620,
+    "h": 57
+   },
+   {
+    "t": "media",
+    "x": 100,
+    "y": 1032,
+    "w": 360,
+    "h": 240
+   },
+   {
+    "t": "media",
+    "x": 540,
+    "y": 1032,
+    "w": 360,
+    "h": 240
+   },
+   {
+    "t": "media",
+    "x": 980,
+    "y": 1032,
+    "w": 360,
+    "h": 240
+   },
+   {
+    "t": "text",
+    "x": 100,
+    "y": 1308,
+    "w": 360,
+    "h": 57
+   },
+   {
+    "t": "text",
+    "x": 540,
+    "y": 1308,
+    "w": 360,
+    "h": 57
+   },
+   {
+    "t": "text",
+    "x": 980,
+    "y": 1308,
+    "w": 360,
+    "h": 29
+   },
+   {
+    "t": "media",
+    "x": 100,
+    "y": 1485,
+    "w": 360,
+    "h": 240
+   },
+   {
+    "t": "media",
+    "x": 540,
+    "y": 1485,
+    "w": 360,
+    "h": 240
+   },
+   {
+    "t": "media",
+    "x": 980,
+    "y": 1485,
+    "w": 360,
+    "h": 240
+   },
+   {
+    "t": "text",
+    "x": 100,
+    "y": 1762,
+    "w": 360,
+    "h": 38
+   },
+   {
+    "t": "text",
+    "x": 540,
+    "y": 1762,
+    "w": 360,
+    "h": 29
+   },
+   {
+    "t": "text",
+    "x": 980,
+    "y": 1762,
+    "w": 360,
+    "h": 29
+   }
+  ]
+ },
+ "zdravotnictvi-medicina-cz": {
+  "url": "https://zdravotnictvi-medicina.cz/",
+  "w": 880,
+  "h": 3193,
+  "title": "Zdravotnictvi-medicina.cz | Zdravotnictvi-medicina.cz",
+  "desc": "Odborný informační portál pro lékaře, farmaceuty, sestry a další ošetřovatelské profese, manažery ve zdravotnictví a zaměstnance státní správy, který",
+  "h1": "",
+  "bloky": [
+   {
+    "t": "bar",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 130
+   },
+   {
+    "t": "text",
+    "x": 20,
+    "y": 170,
+    "w": 980,
+    "h": 36
+   },
+   {
+    "t": "text",
+    "x": 1040,
+    "y": 170,
+    "w": 380,
+    "h": 36
+   },
+   {
+    "t": "media",
+    "x": 20,
+    "y": 226,
+    "w": 980,
+    "h": 550
+   },
+   {
+    "t": "media",
+    "x": 1040,
+    "y": 226,
+    "w": 400,
+    "h": 550
+   },
+   {
+    "t": "media",
+    "x": 1040,
+    "y": 226,
+    "w": 170,
+    "h": 140
+   },
+   {
+    "t": "text",
+    "x": 1230,
+    "y": 261,
+    "w": 170,
+    "h": 17
+   },
+   {
+    "t": "text",
+    "x": 1230,
+    "y": 281,
+    "w": 170,
+    "h": 51
+   },
+   {
+    "t": "media",
+    "x": 200,
+    "y": 386,
+    "w": 380,
+    "h": 523
+   },
+   {
+    "t": "media",
+    "x": 620,
+    "y": 386,
+    "w": 380,
+    "h": 523
+   },
+   {
+    "t": "media",
+    "x": 1040,
+    "y": 386,
+    "w": 380,
+    "h": 523
+   },
+   {
+    "t": "text",
+    "x": 60,
+    "y": 816,
+    "w": 900,
+    "h": 17
+   },
+   {
+    "t": "text",
+    "x": 1080,
+    "y": 816,
+    "w": 360,
+    "h": 17
+   },
+   {
+    "t": "text",
+    "x": 60,
+    "y": 843,
+    "w": 900,
+    "h": 73
+   },
+   {
+    "t": "text",
+    "x": 1080,
+    "y": 843,
+    "w": 360,
+    "h": 73
+   },
+   {
+    "t": "media",
+    "x": 1040,
+    "y": 929,
+    "w": 170,
+    "h": 140
+   },
+   {
+    "t": "text",
+    "x": 1230,
+    "y": 955,
+    "w": 170,
+    "h": 17
+   },
+   {
+    "t": "text",
+    "x": 1230,
+    "y": 975,
+    "w": 170,
+    "h": 68
+   },
+   {
+    "t": "media",
+    "x": 1040,
+    "y": 1109,
+    "w": 170,
+    "h": 140
+   },
+   {
+    "t": "text",
+    "x": 1230,
+    "y": 1144,
+    "w": 170,
+    "h": 17
+   },
+   {
+    "t": "text",
+    "x": 1230,
+    "y": 1164,
+    "w": 170,
+    "h": 51
+   },
+   {
+    "t": "media",
+    "x": 20,
+    "y": 1179,
+    "w": 300,
+    "h": 250
+   },
+   {
+    "t": "media",
+    "x": 360,
+    "y": 1179,
+    "w": 300,
+    "h": 250
+   },
+   {
+    "t": "media",
+    "x": 700,
+    "y": 1179,
+    "w": 300,
+    "h": 250
+   },
+   {
+    "t": "media",
+    "x": 1040,
+    "y": 1289,
+    "w": 170,
+    "h": 140
+   },
+   {
+    "t": "text",
+    "x": 1230,
+    "y": 1324,
+    "w": 170,
+    "h": 17
+   },
+   {
+    "t": "text",
+    "x": 1230,
+    "y": 1344,
+    "w": 170,
+    "h": 51
+   },
+   {
+    "t": "text",
+    "x": 40,
+    "y": 1449,
+    "w": 260,
+    "h": 17
+   },
+   {
+    "t": "text",
+    "x": 380,
+    "y": 1449,
+    "w": 260,
+    "h": 17
+   },
+   {
+    "t": "text",
+    "x": 720,
+    "y": 1449,
+    "w": 260,
+    "h": 17
+   },
+   {
+    "t": "media",
+    "x": 1040,
+    "y": 1469,
+    "w": 170,
+    "h": 140
+   },
+   {
+    "t": "text",
+    "x": 40,
+    "y": 1476,
+    "w": 260,
+    "h": 70
+   },
+   {
+    "t": "text",
+    "x": 380,
+    "y": 1476,
+    "w": 260,
+    "h": 94
+   },
+   {
+    "t": "text",
+    "x": 720,
+    "y": 1476,
+    "w": 260,
+    "h": 47
+   },
+   {
+    "t": "text",
+    "x": 1230,
+    "y": 1512,
+    "w": 170,
+    "h": 17
+   },
+   {
+    "t": "text",
+    "x": 1230,
+    "y": 1532,
+    "w": 170,
+    "h": 34
+   },
+   {
+    "t": "media",
+    "x": 200,
+    "y": 1629,
+    "w": 380,
+    "h": 171
+   },
+   {
+    "t": "media",
+    "x": 620,
+    "y": 1629,
+    "w": 380,
+    "h": 171
+   },
+   {
+    "t": "media",
+    "x": 1040,
+    "y": 1629,
+    "w": 380,
+    "h": 171
+   }
+  ]
  }
 }
