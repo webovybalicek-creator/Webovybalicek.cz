@@ -278,7 +278,7 @@ def build():
         body = body.replace("{{projects}}", render_projects(projekty))
         body = body.replace("{{shots_demo}}", render_shots(vyber, snimky, limit=4, demo=True))
         body = re.sub(r"\{\{shots_pick:([\w,.-]+)(?:\|([^}]*))?\}\}", lambda m: render_shots(
-            [pick(k, m.group(2)) for k in m.group(1).split(",") if pick(k, m.group(2))], snimky, demo=True).replace("shots--demo", "shots--pick"), body)
+            [pick(k, m.group(2)) for k in sorted(dict.fromkeys(m.group(1).split(",")), key=lambda k: k not in vyber_by) if pick(k, m.group(2))], snimky, demo=True).replace("shots--demo", "shots--pick"), body)
         body = body.replace("{{shots_grid}}", render_shots(vyber, snimky, limit=6, big=True))
         years = date.today().year - GOOGLE["since"]
         body = body.replace("{{g_rating}}", GOOGLE["rating"])
