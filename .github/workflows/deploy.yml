@@ -13,8 +13,27 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    env:
+      # ostrý web = repo webovybalicek.cz, náhled = repo New.webovybalicek.cz
+      PROD: ${{ github.event.repository.name == 'webovybalicek.cz' }}
+      STAGING: ${{ github.event.repository.name == 'webovybalicek.cz' && '0' || '1' }}
+      # cílová složka na ostrém FTP (prázdné = jen sonda, nic nenahrává)
+      FTP_DIR: ''
     steps:
       - uses: actions/checkout@v4
+
+      - name: Sonda FTP (jen ostrý repozitář)
+        if: env.PROD == 'true'
+        env:
+          H: ${{ secrets.FTP_SERVER }}
+          U: ${{ secrets.FTP_USERNAME }}
+          P: ${{ secrets.FTP_PASSWORD }}
+          S1: ${{ secrets.SLEVA_KOD }}
+          S2: ${{ secrets.SLACK_WEBHOOK }}
+        run: |
+          echo "FTP_SERVER: ${H:+ano}  FTP_USERNAME: ${U:+ano}  FTP_PASSWORD: ${P:+ano}  SLEVA_KOD: ${S1:+ano}  SLACK_WEBHOOK: ${S2:+ano}"
+          sudo apt-get install -y -qq lftp >/dev/null
+          lftp -u "$U","$P" -e "set ssl:verify-certificate no; pwd; cls -1aF; bye" "$H" || true
 
       - name: Build
         run: python3 build.py && pip install -q beautifulsoup4 && python3 tools/brand.py && python3 build.py
@@ -30,10 +49,11 @@ jobs:
         run: printf '<?php $SLACK_WEBHOOK = %s;\n' "$(python3 -c 'import json,os;print(json.dumps(os.environ.get("SLACK_WEBHOOK","")))')" > dist/slack-config.php
 
       - name: Nahrát na FTP
+        if: env.PROD != 'true' || env.FTP_DIR != ''
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          server-dir: ./
+          server-dir: ${{ env.PROD == 'true' && env.FTP_DIR || './' }}
