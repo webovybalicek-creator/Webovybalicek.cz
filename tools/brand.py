@@ -90,7 +90,7 @@ B = [
  ('B18', 'Tým', '.team', 'o-nas', '.team'),
  ('B19', 'Jak pracujeme – bento', '.ob-a', 'o-nas', '.ob-a'),
  ('B20', 'Karta osoby', '.person', 'digital-project-manager-consultant', '.person'),
- ('B21', 'Přepínač s kartou (explorer)', '.explorer', 'jak-probiha-tvorba-webu-a-nase-spoluprace', '.explorer'),
+ ('B21', 'Dvě karty se štítky (Co si připravit)', '.prep', 'jak-probiha-tvorba-webu-a-nase-spoluprace', '.prep'),
  ('B22', 'Boční karta', '.aside-card', 'jak-probiha-tvorba-webu-a-nase-spoluprace', '.aside-card'),
  ('B23', 'Plugin – karta s dlaždicí', '.plugins .card', 'doporucene-pluginy', '.plugins'),
  ('B24', 'Slevový formulář', '.sleva', 'doporucene-pluginy', '.sleva'),
