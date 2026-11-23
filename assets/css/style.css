@@ -1671,3 +1671,14 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
 @media (max-width: 960px) { .feature-card--featured, .web-types, .noslop { margin-top: 14px; } }
 @media (max-width: 760px) { .price-card--featured, .has-flag, .prep-card { margin-top: 14px; } }
 .glossary:last-child { margin-bottom: 0; } /* poslední okruh: bez extra mezery nad CTA */
+/* svislé kroky: tečková linka jen mezi kroky (končí u posledního kolečka), dosažený úsek černě */
+.steps--b.steps--v::before, .steps--b.steps--v::after { display: none; }
+.steps--v li { position: relative; }
+.steps--v li:not(:last-child)::before { content: ""; position: absolute; left: 21px; top: 52px; bottom: -22px; width: 4px; background: radial-gradient(circle, #c4c7c9 1.5px, transparent 2px) 50% 0 / 4px 10px repeat-y; }
+.steps--v li.is-on:has(+ li.is-on)::before { background-image: radial-gradient(circle, var(--ink) 1.7px, transparent 2.1px); }
+@media (max-width: 860px) {
+  .steps--b::before, .steps--b::after { display: none; }
+  .steps--b li { position: relative; }
+  .steps--b li:not(:last-child)::before { content: ""; position: absolute; left: 21px; top: 52px; bottom: -22px; width: 4px; background: radial-gradient(circle, #c4c7c9 1.5px, transparent 2px) 50% 0 / 4px 10px repeat-y; }
+  .steps--b li.is-on:has(+ li.is-on)::before { background-image: radial-gradient(circle, var(--ink) 1.7px, transparent 2.1px); }
+}
