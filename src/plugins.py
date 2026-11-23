@@ -150,11 +150,11 @@ ICO = [
 ]
 
 
-def sleva_block(name):
+def sleva_block(name, free=False):
     return f'''<div class="sleva sleva--bar" id="sleva">
         <div class="sleva-copy">
           <span class="sleva-tag">Sleva</span>
-          <h2>Chcete plugin {e(name)} levněji?</h2>
+          <h2>{'Sleva na další pluginy Toret' if free else f'Chcete plugin {e(name)} levněji?'}</h2>
           <p>Nechte nám e-mail a pošleme vám náš slevový kód na pluginy Toret. Uplatníte ho v košíku na toret.cz.</p>
         </div>
         <form class="sleva-form" data-sleva novalidate>
@@ -198,9 +198,11 @@ def detail(p, data, seo):
     benefits = "".join(
         f'<article class="card pay-card"><svg class="pillar-ico" viewBox="0 0 20 20" aria-hidden="true">{ICO[i % 4]}</svg><h3>{e(t)}</h3><p>{e(x)}</p></article>'
         for i, (t, x) in enumerate(S.get("b", [])))
-    faqs = list(S.get("q", [])) + [
+    own = list(S.get("q", []))
+    has_price = any("stojí" in q for q, _ in own)
+    faqs = own + ([] if has_price else [
         (f"Kolik stojí plugin {p['n']}?",
-         "Plugin je zdarma." if free else f"Licence stojí {price(p)} a zahrnuje aktualizace a podporu Toretu. Se slevovým kódem, který vám pošleme, ušetříte."),
+         "Plugin je zdarma." if free else f"Licence stojí {price(p)} a zahrnuje aktualizace a podporu Toretu. Se slevovým kódem, který vám pošleme, ušetříte.")]) + [
         ("Nainstalujete a nastavíte mi plugin?", "Ano. Plugin vám nainstalujeme, napojíme a nastavíme na míru vašemu e-shopu. Stačí nám napsat."),
         ("Je plugin kompatibilní s Elementorem a dalšími pluginy?", "Pluginy Toret jsou navzájem kompatibilní a fungují s Elementorem, Divi i Gutenbergem. Pravidelně se aktualizují."),
     ]
@@ -265,7 +267,7 @@ def detail(p, data, seo):
         <a href="{BASE}" class="btn btn--outline">Všechny pluginy</a>
       </div>
       <div class="plugins">{rel}</div>
-      {"" if free else sleva_block(p["n"])}
+      {sleva_block(p["n"], free)}
       <p class="note note--small">Odkazy jsou partnerské. Když přes ně nakoupíte, dostaneme malou provizi a vás to nic navíc nestojí. Cena je orientační za roční licenci, aktuální uvidíte na toret.cz.</p>
     </div>
   </section>
