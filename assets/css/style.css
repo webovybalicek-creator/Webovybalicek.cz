@@ -1700,3 +1700,7 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
 }
 
 @media (max-width: 960px) { :root { --header-h: 77px; } }
+
+/* nový úvod (náhled ?uvod=tecky, hero-dots.js): nadpis nad tečkami, koule ho nepřekryje */
+.hero-stage.has-dots .hero-copy .hero-title { z-index: 3; }
+.hero-stage.has-dots .hero-canvas { touch-action: pan-y; }

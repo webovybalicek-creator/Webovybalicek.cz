@@ -373,7 +373,9 @@ document.querySelectorAll('.tools').forEach((box) => {
   design(cursor('Návrh', '#0a1217', '#fff', '#fff'));
   typist(cursor('Texty', '#cdfe00', '#0a1217', '#cdfe00'), 'air-type--text', 1600,
     (W, H, wide) => wide ? [W * 0.6, H * 0.34] : [W - 232, 232],
-    (wide) => wide ? ['Klikněte na bublinu', 'Potáhněte bublinu →'] : ['Klepněte na bublinu ↗']);
+    (wide) => /[?&]uvod=tecky/.test(location.search)
+      ? (wide ? ['Klikněte na kouli', 'Vytáhněte kus koule →'] : ['Klepněte na kouli ↗'])
+      : (wide ? ['Klikněte na bublinu', 'Potáhněte bublinu →'] : ['Klepněte na bublinu ↗']));
   typist(cursor('Kód', '#54595d', '#fff', '#fff'), 'air-type--code', 3200,
     (W, H, wide) => wide ? [W * 0.7, H * 0.8] : [16, 92],
     () => ['<html lang="cs">', '<h1>Tvorba webů</h1>', '<a href="#kontakt">', 'npm run build']);

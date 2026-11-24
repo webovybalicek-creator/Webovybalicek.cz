@@ -1,6 +1,7 @@
 // Úvod – perleťová hmota přilepená v rohu. Dá se z ní trhat (tah za hmotu) a řezat (tah přes hmotu).
 // Každá odtržená kapka = jeden bod z [data-hero-points]. Bez WebGL zůstane statický úvod.
 (() => {
+  if (/[?&]uvod=tecky/.test(location.search)) return; // náhled nového úvodu (hero-dots.js)
   const stage = document.querySelector('[data-hero]');
   if (!stage) return;
   const canvas = stage.querySelector('.hero-canvas');
