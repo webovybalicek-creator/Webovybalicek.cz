@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Náhledy pro sdílení (og:image 1200×630) pro KAŽDOU veřejnou URL webu.
 
-Styl: perleťová hmota z úvodu (tools/og-blob.png = snímek hero canvasu), limetkové kapky,
-tečkový rastr, kurzory se štítky, nadpis s limetkovým podtržením, logo jako v hlavičce.
+Styl úvodu (od 24. 11. 2026): tečkový rastr pozadí (22 px), který v pravém horním rohu pravidelně roste
+(šedý halftone), z rohu vytažené kuličky (jedna limetková = vybraná, ostatní šedé) s řetízkem,
+kurzory se štítky, nadpis s limetkovým podtržením, logo jako v hlavičce.
 
 Postup:
   python3 build.py            # zapíše tools/og-jobs.json (texty všech stránek)
@@ -43,11 +44,8 @@ CSS = f"""
 @font-face {{ font-family: Aspekta; src: url(/assets/fonts/AspektaVF.woff2) format("woff2"); font-weight: 100 900; }}
 * {{ box-sizing: border-box; margin: 0; }}
 body {{ width: 1200px; height: 630px; overflow: hidden; position: relative; font-family: Geist, sans-serif; color: #0a1217;
-  background: #f6f6f6 radial-gradient(circle, rgba(10,18,23,.16) 1.1px, transparent 1.6px) 0 0 / 22px 22px; }}
-.blob {{ position: absolute; left: 40px; top: -48px; width: 1200px; height: 630px; }}
-.ball {{ position: absolute; border-radius: 50%;
-  background: radial-gradient(circle at 34% 30%, #fbffd9 0 6%, #e6ff5c 22%, #cdfe00 48%, #a9d400 82%, #8db000 100%);
-  box-shadow: 0 24px 40px -14px rgba(90,110,0,.45); }}
+  background: #fff; }}
+.dots {{ position: absolute; inset: 0; }}
 .tag {{ position: absolute; display: flex; align-items: flex-start; gap: 2px; }}
 .tag span {{ margin-top: 14px; padding: 5px 10px; border-radius: 999px; background: #cdfe00; font: 600 15px/1 Geist, sans-serif; white-space: nowrap; }}
 .tag span.dark {{ background: #0a1217; color: #cdfe00; }}
@@ -62,6 +60,49 @@ h1 em {{ font-style: normal; background: {WAVE} left 0 bottom .12em / 200% .5em 
 .pill {{ padding: 10px 18px; border-radius: 999px; background: #0a1217; color: #fff; font-weight: 600; white-space: nowrap; }}
 .pill b {{ color: #cdfe00; }}
 """
+
+
+GRID, RC, CORNER = 22, 700, (1200, 0)
+BALLS = [  # vytažené kuličky: (x, y, r, barva) – limetková = vybraná (jako varianta C v úvodu)
+    (905, 352, 30, "#cdfe00"),
+    (742, 478, 15, "#969ca0"),
+    (1062, 520, 12, "#969ca0"),
+]
+CHAIN = ((1088, 150), (905, 352))  # řetízek od rohu k limetkové kuličce
+
+
+def dots_svg():
+    import math
+    out = []
+    for r in range(0, 630 // GRID + 2):
+        y = 11 + r * GRID
+        for c in range(0, 1200 // GRID + 2):
+            x = 11 + c * GRID
+            v = max(0.0, 1 - math.hypot(CORNER[0] - x, y - CORNER[1]) / RC)
+            rad, fill = (1.25 + (GRID * 0.36 - 1.25) * v, "#b5b9bc") if v > 0 else (1.25, "#c9ccce")
+            qx, qy = x, y
+            for bx, by, br, _ in BALLS:  # kulička okolní tečky odtlačuje
+                dx, dy = x - bx, y - by
+                d = math.hypot(dx, dy) or 0.01
+                reach = br + GRID * 2.4
+                if d < br + 4:
+                    rad = 0
+                elif d < reach:
+                    k = (1 - (d - br) / (reach - br)) ** 2
+                    qx += dx / d * k * GRID * 0.7
+                    qy += dy / d * k * GRID * 0.7
+                    rad *= 1 - 0.3 * k
+            if rad > 0.5:
+                out.append(f'<circle cx="{qx:.1f}" cy="{qy:.1f}" r="{rad:.2f}" fill="{fill}"/>')
+    (ax, ay), (bx, by) = CHAIN
+    n = int(math.hypot(bx - ax, by - ay) / 9)
+    for k in range(n + 1):
+        t = k / n
+        rr = 6 * (1 - 0.55 * math.sin(t * math.pi)) * (0.55 + 0.45 * t)
+        out.append(f'<circle cx="{ax + (bx - ax) * t:.1f}" cy="{ay + (by - ay) * t:.1f}" r="{rr:.2f}" fill="#cdfe00"/>')
+    for bx, by, br, col in BALLS:
+        out.append(f'<circle cx="{bx}" cy="{by}" r="{br}" fill="{col}"/>')
+    return f'<svg class="dots" viewBox="0 0 1200 630" width="1200" height="630">{"".join(out)}</svg>'
 
 
 def tag(x, y, t, dark=False):
@@ -82,11 +123,8 @@ def page(job):
     pill_html = f'<span class="pill"><b>{html.escape(pill)}</b></span>' if pill else '<span class="pill"><b>★ 4,8</b> na Googlu</span>'
     foot = pill_html + "<span>150+ webů · webovybalicek.cz</span>"
     return f"""<!doctype html><meta charset="utf-8"><style>{CSS}</style><body>
-<img class="blob" src="/tools/og-blob.png">
-<div class="ball" style="left:800px;top:430px;width:118px;height:118px"></div>
-<div class="ball" style="left:690px;top:330px;width:46px;height:46px"></div>
-<div class="ball" style="left:935px;top:560px;width:26px;height:26px"></div>
-{tag(905, 380, tags[0])}{tag(735, 200, tags[1], True)}{tag(1040, 520, tags[2])}
+{dots_svg()}
+{tag(925, 372, tags[0])}{tag(752, 290, tags[1], True)}{tag(1070, 540, tags[2])}
 <div class="txt">{LOGO}<p class="kick">{html.escape(job["k"])}</p><h1>{headline(job["h"])}</h1><div class="foot">{foot}</div></div>
 <script>
 // nadpis musí vejít mezi nadtitulek a patičku – zmenšuj, dokud přetéká
