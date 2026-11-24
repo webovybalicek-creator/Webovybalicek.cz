@@ -39,7 +39,7 @@ ul.dots li::before { content: ""; position: absolute; left: 0; top: .5em; width:
 .dont img { max-width: 78%; max-height: 50%; }
 .cover { background: var(--ink); color: #fff; }
 .dotsbg { background: #f6f6f6 radial-gradient(circle, rgba(10,18,23,.16) 1.1px, transparent 1.6px) 0 0 / 22px 22px; }
-.ball { border-radius: 50%; background: radial-gradient(circle at 34% 30%, #fbffd9 0 6%, #e6ff5c 22%, #cdfe00 48%, #a9d400 82%, #8db000 100%); box-shadow: 0 18px 30px -12px rgba(90,110,0,.45); }
+.ball { border-radius: 50%; background: var(--lime); }
 .check { display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; background:var(--ink); }
 .check svg { width:12px; height:12px; fill:none; stroke:#fff; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
 table { border-collapse: collapse; width: 100%; font-size: 12px; }
@@ -51,11 +51,11 @@ th { font: 500 10px/1 ui-monospace, Menlo, monospace; text-transform: uppercase;
 <section class="page cover">
   <img src="webovybalicek-logo-limetka-bile.svg" style="width:110mm">
   <div style="margin-top:auto">
-    <p class="kick" style="color:rgba(255,255,255,.6)">Brandmanuál · verze 1.0 · listopad 2026</p>
+    <p class="kick" style="color:rgba(255,255,255,.6)">Brandmanuál · verze 1.1 · listopad 2026</p>
     <h1 style="font-size:64px;margin-top:6mm">Logo, barvy<br>a <span style="color:var(--lime)">prvky značky</span></h1>
     <p style="margin-top:6mm;color:rgba(255,255,255,.66);font-size:14px;max-width:140mm">Pravidla pro používání značky webovybalicek na webu, v e-mailu, na sociálních sítích i v tisku.</p>
   </div>
-  <img src="og-blob.png" style="position:absolute;right:-60mm;top:-30mm;width:230mm;opacity:.9;filter:brightness(1.02)">
+  <img src="kapky-tmave.svg" style="position:absolute;right:0;top:0;width:297mm;height:156mm;object-fit:cover;object-position:right top">
   <div class="ball" style="position:absolute;right:58mm;bottom:40mm;width:30mm;height:30mm"></div>
   <div class="ball" style="position:absolute;right:30mm;bottom:22mm;width:9mm;height:9mm"></div>
 </section>
@@ -118,7 +118,7 @@ th { font: 500 10px/1 ui-monospace, Menlo, monospace; text-transform: uppercase;
 <!-- 5 Barvy -->
 <section class="page">
   <div class="head"><p class="kick">04 · Barvy</p><p class="num">5</p></div>
-  <h2>Ink, šedé, limetka a perleť</h2>
+  <h2>Ink, šedé a limetka</h2>
   <p class="lead">Základ je černobílý. Limetka je signál: akce, výběr, zvýraznění. Nikdy jí nebarvi velké plochy textu.</p>
   <div class="grid" style="grid-template-columns:1.4fr 1fr 1fr 1fr;margin-top:8mm;flex:none">
     <div class="sw" style="background:var(--ink);color:#fff"><strong>Ink</strong><p>#0A1217<br>RGB 10 18 23<br>CMYK 57 22 0 91<br>Pantone Black 6 C*</p></div>
@@ -130,7 +130,7 @@ th { font: 500 10px/1 ui-monospace, Menlo, monospace; text-transform: uppercase;
     <div class="sw" style="min-height:30mm;background:#54595d;color:#fff"><strong>Grafit</strong><p>#54595D · vedlejší text</p></div>
     <div class="sw" style="min-height:30mm;background:#85898b;color:#fff"><strong>Kámen</strong><p>#85898B · popisky</p></div>
     <div class="sw" style="min-height:30mm;background:#e6e7e8"><strong>Linka</strong><p>#E6E7E8 · oddělovače</p></div>
-    <div class="sw" style="min-height:30mm;background:conic-gradient(from 200deg,#d5b2b2,#cc9fcc,#b2b1d5,#9fcbcb,#b2d5b1,#cccc9f,#d5b2b2);"><strong>Perleť</strong><p>jen akcent, okraje a hmota</p></div>
+    <div class="sw" style="min-height:30mm;background:#dee0e2"><strong>Tečky</strong><p>#DEE0E2 · kapka v rohu<br>kulička #C8CCCF</p></div>
   </div>
   <p class="cap" style="margin-top:4mm">Poměr na ploše zhruba 70 % bílá a šedá, 25 % ink, 5 % limetka. *CMYK a Pantone jsou orientační, před tiskem ověřit nátiskem.</p>
 </section>
@@ -164,10 +164,10 @@ th { font: 500 10px/1 ui-monospace, Menlo, monospace; text-transform: uppercase;
 <!-- 7 Prvky -->
 <section class="page">
   <div class="head"><p class="kick">06 · Grafické prvky</p><p class="num">7</p></div>
-  <h2>Hmota, kapky, rastr a štítky</h2>
+  <h2>Tečková kapka, kuličky, rastr a štítky</h2>
   <div class="grid" style="grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;margin-top:6mm">
-    <div class="tile dotsbg" style="padding:0;overflow:hidden"><img src="og-blob.png" style="position:absolute;width:230%;right:-12%;top:-30%;max-width:none;max-height:none"><p class="cap" style="position:absolute;left:5mm;bottom:4mm"><b>Perleťová hmota</b> – úvod webu, náhledy</p></div>
-    <div class="tile dotsbg"><div style="position:relative;width:60mm;height:34mm"><div class="ball" style="position:absolute;left:8mm;top:4mm;width:26mm;height:26mm"></div><div class="ball" style="position:absolute;left:40mm;top:2mm;width:9mm;height:9mm"></div><div class="ball" style="position:absolute;left:46mm;top:22mm;width:5mm;height:5mm"></div></div><p class="cap" style="position:absolute;left:5mm;bottom:4mm"><b>Limetkové kapky</b> – odtržené od hmoty</p></div>
+    <div class="tile dotsbg" style="padding:0;overflow:hidden"><img src="uvod-kulicky.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none;max-height:none"><p class="cap" style="position:absolute;left:5mm;bottom:4mm;background:#fff;padding:1mm 2mm;border-radius:4px"><b>Tečková kapka v rohu</b> – úvod webu, náhledy</p></div>
+    <div class="tile dotsbg"><div style="position:relative;width:60mm;height:34mm"><div class="ball" style="position:absolute;left:8mm;top:4mm;width:26mm;height:26mm"></div><div class="ball" style="position:absolute;left:40mm;top:2mm;width:9mm;height:9mm"></div><div class="ball" style="position:absolute;left:46mm;top:22mm;width:5mm;height:5mm"></div></div><p class="cap" style="position:absolute;left:5mm;bottom:4mm"><b>Kuličky</b> – tečky slité do jedné, vybraná limetková</p></div>
     <div class="tile dotsbg"><p class="cap" style="position:absolute;left:5mm;bottom:4mm"><b>Tečkový rastr</b> – podklad, 22 px, ink 16 %</p></div>
     <div class="tile"><div style="display:flex;gap:4mm;align-items:center;flex-wrap:wrap;justify-content:center"><span class="pill">Design</span><span class="pill ink">AI</span><span class="pill" style="background:#fff;box-shadow:inset 0 0 0 1px var(--line)">SEO</span></div><p class="cap" style="position:absolute;left:5mm;bottom:4mm"><b>Štítky</b> – plně zaoblené, 600</p></div>
     <div class="tile"><p style="font:650 34px/1.1 Geist;letter-spacing:-.03em">jsou <em class="w">výsledky</em></p><p class="cap" style="position:absolute;left:5mm;bottom:4mm"><b>Limetkové podtržení</b> – jedno slovo v nadpisu</p></div>
@@ -197,7 +197,7 @@ th { font: 500 10px/1 ui-monospace, Menlo, monospace; text-transform: uppercase;
   <div class="head"><p class="kick">08 · Aplikace</p><p class="num">9</p></div>
   <h2>Kde se značka potkává se světem</h2>
   <div class="grid" style="grid-template-columns:1.25fr 1fr;margin-top:6mm">
-    <div><img src="nahled-pro-sdileni-1200x630.jpg" style="width:100%;border-radius:8px;box-shadow:0 0 0 1px var(--line)"><p class="cap"><b>Náhled pro sdílení</b> 1200 × 630 – hmota, kapky, kurzory, nadpis s limetkovým podtržením</p></div>
+    <div><img src="nahled-pro-sdileni-1200x630.jpg" style="width:100%;border-radius:8px;box-shadow:0 0 0 1px var(--line)"><p class="cap"><b>Náhled pro sdílení</b> 1200 × 630 – tečková kapka, kuličky, kurzory, nadpis s limetkovým podtržením</p></div>
     <div style="display:grid;gap:6mm;align-content:start">
       <div class="tile" style="background:#fff;box-shadow:inset 0 0 0 1px var(--line);padding:5mm"><img src="nahled-podpisu.png" style="width:100%"></div>
       <p class="cap" style="margin-top:-4mm"><b>E-mailový podpis</b> – fotka, limetková linka, logo</p>

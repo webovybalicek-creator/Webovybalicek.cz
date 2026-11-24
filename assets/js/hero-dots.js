@@ -69,6 +69,8 @@
       msg.hidden = true; void msg.offsetWidth; msg.hidden = false;
     } else msg.hidden = true;
     lab.forEach((l, i) => l.classList.toggle('is-on', D[i].st === 2));
+    // po vytažení kuličky schovat kurzory a rámečky v pozadí (na mobilu dělají chaos)
+    stage.closest('[data-air]')?.classList.toggle('is-picked', D.some((d) => d.st === 2));
   };
   resetBtn.addEventListener('click', () => { D.forEach((d) => { d.st = 0; }); sel = -1; render(); });
 

@@ -1020,7 +1020,8 @@ html.is-locked { overflow: hidden; }
 [data-bg="dots"] .air-dots { opacity: 1; }
 [data-bg="swarm"] .air-dots { -webkit-mask-image: none; mask-image: none; opacity: .5; }
 /* roj: kurzory v barvách značky kreslí do pozadí obrysy webu (main.js) */
-.air-swarm { position: absolute; inset: 0; }
+.air-swarm { position: absolute; inset: 0; transition: opacity 200ms ease; }
+@media (max-width: 1099px) { .is-picked .air-swarm { opacity: 0 !important; visibility: hidden; transition: opacity 200ms ease, visibility 0s 200ms; } }
 [data-bg="swarm"] .air-swarm { opacity: 1; }
 .air-box { position: absolute; border: 1.5px solid currentColor; border-radius: 3px; opacity: .55; transition: opacity 1600ms ease; }
 .air-box.is-out { opacity: 0; }
