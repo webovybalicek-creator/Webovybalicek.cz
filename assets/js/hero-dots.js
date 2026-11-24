@@ -5,6 +5,8 @@
 // kulička); pro porovnání ?uvod=a (vše šedé) / ?uvod=b (limetkové kuličky).
 (() => {
   const mode = (location.search.match(/[?&]uvod=([abc])\b/) || [])[1] || 'c'; // C = šedé, limetková jen vybraná kulička
+  // vzor: 'grid' = pravidelný halftone od rohu; 'kapky' = stejný tvar jako karty níže (tools/kapky.py)
+  const pattern = /[?&]vzor=kapky\b/.test(location.search) ? 'kapky' : 'grid';
   const stage = document.querySelector('[data-hero]');
   if (!stage) return;
   const canvas = stage.querySelector('.hero-canvas');
@@ -26,7 +28,10 @@
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const GRID = 22;                                   // stejná mřížka jako tečky pozadí (.air-dots)
   const DOT = [185, 188, 191], BALL = [150, 156, 160], LIME = [205, 254, 0];
-  const RMIN = 1.25, RMAX = GRID * 0.36;            // nejmenší = tečka pozadí, největší v rohu
+  const RMIN = pattern === 'kapky' ? 1.8 : 1.25, RMAX = GRID * (pattern === 'kapky' ? 0.4 : 0.36); // nejmenší ≈ tečka pozadí, největší v rohu
+  // tvar kapek z tools/kapky.py (viewBox 400×300, rastr 11) – v úvodu 2× větší, aby rastr seděl na mřížku 22 px
+  let KS = 2; const KCORE = [[420, -20, 110], [330, 30, 52], [385, 120, 55]];
+  const KDROP = [[262, 18, 30], [300, 112, 22], [215, 92, 15], [352, 222, 17], [160, 40, 9], [255, 190, 8]];
   const mix = (a, b, t) => a + (b - a) * t;
   const sstep = (t) => (t <= 0 ? 0 : t >= 1 ? 1 : t * t * (3 - 2 * t));
   const rgb = (c) => `rgb(${Math.round(c[0])},${Math.round(c[1])},${Math.round(c[2])})`;
@@ -43,7 +48,8 @@
   // místo kuličky v rohu (úhel od rohu: 0 = podél horní hrany, 1 = podél pravé hrany)
   const AN = [0.10, 0.27, 0.44, 0.60, 0.76, 0.92];
   const at = (i, k) => { const t = (0.06 + AN[i] * 0.88) * Math.PI / 2; return [W - Rc * k * Math.cos(t), Rc * k * Math.sin(t)]; };
-  const home = (i) => at(i, 0.42);                   // odkud se kulička vytahuje
+  const kp = (b) => [W - (400 - b[0]) * KS, b[1] * KS];
+  const home = (i) => (pattern === 'kapky' ? kp(KDROP[i]) : at(i, 0.42)); // odkud se kulička vytahuje
   const narrow = () => W < 760;
   const SPOTS = [[0.50, 0.14], [0.56, 0.42], [0.66, 0.70], [0.42, 0.62], [0.80, 0.88], [0.92, 0.58]];
   const SPOTS_N = [[0.12, 0.06], [0.34, 0.18], [0.86, 0.36], [0.56, 0.30], [0.92, 0.12], [0.70, 0.08]];
@@ -83,8 +89,19 @@
     d.st = 2; [d.fx, d.fy] = clampFree(s[0] * W, s[1] * H); spread(i); sel = i; render();
   };
 
-  // pravidelný halftone: velikost tečky plynule klesá se vzdáleností od rohu
-  const baseV = (x, y) => Math.max(0, 1 - Math.hypot(W - x, y) / Rc);
+  // pravidelný halftone: velikost tečky plynule klesá se vzdáleností od rohu;
+  // kapky: pole „metaballs“ jako v tools/kapky.py (tečka od pole 0,6, poloměr 0,9 + (f − 0,6) · 2,6, max 4,4)
+  const kField = (x, y) => {
+    let f = 0;
+    for (const b of KCORE) { const c = kp(b), r = b[2] * KS; f += r * r / ((x - c[0]) ** 2 + (y - c[1]) ** 2 + 1); }
+    for (let i = 0; i < 6; i++) if (D[i].st === 0) { const b = KDROP[i], c = kp(b), r = b[2] * KS * (1 - 0.6 * D[i].g); f += r * r / ((x - c[0]) ** 2 + (y - c[1]) ** 2 + 1); }
+    return f;
+  };
+  const baseV = (x, y) => {
+    if (pattern !== 'kapky') return Math.max(0, 1 - Math.hypot(W - x, y) / Rc);
+    const f = kField(x, y);
+    return f > 0.6 ? Math.max(0.001, (Math.min(4.4, 0.9 + (f - 0.6) * 2.6) - 0.9) / 3.5) : 0;
+  };
 
   const step = (dt) => {
     for (const d of D) {
@@ -93,7 +110,7 @@
       else if (d.st === 2) { tx = d.fx; ty = d.fy + (reduced ? 0 : Math.sin(time * 0.8 + d.i * 1.7) * 3); gt = 1; }
       else {
         // v rohu schovaná; „Design“ se co chvíli sama vystrčí a zase vrátí
-        const peek = PARTS[d.i].accent ? tease : 0, a = at(d.i, 0.42 + peek * 0.36);
+        const peek = PARTS[d.i].accent ? tease : 0, h0 = home(d.i), a = pattern === 'kapky' ? [h0[0] - peek * 60, h0[1] + peek * 60] : at(d.i, 0.42 + peek * 0.36);
         tx = a[0]; ty = a[1]; gt = peek;
       }
       const fast = d.st === 1, k = fast ? 170 : 42, damp = fast ? 22 : 8;
@@ -148,7 +165,7 @@
       // řez: tah přes halftone uvolní kuličky, jejichž místo v rohu přeťal
       let hit = false;
       for (const d of D) if (d.st === 0) {
-        const h = home(d.i), o = at(d.i, 0.9);
+        const h = home(d.i), ux = h[0] - W, uy = h[1], ul = Math.hypot(ux, uy) || 1, o = [h[0] + ux / ul * 90, h[1] + uy / ul * 90];
         if (crosses(slice.x, slice.y, p[0], p[1], h[0], h[1], o[0], o[1])) {
           d.st = 2; d.x = h[0]; d.y = h[1]; [d.fx, d.fy] = clampFree(o[0] + (o[0] - h[0]) * 0.3, o[1] + (o[1] - h[1]) * 0.3); hit = true;
         }
@@ -189,6 +206,7 @@
     Rc0 = narrow() ? Math.min(W * 0.85, 340) : Math.min(Math.max(W * 0.45, 460), 720);
     if (!Rc || Rc === 500) Rc = Rc0;
     rb = narrow() ? 12 : 15; snapL = narrow() ? 110 : 170;
+    KS = narrow() ? Math.min(0.9, W / 430) : (W < 1100 ? 1.6 : 2); // na mobilu jen roh, ne přes celou šířku
     D.forEach((d) => { if (d.st === 2) [d.fx, d.fy] = clampFree(d.fx, d.fy); });
     spread(-1);
   };
@@ -211,8 +229,9 @@
       if (d.st || d.g > 0.02) sinks.push({ x: d.x, y: d.y, a: d.st ? 1 : d.g, r: 0, ball: d.i, eat: false });
     }
 
-    const c0 = Math.max(0, Math.floor((W - Rc - ox) / GRID)), c1 = Math.ceil((W - ox) / GRID);
-    const r1 = Math.min(Math.ceil((H - oy) / GRID), Math.ceil((Rc - oy) / GRID));
+    const ext = pattern === 'kapky' ? 420 * KS : Rc;
+    const c0 = Math.max(0, Math.floor((W - ext - ox) / GRID)), c1 = Math.ceil((W - ox) / GRID);
+    const r1 = Math.min(Math.ceil((H - oy) / GRID), Math.ceil(((pattern === 'kapky' ? 320 * KS : Rc) - oy) / GRID));
     const absorbed = sinks.map(() => 0);
     ctx.fillStyle = rgb(DOT); ctx.beginPath();
     for (let r = 0; r <= r1; r++) {
@@ -287,7 +306,7 @@
     tease = !torn && !drag && !reduced && ph >= 0 && ph < 1.4 ? Math.sin(ph / 1.4 * Math.PI) ** 2 : 0;
     // každá vytažená kulička ubere kousek z rohu; část v rohu ale zůstane vždycky (~64 %)
     const out = D.filter((d) => d.st === 2 || (d.st === 1 && drag && drag.was === 2)).length;
-    Rc += (Rc0 * (1 - 0.06 * out) - Rc) * (1 - Math.exp(-dt * 4));
+    Rc += (Rc0 * (pattern === 'kapky' ? 1 : 1 - 0.06 * out) - Rc) * (1 - Math.exp(-dt * 4));
     step(dt / 2); step(dt / 2);
     draw();
     for (const d of D) if (d.st === 2) lab[d.i].style.transform = `translate(${Math.round(d.x)}px,${Math.round(d.y + rb * 1.3 + 6)}px) translateX(-50%)`;
