@@ -1,6 +1,5 @@
-// Rychlost načtení (PageSpeed): WebGL bublina v úvodu se rozpohybuje až po první akci návštěvníka (wbTouch –
-// pohyb myši, scroll, dotyk, klávesa), do té doby je vidět jeden statický snímek. Kurzory v úvodu startují
-// hned po načtení stránky (wbGo), reference (pruh a „stavění“ snímků) úplně bez čekání.
+// Rychlost načtení (PageSpeed): kurzory v úvodu startují hned po načtení stránky (wbGo), reference úplně bez
+// čekání. wbTouch = první akce návštěvníka (pro případnou těžkou animaci, např. WebGL – dnes se nepoužívá).
 window.wbTouch = new Promise((res) => {
   const ev = ['pointermove', 'pointerdown', 'touchstart', 'scroll', 'wheel', 'keydown'];
   const go = () => { ev.forEach((n) => removeEventListener(n, go, true)); res(); };
@@ -373,9 +372,7 @@ document.querySelectorAll('.tools').forEach((box) => {
   design(cursor('Návrh', '#0a1217', '#fff', '#fff'));
   typist(cursor('Texty', '#cdfe00', '#0a1217', '#cdfe00'), 'air-type--text', 1600,
     (W, H, wide) => wide ? [W * 0.6, H * 0.34] : [W - 232, 232],
-    (wide) => /[?&]uvod=[abc]\b/.test(location.search)
-      ? (wide ? ['Najeďte na tečky', 'Vytáhněte kapku →'] : ['Klepněte na tečky ↗'])
-      : (wide ? ['Klikněte na bublinu', 'Potáhněte bublinu →'] : ['Klepněte na bublinu ↗']));
+    (wide) => wide ? ['Najeďte na tečky', 'Vytáhněte kuličku →'] : ['Klepněte na tečky ↗']);
   typist(cursor('Kód', '#54595d', '#fff', '#fff'), 'air-type--code', 3200,
     (W, H, wide) => wide ? [W * 0.7, H * 0.8] : [16, 92],
     () => ['<html lang="cs">', '<h1>Tvorba webů</h1>', '<a href="#kontakt">', 'npm run build']);

@@ -1704,3 +1704,6 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
 /* nový úvod (náhled ?uvod=tecky, hero-dots.js): nadpis nad tečkami, koule ho nepřekryje */
 .hero-stage.has-dots .hero-copy .hero-title { z-index: 3; }
 .hero-stage.has-dots .hero-canvas { touch-action: pan-y; }
+
+/* úvod s tečkami (hero-dots.js): bez JS zůstane jen tečkované pozadí, žádná náhradní koule */
+.hero--air .hero-stage::after { display: none; }

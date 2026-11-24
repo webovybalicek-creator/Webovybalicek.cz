@@ -1,10 +1,10 @@
 // Úvod – tečky pozadí (mřížka 22 px) v pravém horním rohu pravidelně rostou (halftone od velkých v rohu
-// k nejmenším = tečkám pozadí). Při najetí myší se síť kolem kurzoru stáhne a tečky vtečou do jedné
-// pravidelné kuličky. Z rohu jdou vytáhnout kuličky – každá = jeden bod z [data-hero-points], dokud nejsou
-// venku všechny. Kreslí se 2D plátnem (lehké, běží hned). Zatím jen náhled: ?uvod=a | b | c (/navrhy-uvod/).
+// k nejmenším = tečkám pozadí). Při najetí myší tečky pod kurzorem vtečou do jedné pravidelné kuličky, která
+// okolní tečky odtlačuje. Z rohu jde vytáhnout 6 kuliček – každá = jeden bod z [data-hero-points]; každá ubere
+// kousek z rohu, část ale zůstane vždy. 2D plátno (lehké, běží hned). Varianta C (šedé, limetková jen vybraná
+// kulička); pro porovnání ?uvod=a (vše šedé) / ?uvod=b (limetkové kuličky).
 (() => {
-  const mode = (location.search.match(/[?&]uvod=([abc])\b/) || [])[1];
-  if (!mode) return;
+  const mode = (location.search.match(/[?&]uvod=([abc])\b/) || [])[1] || 'c'; // C = šedé, limetková jen vybraná kulička
   const stage = document.querySelector('[data-hero]');
   if (!stage) return;
   const canvas = stage.querySelector('.hero-canvas');
