@@ -1,4 +1,4 @@
-# 💻 new.webovybalicek.cz
+# 💻 Webovybalicek.cz
 
 Nová verze webu webovybalicek.cz – statický web mimo WordPress, vzhled podle Clerk style reference.
 Nasazení: push na `main` → GitHub Actions → `python3 build.py` → FTP (new.webovybalicek.cz).
