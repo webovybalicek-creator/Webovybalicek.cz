@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Náhledy pro sdílení (og:image 1200×630) pro KAŽDOU veřejnou URL webu.
 
-Styl úvodu (od 24. 11. 2026): tečkový rastr pozadí (22 px), který v pravém horním rohu pravidelně roste
-(šedý halftone), z rohu vytažené kuličky (jedna limetková = vybraná, ostatní šedé) s řetízkem,
+Styl úvodu (od 24. 11. 2026): tečkový rastr pozadí (22 px), v pravém horním rohu šedá „kapka“ z teček ve stejném
+tvaru jako karty na webu (tools/kapky.py), z ní vytažené kuličky (jedna limetková = vybraná, ostatní šedé) s řetízkem,
 kurzory se štítky, nadpis s limetkovým podtržením, logo jako v hlavičce.
 
 Postup:
@@ -62,13 +62,15 @@ h1 em {{ font-style: normal; background: {WAVE} left 0 bottom .12em / 200% .5em 
 """
 
 
-GRID, RC, CORNER = 22, 700, (1200, 0)
-BALLS = [  # vytažené kuličky: (x, y, r, barva) – limetková = vybraná (jako varianta C v úvodu)
-    (905, 352, 30, "#cdfe00"),
-    (742, 478, 15, "#969ca0"),
-    (1062, 520, 12, "#969ca0"),
-]
-CHAIN = ((1088, 150), (905, 352))  # řetízek od rohu k limetkové kuličce
+GRID = 22
+# tvar „kapek“ jako v úvodu a na kartách (tools/kapky.py, viewBox 400×300), v rohu náhledu 1,5× větší
+KS = 1.5
+KCORE = [(420, -20, 110), (330, 30, 52), (385, 120, 55)]
+KDROP = [(262, 18, 30), (300, 112, 22), (215, 92, 15), (160, 40, 9)]   # kapky, které zůstaly v rohu
+KP = lambda x, y: (1200 - (400 - x) * KS, y * KS)
+# vytažené kuličky (x, y, r, barva) – limetková = vybraná (jako v úvodu); řetízek vede z místa, odkud vyšla
+BALLS = [(905, 352, 30, "#cdfe00"), (742, 478, 15, "#969ca0"), (1062, 520, 12, "#969ca0")]
+CHAIN = (KP(352, 222), (905, 352))
 
 
 def dots_svg():
@@ -78,8 +80,15 @@ def dots_svg():
         y = 11 + r * GRID
         for c in range(0, 1200 // GRID + 2):
             x = 11 + c * GRID
-            v = max(0.0, 1 - math.hypot(CORNER[0] - x, y - CORNER[1]) / RC)
-            rad, fill = (1.25 + (GRID * 0.36 - 1.25) * v, "#b5b9bc") if v > 0 else (1.25, "#c9ccce")
+            f = 0.0
+            for bx, by, br in KCORE + KDROP:
+                cx, cy = KP(bx, by)
+                f += (br * KS) ** 2 / ((x - cx) ** 2 + (y - cy) ** 2 + 1)
+            if f > 0.6:
+                v = (min(4.4, 0.9 + (f - 0.6) * 2.6) - 0.9) / 3.5
+                rad, fill = 1.8 + (GRID * 0.4 - 1.8) * v, "#b5b9bc"
+            else:
+                rad, fill = 1.25, "#c9ccce"
             qx, qy = x, y
             for bx, by, br, _ in BALLS:  # kulička okolní tečky odtlačuje
                 dx, dy = x - bx, y - by

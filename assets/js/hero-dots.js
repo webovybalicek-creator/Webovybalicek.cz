@@ -1,12 +1,12 @@
-// Úvod – tečky pozadí (mřížka 22 px) v pravém horním rohu pravidelně rostou (halftone od velkých v rohu
-// k nejmenším = tečkám pozadí). Při najetí myší tečky pod kurzorem vtečou do jedné pravidelné kuličky, která
-// okolní tečky odtlačuje. Z rohu jde vytáhnout 6 kuliček – každá = jeden bod z [data-hero-points]; každá ubere
-// kousek z rohu, část ale zůstane vždy. 2D plátno (lehké, běží hned). Varianta C (šedé, limetková jen vybraná
-// kulička); pro porovnání ?uvod=a (vše šedé) / ?uvod=b (limetkové kuličky).
+// Úvod – tečky v pravém horním rohu ve stejném tvaru jako karty níže (tools/kapky.py: hmota v rohu + 6 menších
+// kapek, šedé, na mřížce pozadí 22 px). Při najetí myší tečky pod kurzorem vtečou do jedné pravidelné kuličky,
+// která okolní tečky odtlačuje. Těch 6 kapek jde vytáhnout jako kuličky – každá = jeden bod z [data-hero-points];
+// vytažená kapka ze vzoru zmizí, hmota v rohu zůstane. 2D plátno (lehké, běží hned). Barvy: varianta C (šedé,
+// limetková jen vybraná kulička). Pro porovnání ?uvod=a/b (barvy), ?vzor=pravidelny (pravidelný halftone).
 (() => {
   const mode = (location.search.match(/[?&]uvod=([abc])\b/) || [])[1] || 'c'; // C = šedé, limetková jen vybraná kulička
-  // vzor: 'grid' = pravidelný halftone od rohu; 'kapky' = stejný tvar jako karty níže (tools/kapky.py)
-  const pattern = /[?&]vzor=kapky\b/.test(location.search) ? 'kapky' : 'grid';
+  // vzor: 'kapky' (výchozí) = stejný tvar jako karty níže (tools/kapky.py); 'grid' = pravidelný halftone (?vzor=pravidelny)
+  const pattern = /[?&]vzor=pravidelny\b/.test(location.search) ? 'grid' : 'kapky'; // výchozí = kapky (jednotné s kartami)
   const stage = document.querySelector('[data-hero]');
   if (!stage) return;
   const canvas = stage.querySelector('.hero-canvas');
