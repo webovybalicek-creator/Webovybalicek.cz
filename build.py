@@ -30,7 +30,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "292"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "293"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -280,6 +280,13 @@ def build():
     projekty = json.loads((SRC / "data" / "projekty.json").read_text(encoding="utf-8"))
     snimky_p = SRC / "data" / "reference-snimky.json"
     snimky = json.loads(snimky_p.read_text(encoding="utf-8")) if snimky_p.exists() else {}
+    # dočasně skryté reference (src/data/reference-skryte.json) – nikde se nezobrazí
+    skryte_p = SRC / "data" / "reference-skryte.json"
+    SKRYTE = set(json.loads(skryte_p.read_text(encoding="utf-8")).get("skryte", [])) if skryte_p.exists() else set()
+    slug_of = lambda u: re.sub(r"^www\.", "", re.sub(r"^https?://", "", u).strip("/")).replace(".", "-")
+    vyber = [r for r in vyber if r["s"] not in SKRYTE]
+    refs = [r for r in refs if slug_of(r["u"]) not in SKRYTE]
+    projekty = [r for r in projekty if r.get("s") not in SKRYTE and slug_of(r.get("u", "")) not in SKRYTE]
 
     import sys
     sys.path.insert(0, str(SRC))
@@ -300,6 +307,8 @@ def build():
     refs_by = {re.sub(r"^www\.", "", re.sub(r"^https?://", "", r["u"]).strip("/")).replace(".", "-"): r for r in refs}
 
     def pick(k, label=None):
+        if k in SKRYTE:
+            return None
         if k in vyber_by:
             return vyber_by[k]
         r = refs_by.get(k) or (lp_extra.get(k) if "u" in lp_extra.get(k, {}) else None)
