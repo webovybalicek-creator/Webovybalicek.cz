@@ -199,13 +199,16 @@
   const draw = () => {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, W, H);
-    const HR = narrow() ? 46 : 58;                       // dosah, odkud tečky vtékají do kuličky
-    // „uzly“, kam se síť stahuje: kurzor (najetí) a kuličky, které se právě tvoří / táhnou z rohu
+    const HR = narrow() ? 40 : 50;                       // dosah, odkud tečky vtékají do kuličky
+    const BR = narrow() ? 12 : 15;                       // velikost kuličky
+    // uzly: kurzor (najetí) a kuličky, které se tvoří / táhnou z rohu – tečky do nich vtečou;
+    // každá kulička (i volná) pak okolní tečky odtlačuje
     const sinks = [];
-    if (hov.a > 0.01) sinks.push({ x: hov.x, y: hov.y, a: hov.a, r: HR, ball: -1 });
+    if (hov.a > 0.01) sinks.push({ x: hov.x, y: hov.y, a: hov.a, r: HR, ball: -1, eat: true });
     for (const d of D) {
-      if (d.st === 1 && drag && drag.was === 0) sinks.push({ x: drag.hx, y: drag.hy, a: 1, r: HR * 0.9, ball: d.i });
-      else if (d.st === 0 && d.g > 0.02) { const h = home(d.i); sinks.push({ x: h[0], y: h[1], a: d.g, r: HR * 0.8, ball: d.i }); }
+      if (d.st === 1 && drag && drag.was === 0) sinks.push({ x: drag.hx, y: drag.hy, a: 1, r: HR * 0.9, ball: d.i, eat: true });
+      else if (d.st === 0 && d.g > 0.02) { const h = home(d.i); sinks.push({ x: h[0], y: h[1], a: d.g, r: HR * 0.8, ball: d.i, eat: true }); }
+      if (d.st || d.g > 0.02) sinks.push({ x: d.x, y: d.y, a: d.st ? 1 : d.g, r: 0, ball: d.i, eat: false });
     }
 
     const c0 = Math.max(0, Math.floor((W - Rc - ox) / GRID)), c1 = Math.ceil((W - ox) / GRID);
@@ -219,13 +222,20 @@
         if (v <= 0) continue;
         let rad = mix(RMIN, RMAX, v), qx = px, qy = py;
         for (let s = 0; s < sinks.length; s++) {
-          const S = sinks[s], dx = S.x - px, dy = S.y - py, dd = Math.hypot(dx, dy), reach = S.r * 2.4;
-          if (dd > reach) continue;
-          // síť se kolem uzlu stáhne (vzdálenější tečky jen trochu, bližší víc)…
-          const pull = S.a * (1 - dd / reach) ** 2 * 0.62;
-          qx += dx * pull; qy += dy * pull;
-          // …a nejbližší tečky do kuličky vtečou (zmenší se a zmizí)
-          if (dd < S.r) { const h = S.a * sstep(1 - dd / S.r); absorbed[s] += rad * rad * h; rad *= 1 - h; }
+          const S = sinks[s], dx = px - S.x, dy = py - S.y, dd = Math.hypot(dx, dy) || 0.001;
+          // nejbližší tečky vtečou do kuličky (stáhnou se do středu a zmizí)
+          if (S.eat && dd < S.r) {
+            const h = S.a * sstep(1 - dd / S.r);
+            absorbed[s] += rad * rad * h; qx -= dx * h; qy -= dy * h; rad *= 1 - h;
+            continue;
+          }
+          // kulička odtlačuje okolní tečky: odsune je ven, ať je kolem ní volné místo
+          const ring = (S.eat ? S.r : BR + GRID * 0.6), reach = ring + GRID * 2.2;
+          if (dd < reach) {
+            const k = S.a * (1 - Math.max(0, dd - BR) / (reach - BR)) ** 2;
+            const push = k * GRID * 0.75;
+            qx += dx / dd * push; qy += dy / dd * push; rad *= 1 - 0.25 * k;
+          }
         }
         if (rad < 0.4) continue;
         ctx.moveTo(qx + rad, qy); ctx.arc(qx, qy, rad, 0, 6.2832);
@@ -234,10 +244,10 @@
     ctx.fill();
 
     const ball = (x, y, r, lime) => { ctx.fillStyle = rgb(blend(BALL, LIME, lime)); ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill(); };
-    // kulička pod kurzorem: roste podle toho, kolik teček do ní vteklo
+    // kulička pod kurzorem: pravidelná, roste podle toho, kolik teček do ní vteklo
     sinks.forEach((S, s) => {
-      if (S.ball >= 0) return;
-      const r = Math.min(narrow() ? 12 : 15, Math.sqrt(absorbed[s]) * 0.6);
+      if (S.ball >= 0 || !S.eat) return;
+      const r = Math.min(BR, Math.sqrt(absorbed[s]) * 0.85);
       if (r > 1) ball(S.x, S.y, r, mode === 'b' ? 1 : 0);
     });
     // krček: řetízek kuliček od místa, kde ji chytil, ke kuličce – čím dál, tím tenčí
