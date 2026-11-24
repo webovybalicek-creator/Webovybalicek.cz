@@ -32,7 +32,10 @@
   const RMIN = pattern === 'kapky' ? 1.8 : 1.25, RMAX = GRID * (pattern === 'kapky' ? 0.4 : 0.36); // nejmenší ≈ tečka pozadí, největší v rohu
   // tvar kapek z tools/kapky.py (viewBox 400×300, rastr 11) – v úvodu 2× větší, aby rastr seděl na mřížku 22 px
   let KS = 2; const KCORE = [[420, -20, 110], [330, 30, 52], [385, 120, 55]];
-  const KDROP = [[262, 18, 30], [300, 112, 22], [215, 92, 15], [352, 222, 17], [160, 40, 9], [255, 190, 8]];
+  const KDROP_W = [[262, 18, 30], [300, 112, 22], [215, 92, 15], [352, 222, 17], [160, 40, 9], [255, 190, 8]];
+  // mobil: kapka vlevo nahoře by se lepila na logo – posunout ji pod roh
+  const KDROP_N = [[262, 18, 30], [300, 112, 22], [215, 92, 15], [352, 222, 17], [318, 170, 9], [255, 190, 8]];
+  let KDROP = KDROP_W;
   const mix = (a, b, t) => a + (b - a) * t;
   const sstep = (t) => (t <= 0 ? 0 : t >= 1 ? 1 : t * t * (3 - 2 * t));
   const rgb = (c) => `rgb(${Math.round(c[0])},${Math.round(c[1])},${Math.round(c[2])})`;
@@ -210,7 +213,7 @@
     Rc0 = narrow() ? Math.min(W * 0.85, 340) : Math.min(Math.max(W * 0.45, 460), 720);
     if (!Rc || Rc === 500) Rc = Rc0;
     rb = narrow() ? 12 : 15; snapL = narrow() ? 110 : 170;
-    KS = narrow() ? Math.min(0.9, W / 430) : (W < 1100 ? 1.6 : 2); // na mobilu jen roh, ne přes celou šířku
+    KS = narrow() ? Math.min(0.9, W / 430) : (W < 1100 ? 1.6 : 2); KDROP = narrow() ? KDROP_N : KDROP_W; // na mobilu jen roh, ne přes celou šířku
     D.forEach((d) => { if (d.st === 2) [d.fx, d.fy] = clampFree(d.fx, d.fy); });
     spread(-1);
   };
