@@ -278,6 +278,13 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .mobile-nav a:hover { background: var(--gray); }
 @keyframes pop { from { opacity: 0; transform: scale(0.96) translateY(-4px); } }
 
+/* desktop: menu uprostřed, vpravo (v tečkách úvodu) jen tlačítko */
+@media (min-width: 921px) {
+  .header-inner { display: grid; grid-template-columns: 1fr auto 1fr; }
+  .header-inner .logo { justify-self: start; }
+  .nav { margin: 0; }
+  .header-actions { justify-self: end; }
+}
 @media (max-width: 920px) {
   .nav { display: none; }
   .header-actions { margin-left: auto; }
