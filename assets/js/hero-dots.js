@@ -27,7 +27,8 @@
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const GRID = 22;                                   // stejná mřížka jako tečky pozadí (.air-dots)
-  const DOT = [185, 188, 191], BALL = [150, 156, 160], LIME = [205, 254, 0];
+  // světlá šedá – tón teček pozadí (#b9bcbf na 50 %), ať úvod neruší ani na menších monitorech
+  const DOT = [222, 224, 226], BALL = [200, 204, 207], LIME = [205, 254, 0];
   const RMIN = pattern === 'kapky' ? 1.8 : 1.25, RMAX = GRID * (pattern === 'kapky' ? 0.4 : 0.36); // nejmenší ≈ tečka pozadí, největší v rohu
   // tvar kapek z tools/kapky.py (viewBox 400×300, rastr 11) – v úvodu 2× větší, aby rastr seděl na mřížku 22 px
   let KS = 2; const KCORE = [[420, -20, 110], [330, 30, 52], [385, 120, 55]];
@@ -51,8 +52,9 @@
   const kp = (b) => [W - (400 - b[0]) * KS, b[1] * KS];
   const home = (i) => (pattern === 'kapky' ? kp(KDROP[i]) : at(i, 0.42)); // odkud se kulička vytahuje
   const narrow = () => W < 760;
-  const SPOTS = [[0.50, 0.14], [0.56, 0.42], [0.66, 0.70], [0.42, 0.62], [0.80, 0.88], [0.92, 0.58]];
-  const SPOTS_N = [[0.12, 0.06], [0.34, 0.18], [0.86, 0.36], [0.56, 0.30], [0.92, 0.12], [0.70, 0.08]];
+  const SPOTS = [[0.52, 0.16], [0.60, 0.42], [0.70, 0.70], [0.56, 0.62], [0.84, 0.86], [0.92, 0.56]];
+  // mobil: volný pruh mezi hlavičkou a hodnocením Googlu (x = podíl šířky, y = px od horního okraje)
+  const SPOTS_N = [[0.10, 118], [0.28, 150], [0.46, 118], [0.64, 150], [0.82, 118], [0.92, 160]];
 
   const render = () => {
     const n = D.filter((d) => d.st === 2).length;
@@ -86,7 +88,7 @@
   };
   const release = (i) => {
     const s = (narrow() ? SPOTS_N : SPOTS)[i], d = D[i];
-    d.st = 2; [d.fx, d.fy] = clampFree(s[0] * W, s[1] * H); spread(i); sel = i; render();
+    d.st = 2; [d.fx, d.fy] = clampFree(s[0] * W, narrow() ? s[1] : s[1] * H); spread(i); sel = i; render();
   };
 
   // pravidelný halftone: velikost tečky plynule klesá se vzdáleností od rohu;
@@ -288,7 +290,7 @@
       ball(d.x, d.y, rb * (sel === d.i ? 1.15 : 1) * g, d.lime);
     }
   };
-  window.__heroDots = { D, home, at }; // pro testy
+  window.__heroDots = { D, home, at, release }; // pro testy
 
   let visible = true;
   if (window.IntersectionObserver) new IntersectionObserver((en) => { visible = en[0].isIntersecting; }).observe(stage);

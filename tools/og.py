@@ -69,7 +69,7 @@ KCORE = [(420, -20, 110), (330, 30, 52), (385, 120, 55)]
 KDROP = [(262, 18, 30), (300, 112, 22), (215, 92, 15), (160, 40, 9)]   # kapky, které zůstaly v rohu
 KP = lambda x, y: (1200 - (400 - x) * KS, y * KS)
 # vytažené kuličky (x, y, r, barva) – limetková = vybraná (jako v úvodu); řetízek vede z místa, odkud vyšla
-BALLS = [(905, 352, 30, "#cdfe00"), (742, 478, 15, "#969ca0"), (1062, 520, 12, "#969ca0")]
+BALLS = [(905, 352, 30, "#cdfe00"), (742, 478, 15, "#c8ccce"), (1062, 520, 12, "#c8ccce")]
 CHAIN = (KP(352, 222), (905, 352))
 
 
@@ -86,9 +86,9 @@ def dots_svg():
                 f += (br * KS) ** 2 / ((x - cx) ** 2 + (y - cy) ** 2 + 1)
             if f > 0.6:
                 v = (min(4.4, 0.9 + (f - 0.6) * 2.6) - 0.9) / 3.5
-                rad, fill = 1.8 + (GRID * 0.4 - 1.8) * v, "#b5b9bc"
+                rad, fill = 1.8 + (GRID * 0.4 - 1.8) * v, "#dcdee0"
             else:
-                rad, fill = 1.25, "#c9ccce"
+                rad, fill = 1.25, "#dcdee0"
             qx, qy = x, y
             for bx, by, br, _ in BALLS:  # kulička okolní tečky odtlačuje
                 dx, dy = x - bx, y - by
