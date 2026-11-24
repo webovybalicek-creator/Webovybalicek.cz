@@ -264,9 +264,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media (prefers-reduced-motion: reduce) { .mega, .has-mega.is-open .mega { transition: none; } }
 .mobile-nav button { display: block; width: 100%; padding: 10px 12px; border: 0; border-radius: var(--r-link); background: none; text-align: left; font: 450 16px/1.5 var(--f-sans); color: var(--ink); cursor: pointer; }
 .mobile-nav { display: none; position: relative; }
-.mobile-nav summary { list-style: none; cursor: pointer; width: 40px; height: 40px; display: grid; place-content: center; gap: 5px; border-radius: var(--r-pill); background: var(--gray); }
+.mobile-nav summary { list-style: none; cursor: pointer; width: 40px; height: 40px; display: grid; place-content: center; gap: 5px; border-radius: var(--r-pill); background: var(--ink); transition: transform 150ms var(--ease-out); } .mobile-nav summary:active { transform: scale(0.96); }
 .mobile-nav summary::-webkit-details-marker { display: none; }
-.mobile-nav summary span { display: block; width: 16px; height: 1.5px; background: var(--ink); transition: transform 200ms var(--ease-out); }
+.mobile-nav summary span { display: block; width: 16px; height: 1.5px; background: #fff; transition: transform 200ms var(--ease-out); }
 .mobile-nav[open] summary span:first-child { transform: translateY(3.25px) rotate(45deg); }
 .mobile-nav[open] summary span:last-child { transform: translateY(-3.25px) rotate(-45deg); }
 .mobile-nav ul {
