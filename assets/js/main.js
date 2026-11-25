@@ -98,6 +98,23 @@ if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
   }, { passive: true });
 }
 
+// Měření (GA4): události se posílají jen se souhlasem s analytikou – GA se bez něj vůbec nenačte.
+// Klíčové události v GA4: generate_lead (odeslaná poptávka), contact_phone, contact_email.
+const wbTrack = (name, params = {}) => {
+  try {
+    const m = document.cookie.match(/(?:^|; )wb_consent=([^;]*)/);
+    if (!m || !JSON.parse(decodeURIComponent(m[1])).analytics || typeof window.gtag !== 'function') return;
+    window.gtag('event', name, Object.assign({ page_path: location.pathname }, params));
+  } catch (e) { /* měření nesmí rozbít web */ }
+};
+window.wbTrack = wbTrack;
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+  if (!a) return;
+  const tel = a.href.startsWith('tel:');
+  wbTrack(tel ? 'contact_phone' : 'contact_email', { link_text: (a.textContent || '').trim().slice(0, 60) });
+});
+
 // Poptávkový formulář: odeslání přes poptavka.php, při odesílání perleťové kapky v tlačítku,
 // po úspěchu se formulář rozostří a vyroste kapka s poděkováním. Při chybě zůstane formulář a ukáže se e-mail.
 document.querySelectorAll('form.form').forEach((form) => {
@@ -121,6 +138,7 @@ document.querySelectorAll('form.form').forEach((form) => {
     } catch (err) { ok = false; }
     if (btn) { btn.classList.remove('is-busy'); btn.disabled = false; btn.innerHTML = label; }
     if (ok) {
+      wbTrack('generate_lead', { form_segment: data.get('segment') || 'klient', form_type: data.get('type') || '', from_calc: form.closest('[data-calc]') ? 'ano' : 'ne' });
       form.classList.add('is-sent');
       form.reset();
     } else {
@@ -459,7 +477,7 @@ document.querySelectorAll('form[data-sleva]').forEach((form) => {
     let ok = false;
     try { const r = await fetch('/slevovy-kod.php', { method: 'POST', body: data, headers: { Accept: 'application/json' } }); ok = r.ok && (await r.json()).ok === true; } catch (err) { ok = false; }
     btn.disabled = false; btn.innerHTML = label;
-    if (ok) { form.classList.add('is-sent'); msg.textContent = 'Hotovo, slevový kód vám posíláme e-mailem.'; msg.classList.add('is-ok'); form.reset(); }
+    if (ok) { wbTrack('discount_code_request'); form.classList.add('is-sent'); msg.textContent = 'Hotovo, slevový kód vám posíláme e-mailem.'; msg.classList.add('is-ok'); form.reset(); }
     else { msg.innerHTML = 'Nepodařilo se odeslat. Napište nám na <a href="mailto:webovybalicek@gmail.com">webovybalicek@gmail.com</a>.'; msg.classList.add('is-err'); }
   });
 });
@@ -583,6 +601,8 @@ document.querySelectorAll('[data-calc]').forEach((box) => {
     if (urgent) urgent.checked = !!fast;
     if (msg && !edited) msg.value = `Výběr z kalkulačky (orientačně ${fmt(lo)} – ${fmt(hi)}):\n- ${picked.join('\n- ')}\n\nO nás: `;
   };
+  let used = false;
+  box.addEventListener('change', () => { if (!used) { used = true; wbTrack('calculator_use'); } });
   box.addEventListener('change', calc);
   calc();
   const bar = box.querySelector('.calc-bar'), res = box.querySelector('.calc-result');

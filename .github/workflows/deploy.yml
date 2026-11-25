@@ -48,6 +48,10 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         run: printf '<?php $SLACK_WEBHOOK = %s;\n' "$(python3 -c 'import json,os;print(json.dumps(os.environ.get("SLACK_WEBHOOK","")))')" > dist/slack-config.php
 
+      - name: IndexNow – připravit seznam změněných stránek
+        if: env.PROD == 'true'
+        run: python3 tools/indexnow.py priprav
+
       - name: Nahrát na FTP
         if: env.PROD != 'true' || env.FTP_DIR != ''
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -57,3 +61,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
           server-dir: ${{ env.PROD == 'true' && env.FTP_DIR || './' }}
+
+      - name: IndexNow – ohlásit změny Bingu a Seznamu
+        if: env.PROD == 'true'
+        run: python3 tools/indexnow.py odesli
