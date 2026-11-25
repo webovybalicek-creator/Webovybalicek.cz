@@ -130,7 +130,7 @@ def srovnani(src):
     D = runpy.run_path(str(src / "data" / "seo-srovnani.py"))
     S, C = D["S"], D["CENA"]
     out = []
-    links = [(f"/srovnani/{k}/", f"{x['a']}, nebo {x['b']}?") for k, x in S.items()] + [("/kolik-stoji-web/", "Kolik stojí web?")]
+    links = [(f"/srovnani/{k}/", f"{x['a']}, nebo {x['b']}?") for k, x in S.items()] + [("/kolik-stoji-web/", "Kolik stojí web?"), ("/kolik-stoji-e-shop/", "Kolik stojí e-shop?"), ("/kolik-stoji-redesign-webu/", "Kolik stojí redesign?"), ("/kolik-stoji-sprava-webu/", "Kolik stojí správa webu?")]
     for k, x in S.items():
         path = f"/srovnani/{k}/"
         body = hero([("Domů", "/"), ("Srovnání", "/srovnani/"), (x["kw"], None)], x["h"], x["l"])
@@ -277,4 +277,5 @@ def pages(src: Path):
     items, _ = load_typy(src)
     by_key = {t["k"]: t for t in items}
     import seo_extra
-    return lokality(src, by_key) + srovnani(src) + pojmy(src) + seo_extra.pages(src, by_key)
+    import seo_more
+    return lokality(src, by_key) + srovnani(src) + pojmy(src) + seo_extra.pages(src, by_key) + seo_more.pages(src)

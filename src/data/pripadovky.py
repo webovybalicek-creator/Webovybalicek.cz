@@ -1,0 +1,56 @@
+# Případové studie /projekty/<slug>/ + rozcestník /projekty/ (generuje src/seo_more.py).
+# JEN OVĚŘENÁ FAKTA. Čísla (výsledky) a citace klientů nevymýšlet – pole vysledek / citace se vypíší, jen když jsou vyplněná.
+# ref = klíč reference pro náhled (snímek z reference-snimky.json), rel = související stránky.
+
+P = {
+    "kabiny-kravak": dict(
+        n="Kabiny Kravák", u="https://kabinykravak.cz/", ref="kabinykravak-cz", foto="kabiny-kravak.webp",
+        title="rezervace s platbou a prodej dárkových poukazů",
+        h="Kabiny Kravák: rezervace *bez jediného e-mailu*",
+        l="Designové kabiny u Znojma, které si host najde, zarezervuje i zaplatí sám, ve třech jazycích. A dárkový poukaz si koupí kdykoli, i ve dvě ráno.",
+        md="Případová studie Kabiny Kravák: třejazyčný web ubytování u Znojma s rezervačním formulářem napojeným na Smoobu a automatickým prodejem dárkových poukazů s platbou kartou.",
+        tags=["Ubytování", "Rezervace", "Poukazy", "CZ / EN / DE"],
+        zadani="Majitelé ubytování potřebovali web, přes který si host sám ověří volný termín, uvidí přesnou cenu a rovnou si pobyt zarezervuje, bez dopisování e-mailů. Hosté jezdí i z Rakouska a Německa, takže web musel fungovat česky, anglicky a německy. Navíc chtěli prodávat dárkové poukazy bez ruční práce.",
+        reseni=[("Vlastní rezervační formulář", "Formulář napojený přes API na Smoobu, ve kterém majitelé spravují obsazenost: volné termíny v reálném čase a rozpis ceny ještě před odesláním."),
+                ("Tři jazyky", "Celý web včetně rezervací v češtině, angličtině a němčině."),
+                ("Dárkové poukazy na autopilota", "Poukazy v hodnotě 2 500, 5 000 a 10 000 Kč s platbou kartou přes Stripe. Po zaplacení dorazí zákazníkovi automaticky e-mailem jako PDF."),
+                ("Prezentace kabin", "Fotogalerie, půdorysy a interaktivní slidery, aby si host kabinu prohlédl dřív, než přijede.")],
+        rel=[("/tvorba-webu/ubytovani/", "Web pro ubytování"), ("/tvorba-webu/rezervacni-system/", "Rezervační systém"),
+             ("/tvorba-webu/darkove-poukazy/", "Prodej dárkových poukazů"), ("/web-pro-chaty-a-apartmany/", "Web pro chaty a apartmány")]),
+    "mmnt": dict(
+        n="MMNT", u="https://mmntshop.cz/", ref="mmntshop-cz", foto="mmnt.webp",
+        title="e-shop se svíčkami Ewy Farné",
+        h="MMNT: e-shop pro *značku Ewy Farné*",
+        l="Prémiové svíčky a doplňky značky Ewy Farné. E-shop, který působí stejně jako produkt: čistě, klidně a s důrazem na detail. Pro zákazníky v Česku i v Polsku.",
+        md="Případová studie MMNT: e-shop na WooCommerce pro značku svíček a doplňků Ewy Farné s českou a polskou verzí.",
+        tags=["E-shop", "WooCommerce", "CZ / PL"],
+        zadani="Značka potřebovala e-shop, který prodá prémiový produkt přes atmosféru a fotky, ne přes slevové bannery, a který obslouží fanoušky v Česku i v Polsku.",
+        reseni=[("E-shop na WooCommerce", "Vlastní e-shop s platbami a dopravou, který si značka spravuje sama."),
+                ("Česká a polská verze", "Samostatná verze pro polský trh, protože zákazníci značky jsou v obou zemích."),
+                ("Design podle značky", "Vzhled postavený na fotografiích produktů a vizuálu značky, bez přeplácaných prvků.")],
+        rel=[("/tvorba-webu/e-shop/", "Tvorba e-shopu"), ("/kolik-stoji-e-shop/", "Kolik stojí e-shop"), ("/tvorba-webu/vicejazycny-web/", "Vícejazyčný web")]),
+    "jamie-collection": dict(
+        n="Jamie Collection", u="https://www.jamiecollection.cz/", ref="jamiecollection-cz",
+        title="e-shop české módní značky a dlouhodobá péče",
+        h="Jamie Collection: e-shop, o který *se staráme od roku 2020*",
+        l="Česká módní značka, která spojuje pohodlí se stylem. E-shop jsme postavili v roce 2020 a od té doby ho držíme v kondici: aktualizace, úpravy a nové funkce podle toho, jak značka roste.",
+        md="Případová studie Jamie Collection: WooCommerce e-shop české módní značky a jeho dlouhodobá správa a rozvoj od roku 2020.",
+        tags=["E-shop", "Móda", "Správa webu"],
+        zadani="Módní značka potřebovala e-shop, který bude fungovat dlouhodobě, ne jen při spuštění: s pravidelnými aktualizacemi, úpravami pro nové kolekce a jedním člověkem, který e-shop zná do detailu.",
+        reseni=[("E-shop na WooCommerce", "Vlastní e-shop na WordPressu s Elementorem, který si značka spravuje sama."),
+                ("Úpravy na míru", "Funkce a úpravy e-shopu přímo v kódu šablony, ne přes další a další pluginy."),
+                ("Dlouhodobá správa", "Aktualizace, zálohy, bezpečnost a úpravy pro nové kolekce. Od spuštění v roce 2020 nepřetržitě.")],
+        rel=[("/tvorba-webu/e-shop/", "Tvorba e-shopu"), ("/sprava-webu/", "Správa webu"), ("/kolik-stoji-sprava-webu/", "Kolik stojí správa webu")]),
+    "facer": dict(
+        n="Facer", u="https://facer.cz/", ref="facer-cz",
+        title="náborový web pro F2F fundraisery",
+        h="Facer: web, který *nabírá lidi*",
+        l="Facer hledá fundraisery, kteří na ulici získávají dárce pro neziskové organizace. Web musí za pár vteřin vysvětlit, o jakou práci jde, a přesvědčit uchazeče, aby se ozval.",
+        md="Případová studie Facer: náborový web pro F2F fundraising v Praze, postavený na schválených textech klienta a vizuálu jeho tištěných materiálů.",
+        tags=["Náborový web", "Neziskový sektor", "Praha"],
+        zadani="Klient měl hotové a schválené texty a tištěné materiály, ze kterých měl web vycházet. Potřeboval jasný náborový web, který osloví uchazeče o práci v F2F fundraisingu a dovede je k přihlášce.",
+        reseni=[("Struktura pro uchazeče", "Od toho, co práce obnáší, přes to, co nabízí, až po přihlášku. Bez zbytečných odboček."),
+                ("Vizuál z tištěných materiálů", "Design navazuje na letáky a materiály klienta, aby značka působila všude stejně."),
+                ("Texty beze změn", "Schválené texty klienta jsme převzali přesně, design jsme stavěli kolem nich.")],
+        rel=[("/tvorba-webu/naborovy-web/", "Náborový web"), ("/tvorba-webu/neziskovky-a-spolky/", "Weby pro neziskovky"), ("/ai-weby/", "AI weby")]),
+}

@@ -1107,6 +1107,39 @@
   ]
  },
  {
+  "slug": "srovnani-ai-web-vs-wordpress",
+  "path": "/srovnani/ai-web-vs-wordpress/",
+  "k": "Srovnání",
+  "h": "AI web, nebo *WordPress*?",
+  "tags": [
+   "AI web",
+   "vs",
+   "WordPress"
+  ]
+ },
+ {
+  "slug": "srovnani-shopify-vs-woocommerce",
+  "path": "/srovnani/shopify-vs-woocommerce/",
+  "k": "Srovnání e-shopů",
+  "h": "Shopify, nebo *WooCommerce*?",
+  "tags": [
+   "Shopify",
+   "vs",
+   "WooCommerce"
+  ]
+ },
+ {
+  "slug": "srovnani-agentura-vs-freelancer",
+  "path": "/srovnani/agentura-vs-freelancer/",
+  "k": "Srovnání",
+  "h": "Agentura, nebo *freelancer*?",
+  "tags": [
+   "Velká agentura",
+   "vs",
+   "Freelancer"
+  ]
+ },
+ {
   "slug": "kolik-stoji-web",
   "path": "/kolik-stoji-web/",
   "k": "Ceny 2026",
@@ -1592,6 +1625,39 @@
   ]
  },
  {
+  "slug": "reseni-prechod-ze-shoptetu-na-woocommerce",
+  "path": "/reseni/prechod-ze-shoptetu-na-woocommerce/",
+  "k": "Řešíme",
+  "h": "Přechod ze *Shoptetu* na WooCommerce",
+  "tags": [
+   "Rychle",
+   "Bez ztráty SEO",
+   "Na míru"
+  ]
+ },
+ {
+  "slug": "reseni-prevod-webu-z-webnode",
+  "path": "/reseni/prevod-webu-z-webnode/",
+  "k": "Řešíme",
+  "h": "Převod webu *z Webnode*",
+  "tags": [
+   "Rychle",
+   "Bez ztráty SEO",
+   "Na míru"
+  ]
+ },
+ {
+  "slug": "reseni-web-nechodi-poptavky",
+  "path": "/reseni/web-nechodi-poptavky/",
+  "k": "Řešíme",
+  "h": "Z webu nechodí *poptávky*?",
+  "tags": [
+   "Rychle",
+   "Bez ztráty SEO",
+   "Na míru"
+  ]
+ },
+ {
   "slug": "reseni",
   "path": "/reseni/",
   "k": "Řešíme",
@@ -1612,6 +1678,143 @@
    "AI web",
    "E-shop",
    "Cena"
+  ]
+ },
+ {
+  "slug": "dotace-na-web-a-e-shop",
+  "path": "/dotace-na-web-a-e-shop/",
+  "k": "Dotace 2026",
+  "h": "Web s dotací *až 50 %*",
+  "pill": "OP TAK",
+  "tags": [
+   "Web",
+   "E-shop",
+   "Rezervace"
+  ]
+ },
+ {
+  "slug": "kontrola-webu-zdarma",
+  "path": "/kontrola-webu-zdarma/",
+  "k": "Zdarma",
+  "h": "Kontrola webu *zdarma*",
+  "pill": "do 48 hodin",
+  "tags": [
+   "Rychlost",
+   "SEO",
+   "Poptávky"
+  ]
+ },
+ {
+  "slug": "kolik-stoji-e-shop",
+  "path": "/kolik-stoji-e-shop/",
+  "k": "Ceny 2026",
+  "h": "Kolik stojí *e-shop*?",
+  "pill": "od 35 000 Kč",
+  "tags": [
+   "Cena",
+   "Provoz",
+   "Bez přirážky"
+  ]
+ },
+ {
+  "slug": "kolik-stoji-sprava-webu",
+  "path": "/kolik-stoji-sprava-webu/",
+  "k": "Ceny 2026",
+  "h": "Kolik stojí *správa webu*?",
+  "pill": "od 600 Kč/měs.",
+  "tags": [
+   "Cena",
+   "Provoz",
+   "Bez přirážky"
+  ]
+ },
+ {
+  "slug": "kolik-stoji-redesign-webu",
+  "path": "/kolik-stoji-redesign-webu/",
+  "k": "Ceny 2026",
+  "h": "Kolik stojí *redesign webu*?",
+  "pill": "od 20 000 Kč",
+  "tags": [
+   "Cena",
+   "Provoz",
+   "Bez přirážky"
+  ]
+ },
+ {
+  "slug": "geo-optimalizace",
+  "path": "/geo-optimalizace/",
+  "k": "GEO a AEO",
+  "h": "Web v odpovědích *AI*",
+  "tags": [
+   "ChatGPT",
+   "Google AI",
+   "Perplexity"
+  ]
+ },
+ {
+  "slug": "spoluprace-pro-agentury",
+  "path": "/spoluprace-pro-agentury/",
+  "k": "Pro agentury",
+  "h": "Weby pro *agentury*",
+  "tags": [
+   "White-label",
+   "WooCommerce",
+   "AI weby"
+  ]
+ },
+ {
+  "slug": "projekty-kabiny-kravak",
+  "path": "/projekty/kabiny-kravak/",
+  "k": "Případová studie",
+  "h": "Kabiny Kravák: rezervace *bez jediného e-mailu*",
+  "tags": [
+   "Ubytování",
+   "Rezervace",
+   "Poukazy"
+  ]
+ },
+ {
+  "slug": "projekty-mmnt",
+  "path": "/projekty/mmnt/",
+  "k": "Případová studie",
+  "h": "MMNT: e-shop pro *značku Ewy Farné*",
+  "tags": [
+   "E-shop",
+   "WooCommerce",
+   "CZ / PL"
+  ]
+ },
+ {
+  "slug": "projekty-jamie-collection",
+  "path": "/projekty/jamie-collection/",
+  "k": "Případová studie",
+  "h": "Jamie Collection: e-shop, o který *se staráme od roku 2020*",
+  "tags": [
+   "E-shop",
+   "Móda",
+   "Správa webu"
+  ]
+ },
+ {
+  "slug": "projekty-facer",
+  "path": "/projekty/facer/",
+  "k": "Případová studie",
+  "h": "Facer: web, který *nabírá lidi*",
+  "tags": [
+   "Náborový web",
+   "Neziskový sektor",
+   "Praha"
+  ]
+ },
+ {
+  "slug": "projekty",
+  "path": "/projekty/",
+  "k": "Reference",
+  "h": "Případové *studie*",
+  "tags": [
+   "Rezervace",
+   "E-shop",
+   "Nábor"
   ]
  }
 ]
