@@ -470,7 +470,7 @@ T = {
         f=["Rubriky, štítky a autoři", "Šablony článků a výpisů", "Vyhledávání a související články",
            "SEO, strukturovaná data a sitemap", "Místa pro reklamu a AdSense", "Newsletter a sběr e-mailů",
            "Převod článků ze starého webu", "Pomoc s obsahem přes AI"],
-        svc="wp", refs=["carujeme-cz", "diteajacasopis-cz", "najdikadernictvi-cz", "zdravotnictvi-medicina-cz", "krusnohorsko-com", "katalog-kempu-cz", "strechy-fasady-izolace-cz"],
+        svc="wp", refs=["carujeme-cz", "kojeneckemleko-cz", "diteajacasopis-cz", "najdikadernictvi-cz", "zdravotnictvi-medicina-cz", "krusnohorsko-com", "katalog-kempu-cz", "strechy-fasady-izolace-cz"],
         q=[("Převedete články ze starého webu?", "Ano, včetně obrázků, autorů a přesměrování starých adres, aby se neztratila návštěvnost z Googlu."),
            ("Jak bude web rychlý?", "Používáme lehké šablony, cache a moderní formáty obrázků. Rychlost hlídáme i po spuštění."),
            ("Můžeme na webu mít reklamu?", "Ano. Reklamní pozice navrhneme tak, aby vydělávaly a přitom nerušily čtení.")],
