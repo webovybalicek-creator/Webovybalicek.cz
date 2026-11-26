@@ -1,4 +1,4 @@
-# Backlog: SEO obsah s affiliate odkazy (stav 26. 11. 2026)
+# Backlog: SEO obsah s affiliate odkazy (stav 26. 11. 2026, doplněny stávající registrace)
 
 Cíl: pokrýt tematicky všechny služby, které na webech používáme a které mají affiliate/partnerský program. Stránky přivedou návštěvnost z vyhledávání, vydělají na provizích a zároveň vedou k poptávce („nechcete to řešit sami? postavíme / napojíme / přestěhujeme za vás“).
 
@@ -15,6 +15,19 @@ Cíl: pokrýt tematicky všechny služby, které na webech používáme a které
 3. GA4 událost `affiliate_click` (slug služby, stránka) přes `wbTrack`.
 4. Nový modul `src/seo_affil.py` + data `src/data/affil-*.py`, komponenty: srovnávací tabulka, karta služby (klady/zápory/cena/odkaz), blok „Jak jsme testovali“, affiliate poznámka.
 
+## ✅ Už registrované (odkazy na webu, stránka /doporucene-pluginy/, `src/plugins.py`)
+| Služba | Odkaz | Kde se používá |
+|---|---|---|
+| Toret (pluginy pro WooCommerce) | `https://toret.cz/produkt/<slug>/ref/67/` (`REF = "67"`) | všech 44 stránek pluginů + balíček |
+| Comgate | `https://www.comgate.cz/?r=8NQF` | detail pluginu Comgate (`EXTRA`) |
+| ThePay | `https://admin.thepay.cz/partner/save-token/DTGVodzETRTyscU2d2uX` | detail pluginu ThePay (`EXTRA`) |
+| iDoklad | registrace s `Ref=7YpAEvJx…` | detail pluginu iDoklad (`EXTRA`) |
+| Flycart (slevy a akce pro WooCommerce) | `https://www.flycart.org/?ref=ymvkyzm` | rozcestník pluginů, „Další pluginy“ |
+| LearnDash (StellarWP přes síť Impact, účet 5070967) | `https://stellarwp.pxf.io/c/5070967/…` | rozcestník pluginů, „Další pluginy“ |
+
+Odkazy už mají `rel="sponsored noopener"` a stránky pluginů poznámku o partnerských odkazech. Při stavbě `src/data/affil.json` je převést tam (jeden zdroj pravdy) a `plugins.py` číst odtud.
+Pozn.: účet v síti Impact (LearnDash) – v Impactu mohou být i další značky (např. Ecomail uvádějí agregátory), stojí za to projít katalog inzerentů.
+
 ## Affiliate programy – co je ověřené
 | Služba | Program | Provize | Stav |
 |---|---|---|---|
@@ -24,12 +37,12 @@ Cíl: pokrýt tematicky všechny služby, které na webech používáme a které
 | Elementor | affiliate | Elementor One 55 %, Pro a Elementor Host 45 % z první platby, cookie 45 dní (elementor.com/affiliates) | ověřeno |
 | Crocoblock | affiliate | 50 % z každého prodeje (crocoblock.com/affiliates) | ověřeno |
 | Shopify | affiliate | až 3 500 Kč za doporučení placeného plánu (shopify.com/cz blog) | ověřeno |
-| Comgate | partnerský program | existuje (comgate.eu/partners), podmínky neuvedené | zjistit podmínky |
+| Comgate | partnerský program | podmínky nezveřejněné | **registrováno** (viz výše) |
 | GetResponse | affiliate | 40–60 % po dobu 12 měsíců (getresponse.com blog) | ověřeno |
 | MailerLite | affiliate | existuje (mailerlite.com/affiliate), výplata od 100 USD | zjistit sazbu |
 | Ecomail | affiliate přes Impact | uváděno 20 % (agregátor linkclicky.com) | ověřit přímo |
 | Jotform | affiliate | 30 % (jotform.com/partnership/affiliate) | ověřeno |
-| Forpsi, Websupport, Webglobe, Exon, GoPay, ThePay, Fakturoid, iDoklad, Vyfakturuj, SmartEmailing, Shoptet, Google Workspace, Smoobu, Reservio, Bricks, Toret | – | – | **neověřeno** – zjistit, zda program mají (Webglobe má reseller program, ne affiliate; Toret: máme dohodu, zjistit affiliate) |
+| Forpsi, Websupport, Webglobe, Exon, GoPay, Fakturoid, Vyfakturuj, SmartEmailing, Shoptet, Google Workspace, Smoobu, Reservio, Bricks, Toret | – | – | **neověřeno** – zjistit, zda program mají (Webglobe má reseller program, ne affiliate; Toret: máme dohodu, zjistit affiliate) |
 
 Registrace dělá Vladimír (osobní a platební údaje), odkazy pak doplním do `affil.json`.
 
@@ -57,12 +70,18 @@ Odlišení od konkurence: vlastní měření (stejný WordPress + Elementor na k
 
 ### 3. 💳 Platby a e-shop platformy (priorita 3 – vede na poptávku e-shopu)
 - `/e-shop/platebni-brany-srovnani/` – Comgate, GoPay, ThePay, Stripe, GP webpay: poplatky, napojení na WooCommerce, výplaty
-- `/e-shop/comgate-recenze/`, `/e-shop/gopay-recenze/`
+- `/e-shop/comgate-recenze/`, `/e-shop/thepay-recenze/`, `/e-shop/gopay-recenze/` (Comgate a ThePay registrované; plugin pro bránu vždy přes Toret odkaz)
+- `/e-shop/slevy-a-akce-ve-woocommerce/` – Flycart vs Toret (Flycart registrován)
 - `/e-shop/shopify-vs-shoptet/`, `/e-shop/shopify-recenze/` (Shopify affiliate) – s jasným doporučením, kdy radši WooCommerce
 - `/e-shop/jak-zalozit-e-shop/` – návod + CTA na tvorbu e-shopu
 
-### 4. 🧾 Fakturace a účetnictví (priorita 4)
-- `/software/fakturoid-vs-idoklad/` (+ Vyfakturuj) – oba používáme, napojení na WooCommerce
+### 3b. 🎓 E-learning (registrováno: LearnDash)
+- `/wordpress/learndash-recenze/` – LearnDash v praxi (kurzy, testy, prodej přes WooCommerce)
+- `/wordpress/learndash-vs-moodle/` – řešíme reálně u KZPS
+- `/wordpress/jak-prodavat-online-kurzy/` – návod + CTA na `/tvorba-webu/online-kurzy/` (jen ze SEO stránek)
+
+### 4. 🧾 Fakturace a účetnictví (priorita 4; registrováno: iDoklad)
+- `/software/fakturoid-vs-idoklad/` (+ Vyfakturuj) – oba používáme, napojení na WooCommerce; iDoklad s partnerským odkazem, Fakturoid ověřit
 - `/software/fakturace-pro-e-shop/`
 
 ### 5. 📬 E-mail marketing a firemní e-mail (priorita 5)
@@ -79,11 +98,11 @@ Odlišení od konkurence: vlastní měření (stejný WordPress + Elementor na k
 ## Pořadí práce
 | Fáze | Co | Poznámka |
 |---|---|---|
-| 1 | Technický základ (affil.json, /go/, affiliate_click, šablony) + registrace: Hostinger, Wedos, Elementor, Crocoblock | registrace Vladimír |
-| 2 | Hosting: rozcestník, pro WordPress, pro e-shop, 4 recenze, Wedos vs Forpsi, jak přestěhovat web | měření běží 30 dní, stránky jdou ven hned s cenami a doplní se čísly |
-| 3 | Elementor Pro, Crocoblock, Elementor vs Gutenberg/Bricks | |
-| 4 | Platební brány + Shopify vs Shoptet + jak založit e-shop | dořešit Comgate/GoPay programy |
-| 5 | Fakturace, e-mail marketing, firemní e-mail | |
+| 1 | Technický základ (affil.json se stávajícími odkazy, /go/, affiliate_click, šablony) | převést odkazy z plugins.py |
+| 2 | **Hned monetizovatelné (už registrované):** platební brány (Comgate, ThePay + Toret pluginy), iDoklad vs Fakturoid, LearnDash (recenze, vs Moodle, prodej kurzů), slevy ve WooCommerce (Flycart) | žádná nová registrace |
+| 3 | Registrace Hostinger, Wedos, Elementor, Crocoblock (Vladimír) → hosting: rozcestník, pro WordPress, pro e-shop, recenze, Wedos vs Forpsi, jak přestěhovat web | měření běží 30 dní, stránky jdou ven hned s cenami a doplní se čísly |
+| 4 | Elementor Pro, Crocoblock, Elementor vs Gutenberg/Bricks | |
+| 5 | Shopify vs Shoptet + jak založit e-shop, e-mail marketing, firemní e-mail | |
 | 6 | Domény, ostatní nástroje, zbytek recenzí hostingů | |
 | průběžně | Po 4–6 týdnech Search Console: dotazy s vysokými zobrazeními → nové stránky; čtvrtletně aktualizovat ceny a sazby | |
 
