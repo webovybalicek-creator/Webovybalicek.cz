@@ -128,3 +128,6 @@ Nové SEO stránky (17 URL, celkem 165 stránek, nasazeno 26. 11.) – **mimo pa
 - Ceny „od“ u části LP jsou odhad; obchodní podmínky nechat projít advokátem.
 - Odloženo: Zákon o přístupnosti + audit přístupnosti (stránka `/reseni/pristupnost-webu/`).
 - Rychlost (volitelně): přístupnost 97 – jeden kontrast barev.
+
+## Backlog SEO + affiliate (26. 11. 2026)
+- Plán obsahu s affiliate odkazy: `docs/backlog-seo-affiliate.md` (v projektu `claude/backlog-seo-affiliate.md`). Jen pro vyhledávání – mimo patičku, menu a rozcestníky; affiliate odkazy viditelně označené, `rel="sponsored nofollow"`, přes `/go/<slug>/` z `src/data/affil.json`.
