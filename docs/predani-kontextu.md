@@ -26,9 +26,8 @@ Každá veřejná URL má vlastní náhledový obrázek pro sdílení (og:image 
 ## Měření poptávek (GA4, od commitu a9eb917)
 - GA4 `G-NC8R87KWWH`, služba „webovybalicek.cz - GA4“ (účet webovybalicek.cz, ID služby 382291374, přístup fischer.vlada@gmail.com). Načítá se jen po souhlasu v cookie liště.
 - `main.js` → `wbTrack(name, params)` (také `window.wbTrack`): pošle událost jen se souhlasem s analytikou. Události:
-  - `generate_lead` – úspěšně odeslaný formulář přes poptavka.php (parametry `form_segment` klient/agentura, `form_type` = hodnota `type`, `from_calc` ano/ne, `page_path`)
+  - `generate_lead` – úspěšně odeslaný formulář přes poptavka.php (parametry `form_segment` klient/agentura, `form_type` = hodnota `type`, `page_path`)
   - `contact_phone`, `contact_email` – klik na `tel:` / `mailto:` odkaz kdekoli na webu
-  - `calculator_use` – první změna v kalkulačce na stránce
   - `discount_code_request` – odeslaný formulář slevového kódu Toret
 - Nasazeno 26. 11. 2026. **Zbývá:** v GA4 (Správce → Zobrazení dat → Události) označit hvězdičkou jako klíčové `generate_lead`, `contact_phone`, `contact_email`. V novém rozhraní to jde až poté, co událost poprvé dorazí (první skutečná poptávka / klik).
 - `form_type` hodnoty: `ai`, `wordpress`, `eshop`, `hybrid`, `sprava`, `kontrola`, `a-*` (spolupráce).
@@ -71,18 +70,19 @@ Nové SEO stránky (17 URL, celkem 165 stránek, nasazeno 26. 11.) – **mimo pa
 - Obory (`seo-obory.py`): `/web-pro-advokaty/`, `-terapeuty/`, `-lektory/`, `-kadernictvi/`, `-fotografy/`, `-interierove-designery/`, `-chaty-a-apartmany/` + rozcestník `/web-pro/`. Reference jen ty, které do oboru opravdu patří (popis ověřit v reference-weby.json).
 - Řešení (`seo-reseni.py`): `/reseni/prevod-webu-z-wixu/`, `redesign-webu`, `pomaly-wordpress`, `napojeni-zasilkovny-a-plateb`, `napadeny-web`, `prevzeti-webu`, `prechod-ze-shoptetu-na-woocommerce`, `prevod-webu-z-webnode`, `web-nechodi-poptavky` + rozcestník `/reseni/`.
 - `src/seo_more.py`: kontrola webu zdarma, cenové stránky, GEO, spolupráce pro agentury, případové studie (viz Obsahový plán).
-- Kalkulačka `/kalkulacka-ceny-webu/` (`seo-kalkulacka.py` – ceny příplatků jsou ORIENTAČNÍ, Vladimír je má zkontrolovat; JS v main.js `[data-calc]`, výběr se propíše do formuláře → poptavka.php; na mobilu plovoucí lišta s cenou).
+- Kalkulačka ceny webu **smazána 26. 11. 2026** (Vladimír ji nechce) – `/kalkulacka-ceny-webu/` vrací 410, JS/CSS/data odstraněny. (`/tvorba-webu/kalkulacky/` = služba výroby kalkulaček pro klienty, zůstává.)
 - Slovníček: každý pojem `/slovnicek/<slug>/` (29 stránek), krátká definice z `nejcastejsi-pojmy-ohledne-tvorby-webu.html` (dt odkazuje na detail), rozšíření v `seo-pojmy.py`.
 - Žádné osiřelé stránky: každá nová SEO stránka musí mít odkaz ze souvisejících u jiných SEO stránek (ne z patičky ani rozcestníků – viz pravidlo nahoře) a být v sitemapě.
 
 ## Repo a technika
 - Repo `webovybalicek-creator/Webovybalicek.cz` (veřejné kvůli zdarma Actions – žádná tajemství do gitu). V Claude session přidat přes add_repo s přístupem push; GitHub API jen přes REST (`gh api`), GraphQL ani secrets/variables přes proxy nejdou. Ostrý web z workspace curlem nejde (proxy) – ověřovat v prohlížeči. Rychlost lokálně: `lighthouse` (npm) nad `python3 -m http.server -d dist`; screenshoty lokálně přes Playwright s `/usr/bin/google-chrome`.
-- Statický generátor `build.py`: `src/layout.html` + `src/pages/*.html` + `src/plugins.py` + `src/typy.py` + `src/seo.py` (+ `seo_extra.py`, `seo_more.py`) → `dist/` (165 stránek). `static/` kopíruje jen soubory (ne složky) do kořene webu. Lokálně `STAGING=0 python3 build.py` = produkční build (jinak noindex).
+- Statický generátor `build.py`: `src/layout.html` + `src/pages/*.html` + `src/plugins.py` + `src/typy.py` + `src/seo.py` (+ `seo_extra.py`, `seo_more.py`) → `dist/` (164 stránek). `static/` kopíruje jen soubory (ne složky) do kořene webu. Lokálně `STAGING=0 python3 build.py` = produkční build (jinak noindex).
   - Hlavička stránky v HTML komentáři: `title:`, `description:`, `cta: no`, `hidden: yes` (skryté = bez indexace a mimo sitemapu), `image:` (vlastní og:image).
-  - Každý deploy zvyš `VERSION` v build.py (cache busting CSS/JS). Aktuálně `310`.
+  - Každý deploy zvyš `VERSION` v build.py (cache busting CSS/JS). Aktuálně `312`.
 - Formuláře: `form.form` → `static/poptavka.php` (typy v `$types`, nově `kontrola`, volitelné pole `site`), e-mail na webovybalicek@gmail.com + Slack webhook.
+- Recenze na HP: `src/data/recenze.json` (n, s, t; `f` = fotka, `i: true` = iniciály, bez obojího se nezobrazí); počet a hodnocení v `GOOGLE` v build.py (26. 11.: 25 recenzí, 4,8; nejnovější Marketa Langrova, první v pruhu).
 - Patička: sloupec „webovybalicek“ má odkaz „Napsat referenci ↗“ na Google recenzi (https://g.page/r/CQhSVNjhs3vbEBM/review). Pozor: v layout.html je odkaz „Reference“ i v menu – patička je až ten poslední.
-- GEO/AEO: na HP schema ProfessionalService + WebSite; FAQPage automaticky z `<details><summary>`; srovnání, ceny a případové studie = Article, pojmy = DefinedTerm, lokality/obory/řešení/GEO/agentury/kontrola = Service, kalkulačka = WebApplication; `llms.txt`; robots.txt výslovně povoluje AI crawlery, blokuje /design/.
+- GEO/AEO: na HP schema ProfessionalService + WebSite; FAQPage automaticky z `<details><summary>`; srovnání, ceny a případové studie = Article, pojmy = DefinedTerm, lokality/obory/řešení/GEO/agentury/kontrola = Service; `llms.txt`; robots.txt výslovně povoluje AI crawlery, blokuje /design/.
 - Analytika: viz Měření poptávek.
 - Styly `assets/css/style.css`, JS `assets/js/main.js`, přesměrování `static/.htaccess` (www a http → https://webovybalicek.cz, staré WP adresy).
 - Deploy: push na `main` → Action `deploy.yml` (Pillow + varianty obrázků, build, brand, build, IndexNow příprava, FTP, IndexNow odeslání) nahraje `dist/` přes FTP rovnou na ostrý web (žádný staging – změny ověřovat lokálně nad dist/ před pushem). FTP účet webovybalicek@webovybalicek.cz zavřený v `public_html`. Secrety `SLEVA_KOD`, `SLACK_WEBHOOK`, FTP_*.
@@ -104,7 +104,7 @@ Nové SEO stránky (17 URL, celkem 165 stránek, nasazeno 26. 11.) – **mimo pa
 ## Brand
 - Ink #0a1217, šedé, limetka #cdfe00, perleť jako akcent. Radius karet 8 px. Logo = značka W + „webovybalicek“ (Aspekta 620).
 - Koncept: limetkové kuličky, tečkový rastr, halftone (tečky od velkých k menším), kurzory se štítky. Perleťová bublina z úvodu zrušena (24. 11.).
-- Fajfky: černé kolečko s bílou fajfkou (`.sv-ticks`). Odrážky v právních textech: limetkové kuličky. Krátká odpověď: `.answer`, tabulka srovnání: `.vs-table` (`.vs-table--3` + `.is-us` pro náš sloupec, karta `.pay-card--us`). Kalkulačka: `.calc*`. Fotka případové studie: `.case-photo`.
+- Fajfky: černé kolečko s bílou fajfkou (`.sv-ticks`). Odrážky v právních textech: limetkové kuličky. Krátká odpověď: `.answer`, tabulka srovnání: `.vs-table` (`.vs-table--3` + `.is-us` pro náš sloupec, karta `.pay-card--us`). Fotka případové studie: `.case-photo`.
 - Cookie lišta: tenký bílý glass pruh dole (Consent Mode v2).
 
 ## Obsahová rozhodnutí
@@ -117,7 +117,6 @@ Nové SEO stránky (17 URL, celkem 165 stránek, nasazeno 26. 11.) – **mimo pa
 - Doplnit do případových studií výsledky (čísla) a citace klientů (`src/data/pripadovky.py`, pole `vysledek`, `citace`, `citace_od`); u Facer, Jamie Collection a MMNT zkontrolovat, že popis řešení sedí.
 - Propojit Search Console s GA4.
 - Vrátit referenci LTC, až Vladimír řekne (`src/data/reference-skryte.json`).
-- Zkontrolovat orientační příplatky v kalkulačce (`src/data/seo-kalkulacka.py`).
 - Nabídnuto: stejné chování teček (vtečení do kuličky místo uhýbání) i na kartách s kapkami (`svg[data-kapky]`, „Na čem si zakládáme“) – čeká na odpověď.
 - Náhledovky (og) a fotky ve Firemním profilu mají ještě perleťovou hmotu – zvážit přegenerování v duchu teček.
 - Firmy.cz: založit/upravit firemní profil (účet webovybalicek@gmail.com).
