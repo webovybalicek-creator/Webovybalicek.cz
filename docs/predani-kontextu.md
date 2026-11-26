@@ -1,11 +1,11 @@
-# Předání kontextu – web webovybalicek.cz (stav 25. 11. 2026, spuštěno na ostré doméně)
+# Předání kontextu – web webovybalicek.cz (stav 26. 11. 2026, spuštěno na ostré doméně)
 
 Redesign mého webu webovybalicek.cz je hotový a běží na https://webovybalicek.cz. Staging new.webovybalicek.cz i repo New.webovybalicek.cz jsou zrušené. **Komunikuj výhradně česky** (i průběžné poznámky), stručně a věcně.
 
-## ⚠️ Aktuálně: deploy blokuje GitHub billing (25. 11. 2026)
-- Od commitu `a9eb917` se Action „Deploy na FTP“ nespustí: *„recent account payments have failed or your spending limit needs to be increased“* (github.com/settings/billing účtu webovybalicek-creator).
-- V repu čekají na nasazení commity `a9eb917` (měření GA4 + IndexNow) a `3ffff25` (18 nových stránek). Po vyřešení billingu stačí u posledního běhu „Re-run“ (nebo nový push) – nasadí se vše najednou.
-- Po nasazení: ověřit nové stránky na webu, v GA4 označit klíčové události (viz Měření) a zkontrolovat v logu deploye krok IndexNow.
+## ⚠️ Pravidlo: SEO stránky mimo navigaci
+Nové stránky jen pro SEO (od 25. 11. 2026) **nedávat do patičky ani do rozcestníků** – jsou jen v sitemapě (+ IndexNow) a prolinkované mezi sebou. U řešení a srovnání to řídí `seo_only=True` v datech (vyřadí je z `/reseni/`, z `/kolik-stoji-web/` a ze souvisejících u běžných stránek). Stránky ze `src/seo_more.py` se z běžných stránek neodkazují vůbec.
+- Téma dotací Vladimír řešit nechce – stránka `/dotace-na-web-a-e-shop/` smazána (410 Gone v `static/.htaccess`).
+- Pozn.: GitHub Actions 25. 11. blokoval billing; 26. 11. po zveřejnění repa znovu funguje.
 
 ## ⚠️ Pravidlo: náhledovka ke každé URL
 Každá veřejná URL má vlastní náhledový obrázek pro sdílení (og:image 1200×630) ve stylu úvodu: perleťová hmota, limetkové kapky, tečkový rastr, kurzory se štítky, nadpis s limetkovým podtržením, logo jako v hlavičce. **Při každé nové stránce ho rovnou vytvoř:**
@@ -18,9 +18,9 @@ Každá veřejná URL má vlastní náhledový obrázek pro sdílení (og:image 
 
 ## Indexace (25. 11. 2026)
 - **Google:** sitemap přečtena 25. 11., objeveno 148 URL; vzorek 10 nových stránek napříč sekcemi – všechny v indexu. Report Indexování se teprve zpracovával. Search Console: fischer.vlada@gmail.com, služba `sc-domain:webovybalicek.cz`.
-- **Bing:** 25. 11. odesláno ručně 100 URL (vše kromě právních textů a detailů `/doporucene-pluginy/*`). Zbytek (44 pluginů + 18 nových stránek) pošle IndexNow při prvním úspěšném deployi.
-- **Seznam:** web je pod účtem webovybalicek@gmail.com (ne fischer.vlada). Ruční přidání URL (search.seznam.cz/wt/pridej-stranku) má CAPTCHA – Claude ji nevyplňuje. Seznam podporuje IndexNow, takže po deployi se ohlásí sám.
-- **IndexNow (automaticky při každém deployi):** `tools/indexnow.py` + klíč `static/4f1c9b7e2a6d48c3b0e5a91d7c2f6e38.txt`. V `deploy.yml` krok „priprav“ před FTP porovná otisky stránek (bez `?v=VERZE`) s `/indexnow-stav.json` na webu a zapíše nový stav do dist; krok „odesli“ po FTP pošle jen nové/změněné URL na api.indexnow.org (Bing, Seznam, Yandex…). První běh ohlásí všech 166 stránek. Google IndexNow nepodporuje – čte sitemap.
+- **Bing:** 25. 11. odesláno ručně 100 URL; 26. 11. IndexNow při deployi ohlásil všech 166 URL (odpověď 202), pak znovu po úpravě patičky (200).
+- **Seznam:** web je pod účtem webovybalicek@gmail.com (ne fischer.vlada). Ruční přidání URL (search.seznam.cz/wt/pridej-stranku) má CAPTCHA – Claude ji nevyplňuje. Seznam podporuje IndexNow, ohlašuje se automaticky.
+- **IndexNow (automaticky při každém deployi):** `tools/indexnow.py` + klíč `static/4f1c9b7e2a6d48c3b0e5a91d7c2f6e38.txt`. V `deploy.yml` krok „priprav“ před FTP porovná otisky stránek (bez `?v=VERZE`) s `/indexnow-stav.json` na webu a zapíše nový stav do dist; krok „odesli“ po FTP pošle jen nové, změněné i smazané URL na api.indexnow.org (Bing, Seznam, Yandex…). Změna layoutu (patička) = ohlásí se celý web. Google IndexNow nepodporuje – čte sitemap.
 - Doporučení: Google Search Console propojit s GA4 (GA4 to samo nabízí na úvodní stránce).
 
 ## Měření poptávek (GA4, od commitu a9eb917)
@@ -30,21 +30,20 @@ Každá veřejná URL má vlastní náhledový obrázek pro sdílení (og:image 
   - `contact_phone`, `contact_email` – klik na `tel:` / `mailto:` odkaz kdekoli na webu
   - `calculator_use` – první změna v kalkulačce na stránce
   - `discount_code_request` – odeslaný formulář slevového kódu Toret
-- **Zbývá:** v GA4 (Správce → Zobrazení dat → Události) označit hvězdičkou jako klíčové `generate_lead`, `contact_phone`, `contact_email`. V novém rozhraní to jde až poté, co událost poprvé dorazí (tj. po nasazení a první akci návštěvníka).
-- `form_type` hodnoty: `ai`, `wordpress`, `eshop`, `sprava`, `kontrola`, `dotace`, `a-*` (spolupráce).
+- Nasazeno 26. 11. 2026. **Zbývá:** v GA4 (Správce → Zobrazení dat → Události) označit hvězdičkou jako klíčové `generate_lead`, `contact_phone`, `contact_email`. V novém rozhraní to jde až poté, co událost poprvé dorazí (první skutečná poptávka / klik).
+- `form_type` hodnoty: `ai`, `wordpress`, `eshop`, `hybrid`, `sprava`, `kontrola`, `a-*` (spolupráce).
 
 ## Obsahový plán pro poptávky (25. 11. 2026)
-Analýza: Claude Doc „🔎 webovybalicek – indexace a obsahový plán pro poptávky“ (https://claude.ai/artifact/RP7tEzNSsYzheVzEueD3NF). Hotovo vše kromě bodu „Zákon o přístupnosti“ (Vladimír zatím nechce).
-Nové stránky (commit 3ffff25, 18 URL, celkem 166 stránek):
-- `/dotace-na-web-a-e-shop/` – OP TAK „Technologie pro MAS“ (50 %, web/e-shop/rezervace/napojení na sklad). Formulář `type=dotace` (podklady do žádosti). **Aktualizovat čtvrtletně** – konstanta `DOTACE_AKTUALIZACE` v `src/seo_more.py`. Dotační poradenství neposkytujeme.
+Analýza: Claude Doc „🔎 webovybalicek – indexace a obsahový plán pro poptávky“ (https://claude.ai/artifact/RP7tEzNSsYzheVzEueD3NF). Hotovo vše kromě bodu „Zákon o přístupnosti“ (Vladimír zatím nechce); dotace smazány (nechce řešit).
+Nové SEO stránky (17 URL, celkem 165 stránek, nasazeno 26. 11.) – **mimo patičku a rozcestníky**:
 - `/kontrola-webu-zdarma/` – lead magnet, formulář `type=kontrola` s polem `site` (adresa webu se propíše do e-mailu). Slib: odpověď do 48 hodin, web projde člověk.
 - Ceny: `/kolik-stoji-e-shop/`, `/kolik-stoji-sprava-webu/`, `/kolik-stoji-redesign-webu/` (data `CENY` v seo_more.py; ceny z ceníku: AI web 20 000, prezentační 25 000, e-shop 35 000, B2B od 45 000, správa od 600 Kč/měs., hosting od 1 200 Kč/rok).
 - Řešení (`src/data/seo-reseni.py`, blok „doplněno 25. 11.“): `prechod-ze-shoptetu-na-woocommerce`, `prevod-webu-z-webnode`, `web-nechodi-poptavky`.
 - Srovnání (`src/data/seo-srovnani.py`): `ai-web-vs-wordpress`, `shopify-vs-woocommerce`, `agentura-vs-freelancer` (pravidlo „nejlépe vychází náš web“ dodrženo).
 - `/geo-optimalizace/` – web v odpovědích ChatGPT a Google AI.
-- `/spoluprace-pro-agentury/` – white-label a subdodávky (patička už odkazuje sem, ne na /#spoluprace; formulář spolupráce zůstává na HP).
+- `/spoluprace-pro-agentury/` – white-label a subdodávky (patička dál odkazuje na /#spoluprace).
 - Případové studie `/projekty/` + `/projekty/kabiny-kravak/`, `/mmnt/`, `/jamie-collection/`, `/facer/` – data `src/data/pripadovky.py`. **Jen ověřená fakta**, pole `vysledek` a `citace` (+ `citace_od`) jsou prázdná a nevypisují se – Vladimír má doplnit čísla a citace klientů. U Kabin a MMNT velká fotka z `assets/img/projekty/` (pole `foto`), jinak náhled webu přes `shots_pick`.
-- Patička: Kolik stojí e-shop, Kontrola webu zdarma, Dotace, Web v odpovědích AI (GEO), Případové studie. `/kolik-stoji-web/` a srovnání odkazují na všechny cenové stránky.
+- Patička ani rozcestníky na nové stránky neodkazují (pravidlo nahoře).
 - Další kroky z plánu: Zákon o přístupnosti + audit (odloženo), lokality (Mníšek, Černošice, Beroun, Dobříš, Benešov, Brandýs) jen s vlastním obsahem, `/tvorba-webu-slovensko/`, obory podle referencí, CTA „Napojíme vám to“ na stránkách pluginů, kontextová CTA ve slovníčku. Po 4–6 týdnech projít Search Console (dotazy s vysokými zobrazeními a nízkým CTR).
 
 ## Úvod (homepage) – tečky v rohu (`assets/js/hero-dots.js`, od 24. 11. 2026)
@@ -71,19 +70,19 @@ Nové stránky (commit 3ffff25, 18 URL, celkem 166 stránek):
   - **Pravidlo: v každém srovnání musí nejlépe vycházet náš web.** Tabulka má třetí zvýrazněný sloupec „Web od nás“ (4. prvek v `rows`, štítek „Doporučujeme“), karta „Kdy zvolit nás“ (`us_when`) s CTA a „Krátká odpověď“ končí doporučením nás. Údaje o konkurenci držet fakticky správné.
 - Obory (`seo-obory.py`): `/web-pro-advokaty/`, `-terapeuty/`, `-lektory/`, `-kadernictvi/`, `-fotografy/`, `-interierove-designery/`, `-chaty-a-apartmany/` + rozcestník `/web-pro/`. Reference jen ty, které do oboru opravdu patří (popis ověřit v reference-weby.json).
 - Řešení (`seo-reseni.py`): `/reseni/prevod-webu-z-wixu/`, `redesign-webu`, `pomaly-wordpress`, `napojeni-zasilkovny-a-plateb`, `napadeny-web`, `prevzeti-webu`, `prechod-ze-shoptetu-na-woocommerce`, `prevod-webu-z-webnode`, `web-nechodi-poptavky` + rozcestník `/reseni/`.
-- `src/seo_more.py`: dotace, kontrola webu zdarma, cenové stránky, GEO, spolupráce pro agentury, případové studie (viz Obsahový plán).
+- `src/seo_more.py`: kontrola webu zdarma, cenové stránky, GEO, spolupráce pro agentury, případové studie (viz Obsahový plán).
 - Kalkulačka `/kalkulacka-ceny-webu/` (`seo-kalkulacka.py` – ceny příplatků jsou ORIENTAČNÍ, Vladimír je má zkontrolovat; JS v main.js `[data-calc]`, výběr se propíše do formuláře → poptavka.php; na mobilu plovoucí lišta s cenou).
 - Slovníček: každý pojem `/slovnicek/<slug>/` (29 stránek), krátká definice z `nejcastejsi-pojmy-ohledne-tvorby-webu.html` (dt odkazuje na detail), rozšíření v `seo-pojmy.py`.
-- Žádné osiřelé stránky: každá nová SEO stránka musí mít odkaz z rozcestníku/patičky/souvisejících.
+- Žádné osiřelé stránky: každá nová SEO stránka musí mít odkaz ze souvisejících u jiných SEO stránek (ne z patičky ani rozcestníků – viz pravidlo nahoře) a být v sitemapě.
 
 ## Repo a technika
 - Repo `webovybalicek-creator/Webovybalicek.cz` (veřejné kvůli zdarma Actions – žádná tajemství do gitu). V Claude session přidat přes add_repo s přístupem push; GitHub API jen přes REST (`gh api`), GraphQL ani secrets/variables přes proxy nejdou. Ostrý web z workspace curlem nejde (proxy) – ověřovat v prohlížeči. Rychlost lokálně: `lighthouse` (npm) nad `python3 -m http.server -d dist`; screenshoty lokálně přes Playwright s `/usr/bin/google-chrome`.
-- Statický generátor `build.py`: `src/layout.html` + `src/pages/*.html` + `src/plugins.py` + `src/typy.py` + `src/seo.py` (+ `seo_extra.py`, `seo_more.py`) → `dist/` (166 stránek). `static/` kopíruje jen soubory (ne složky) do kořene webu. Lokálně `STAGING=0 python3 build.py` = produkční build (jinak noindex).
+- Statický generátor `build.py`: `src/layout.html` + `src/pages/*.html` + `src/plugins.py` + `src/typy.py` + `src/seo.py` (+ `seo_extra.py`, `seo_more.py`) → `dist/` (165 stránek). `static/` kopíruje jen soubory (ne složky) do kořene webu. Lokálně `STAGING=0 python3 build.py` = produkční build (jinak noindex).
   - Hlavička stránky v HTML komentáři: `title:`, `description:`, `cta: no`, `hidden: yes` (skryté = bez indexace a mimo sitemapu), `image:` (vlastní og:image).
-  - Každý deploy zvyš `VERSION` v build.py (cache busting CSS/JS). Aktuálně `309`.
-- Formuláře: `form.form` → `static/poptavka.php` (typy v `$types`, nově `kontrola` a `dotace`, volitelné pole `site`), e-mail na webovybalicek@gmail.com + Slack webhook.
+  - Každý deploy zvyš `VERSION` v build.py (cache busting CSS/JS). Aktuálně `310`.
+- Formuláře: `form.form` → `static/poptavka.php` (typy v `$types`, nově `kontrola`, volitelné pole `site`), e-mail na webovybalicek@gmail.com + Slack webhook.
 - Patička: sloupec „webovybalicek“ má odkaz „Napsat referenci ↗“ na Google recenzi (https://g.page/r/CQhSVNjhs3vbEBM/review). Pozor: v layout.html je odkaz „Reference“ i v menu – patička je až ten poslední.
-- GEO/AEO: na HP schema ProfessionalService + WebSite; FAQPage automaticky z `<details><summary>`; srovnání, ceny, dotace a případové studie = Article, pojmy = DefinedTerm, lokality/obory/řešení/GEO/agentury/kontrola = Service, kalkulačka = WebApplication; `llms.txt`; robots.txt výslovně povoluje AI crawlery, blokuje /design/.
+- GEO/AEO: na HP schema ProfessionalService + WebSite; FAQPage automaticky z `<details><summary>`; srovnání, ceny a případové studie = Article, pojmy = DefinedTerm, lokality/obory/řešení/GEO/agentury/kontrola = Service, kalkulačka = WebApplication; `llms.txt`; robots.txt výslovně povoluje AI crawlery, blokuje /design/.
 - Analytika: viz Měření poptávek.
 - Styly `assets/css/style.css`, JS `assets/js/main.js`, přesměrování `static/.htaccess` (www a http → https://webovybalicek.cz, staré WP adresy).
 - Deploy: push na `main` → Action `deploy.yml` (Pillow + varianty obrázků, build, brand, build, IndexNow příprava, FTP, IndexNow odeslání) nahraje `dist/` přes FTP rovnou na ostrý web (žádný staging – změny ověřovat lokálně nad dist/ před pushem). FTP účet webovybalicek@webovybalicek.cz zavřený v `public_html`. Secrety `SLEVA_KOD`, `SLACK_WEBHOOK`, FTP_*.
@@ -114,9 +113,8 @@ Nové stránky (commit 3ffff25, 18 URL, celkem 166 stránek):
 - Slevový kód Toret je tajný. Tým jen křestní jména (na webu).
 
 ## Otevřené body
-- **Vyřešit GitHub billing a spustit deploy** (viz nahoře), pak v GA4 označit klíčové události a ověřit IndexNow v logu.
+- V GA4 označit klíčové události, až poprvé dorazí (viz Měření).
 - Doplnit do případových studií výsledky (čísla) a citace klientů (`src/data/pripadovky.py`, pole `vysledek`, `citace`, `citace_od`); u Facer, Jamie Collection a MMNT zkontrolovat, že popis řešení sedí.
-- Zkontrolovat stránku o dotacích a aktualizovat ji čtvrtletně (výzvy MAS se mění).
 - Propojit Search Console s GA4.
 - Vrátit referenci LTC, až Vladimír řekne (`src/data/reference-skryte.json`).
 - Zkontrolovat orientační příplatky v kalkulačce (`src/data/seo-kalkulacka.py`).
