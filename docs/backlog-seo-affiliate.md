@@ -42,7 +42,7 @@ Pozn.: účet v síti Impact (LearnDash) – v Impactu mohou být i další zna�
 | MailerLite | affiliate | existuje (mailerlite.com/affiliate), výplata od 100 USD | zjistit sazbu |
 | Ecomail | affiliate přes Impact | uváděno 20 % (agregátor linkclicky.com) | ověřit přímo |
 | Jotform | affiliate | 30 % (jotform.com/partnership/affiliate) | ověřeno |
-| Forpsi, Websupport, Webglobe, Exon, GoPay, Fakturoid, Vyfakturuj, SmartEmailing, Shoptet, Google Workspace, Smoobu, Reservio, Bricks, Toret | – | – | **neověřeno** – zjistit, zda program mají (Webglobe má reseller program, ne affiliate; Toret: máme dohodu, zjistit affiliate) |
+| Forpsi, Websupport, Webglobe, Exon, GoPay, Fakturoid, Vyfakturuj, SmartEmailing, Shoptet, Google Workspace, Smoobu, Reservio, Bricks | – | – | **neověřeno** – zjistit, zda program mají (Webglobe má reseller program, ne affiliate) |
 
 Registrace dělá Vladimír (osobní a platební údaje), odkazy pak doplním do `affil.json`.
 
