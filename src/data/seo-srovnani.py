@@ -107,7 +107,7 @@ CENA = dict(
 
 # ---- doplněno 25. 11. 2026 (obsahový plán pro poptávky)
 S.update({
-    "ai-web-vs-wordpress": dict(
+    "ai-web-vs-wordpress": dict(seo_only=True,
         k="Srovnání", a="AI web", b="WordPress",
         h="AI web, nebo *WordPress*?",
         kw="AI web vs WordPress",
@@ -132,7 +132,7 @@ S.update({
             ("Komu AI web patří?", "Vám, stejně jako WordPress. Předáme kód i přístupy a web můžete hostovat kdekoli."),
         ],
     ),
-    "shopify-vs-woocommerce": dict(
+    "shopify-vs-woocommerce": dict(seo_only=True,
         k="Srovnání e-shopů", a="Shopify", b="WooCommerce",
         h="Shopify, nebo *WooCommerce*?",
         kw="Shopify vs WooCommerce",
@@ -157,7 +157,7 @@ S.update({
             ("Dá se přejít ze Shopify na WooCommerce?", "Ano. Přeneseme produkty, zákazníky i objednávky a nastavíme přesměrování adres, aby e-shop neztratil pozice."),
         ],
     ),
-    "agentura-vs-freelancer": dict(
+    "agentura-vs-freelancer": dict(seo_only=True,
         k="Srovnání", a="Velká agentura", b="Freelancer",
         h="Agentura, nebo *freelancer*?",
         kw="Webová agentura vs freelancer",

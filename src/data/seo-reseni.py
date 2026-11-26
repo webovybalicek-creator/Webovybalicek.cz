@@ -96,7 +96,7 @@ R = {
 
 # ---- doplněno 25. 11. 2026 (obsahový plán pro poptávky)
 R.update({
-    "prechod-ze-shoptetu-na-woocommerce": dict(
+    "prechod-ze-shoptetu-na-woocommerce": dict(seo_only=True,
         n="Přechod ze Shoptetu na WooCommerce", h="Přechod ze *Shoptetu* na WooCommerce",
         kw="Přechod ze Shoptetu na WooCommerce",
         l="E-shop vám vyrostl ze šablony a měsíční tarif roste s každým produktem? Převedeme produkty, zákazníky i objednávky na WooCommerce, který vlastníte, a pohlídáme, aby e-shop nepřišel o pozice v Googlu.",
@@ -111,7 +111,7 @@ R.update({
         q=[("Přenesou se i zákazníci a jejich objednávky?", "Ano. Zákazníky i historii objednávek přeneseme, aby šlo navázat na věrnostní program i reklamace. Hesla se z bezpečnostních důvodů nepřenášejí, zákazníci si je jednoduše obnoví."),
            ("Přijdu o pozice v Googlu a ve srovnávačích?", "Při správném přesměrování starých adres a nových XML feedech ne. Přechod plánujeme tak, aby e-shop nebyl ani hodinu bez objednávek."),
            ("Je WooCommerce dražší na provoz?", "Platíte hosting a případně správu, ne tarif podle počtu produktů. U větších e-shopů to bývá dlouhodobě levnější, u malých záleží na tom, jaké funkce potřebujete. Spočítáme vám to předem.")]),
-    "prevod-webu-z-webnode": dict(
+    "prevod-webu-z-webnode": dict(seo_only=True,
         n="Převod webu z Webnode", h="Převod webu *z Webnode*",
         kw="Převod webu z Webnode",
         l="Webnode je rychlý začátek, ale web nikdy úplně nevlastníte a design i SEO mají své hranice. Převedeme obsah na web, který patří vám, a zachováme vše, co vám dnes přivádí zákazníky.",
@@ -126,7 +126,7 @@ R.update({
         q=[("Dá se web z Webnode exportovat?", "Jen částečně. Design ani funkce přenést nejdou, obsah přeneseme my a web postavíme znovu a lépe."),
            ("Co s doménou a e-maily?", "Doménu převedeme k registrátorovi na vaše jméno a e-maily nastavíme tak, aby vám žádná zpráva nezapadla."),
            ("Jak dlouho převod trvá?", "AI web během dnů, větší web nebo e-shop obvykle 2 až 6 týdnů.")]),
-    "web-nechodi-poptavky": dict(
+    "web-nechodi-poptavky": dict(seo_only=True,
         n="Z webu nechodí poptávky", h="Z webu nechodí *poptávky*?",
         kw="Web nepřináší poptávky",
         l="Web existuje, ale telefon nezvoní. Většinou nejde o jednu chybu, ale o několik malých: návštěvník nepochopí, co nabízíte, nenajde cenu, nedůvěřuje nebo nenajde formulář. Najdeme, kde zákazníci odpadají, a opravíme to.",

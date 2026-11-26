@@ -130,7 +130,9 @@ def srovnani(src):
     D = runpy.run_path(str(src / "data" / "seo-srovnani.py"))
     S, C = D["S"], D["CENA"]
     out = []
-    links = [(f"/srovnani/{k}/", f"{x['a']}, nebo {x['b']}?") for k, x in S.items()] + [("/kolik-stoji-web/", "Kolik stojí web?"), ("/kolik-stoji-e-shop/", "Kolik stojí e-shop?"), ("/kolik-stoji-redesign-webu/", "Kolik stojí redesign?"), ("/kolik-stoji-sprava-webu/", "Kolik stojí správa webu?")]
+    # seo_only (25. 11. 2026) = stránky jen pro SEO: odkazují se jen mezi sebou, ne z patičky, rozcestníků ani běžných stránek
+    links_all = [(f"/srovnani/{k}/", f"{x['a']}, nebo {x['b']}?") for k, x in S.items()] + [("/kolik-stoji-web/", "Kolik stojí web?"), ("/kolik-stoji-e-shop/", "Kolik stojí e-shop?"), ("/kolik-stoji-redesign-webu/", "Kolik stojí redesign?"), ("/kolik-stoji-sprava-webu/", "Kolik stojí správa webu?")]
+    links_pub = [(f"/srovnani/{k}/", f"{x['a']}, nebo {x['b']}?") for k, x in S.items() if not x.get("seo_only")] + [("/kolik-stoji-web/", "Kolik stojí web?")]
     for k, x in S.items():
         path = f"/srovnani/{k}/"
         body = hero([("Domů", "/"), ("Srovnání", "/srovnani/"), (x["kw"], None)], x["h"], x["l"])
@@ -160,6 +162,7 @@ def srovnani(src):
   </section>
 '''
         body += cta_split("Naše doporučení", "Co doporučujeme my", x["rec"], x["q"])
+        links = links_all if x.get("seo_only") else links_pub
         rel = "".join(f'<li><a href="{u}">{e(t)}</a></li>' for u, t in links if u != path)
         body += f'''
   <section class="section section--tight">
@@ -207,7 +210,7 @@ def srovnani(src):
   </section>
 '''
     body += cta_split("Časté dotazy", "Na co se ptáte", "Pošlete nám pár vět o tom, co potřebujete, a do 24 hodin dostanete odhad ceny.", C["q"])
-    rel = "".join(f'<li><a href="{u}">{e(t)}</a></li>' for u, t in links if u != path)
+    rel = "".join(f'<li><a href="{u}">{e(t)}</a></li>' for u, t in links_pub if u != path)
     body += f'''
   <section class="section section--tight">
     <div class="wrap"><p class="note">Srovnání:</p><ul class="chips">{rel}</ul></div>

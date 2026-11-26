@@ -47,6 +47,7 @@ def priprav():
         minule = {}
     ted = {u: h for u in sitemap_urls() if (h := otisk(u))}
     zmenene = [u for u, h in ted.items() if minule.get(u) != h]
+    zmenene += [u for u in minule if u not in ted]  # smazané stránky (vrací 404/410) – vyhledávače je vyřadí
     STAV.write_text(json.dumps(ted, ensure_ascii=False, indent=0), encoding="utf-8")
     SEZNAM.write_text(json.dumps(zmenene), encoding="utf-8")
     print(f"IndexNow: {len(zmenene)} nových/změněných z {len(ted)} stránek.")

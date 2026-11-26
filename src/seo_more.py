@@ -1,5 +1,4 @@
 """SEO stránky 3 (25. 11. 2026, obsahový plán pro poptávky):
-- /dotace-na-web-a-e-shop/        dotace OP TAK přes MAS (fakta ověřit a aktualizovat čtvrtletně, viz DOTACE_AKTUALIZACE)
 - /kontrola-webu-zdarma/          lead magnet s formulářem (type=kontrola, pole site)
 - /kolik-stoji-e-shop/, /kolik-stoji-sprava-webu/, /kolik-stoji-redesign-webu/
 - /geo-optimalizace/              web v odpovědích ChatGPT a Google AI
@@ -11,8 +10,6 @@ import runpy
 from typy import e, em, hero
 from seo import ld, crumbs_ld, cta_split, faq, SITE, ORG
 from seo_extra import chips_rel
-
-DOTACE_AKTUALIZACE = "listopad 2026"
 
 ACTIONS = ('<p class="hero-actions"><a href="/kontakt/" class="btn btn--primary">Chci nezávaznou nabídku</a>'
            '<a href="/kalkulacka-ceny-webu/" class="btn btn--outline">Spočítat cenu</a></p>')
@@ -66,72 +63,6 @@ def service_ld(name, path, desc, crumbs, stype="Tvorba webových stránek"):
 def article_ld(headline, path, desc, crumbs):
     return ld([{"@context": "https://schema.org", "@type": "Article", "headline": headline, "description": desc, "author": ORG,
                 "publisher": ORG, "inLanguage": "cs", "mainEntityOfPage": SITE + path, "dateModified": "2026-11-25"}, crumbs_ld(crumbs)])
-
-
-# ---------------------------------------------------------------- dotace
-def dotace():
-    path = "/dotace-na-web-a-e-shop/"
-    cr = [("Domů", "/"), ("Dotace na web a e-shop", path)]
-    md = ("Dotace na web a e-shop 2026: výzvy OP TAK Technologie pro MAS s podporou 50 %. Kdo může žádat, kolik lze získat, "
-          "jak najít svou MAS a jak připravit rozpočet webu do žádosti.")
-    body = hero([("Domů", "/"), ("Dotace na web a e-shop", None)], "Dotace na *web a e-shop*",
-                "Na nový web, e-shop nebo rezervační systém můžete v roce 2026 získat zpět až polovinu ceny. Vysvětlíme, kde výzvy hledat, kdo může žádat a jak vám připravíme rozpočet a specifikaci webu do žádosti.",
-                '<p class="hero-actions"><a href="#poptavka" class="btn btn--primary">Chci web s dotací</a><a href="#jak" class="btn btn--outline">Jak to funguje</a></p>')
-    body += answer("Krátká odpověď",
-                   "Malé a střední firmy mohou čerpat dotaci z programu OP TAK přes výzvy „Technologie pro MAS“, které vyhlašují místní akční skupiny (MAS). "
-                   "Podpora bývá 50 % způsobilých výdajů a mezi podporovanými aktivitami je web, e-shop, rezervační systém i napojení na sklad. "
-                   "Výzvy mají vlastní termíny podle regionu, proto je dobré začít včas: najít svou MAS, připravit rozpočet a teprve po schválení objednat web.")
-    body += section("Kdo může žádat", "Splňujete podmínky?", ticks([
-        "Jste malý nebo střední podnik (OSVČ i firma)",
-        "Podnikáte obvykle alespoň 2 roky (podmínku určuje konkrétní výzva)",
-        "Projekt realizujete na území MAS, která výzvu vyhlásila (typicky venkov a menší města)",
-        "Web nebo e-shop je součástí rozvoje firmy, ne jen nová „vizitka“",
-    ]), "Přesné podmínky se liší podle výzvy. Před podáním je vždy ověřte u své MAS.")
-    body += section("Na co", "Co se dá z dotace pořídit", cards([
-        ("Nový web nebo redesign", "Web, který firmě přivádí zákazníky, včetně designu a obsahu."),
-        ("E-shop", "WooCommerce s platební bránou, dopravci a napojením na účetnictví."),
-        ("Rezervační systém", "Online rezervace a platby pro ubytování, služby nebo akce."),
-        ("Napojení na sklad a systémy", "Propojení e-shopu se skladem, ERP, CRM nebo účetnictvím."),
-    ]))
-    body += f'''  <section class="section" id="jak">
-    <div class="wrap">
-      <div class="section-head"><p class="pill">Postup</p><h2>Jak získat web s dotací</h2></div>
-      <div class="grid-cards">
-        <article class="card pay-card"><p class="pill">1. krok</p><h3>Najděte svou MAS</h3><p>Místní akční skupinu pro vaši obec najdete v databázi Národní sítě MAS. Na jejím webu jsou aktuální výzvy a termíny.</p></article>
-        <article class="card pay-card"><p class="pill">2. krok</p><h3>Rozpočet a specifikace</h3><p>Připravíme vám popis webu, funkcí a rozpočet, který do žádosti doložíte. Zdarma a nezávazně.</p></article>
-        <article class="card pay-card"><p class="pill">3. krok</p><h3>Žádost</h3><p>Žádost podáváte vy nebo dotační poradce. Do schválení web neobjednávejte, výdaje před podáním obvykle nejsou způsobilé.</p></article>
-        <article class="card pay-card"><p class="pill">4. krok</p><h3>Realizace a doklady</h3><p>Po schválení web postavíme a dodáme fakturu a podklady, které potřebujete k vyúčtování.</p></article>
-      </div>
-    </div>
-  </section>
-'''
-    body += answer("Příklad", "E-shop za 120 000 Kč bez DPH s dotací 50 % vás vyjde na 60 000 Kč. Dotace se ale proplácí až zpětně, po dokončení a vyúčtování projektu, takže na začátku musíte celou částku zaplatit sami. "
-                   "Řada výzev má i minimální výši dotace (například 125 000 Kč), proto se vyplatí spojit web s dalšími investicemi do digitalizace.")
-    body += f'''  <section class="section section--mist" id="poptavka">
-    <div class="wrap split">
-      <div class="section-head section-head--sticky">
-        <p class="pill">Rozpočet do žádosti</p>
-        <h2>Připravíme vám podklady pro žádost</h2>
-        <p>Napište, co plánujete a v jakém regionu podnikáte. Pošleme popis webu a rozpočet, který můžete přiložit k žádosti, a pomůžeme s vyúčtováním. Do schválení dotace nic neplatíte.</p>
-        <p class="note">Informace o výzvách jsou aktuální k období {DOTACE_AKTUALIZACE}. Dotační poradenství neposkytujeme, podmínky vždy ověřte u své MAS.</p>
-      </div>
-      {lead_form("Chci web s dotací", "Odpovíme do 24 hodin.", "dotace", "Co plánujete (web, e-shop, rezervace…) a ve které obci podnikáte?", site=False, button="Chci podklady pro žádost")}
-    </div>
-  </section>
-'''
-    body += cta_split("Časté dotazy", "Dotace na web: na co se ptáte", "Nevíte, jestli na dotaci dosáhnete? Napište nám, společně to projdeme.", [
-        ("Kolik lze získat?", "Výzvy Technologie pro MAS mají obvykle podporu 50 % způsobilých výdajů. Minimální a maximální výši dotace určuje každá výzva, často je to zhruba od 125 tisíc do 1,5 milionu korun."),
-        ("Kdy se dotace vyplácí?", "Zpětně, po realizaci a vyúčtování projektu. Na začátku proto počítejte s tím, že web zaplatíte celý."),
-        ("Můžu web objednat hned a dotaci si nárokovat později?", "Obvykle ne. Výdaje vzniklé před podáním žádosti zpravidla nejsou způsobilé. Nejdřív žádost, potom objednávka."),
-        ("Pomůžete i s celou žádostí?", "Připravíme technickou část: popis webu, funkce, harmonogram a rozpočet. Samotnou žádost podáváte vy nebo dotační poradce, se kterým rádi spolupracujeme."),
-        ("Je dotace i pro Prahu?", "Výzvy MAS cílí hlavně na venkov a menší města, Praha do nich obvykle nespadá. Pro středočeské obce v okolí Prahy ale výzvy bývají."),
-    ])
-    body += chips_rel([("/kolik-stoji-e-shop/", "Kolik stojí e-shop"), ("/kolik-stoji-web/", "Kolik stojí web"), ("/tvorba-webu/e-shop/", "Tvorba e-shopu"),
-                       ("/tvorba-webu/rezervacni-system/", "Rezervační systém"), ("/tvorba-webu-stredocesky-kraj/", "Středočeský kraj")], "Související:")
-    head = article_ld("Dotace na web a e-shop 2026", path, md, cr)
-    return ({"title": "Dotace na web a e-shop 2026 – až 50 % zpět (OP TAK, MAS) | webovybalicek", "description": md, "path": path,
-             "head": head, "nav": "", "cta": "no", "ogtype": "article",
-             "og": {"k": "Dotace 2026", "h": "Web s dotací *až 50 %*", "pill": "OP TAK", "tags": ["Web", "E-shop", "Rezervace"]}}, body)
 
 
 # ---------------------------------------------------------------- kontrola webu zdarma
@@ -194,9 +125,8 @@ CENY = {
                  ("Obsah", "Popisky produktů, fotky a texty můžete dodat vy, nebo je připravíme s pomocí AI.")],
         q=[("Proč je e-shop dražší než web?", "Kromě stránek obsahuje košík, platby, dopravce, fakturaci, e-maily zákazníkům a právní náležitosti. Všechno musí fungovat spolu a být otestované."),
            ("Vyplatí se radši Shoptet?", "Pro úplný začátek s pár produkty může. Jakmile chcete vlastní design, funkce na míru nebo nechcete platit tarif podle počtu produktů, vychází lépe vlastní e-shop."),
-           ("Dá se na e-shop získat dotace?", "Ano, některé výzvy OP TAK přes místní akční skupiny podporují e-shop až z 50 %. Podrobnosti najdete na stránce o dotacích."),
            ("Jak se platí?", "Záloha 50 % při objednávce, zbytek po dokončení.")],
-        rel=[("/kalkulacka-ceny-webu/", "Kalkulačka ceny webu"), ("/dotace-na-web-a-e-shop/", "Dotace na web a e-shop"), ("/srovnani/woocommerce-vs-shoptet/", "WooCommerce, nebo Shoptet?"),
+        rel=[("/kalkulacka-ceny-webu/", "Kalkulačka ceny webu"), ("/srovnani/woocommerce-vs-shoptet/", "WooCommerce, nebo Shoptet?"),
              ("/srovnani/shopify-vs-woocommerce/", "Shopify, nebo WooCommerce?"), ("/doporucene-pluginy/", "Doporučené pluginy")]),
     "/kolik-stoji-sprava-webu/": dict(
         crumb="Kolik stojí správa webu", h="Kolik stojí *správa webu*?", og="od 600 Kč/měs.",
@@ -394,4 +324,4 @@ def projekty(src):
 
 
 def pages(src):
-    return [dotace(), kontrola(), *ceny(), geo(), agentury(), *projekty(src)]
+    return [kontrola(), *ceny(), geo(), agentury(), *projekty(src)]

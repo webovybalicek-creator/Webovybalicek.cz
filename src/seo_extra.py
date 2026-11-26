@@ -107,7 +107,7 @@ def reseni(src):
   </section>
 '''
         body += cta_split("Časté dotazy", "Na co se ptáte", "Popište nám v pár větách, co se děje. Ozveme se do 24 hodin s postupem a cenou.", x["q"])
-        body += chips_rel(x["links"] + [(f"/reseni/{o}/", v["n"]) for o, v in R.items() if o != k], "Související:")
+        body += chips_rel(x["links"] + [(f"/reseni/{o}/", v["n"]) for o, v in R.items() if o != k and (x.get("seo_only") or not v.get("seo_only"))], "Související:")
         head = ld([{"@context": "https://schema.org", "@type": "Service", "name": x["n"], "serviceType": x["kw"],
                     "url": SITE + path, "provider": ORG, "description": x["md"], "areaServed": {"@type": "Country", "name": "Česko"}},
                    crumbs_ld([("Domů", "/"), ("Řešíme", "/reseni/"), (x["n"], path)])])
@@ -115,7 +115,7 @@ def reseni(src):
                      "og": {"k": "Řešíme", "h": x["h"], "tags": ["Rychle", "Bez ztráty SEO", "Na míru"]}}, body))
 
     tiles = "".join(f'<article class="card pay-card"><h3><a href="/reseni/{k}/" class="link">{e(x["n"])}</a></h3><p>{e(x["signs"][0])}.</p></article>'
-                    for k, x in R.items())
+                    for k, x in R.items() if not x.get("seo_only"))  # seo_only = jen pro SEO, ne v rozcestníku
     body = hero([("Domů", "/"), ("Řešíme", None)], "Co vás s webem *trápí*?",
                 "Pomalý web, napadený WordPress, Wix, ze kterého nejde odejít, nebo webař, který přestal odpovídat. Tohle řešíme každý týden.")
     body += f'''  <section class="section">

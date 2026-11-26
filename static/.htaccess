@@ -22,6 +22,8 @@ RewriteRule ^(blog|4-tipy-jak-vydelavat-blogem|5-efektivnich-tipu-jak-zvysit-nav
 
 # staré archivy WordPressu
 RewriteRule ^category/ / [R=301,L]
+# Smazané stránky (410 = Google je rychle vyřadí z indexu)
+RewriteRule ^dotace-na-web-a-e-shop/?$ - [G,L]
 RewriteRule ^(author|tag)/ / [R=301,L]
 
 # rychlost: komprese textových souborů

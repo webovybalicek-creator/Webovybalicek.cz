@@ -20,7 +20,7 @@ $lock = sys_get_temp_dir() . '/wb_poptavka_' . md5($ip);
 if (is_file($lock) && time() - filemtime($lock) < 30) out(429, ['ok' => false, 'error' => 'rate']);
 @touch($lock);
 
-$types = ['' => 'Nevím, poraďte mi', 'ai' => 'AI web', 'wordpress' => 'Prezentační web', 'eshop' => 'E-shop', 'hybrid' => 'Hybridní web', 'sprava' => 'Správa stávajícího webu', 'kontrola' => 'Kontrola webu zdarma', 'dotace' => 'Web s dotací (podklady do žádosti)',
+$types = ['' => 'Nevím, poraďte mi', 'ai' => 'AI web', 'wordpress' => 'Prezentační web', 'eshop' => 'E-shop', 'hybrid' => 'Hybridní web', 'sprava' => 'Správa stávajícího webu', 'kontrola' => 'Kontrola webu zdarma',
   'a-nevim' => 'Spolupráce: zatím neví, probrat', 'a-agentura' => 'Spolupráce: agentura, potřebuje postavit web', 'a-freelancer' => 'Spolupráce: freelancer, má klienta na web', 'a-sluzby' => 'Spolupráce: nabízí své služby (PPC, texty, grafika…)', 'a-vypomoc' => 'Spolupráce: dlouhodobá výpomoc s vývojem'];
 $agency = $f('segment', 20) === 'agentura';
 $name = preg_replace('/[\r\n]+/', ' ', $f('name', 120));
