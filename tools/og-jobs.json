@@ -1669,18 +1669,6 @@
   ]
  },
  {
-  "slug": "kalkulacka-ceny-webu",
-  "path": "/kalkulacka-ceny-webu/",
-  "k": "Kalkulačka",
-  "h": "Kolik bude stát *váš web*?",
-  "pill": "za minutu",
-  "tags": [
-   "AI web",
-   "E-shop",
-   "Cena"
-  ]
- },
- {
   "slug": "kontrola-webu-zdarma",
   "path": "/kontrola-webu-zdarma/",
   "k": "Zdarma",

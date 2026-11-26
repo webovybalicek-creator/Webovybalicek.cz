@@ -24,6 +24,7 @@ RewriteRule ^(blog|4-tipy-jak-vydelavat-blogem|5-efektivnich-tipu-jak-zvysit-nav
 RewriteRule ^category/ / [R=301,L]
 # Smazané stránky (410 = Google je rychle vyřadí z indexu)
 RewriteRule ^dotace-na-web-a-e-shop/?$ - [G,L]
+RewriteRule ^kalkulacka-ceny-webu/?$ - [G,L]
 RewriteRule ^(author|tag)/ / [R=301,L]
 
 # rychlost: komprese textových souborů

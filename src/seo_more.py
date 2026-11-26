@@ -11,8 +11,7 @@ from typy import e, em, hero
 from seo import ld, crumbs_ld, cta_split, faq, SITE, ORG
 from seo_extra import chips_rel
 
-ACTIONS = ('<p class="hero-actions"><a href="/kontakt/" class="btn btn--primary">Chci nezávaznou nabídku</a>'
-           '<a href="/kalkulacka-ceny-webu/" class="btn btn--outline">Spočítat cenu</a></p>')
+ACTIONS = '<p class="hero-actions"><a href="/kontakt/" class="btn btn--primary">Chci nezávaznou nabídku</a></p>'
 
 
 def cards(items, cls="grid-cards"):
@@ -126,7 +125,7 @@ CENY = {
         q=[("Proč je e-shop dražší než web?", "Kromě stránek obsahuje košík, platby, dopravce, fakturaci, e-maily zákazníkům a právní náležitosti. Všechno musí fungovat spolu a být otestované."),
            ("Vyplatí se radši Shoptet?", "Pro úplný začátek s pár produkty může. Jakmile chcete vlastní design, funkce na míru nebo nechcete platit tarif podle počtu produktů, vychází lépe vlastní e-shop."),
            ("Jak se platí?", "Záloha 50 % při objednávce, zbytek po dokončení.")],
-        rel=[("/kalkulacka-ceny-webu/", "Kalkulačka ceny webu"), ("/srovnani/woocommerce-vs-shoptet/", "WooCommerce, nebo Shoptet?"),
+        rel=[("/srovnani/woocommerce-vs-shoptet/", "WooCommerce, nebo Shoptet?"),
              ("/srovnani/shopify-vs-woocommerce/", "Shopify, nebo WooCommerce?"), ("/doporucene-pluginy/", "Doporučené pluginy")]),
     "/kolik-stoji-sprava-webu/": dict(
         crumb="Kolik stojí správa webu", h="Kolik stojí *správa webu*?", og="od 600 Kč/měs.",
@@ -176,7 +175,7 @@ def ceny():
     for path, C in CENY.items():
         cr = [("Domů", "/"), ("Kolik stojí web", "/kolik-stoji-web/"), (C["crumb"], path)]
         body = hero([("Domů", "/"), ("Kolik stojí web", "/kolik-stoji-web/"), (C["crumb"], None)], C["h"], C["l"],
-                    '<p class="hero-actions"><a href="/kontakt/" class="btn btn--primary">Chci cenu na míru</a><a href="/kalkulacka-ceny-webu/" class="btn btn--outline">Spočítat cenu</a></p>')
+                    '<p class="hero-actions"><a href="/kontakt/" class="btn btn--primary">Chci cenu na míru</a></p>')
         body += answer("Krátká odpověď", C["verdict"])
         one = "".join(f'<article class="card pay-card"><p class="pill">{e(p)}</p><h3><a href="{u}" class="link">{e(n)}</a></h3><p>{e(t)}</p></article>' for n, p, t, u in C["one"])
         yr = "".join(f'<tr><th scope="row">{e(a)}</th><td>{e(b)}</td></tr>' for a, b in C["yearly"])

@@ -178,7 +178,7 @@ def srovnani(src):
     # kolik stojí web
     path = "/kolik-stoji-web/"
     body = hero([("Domů", "/"), ("Kolik stojí web", None)], C["h"], C["l"],
-                '<p class="hero-actions"><a href="/kontakt/" class="btn btn--primary">Chci cenu na míru</a><a href="/kalkulacka-ceny-webu/" class="btn btn--outline">Spočítat cenu</a></p>')
+                '<p class="hero-actions"><a href="/kontakt/" class="btn btn--primary">Chci cenu na míru</a></p>')
     one = "".join(f'<article class="card pay-card"><p class="pill">{e(p)}</p><h3><a href="{u}" class="link">{e(n)}</a></h3><p>{e(t)}</p></article>' for n, p, t, u in C["one"])
     yr = "".join(f"<tr><th scope=\"row\">{e(a)}</th><td>{e(b)}</td></tr>" for a, b in C["yearly"])
     fac = "".join(f'<article class="card pay-card"><h3>{e(a)}</h3><p>{e(b)}</p></article>' for a, b in C["factors"])
