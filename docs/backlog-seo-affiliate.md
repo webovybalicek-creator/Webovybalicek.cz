@@ -126,6 +126,18 @@ Odlišení od konkurence: měření na klientských webech, které na hostinzíc
 | 11 | Ecomail a další | katalog inzerentů v Impactu | – | ověřit, zda tam jsou |
 Po registraci mi pošli odkazy (nebo ID partnera), doplním je do `src/data/affil.json`.
 
+### Stav registrací (27. 11. 2026)
+- Hotovo: Wedos (?ap=S5P38w), Crocoblock (?ref=1176)
+- Čeká na schválení: Hostinger, Elementor, MailerLite, GetResponse (PartnerStack), Jotform
+- Vynecháno: Shopify; Active24 (nemá provizní program, jen slevy pro správce domén od 25 domén); Ecomail.cz (veřejný affil program nemá – ECOMAIL.app v Impactu je jiná firma)
+- Gmail: štítek „Affiliate“ založen; filtr + týdenní kontrola kódů čeká na rozhodnutí, kam kódy na webu dávat
+
+## Hotovo 27. 11. 2026 (fáze 1 + 2)
+- `src/data/affil.json` = jediný zdroj partnerských odkazů; build generuje `/go/<slug>/` (302) do `.htaccess`, `/go/` je v robots.txt zakázané. `plugins.py` (EXTRA, Flycart, LearnDash) odkazuje přes `/go/`. Po schválení programu stačí v affil.json změnit `url` a `aktivni: true`.
+- GA4 `affiliate_click` (param `affil`) pro odkazy `/go/…` i všechny `rel="sponsored"` – po prvních datech označit/sledovat v GA4.
+- Modul `src/seo_affil.py`, stránky (jen SEO, mimo patičku a rozcestníky, prolinkované mezi sebou): `/e-shop/platebni-brany-srovnani/`, `/software/fakturoid-vs-idoklad/`, `/wordpress/learndash-recenze/`, `/wordpress/learndash-vs-moodle/`, `/e-shop/slevy-a-akce-ve-woocommerce/`, `/slevove-kody/`.
+- `/slevove-kody/`: Toret 15 % (formulář) + akce ze `src/data/slevy.json` (prošlé se při buildu skryjí). Plní týdenní úloha z Gmail štítku „Affiliate“.
+
 ## Rozhodnutí (27. 11. 2026)
 - Testovací tarify hostingů **nekupujeme** – srovnání stojí na datech z klientských webů, které na hostinzích už běží (rychlost měřit na nich), a na oficiálních cenících. Na stránkách to tak popsat („jak jsme hodnotili“), žádná vymyšlená čísla.
 - URL struktura `/hosting/`, `/wordpress/`, `/e-shop/`, `/software/`, `/domeny/` schválena.

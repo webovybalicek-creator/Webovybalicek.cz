@@ -7,11 +7,11 @@ from pathlib import Path
 REF = "67"
 BASE = "/doporucene-pluginy/"
 
-# Partnerské registrace služeb (mimo Toret)
+# Partnerské registrace služeb (mimo Toret) – cíle odkazů jsou v src/data/affil.json
 EXTRA = {
-    "idoklad": ("Registrace do iDokladu", "https://app.idoklad.cz/Account/Registration?Ref=7YpAEvJxNCnOpd9SwOVh3zJYb%2BkyMGL8j0aLc0JBfnU%3D"),
-    "comgate": ("Registrace do Comgate", "https://www.comgate.cz/?r=8NQF"),
-    "thepay": ("Registrace do ThePay", "https://admin.thepay.cz/partner/save-token/DTGVodzETRTyscU2d2uX"),
+    "idoklad": ("Registrace do iDokladu", "/go/idoklad/"),
+    "comgate": ("Registrace do Comgate", "/go/comgate/"),
+    "thepay": ("Registrace do ThePay", "/go/thepay/"),
 }
 
 WHY = {
@@ -110,8 +110,8 @@ def overview(data):
       <div class="plugin-group" id="dalsi">
         <div class="plugin-group-head"><h2>Další pluginy, se kterými pracujeme</h2><p>Mimo nabídku Toretu.</p></div>
         <div class="plugins">
-          <article class="card plugin"><div class="plugin-head"><h3>Flycart</h3></div><p>Slevy, akce a pravidla cen pro WooCommerce.</p><p class="plugin-links"><a href="https://www.flycart.org/?ref=ymvkyzm" class="btn btn--outline btn--sm" {EXT_ATTR}>Zobrazit plugin</a></p></article>
-          <article class="card plugin"><div class="plugin-head"><h3>LearnDash</h3></div><p>Online kurzy, lekce a testy přímo na WordPressu.</p><p class="plugin-links"><a href="https://stellarwp.pxf.io/c/5070967/1601777/9639" class="btn btn--outline btn--sm" {EXT_ATTR}>Zobrazit plugin</a><a href="https://stellarwp.pxf.io/c/5070967/1287835/9639" class="btn btn--ghost btn--sm" {EXT_ATTR}>Registrace</a></p></article>
+          <article class="card plugin"><div class="plugin-head"><h3>Flycart</h3></div><p>Slevy, akce a pravidla cen pro WooCommerce.</p><p class="plugin-links"><a href="/go/flycart/" class="btn btn--outline btn--sm" {EXT_ATTR}>Zobrazit plugin</a></p></article>
+          <article class="card plugin"><div class="plugin-head"><h3>LearnDash</h3></div><p>Online kurzy, lekce a testy přímo na WordPressu.</p><p class="plugin-links"><a href="/go/learndash/" class="btn btn--outline btn--sm" {EXT_ATTR}>Zobrazit plugin</a><a href="/go/learndash-registrace/" class="btn btn--ghost btn--sm" {EXT_ATTR}>Registrace</a></p></article>
         </div>
       </div>
 

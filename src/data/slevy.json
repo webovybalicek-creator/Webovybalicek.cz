@@ -1,0 +1,4 @@
+{
+  "_info": "Aktuální slevové kódy a akce partnerů pro stránku /slevove-kody/. Plní týdenní úloha z e-mailů ve štítku Affiliate (Gmail webovybalicek@gmail.com). Jen ověřené akce z e-mailu nebo webu partnera, s datem platnosti; po skončení platnosti položku smazat. Pole: affil (slug z affil.json), n (název akce), kod (veřejný kód nebo prázdné, pokud se sleva uplatní odkazem), do (YYYY-MM-DD nebo prázdné), popis, overeno (YYYY-MM-DD).",
+  "akce": []
+}

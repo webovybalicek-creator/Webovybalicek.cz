@@ -281,4 +281,5 @@ def pages(src: Path):
     by_key = {t["k"]: t for t in items}
     import seo_extra
     import seo_more
-    return lokality(src, by_key) + srovnani(src) + pojmy(src) + seo_extra.pages(src, by_key) + seo_more.pages(src)
+    import seo_affil
+    return lokality(src, by_key) + srovnani(src) + pojmy(src) + seo_extra.pages(src, by_key) + seo_more.pages(src) + seo_affil.pages(src)

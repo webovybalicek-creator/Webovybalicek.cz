@@ -1640,6 +1640,7 @@ html:not([data-sb])::-webkit-scrollbar-thumb:hover { background: rgba(10,18,23,.
 .vs-table--2 { min-width: 0; }
 .vs-table--2 tbody tr:first-child th, .vs-table--2 tbody tr:first-child td { border-top: 0; }
 .vs-table--2 tbody th { width: 40%; }
+.vs-table--auto td, .vs-table--auto tbody th { width: auto; } .vs-table--auto tbody th { min-width: 140px; }
 .grid-cards--2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 .prose h2 { margin-bottom: 16px; }
 .prose p { margin: 0 0 16px; font-size: 18px; line-height: 1.65; color: var(--graphite); }

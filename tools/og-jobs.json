@@ -1792,5 +1792,71 @@
    "E-shop",
    "Nábor"
   ]
+ },
+ {
+  "slug": "e-shop-platebni-brany-srovnani",
+  "path": "/e-shop/platebni-brany-srovnani/",
+  "k": "Srovnání",
+  "h": "Platební *brány*",
+  "tags": [
+   "Comgate",
+   "GoPay",
+   "ThePay"
+  ]
+ },
+ {
+  "slug": "software-fakturoid-vs-idoklad",
+  "path": "/software/fakturoid-vs-idoklad/",
+  "k": "Srovnání",
+  "h": "Fakturoid, nebo *iDoklad*?",
+  "tags": [
+   "Fakturace",
+   "Ceny",
+   "E-shop"
+  ]
+ },
+ {
+  "slug": "wordpress-learndash-recenze",
+  "path": "/wordpress/learndash-recenze/",
+  "k": "Recenze",
+  "h": "LearnDash *v praxi*",
+  "tags": [
+   "Online kurzy",
+   "WordPress",
+   "WooCommerce"
+  ]
+ },
+ {
+  "slug": "wordpress-learndash-vs-moodle",
+  "path": "/wordpress/learndash-vs-moodle/",
+  "k": "Srovnání",
+  "h": "LearnDash, nebo *Moodle*?",
+  "tags": [
+   "E-learning",
+   "WordPress",
+   "LMS"
+  ]
+ },
+ {
+  "slug": "e-shop-slevy-a-akce-ve-woocommerce",
+  "path": "/e-shop/slevy-a-akce-ve-woocommerce/",
+  "k": "Návod",
+  "h": "Slevy *ve WooCommerce*",
+  "tags": [
+   "Kupóny",
+   "Akce",
+   "Pluginy"
+  ]
+ },
+ {
+  "slug": "slevove-kody",
+  "path": "/slevove-kody/",
+  "k": "Slevy",
+  "h": "Slevové *kódy*",
+  "tags": [
+   "Toret",
+   "WordPress",
+   "Hosting"
+  ]
  }
 ]

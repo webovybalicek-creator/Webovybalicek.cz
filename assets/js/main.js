@@ -114,6 +114,13 @@ document.addEventListener('click', (e) => {
   const tel = a.href.startsWith('tel:');
   wbTrack(tel ? 'contact_phone' : 'contact_email', { link_text: (a.textContent || '').trim().slice(0, 60) });
 });
+// Partnerské odkazy (/go/<slug>/ i přímé odkazy s rel="sponsored"): událost affiliate_click
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href^="/go/"], a[rel~="sponsored"]');
+  if (!a) return;
+  const go = a.getAttribute('href').match(/^\/go\/([^/]+)/);
+  wbTrack('affiliate_click', { affil: go ? go[1] : a.hostname.replace(/^www\./, ''), link_text: (a.textContent || '').trim().slice(0, 60) });
+});
 
 // Poptávkový formulář: odeslání přes poptavka.php, při odesílání perleťové kapky v tlačítku,
 // po úspěchu se formulář rozostří a vyroste kapka s poděkováním. Při chybě zůstane formulář a ukáže se e-mail.

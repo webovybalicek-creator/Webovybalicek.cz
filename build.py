@@ -30,7 +30,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
 SITE = "https://webovybalicek.cz"
-VERSION = "312"  # zvýšit při změně CSS/JS (cache busting)
+VERSION = "313"  # zvýšit při změně CSS/JS (cache busting)
 STAGING = os.environ.get("STAGING", "1") != "0"
 
 # Google profil (g.page/webovybalicek-cz) – při nové recenzi stačí přepsat tady
@@ -267,6 +267,15 @@ def build():
     # soubory do kořene webu (PHP pro formulář, .htaccess)
     for f in (ROOT / "static").iterdir():
         shutil.copy2(f, DIST / f.name)
+    # partnerské odkazy /go/<slug>/ → 302 na cíl ze src/data/affil.json (jedno místo pro změnu odkazu)
+    affil = {k: v for k, v in json.loads((SRC / "data" / "affil.json").read_text(encoding="utf-8")).items() if not k.startswith("_")}
+    esc = lambda u: u.replace("%", "\\%")  # % je v RewriteRule speciální znak
+    go = "\n# partnerské odkazy (generuje build.py ze src/data/affil.json)\n" + "".join(
+        "RewriteRule ^go/%s/?$ %s [R=302,L,NE]\n" % (re.escape(k), esc(v["url"])) for k, v in affil.items())
+    ht = (DIST / ".htaccess").read_text(encoding="utf-8")
+    anchor = "RewriteRule ^(author|tag)/ / [R=301,L]\n"
+    assert anchor in ht
+    (DIST / ".htaccess").write_text(ht.replace(anchor, anchor + go, 1), encoding="utf-8")
 
     layout = (SRC / "layout.html").read_text(encoding="utf-8")
     cta = (SRC / "cta.html").read_text(encoding="utf-8")
@@ -408,8 +417,8 @@ def build():
 
     ai_bots = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "PerplexityBot", "Google-Extended", "Applebot-Extended", "Bingbot"]
     robots = ("User-agent: *\nDisallow: /\n" if STAGING else
-              "User-agent: *\nAllow: /\nDisallow: /design/\n\n# AI vyhledávače a asistenti – výslovně povoleno\n"
-              + "".join(f"User-agent: {b}\n" for b in ai_bots) + "Allow: /\nDisallow: /design/\n\n"
+              "User-agent: *\nAllow: /\nDisallow: /design/\nDisallow: /go/\n\n# AI vyhledávače a asistenti – výslovně povoleno\n"
+              + "".join(f"User-agent: {b}\n" for b in ai_bots) + "Allow: /\nDisallow: /design/\nDisallow: /go/\n\n"
               + f"Sitemap: {SITE}/sitemap.xml\n")
     (ROOT / "tools" / "og-jobs.json").write_text(json.dumps(og_jobs, ensure_ascii=False, indent=1), encoding="utf-8")
     if not STAGING:
