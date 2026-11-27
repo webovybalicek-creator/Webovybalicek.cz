@@ -269,9 +269,9 @@ def build():
         shutil.copy2(f, DIST / f.name)
     # partnerské odkazy /go/<slug>/ → 302 na cíl ze src/data/affil.json (jedno místo pro změnu odkazu)
     affil = {k: v for k, v in json.loads((SRC / "data" / "affil.json").read_text(encoding="utf-8")).items() if not k.startswith("_")}
-    esc = lambda u: u.replace("%", "\\%")  # % je v RewriteRule speciální znak
+    # RedirectMatch (mod_alias): na rozdíl od RewriteRule nebere % v cílové adrese jako zpětný odkaz
     go = "\n# partnerské odkazy (generuje build.py ze src/data/affil.json)\n" + "".join(
-        "RewriteRule ^go/%s/?$ %s [R=302,L,NE]\n" % (re.escape(k), esc(v["url"])) for k, v in affil.items())
+        'RedirectMatch 302 ^/go/%s/?$ "%s"\n' % (re.escape(k), v["url"].replace("$", "\\$")) for k, v in affil.items())
     ht = (DIST / ".htaccess").read_text(encoding="utf-8")
     anchor = "RewriteRule ^(author|tag)/ / [R=301,L]\n"
     assert anchor in ht
