@@ -24,6 +24,8 @@ Cíl: pokrýt tematicky všechny služby, které na webech používáme a které
 | iDoklad | registrace s `Ref=7YpAEvJx…` | detail pluginu iDoklad (`EXTRA`) |
 | Flycart (slevy a akce pro WooCommerce) | `https://www.flycart.org/?ref=ymvkyzm` | rozcestník pluginů, „Další pluginy“ |
 | LearnDash (StellarWP přes síť Impact, účet 5070967) | `https://stellarwp.pxf.io/c/5070967/…` | rozcestník pluginů, „Další pluginy“ |
+| Wedos (registrováno 27. 11. 2026, partner.wedos.as) | `https://www.wedos.cz/?ap=S5P38w` (affiliate ID `S5P38w`; další odkazy v sekci Textové kampaně) | zatím nikde – hosting cluster |
+| Hostinger (žádost odeslána 27. 11. 2026, čeká na schválení) | – | – |
 
 Odkazy už mají `rel="sponsored noopener"` a stránky pluginů poznámku o partnerských odkazech. Při stavbě `src/data/affil.json` je převést tam (jeden zdroj pravdy) a `plugins.py` číst odtud.
 Pozn.: účet v síti Impact (LearnDash) – v Impactu mohou být i další značky (např. Ecomail uvádějí agregátory), stojí za to projít katalog inzerentů.
