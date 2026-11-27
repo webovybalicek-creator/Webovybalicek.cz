@@ -26,6 +26,8 @@ Cíl: pokrýt tematicky všechny služby, které na webech používáme a které
 | LearnDash (StellarWP přes síť Impact, účet 5070967) | `https://stellarwp.pxf.io/c/5070967/…` | rozcestník pluginů, „Další pluginy“ |
 | Wedos (registrováno 27. 11. 2026, partner.wedos.as) | `https://www.wedos.cz/?ap=S5P38w` (affiliate ID `S5P38w`; další odkazy v sekci Textové kampaně) | zatím nikde – hosting cluster |
 | Hostinger (žádost odeslána 27. 11. 2026, čeká na schválení) | – | – |
+| Crocoblock (aktivní, account.crocoblock.com/affiliate-area) | `https://crocoblock.com/?ref=1176` (affiliate ID `1176`, generátor odkazů v panelu) | zatím nikde – WordPress cluster |
+| Elementor (žádost odeslána 27. 11. 2026, čeká na schválení; účet webovybalicek@gmail.com) | – | – |
 
 Odkazy už mají `rel="sponsored noopener"` a stránky pluginů poznámku o partnerských odkazech. Při stavbě `src/data/affil.json` je převést tam (jeden zdroj pravdy) a `plugins.py` číst odtud.
 Pozn.: účet v síti Impact (LearnDash) – v Impactu mohou být i další značky (např. Ecomail uvádějí agregátory), stojí za to projít katalog inzerentů.
