@@ -1,4 +1,13 @@
 {
   "_info": "Aktuální slevové kódy a akce partnerů pro stránku /slevove-kody/. Plní týdenní úloha z e-mailů ve štítku Affiliate (Gmail webovybalicek@gmail.com). Jen ověřené akce z e-mailu nebo webu partnera, s datem platnosti; po skončení platnosti položku smazat. Pole: affil (slug z affil.json), n (název akce), kod (veřejný kód nebo prázdné, pokud se sleva uplatní odkazem), do (YYYY-MM-DD nebo prázdné), popis, overeno (YYYY-MM-DD).",
-  "akce": []
+  "akce": [
+    {
+      "affil": "toret-black-friday",
+      "n": "Black Friday: 50 % na všechny pluginy Toret",
+      "kod": "",
+      "do": "2026-12-04",
+      "popis": "Všechny pluginy pro WooCommerce za poloviční cenu, Balíček všech pluginů za 6 990 Kč místo 9 990 Kč a Toret Komplet za 12 990 Kč místo 16 990 Kč. Sleva se uplatní automaticky, akce končí 4. 12. ve 23:59.",
+      "overeno": "2026-11-27"
+    }
+  ]
 }

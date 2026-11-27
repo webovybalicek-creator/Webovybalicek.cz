@@ -1,21 +1,98 @@
 {
   "_info": "Jediné místo s partnerskými odkazy. Na webu se odkazuje přes /go/<slug>/ (302 v .htaccess generuje build.py). aktivni=false: odkaz vede na službu bez provize (čeká na schválení). Stav registrací: docs/backlog-seo-affiliate.md",
-  "comgate": {"n": "Comgate", "url": "https://www.comgate.cz/?r=8NQF", "aktivni": true},
-  "thepay": {"n": "ThePay", "url": "https://admin.thepay.cz/partner/save-token/DTGVodzETRTyscU2d2uX", "aktivni": true},
-  "idoklad": {"n": "iDoklad", "url": "https://app.idoklad.cz/Account/Registration?Ref=7YpAEvJxNCnOpd9SwOVh3zJYb%2BkyMGL8j0aLc0JBfnU%3D", "aktivni": true},
-  "flycart": {"n": "Flycart", "url": "https://www.flycart.org/?ref=ymvkyzm", "aktivni": true},
-  "learndash": {"n": "LearnDash", "url": "https://stellarwp.pxf.io/c/5070967/1601777/9639", "aktivni": true},
-  "learndash-registrace": {"n": "LearnDash", "url": "https://stellarwp.pxf.io/c/5070967/1287835/9639", "aktivni": true},
-  "toret": {"n": "Toret", "url": "https://toret.cz/ref/67/", "aktivni": true},
-  "wedos": {"n": "Wedos", "url": "https://www.wedos.cz/?ap=S5P38w", "aktivni": true},
-  "crocoblock": {"n": "Crocoblock", "url": "https://crocoblock.com/?ref=1176", "aktivni": true},
-  "hostinger": {"n": "Hostinger", "url": "https://www.hostinger.com/cz", "aktivni": false},
-  "elementor": {"n": "Elementor", "url": "https://elementor.com/", "aktivni": false},
-  "mailerlite": {"n": "MailerLite", "url": "https://www.mailerlite.com/", "aktivni": false},
-  "getresponse": {"n": "GetResponse", "url": "https://www.getresponse.com/cs", "aktivni": false},
-  "jotform": {"n": "Jotform", "url": "https://www.jotform.com/", "aktivni": false},
-  "gopay": {"n": "GoPay", "url": "https://www.gopay.com/cs/", "aktivni": false},
-  "stripe": {"n": "Stripe", "url": "https://stripe.com/cz", "aktivni": false},
-  "fakturoid": {"n": "Fakturoid", "url": "https://www.fakturoid.cz/", "aktivni": false},
-  "moodle": {"n": "Moodle", "url": "https://moodle.org/", "aktivni": false}
+  "comgate": {
+    "n": "Comgate",
+    "url": "https://www.comgate.cz/?r=8NQF",
+    "aktivni": true
+  },
+  "thepay": {
+    "n": "ThePay",
+    "url": "https://admin.thepay.cz/partner/save-token/DTGVodzETRTyscU2d2uX",
+    "aktivni": true
+  },
+  "idoklad": {
+    "n": "iDoklad",
+    "url": "https://app.idoklad.cz/Account/Registration?Ref=7YpAEvJxNCnOpd9SwOVh3zJYb%2BkyMGL8j0aLc0JBfnU%3D",
+    "aktivni": true
+  },
+  "flycart": {
+    "n": "Flycart",
+    "url": "https://www.flycart.org/?ref=ymvkyzm",
+    "aktivni": true
+  },
+  "learndash": {
+    "n": "LearnDash",
+    "url": "https://stellarwp.pxf.io/c/5070967/1601777/9639",
+    "aktivni": true
+  },
+  "learndash-registrace": {
+    "n": "LearnDash",
+    "url": "https://stellarwp.pxf.io/c/5070967/1287835/9639",
+    "aktivni": true
+  },
+  "toret": {
+    "n": "Toret",
+    "url": "https://toret.cz/ref/67/",
+    "aktivni": true
+  },
+  "wedos": {
+    "n": "Wedos",
+    "url": "https://www.wedos.cz/?ap=S5P38w",
+    "aktivni": true
+  },
+  "crocoblock": {
+    "n": "Crocoblock",
+    "url": "https://crocoblock.com/?ref=1176",
+    "aktivni": true
+  },
+  "hostinger": {
+    "n": "Hostinger",
+    "url": "https://www.hostinger.com/cz",
+    "aktivni": false
+  },
+  "elementor": {
+    "n": "Elementor",
+    "url": "https://elementor.com/",
+    "aktivni": false
+  },
+  "mailerlite": {
+    "n": "MailerLite",
+    "url": "https://www.mailerlite.com/",
+    "aktivni": false
+  },
+  "getresponse": {
+    "n": "GetResponse",
+    "url": "https://www.getresponse.com/cs",
+    "aktivni": false
+  },
+  "jotform": {
+    "n": "Jotform",
+    "url": "https://www.jotform.com/",
+    "aktivni": false
+  },
+  "gopay": {
+    "n": "GoPay",
+    "url": "https://www.gopay.com/cs/",
+    "aktivni": false
+  },
+  "stripe": {
+    "n": "Stripe",
+    "url": "https://stripe.com/cz",
+    "aktivni": false
+  },
+  "fakturoid": {
+    "n": "Fakturoid",
+    "url": "https://www.fakturoid.cz/",
+    "aktivni": false
+  },
+  "moodle": {
+    "n": "Moodle",
+    "url": "https://moodle.org/",
+    "aktivni": false
+  },
+  "toret-black-friday": {
+    "n": "Toret",
+    "url": "https://toret.cz/black-friday/ref/67/",
+    "aktivni": true
+  }
 }
