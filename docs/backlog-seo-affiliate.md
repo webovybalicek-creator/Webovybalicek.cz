@@ -49,7 +49,7 @@ Registrace dělá Vladimír (osobní a platební údaje), odkazy pak doplním do
 ## Clustery a stránky
 
 ### 1. 🖥️ Hosting (priorita 1 – nejvíc hledané, nejvíc programů)
-Odlišení od konkurence: vlastní měření (stejný WordPress + Elementor na každém hostingu: TTFB, PageSpeed, dostupnost za 30 dní) a zkušenost se správou 150+ webů – cena obnovy, zálohy, podpora, jak se odchází.
+Odlišení od konkurence: měření na klientských webech, které na hostinzích běží (TTFB, PageSpeed), a zkušenost se správou 150+ webů – cena obnovy, zálohy, podpora, jak se odchází.
 - `/hosting/` – rozcestník clusteru (srovnávací tabulka, metodika, výsledky měření)
 - `/hosting/pro-wordpress/` – nejlepší hosting pro WordPress
 - `/hosting/pro-e-shop/` – hosting pro WooCommerce e-shop
@@ -58,7 +58,7 @@ Odlišení od konkurence: vlastní měření (stejný WordPress + Elementor na k
 - `/hosting/wedos-vs-forpsi/`, `/hosting/hostinger-vs-wedos/` – nejhledanější dvojice
 - `/hosting/kolik-stoji-hosting/`
 - `/hosting/jak-prestehovat-web/` – návod + CTA „přestěhujeme za vás“ (poptávka)
-- **Rozhodnutí pro Vladimíra:** koupit na 1 měsíc nejlevnější WordPress tarif u 5–6 hostingů kvůli měření (náklad zhruba stovky Kč/hosting), nebo vycházet jen z klientských webů, které už na nich běží.
+- Hodnocení z klientských webů na daném hostingu + oficiální ceníky (testovací tarify nekupujeme).
 
 ### 2. 🧩 WordPress nástroje (priorita 2 – naše nejsilnější odbornost, vysoké provize)
 - `/wordpress/elementor-pro-recenze/` – Elementor Pro vs Elementor One, co se vyplatí
@@ -100,13 +100,14 @@ Odlišení od konkurence: vlastní měření (stejný WordPress + Elementor na k
 |---|---|---|
 | 1 | Technický základ (affil.json se stávajícími odkazy, /go/, affiliate_click, šablony) | převést odkazy z plugins.py |
 | 2 | **Hned monetizovatelné (už registrované):** platební brány (Comgate, ThePay + Toret pluginy), iDoklad vs Fakturoid, LearnDash (recenze, vs Moodle, prodej kurzů), slevy ve WooCommerce (Flycart) | žádná nová registrace |
-| 3 | Registrace Hostinger, Wedos, Elementor, Crocoblock (Vladimír) → hosting: rozcestník, pro WordPress, pro e-shop, recenze, Wedos vs Forpsi, jak přestěhovat web | měření běží 30 dní, stránky jdou ven hned s cenami a doplní se čísly |
+| 3 | Registrace Hostinger, Wedos, Elementor, Crocoblock (Vladimír) → hosting: rozcestník, pro WordPress, pro e-shop, recenze, Wedos vs Forpsi, jak přestěhovat web | data z klientských webů |
 | 4 | Elementor Pro, Crocoblock, Elementor vs Gutenberg/Bricks | |
 | 5 | Shopify vs Shoptet + jak založit e-shop, e-mail marketing, firemní e-mail | |
 | 6 | Domény, ostatní nástroje, zbytek recenzí hostingů | |
 | průběžně | Po 4–6 týdnech Search Console: dotazy s vysokými zobrazeními → nové stránky; čtvrtletně aktualizovat ceny a sazby | |
 
-## Otevřené otázky pro Vladimíra
-- Měření hostingů: koupit testovací tarify, nebo jen data z klientských webů?
-- URL struktura: navržené složky `/hosting/`, `/wordpress/`, `/e-shop/`, `/software/`, `/domeny/` – OK?
-- U Hostinger Horizons (AI builder, 60 %) – chceš ho vůbec propagovat, když je to konkurence AI webů?
+## Rozhodnutí (27. 11. 2026)
+- Testovací tarify hostingů **nekupujeme** – srovnání stojí na datech z klientských webů, které na hostinzích už běží (rychlost měřit na nich), a na oficiálních cenících. Na stránkách to tak popsat („jak jsme hodnotili“), žádná vymyšlená čísla.
+- URL struktura `/hosting/`, `/wordpress/`, `/e-shop/`, `/software/`, `/domeny/` schválena.
+- Hostinger Horizons propagovat můžeme (srovnání „kdy stačí AI builder a kdy web na míru“).
+- Fáze 2 (platební brány, iDoklad, LearnDash, Flycart) využije už registrované partnerské odkazy – Comgate, ThePay, iDoklad, Flycart, LearnDash a Toret.
