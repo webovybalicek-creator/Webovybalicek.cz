@@ -106,6 +106,22 @@ Odlišení od konkurence: měření na klientských webech, které na hostinzíc
 | 6 | Domény, ostatní nástroje, zbytek recenzí hostingů | |
 | průběžně | Po 4–6 týdnech Search Console: dotazy s vysokými zobrazeními → nové stránky; čtvrtletně aktualizovat ceny a sazby | |
 
+## Kde se registrovat (Vladimír, 27. 11. 2026)
+| Pořadí | Služba | Registrace | Provize | Poznámka |
+|---|---|---|---|---|
+| 1 | Hostinger – affiliate | https://www.hostinger.com/cz/affiliates | od 40 % | schválení až 5 pracovních dní; zahrnuje i Hostinger Horizons |
+| 2 | Hostinger – partnerský program pro agentury | hPanel → Centrum agentur → Partnerský program (https://www.hostinger.com/cz/partner-program) | opakované provize z obnov klientů | jen pokud budeš klientům zakládat hosting u Hostingeru |
+| 3 | Wedos | https://wedos.as | 50 % webhosting, 5 % domény | provizní systém WEDOS.as |
+| 4 | Elementor | https://elementor.com/affiliates/ | Elementor One 55 %, Pro a Host 45 % | |
+| 5 | Crocoblock | https://crocoblock.com/affiliates/ | 50 % | |
+| 6 | Shopify | https://www.shopify.com/affiliates (běží přes Impact – máš tam účet) | až 3 500 Kč za plán | schválení obvykle do 5 pracovních dní |
+| 7 | MailerLite | https://www.mailerlite.com/affiliate | 30 % doživotně | |
+| 8 | GetResponse | https://www.getresponse.com/affiliate-programs (přes PartnerStack) | 40 % 12 měsíců (od 50 prodejů víc) | |
+| 9 | Jotform | https://www.jotform.com/partnership/affiliate | 30 % po dobu 1 roku | schválení do 1 pracovního dne |
+| 10 | Active24 | v zákaznickém centru Active24 (info: https://faq.active24.eu/knowledge-base/affiliate-program-innovation-06-2019/) | hosting 10 %, domény 5 % (údaj z 2019) | jen CZ účty |
+| 11 | Ecomail a další | katalog inzerentů v Impactu | – | ověřit, zda tam jsou |
+Po registraci mi pošli odkazy (nebo ID partnera), doplním je do `src/data/affil.json`.
+
 ## Rozhodnutí (27. 11. 2026)
 - Testovací tarify hostingů **nekupujeme** – srovnání stojí na datech z klientských webů, které na hostinzích už běží (rychlost měřit na nich), a na oficiálních cenících. Na stránkách to tak popsat („jak jsme hodnotili“), žádná vymyšlená čísla.
 - URL struktura `/hosting/`, `/wordpress/`, `/e-shop/`, `/software/`, `/domeny/` schválena.
